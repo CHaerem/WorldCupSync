@@ -25,7 +25,7 @@ async function readJson(path, fallback) {
 }
 
 async function main() {
-  const [groups, matches, broadcasters, streams] = await Promise.all([
+  const [groups, matches, broadcasters, streams, tv2] = await Promise.all([
     buildStandings(),
     buildMatches(),
     readJson(join(ROOT, "scripts", "config", "broadcasters.json"), {
@@ -33,11 +33,13 @@ async function main() {
       nrkFreeMatchIds: [],
     }),
     readJson(join(DATA, "streams.json"), { streams: {} }),
+    readJson(join(ROOT, "scripts", "config", "tv2-streams.json"), { streams: {} }),
   ]);
 
   const groupOf = teamGroupMap(groups);
   const nrkFree = new Set((broadcasters.nrkFreeMatchIds || []).map(String));
   const streamMap = streams.streams || {};
+  const tv2Map = tv2.streams || {};
 
   for (const m of matches) {
     // tag group from standings (knockout matches stay null → use roundNote)
@@ -47,8 +49,10 @@ async function main() {
     m.nrkFree = nrkFree.has(String(m.id));
     m.broadcaster = m.nrkFree ? "NRK" : broadcasters.defaultBroadcaster || "TV2";
 
-    // replay links resolved by the discovery step (may be absent until then)
-    m.streams = streamMap[m.id] || null;
+    // replay links: NRK (from catalog) + TV 2 (from captured config)
+    const links = { ...(streamMap[m.id] || {}) };
+    if (tv2Map[m.id]) links.tv2 = tv2Map[m.id];
+    m.streams = Object.keys(links).length ? links : null;
   }
 
   const now = new Date().toISOString();

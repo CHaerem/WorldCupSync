@@ -162,10 +162,10 @@
           "advanced": 0
         },
         {
-          "teamId": "2869",
-          "team": "Morocco",
-          "abbr": "MAR",
-          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
+          "teamId": "2654",
+          "team": "Haiti",
+          "abbr": "HAI",
+          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/hai.png",
           "rank": 2,
           "played": 0,
           "wins": 0,
@@ -178,10 +178,10 @@
           "advanced": 0
         },
         {
-          "teamId": "2654",
-          "team": "Haiti",
-          "abbr": "HAI",
-          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/hai.png",
+          "teamId": "2869",
+          "team": "Morocco",
+          "abbr": "MAR",
+          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
           "rank": 3,
           "played": 0,
           "wins": 0,

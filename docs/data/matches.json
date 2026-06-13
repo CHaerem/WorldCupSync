@@ -35,7 +35,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/mexico-soer-afrika-4v42ekry"
+      }
     },
     {
       "id": "760414",
@@ -144,7 +146,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/usa-paraguay-r7nqznfv"
+      }
     },
     {
       "id": "760420",
@@ -203,7 +207,7 @@
         "name": "Brazil",
         "abbr": "BRA",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "away": {
@@ -216,7 +220,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/brasil-marokko-57t5bpf2"
+      }
     },
     {
       "id": "760418",
@@ -251,7 +257,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/haiti-skottland-30n0rprh"
+      }
     },
     {
       "id": "760421",
@@ -286,7 +294,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/australia-tyrkia-w22rcncg"
+      }
     },
     {
       "id": "760422",
@@ -358,7 +368,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/nederland-japan-55wkahs0"
+      }
     },
     {
       "id": "760423",
@@ -393,7 +405,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/elfenbenskysten-ecuador-4kpfg0a4"
+      }
     },
     {
       "id": "760424",
@@ -428,7 +442,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/sverige-tunisia-swztpthv"
+      }
     },
     {
       "id": "760428",
@@ -463,7 +479,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/spania-kapp-verde-ga58jdg2"
+      }
     },
     {
       "id": "760426",
@@ -609,7 +627,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/frankrike-senegal-n7pkkbb4"
+      }
     },
     {
       "id": "760430",
@@ -644,7 +664,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/irak-norge-190xshna"
+      }
     },
     {
       "id": "760433",
@@ -790,7 +812,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/england-kroatia-6fer2593"
+      }
     },
     {
       "id": "760434",
@@ -825,7 +849,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/ghana-panama-bbxrsz7r"
+      }
     },
     {
       "id": "760436",
@@ -860,7 +886,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/usbekistan-colombia-zrkkk7wy"
+      }
     },
     {
       "id": "760438",
@@ -932,7 +960,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/sveits-bosnia-hercegovina-hbcwx4fj"
+      }
     },
     {
       "id": "760440",
@@ -967,7 +997,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/canada-qatar-3e5sfykj"
+      }
     },
     {
       "id": "760441",
@@ -1002,7 +1034,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/mexico-soer-korea-1w1wnesn"
+      }
     },
     {
       "id": "760442",
@@ -1222,7 +1256,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/tyskland-elfenbenskysten-402tx3qn"
+      }
     },
     {
       "id": "760446",
@@ -1257,7 +1293,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/ecuador-curacao-typs7f2y"
+      }
     },
     {
       "id": "760449",
@@ -1366,7 +1404,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/belgia-iran-swmc2frh"
+      }
     },
     {
       "id": "760450",
@@ -1401,7 +1441,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/uruguay-kapp-verde-vq8pmwaz"
+      }
     },
     {
       "id": "760452",
@@ -1436,7 +1478,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/new-zealand-egypt-yvke2s0f"
+      }
     },
     {
       "id": "760456",
@@ -1471,7 +1515,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/argentina-oesterrike-655xvqpb"
+      }
     },
     {
       "id": "760457",
@@ -1580,7 +1626,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/jordan-algerie-90vyb8ys"
+      }
     },
     {
       "id": "760461",
@@ -1615,7 +1663,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/portugal-usbekistan-p661zq9v"
+      }
     },
     {
       "id": "760458",
@@ -1724,7 +1774,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/colombia-dr-kongo-vn243gme"
+      }
     },
     {
       "id": "760462",
@@ -1905,7 +1957,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/tsjekkia-mexico-s4jsab26"
+      }
     },
     {
       "id": "760466",
@@ -1940,7 +1994,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/soer-afrika-soer-korea-8ghsry6p"
+      }
     },
     {
       "id": "760473",
@@ -1975,7 +2031,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/curacao-elfenbenskysten-ha8jtayf"
+      }
     },
     {
       "id": "760468",
@@ -2010,7 +2068,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/ecuador-tyskland-2rrfcswr"
+      }
     },
     {
       "id": "760471",
@@ -2045,7 +2105,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/japan-sverige-hy9wb1hb"
+      }
     },
     {
       "id": "760472",
@@ -2080,7 +2142,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/tunisia-nederland-pyxs6srs"
+      }
     },
     {
       "id": "760469",
@@ -2335,7 +2399,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/egypt-iran-5kym6ybp"
+      }
     },
     {
       "id": "760477",
@@ -2370,7 +2436,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/new-zealand-belgia-dtr8frdp"
+      }
     },
     {
       "id": "760480",
@@ -2405,7 +2473,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/kroatia-ghana-h3efrdc2"
+      }
     },
     {
       "id": "760485",
@@ -2440,7 +2510,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/panama-england-zt0n9tg9"
+      }
     },
     {
       "id": "760481",
