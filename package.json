@@ -9,6 +9,7 @@
     "fetch:matches": "node scripts/fetch-matches.js",
     "fetch:standings": "node scripts/fetch-standings.js",
     "fetch:streams": "node scripts/fetch-streams.js",
+    "fetch:stats": "node scripts/fetch-stats.js",
     "dev": "python3 -m http.server 8000 --directory docs"
   },
   "engines": {

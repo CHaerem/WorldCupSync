@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-13T23:00:41.504Z",
+  "updated": "2026-06-13T23:16:40.034Z",
   "count": 104,
   "matches": [
     {
@@ -201,7 +201,7 @@
       "city": "East Rutherford, New Jersey",
       "state": "in",
       "completed": false,
-      "statusDetail": "HT",
+      "statusDetail": "51'",
       "home": {
         "id": "205",
         "name": "Brazil",

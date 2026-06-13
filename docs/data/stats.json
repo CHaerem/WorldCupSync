@@ -1,0 +1,99 @@
+{
+  "updated": "2026-06-13T23:16:40.651Z",
+  "matchesPlayed": 5,
+  "totalGoals": 14,
+  "avgGoals": 2.8,
+  "topScorers": [
+    {
+      "name": "Folarin Balogun",
+      "team": "United States",
+      "goals": 2,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png"
+    },
+    {
+      "name": "Hwang In-Beom",
+      "team": "South Korea",
+      "goals": 1,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/kors.png"
+    },
+    {
+      "name": "Breel Embolo",
+      "team": "Switzerland",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
+    },
+    {
+      "name": "Cyle Larin",
+      "team": "Canada",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png"
+    },
+    {
+      "name": "Damián Bobadilla",
+      "team": "United States",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png"
+    },
+    {
+      "name": "Giovanni Reyna",
+      "team": "United States",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png"
+    },
+    {
+      "name": "Jovo Lukic",
+      "team": "Bosnia-Herzegovina",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bih.png"
+    },
+    {
+      "name": "Julián Quiñones",
+      "team": "Mexico",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png"
+    },
+    {
+      "name": "Ladislav Krejcí",
+      "team": "Czechia",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/cze.png"
+    },
+    {
+      "name": "Maurício",
+      "team": "Paraguay",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/par.png"
+    },
+    {
+      "name": "Miro Muheim",
+      "team": "Qatar",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/qat.png"
+    },
+    {
+      "name": "Oh Hyeon-Gyu",
+      "team": "South Korea",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/kors.png"
+    },
+    {
+      "name": "Raúl Jiménez",
+      "team": "Mexico",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png"
+    }
+  ]
+}

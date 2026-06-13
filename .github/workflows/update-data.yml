@@ -32,6 +32,9 @@ jobs:
       - name: Re-build so resolved links land in matches.json
         run: node scripts/build.js
 
+      - name: Aggregate tournament stats (top scorers)
+        run: node scripts/fetch-stats.js || echo "stats step skipped"
+
       - name: Commit data
         run: |
           git config user.name "wc-bot"
