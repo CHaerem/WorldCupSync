@@ -47,35 +47,33 @@ const fmtDay = (iso) => { const [, mo, d] = iso.split("-").map(Number); const wd
 function primaryLinks(m) {
   const q = encodeURIComponent(`${m.home?.name || ""} ${m.away?.name || ""}`.trim());
   const s = m.streams || {}; const out = [];
-  if (s.nrk) out.push({ cls: "nrk", label: "NRK TV", href: s.nrk, ico: "▶" });
-  else if (m.nrkFree) out.push({ cls: "ghost", label: "Søk NRK", href: `https://tv.nrk.no/sok?q=${q}`, ico: "🔎" });
-  if (s.tv2) out.push({ cls: "tv2", label: "TV 2 Play", href: s.tv2, ico: "▶" });
-  else if (!m.nrkFree || !s.nrk) out.push({ cls: "ghost", label: "Søk TV 2", href: `https://play.tv2.no/sok?q=${q}`, ico: "🔎" });
+  if (s.nrk) out.push({ cls: "nrk", label: "NRK TV", short: "NRK", href: s.nrk, ico: "▶" });
+  else if (m.nrkFree) out.push({ cls: "ghost", label: "Søk NRK", short: "NRK", href: `https://tv.nrk.no/sok?q=${q}`, ico: "🔎" });
+  if (s.tv2) out.push({ cls: "tv2", label: "TV 2 Play", short: "TV 2", href: s.tv2, ico: "▶" });
+  else if (!m.nrkFree || !s.nrk) out.push({ cls: "ghost", label: "Søk TV 2", short: "TV 2", href: `https://play.tv2.no/sok?q=${q}`, ico: "🔎" });
   return out;
 }
 
-// ---------- match row ----------
-function matchRow(m) {
+// ---------- match row (compact, one line — scannable week overview) ----------
+function matchRow(m, opts = {}) {
   const live = m.state === "in", post = m.completed, reveal = isRevealed(m);
   const onPlan = state.plan.has(m.id), watched = state.watched.has(m.id);
-  const mid = (post || live)
-    ? (reveal ? `<span class="sc">${m.home?.score ?? "-"}–${m.away?.score ?? "-"}</span>` : `<span class="sc hide" data-reveal="${m.id}" title="Vis resultat">–&nbsp;–</span>`)
-    : `<span class="tm">${m.osloTime}</span>`;
-  const links = (post || live) ? primaryLinks(m).map((l) => `<a class="pill ${l.cls}" href="${l.href}" target="_blank" rel="noopener">${l.ico} ${l.label}</a>`).join("") : "";
-  const metaLeft = [
-    live ? `<span class="live"></span> spilles nå` : (post ? m.osloTime : null),
-    m.group || roundName(m.roundNote), m.venue,
-  ].filter(Boolean).join(' <span class="dot">·</span> ');
+  const lt = live ? `<span class="live" title="spilles nå"></span>` : `<span class="when">${m.osloTime}</span>`;
+  const md = (post || live)
+    ? (reveal ? `<span class="md">${m.home?.score ?? "-"}–${m.away?.score ?? "-"}</span>` : `<span class="md hide" data-reveal="${m.id}" title="Vis resultat">–&nbsp;–</span>`)
+    : `<span class="md vs">–</span>`;
+  let act = "";
+  if (post || live) { const l = primaryLinks(m)[0]; if (l) act += `<a class="go ${l.cls}" href="${l.href}" target="_blank" rel="noopener" title="Se reprise — ${l.label}">${l.ico} ${l.short}</a>`; }
+  if (opts.plan && post) act += `<button class="wch ${watched ? "on" : ""}" data-watched="${m.id}" title="Marker sett">✓</button>`;
+  act += `<button class="star ${onPlan ? "on" : ""}" data-plan="${m.id}" title="Min plan">${onPlan ? "★" : "☆"}</button>`;
   return `<div class="m${isNO(m) ? " no" : ""}">
-    <div class="m-row">
-      <div class="side">${m.home?.logo ? `<img src="${m.home.logo}" alt="" loading="lazy"/>` : ""}<span class="nm">${esc(m.home?.name || "TBD")}</span></div>
-      <div class="mid">${mid}</div>
-      <div class="side away">${m.away?.logo ? `<img src="${m.away.logo}" alt="" loading="lazy"/>` : ""}<span class="nm">${esc(m.away?.name || "TBD")}</span></div>
+    <div class="lt">${lt}</div>
+    <div class="teams">
+      <span class="hh"><span class="nm">${esc(m.home?.name || "TBD")}</span>${m.home?.logo ? `<img src="${m.home.logo}" alt="" loading="lazy"/>` : ""}</span>
+      ${md}
+      <span class="aa">${m.away?.logo ? `<img src="${m.away.logo}" alt="" loading="lazy"/>` : ""}<span class="nm">${esc(m.away?.name || "TBD")}</span></span>
     </div>
-    <div class="m-meta"><span>${metaLeft}</span><span class="grow"></span>${links}
-      ${post ? `<button class="watched ${watched ? "on" : ""}" data-watched="${m.id}">${watched ? "✓ sett" : "marker sett"}</button>` : ""}
-      <button class="star ${onPlan ? "on" : ""}" data-plan="${m.id}" title="Min plan">${onPlan ? "★" : "☆"}</button>
-    </div>
+    <div class="act">${act}</div>
   </div>`;
 }
 
@@ -129,8 +127,8 @@ function viewPlan() {
   const queue = planned.filter((m) => m.completed && !state.watched.has(m.id));
   const rest = planned.filter((m) => !(m.completed && !state.watched.has(m.id)));
   let h = "";
-  if (queue.length) h += `<div class="block"><h3>▶ Klar for reprise (${queue.length})</h3>${queue.map(matchRow).join("")}</div>`;
-  if (rest.length) h += `<div class="block"><h3>Resten av planen</h3>${rest.map(matchRow).join("")}</div>`;
+  if (queue.length) h += `<div class="block"><h3>▶ Klar for reprise (${queue.length})</h3>${queue.map((m) => matchRow(m, { plan: true })).join("")}</div>`;
+  if (rest.length) h += `<div class="block"><h3>Resten av planen</h3>${rest.map((m) => matchRow(m, { plan: true })).join("")}</div>`;
   return h;
 }
 
