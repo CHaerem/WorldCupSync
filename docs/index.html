@@ -175,6 +175,12 @@
       Data: ESPN · Reprise: NRK TV &amp; TV 2 Play · Alle tider i Oslo-tid<br />
       Spoilerfri som standard — skru på spoiler for å ta igjen resultater, tabeller og toppscorere.
     </footer>
-    <script src="js/app.js"></script>
+    <script>
+      // Load app.js with a cache-busting version tied to the latest data build,
+      // so a fresh deploy is never masked by a stale cached script.
+      fetch("data/meta.json", { cache: "no-store" })
+        .then((r) => r.json()).then((m) => m.updated).catch(() => Date.now())
+        .then((v) => { const s = document.createElement("script"); s.src = "js/app.js?v=" + encodeURIComponent(v); document.body.appendChild(s); });
+    </script>
   </body>
 </html>
