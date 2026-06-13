@@ -22,7 +22,9 @@ const MAX_PER_RUN = 8; // bound LLM cost
 const LOOKBACK_HOURS = 72; // only chase links for recently finished matches
 
 function hasAuth() {
-  return Boolean(process.env.CLAUDE_CODE_OAUTH_TOKEN || process.env.ANTHROPIC_API_KEY);
+  // Subscription-only by design: the Claude Code OAuth token from your Max/Team
+  // subscription. No ANTHROPIC_API_KEY path — we never fall back to paid API billing.
+  return Boolean(process.env.CLAUDE_CODE_OAUTH_TOKEN);
 }
 
 async function readJson(path, fallback) {
