@@ -4,8 +4,8 @@
 //   3. write matches.json, standings.json, meta.json
 //
 // Broadcaster + replay-stream links come from local config/data, not ESPN:
-//   - scripts/config/broadcasters.json  (curated NRK-free-match list, hand/AI maintained)
-//   - docs/data/streams.json            (per-match replay URLs, filled by discover-streams.js)
+//   - scripts/config/broadcasters.json  (NRK free-match list, auto-derived by fetch-streams.js)
+//   - docs/data/streams.json            (per-match NRK replay URLs, written by fetch-streams.js)
 
 import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";

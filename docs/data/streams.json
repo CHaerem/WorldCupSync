@@ -1,5 +1,117 @@
 {
-  "_comment": "Per-match replay deep links, keyed by ESPN match id. Filled by scripts/discover-streams.js (Claude + web search) the morning after each match. Shape: { \"<matchId>\": { \"nrk\": \"https://tv.nrk.no/...\", \"tv2\": \"https://play.tv2.no/...\" } }",
-  "updated": null,
-  "streams": {}
+  "_comment": "Per-match replay links, keyed by ESPN match id. NRK urls resolved deterministically from NRK's public catalog by scripts/fetch-streams.js. Shape: { \"<matchId>\": { \"nrk\": \"https://tv.nrk.no/...\" } }",
+  "updated": "2026-06-13T22:32:16.950Z",
+  "streams": {
+    "760414": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40500126"
+    },
+    "760416": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40500226"
+    },
+    "760420": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40500326"
+    },
+    "760422": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40500426"
+    },
+    "760426": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40500526"
+    },
+    "760427": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40500726"
+    },
+    "760429": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40500626"
+    },
+    "760431": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40500926"
+    },
+    "760433": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40500826"
+    },
+    "760435": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40501026"
+    },
+    "760438": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40501126"
+    },
+    "760442": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40501226"
+    },
+    "760443": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40501526"
+    },
+    "760444": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40501426"
+    },
+    "760445": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40501326"
+    },
+    "760447": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40501626"
+    },
+    "760449": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40501726"
+    },
+    "760453": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40501826"
+    },
+    "760454": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40502026"
+    },
+    "760457": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40501926"
+    },
+    "760458": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40502126"
+    },
+    "760460": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40502226"
+    },
+    "760463": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40502326"
+    },
+    "760464": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40502626"
+    },
+    "760465": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40502526"
+    },
+    "760469": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40502826"
+    },
+    "760470": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40502726"
+    },
+    "760474": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40503026"
+    },
+    "760475": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40502926"
+    },
+    "760479": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40503226"
+    },
+    "760481": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40503526"
+    },
+    "760482": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40503626"
+    },
+    "760483": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40503826"
+    },
+    "760484": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40503726"
+    },
+    "760486": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40503926"
+    },
+    "760489": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40504026"
+    },
+    "760490": {
+      "nrk": "https://tv.nrk.no/se?v=ISPO40504126"
+    }
+  }
 }

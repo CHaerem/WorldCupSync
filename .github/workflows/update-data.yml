@@ -26,19 +26,17 @@ jobs:
       - name: Build data (matches + standings)
         run: node scripts/build.js
 
-      - name: Discover replay links (NRK / TV 2)
-        env:
-          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-        run: node scripts/discover-streams.js || echo "stream discovery skipped"
+      - name: Resolve NRK replay links (deterministic, no LLM)
+        run: node scripts/fetch-streams.js
 
-      - name: Re-build so freshly discovered links land in matches.json
+      - name: Re-build so resolved links land in matches.json
         run: node scripts/build.js
 
       - name: Commit data
         run: |
           git config user.name "wc-bot"
           git config user.email "actions@github.com"
-          git add docs/data/*.json
+          git add docs/data/*.json scripts/config/broadcasters.json
           if git diff --cached --quiet; then
             echo "no data changes"
           else
