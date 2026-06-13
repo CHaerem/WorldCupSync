@@ -1,0 +1,5 @@
+{
+  "_comment": "Per-match replay deep links, keyed by ESPN match id. Filled by scripts/discover-streams.js (Claude + web search) the morning after each match. Shape: { \"<matchId>\": { \"nrk\": \"https://tv.nrk.no/...\", \"tv2\": \"https://play.tv2.no/...\" } }",
+  "updated": null,
+  "streams": {}
+}

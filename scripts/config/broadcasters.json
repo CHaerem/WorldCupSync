@@ -1,0 +1,5 @@
+{
+  "_comment": "Norway 2026 World Cup rights: TV2 holds all 104 matches; NRK shows 51 free-to-air. Matches in nrkFreeMatchIds get a free NRK option; everything else defaults to TV2. ESPN event IDs. This list is curated/AI-maintained by discover-streams.js as the schedule is confirmed.",
+  "defaultBroadcaster": "TV2",
+  "nrkFreeMatchIds": []
+}

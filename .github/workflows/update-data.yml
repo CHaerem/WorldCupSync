@@ -1,0 +1,47 @@
+name: Update World Cup data
+
+on:
+  schedule:
+    # Every 2 hours during the tournament (UTC). Oslo = UTC+2 in summer.
+    - cron: "0 */2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: wc-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build data (matches + standings)
+        run: node scripts/build.js
+
+      - name: Discover replay links (NRK / TV 2)
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: node scripts/discover-streams.js || echo "stream discovery skipped"
+
+      - name: Re-build so freshly discovered links land in matches.json
+        run: node scripts/build.js
+
+      - name: Commit data
+        run: |
+          git config user.name "wc-bot"
+          git config user.email "actions@github.com"
+          git add docs/data/*.json
+          if git diff --cached --quiet; then
+            echo "no data changes"
+          else
+            git commit -m "Update World Cup data [skip ci]"
+            git push
+          fi

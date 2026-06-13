@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="nb">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>VM 2026 — spoilerfri reprisplanlegger</title>
+    <meta name="description" content="Følg fotball-VM 2026 spoilerfritt. Planlegg hvilke kamper du vil se i reprise, med direktelenker til NRK TV og TV 2 Play." />
+    <meta name="theme-color" content="#0a7d3c" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚽%3C/text%3E%3C/svg%3E" />
+    <style>
+      :root {
+        --bg: #0e1116;
+        --card: #171b22;
+        --card-2: #1e242d;
+        --line: #2a313c;
+        --fg: #e8edf2;
+        --muted: #9aa6b2;
+        --accent: #19c37d;
+        --nrk: #e60000;
+        --tv2: #0a64ff;
+        --warn: #f0b429;
+        --radius: 12px;
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f4f6f8; --card: #fff; --card-2: #f0f2f5; --line: #e2e6ea;
+          --fg: #15191e; --muted: #5e6b78;
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+        -webkit-font-smoothing: antialiased;
+        padding-bottom: env(safe-area-inset-bottom, 0);
+      }
+      header {
+        position: sticky; top: 0; z-index: 20;
+        background: var(--bg);
+        border-bottom: 1px solid var(--line);
+        padding: 12px 16px calc(env(safe-area-inset-top, 0) + 0px) 16px;
+        padding-top: max(12px, env(safe-area-inset-top, 0));
+      }
+      .wrap { max-width: 620px; margin: 0 auto; }
+      h1 { font-size: 17px; margin: 0; font-weight: 700; letter-spacing: -0.01em; }
+      h1 .ball { margin-right: 6px; }
+      .tag { font-size: 11px; color: var(--muted); font-weight: 500; }
+      main { max-width: 620px; margin: 0 auto; padding: 12px 12px 48px; }
+
+      /* spoiler toggle */
+      .spoiler-bar {
+        display: flex; align-items: center; gap: 10px;
+        margin: 10px 0 2px; padding: 9px 12px;
+        background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+        font-size: 13px;
+      }
+      .spoiler-bar.on { border-color: var(--warn); }
+      .switch { margin-left: auto; position: relative; width: 44px; height: 26px; flex: none; }
+      .switch input { opacity: 0; width: 0; height: 0; }
+      .slider {
+        position: absolute; inset: 0; background: var(--line); border-radius: 999px;
+        transition: .15s; cursor: pointer;
+      }
+      .slider::before {
+        content: ""; position: absolute; height: 20px; width: 20px; left: 3px; top: 3px;
+        background: #fff; border-radius: 50%; transition: .15s;
+      }
+      input:checked + .slider { background: var(--warn); }
+      input:checked + .slider::before { transform: translateX(18px); }
+
+      /* tabs */
+      nav.tabs { display: flex; gap: 4px; margin: 10px 0; }
+      nav.tabs button {
+        flex: 1; padding: 8px 4px; font-size: 13px; font-weight: 600;
+        background: var(--card); color: var(--muted);
+        border: 1px solid var(--line); border-radius: 10px; cursor: pointer;
+      }
+      nav.tabs button.active { background: var(--accent); color: #042; border-color: var(--accent); }
+
+      /* filters */
+      .filters { display: flex; gap: 6px; overflow-x: auto; padding: 2px 0 8px; -webkit-overflow-scrolling: touch; }
+      .filters button {
+        flex: none; padding: 5px 11px; font-size: 12px; border-radius: 999px;
+        background: var(--card); color: var(--muted); border: 1px solid var(--line); cursor: pointer;
+      }
+      .filters button.active { background: var(--card-2); color: var(--fg); border-color: var(--accent); }
+
+      .daygroup { margin-top: 14px; }
+      .daygroup > h2 {
+        font-size: 12px; text-transform: uppercase; letter-spacing: .06em;
+        color: var(--muted); margin: 0 0 8px 2px; font-weight: 700;
+      }
+
+      .match {
+        background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+        padding: 11px 12px; margin-bottom: 8px;
+      }
+      .match.live { border-color: var(--nrk); }
+      .match-top { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); margin-bottom: 8px; }
+      .match-top .grp { font-weight: 700; color: var(--fg); }
+      .match-top .time { margin-left: auto; font-variant-numeric: tabular-nums; }
+      .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--nrk); display: inline-block; animation: pulse 1.4s infinite; }
+      @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+      .teams { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 6px; }
+      .team { display: flex; align-items: center; gap: 8px; min-width: 0; }
+      .team.away { flex-direction: row-reverse; text-align: right; }
+      .team img { width: 22px; height: 22px; object-fit: contain; flex: none; }
+      .team span { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .score {
+        font-size: 16px; font-weight: 800; font-variant-numeric: tabular-nums;
+        min-width: 56px; text-align: center; padding: 2px 6px; border-radius: 7px;
+      }
+      .score.hidden {
+        color: var(--muted); background: var(--card-2); cursor: pointer; letter-spacing: 2px;
+        font-weight: 600; border: 1px dashed var(--line);
+      }
+      .score.hidden:hover { color: var(--fg); }
+
+      .match-bottom { display: flex; align-items: center; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+      .btn {
+        font-size: 12px; font-weight: 600; padding: 6px 10px; border-radius: 8px;
+        border: 1px solid var(--line); background: var(--card-2); color: var(--fg);
+        cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;
+      }
+      .btn:hover { border-color: var(--muted); }
+      .btn.nrk { background: var(--nrk); border-color: var(--nrk); color: #fff; }
+      .btn.tv2 { background: var(--tv2); border-color: var(--tv2); color: #fff; }
+      .btn.ghost { background: transparent; }
+      .btn .ico { font-size: 13px; }
+      .btn.star.on { color: var(--warn); border-color: var(--warn); }
+      .btn.watched.on { color: var(--accent); border-color: var(--accent); }
+      .spacer { margin-left: auto; }
+
+      .empty { text-align: center; color: var(--muted); padding: 40px 16px; font-size: 14px; }
+
+      /* standings */
+      table.stand { width: 100%; border-collapse: collapse; font-size: 13px; }
+      .stand-group { margin-bottom: 16px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+      .stand-group h3 { margin: 0; padding: 9px 12px; font-size: 13px; background: var(--card-2); }
+      table.stand th, table.stand td { padding: 6px 8px; text-align: center; border-top: 1px solid var(--line); }
+      table.stand th { color: var(--muted); font-weight: 600; font-size: 11px; }
+      table.stand td.team-cell { text-align: left; display: flex; align-items: center; gap: 7px; }
+      table.stand td.team-cell img { width: 18px; height: 18px; }
+      table.stand tr.adv td { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+      .reveal-veil {
+        text-align: center; padding: 28px 16px; background: var(--card);
+        border: 1px dashed var(--line); border-radius: var(--radius); color: var(--muted); font-size: 14px;
+      }
+      .reveal-veil button { margin-top: 12px; }
+      footer { text-align: center; color: var(--muted); font-size: 11px; padding: 24px 16px 8px; }
+      footer a { color: var(--muted); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <h1><span class="ball">⚽</span>VM 2026 <span class="tag">· spoilerfri reprisplanlegger</span></h1>
+        <div class="spoiler-bar" id="spoilerBar">
+          <span id="spoilerLabel">🙈 Spoilerfri modus — resultater er skjult</span>
+          <label class="switch">
+            <input type="checkbox" id="spoilerToggle" />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <nav class="tabs" id="tabs">
+          <button data-view="schedule" class="active">Kamper</button>
+          <button data-view="plan">Min plan</button>
+          <button data-view="standings">Tabeller</button>
+        </nav>
+      </div>
+    </header>
+    <main id="app">
+      <div class="empty">Laster kamper…</div>
+    </main>
+    <footer>
+      Data: ESPN · Sendinger: NRK TV &amp; TV 2 Play · Tider i Oslo-tid<br />
+      Spoilerfri som standard. Skru på spoilermodus for å se resultater og tabeller.
+    </footer>
+    <script src="js/app.js"></script>
+  </body>
+</html>
