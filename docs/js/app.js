@@ -11,7 +11,7 @@ const LS = {
 };
 const state = {
   matches: [], groups: [], stats: null,
-  view: "schedule", scope: "upcoming", day: null,
+  view: "schedule", scope: "week",
   spoiler: LS.get("spoiler", false),
   revealed: new Set(LS.get("revealed", [])),
   watched: new Set(LS.get("watched", [])),
@@ -79,50 +79,48 @@ function matchRow(m) {
   </div>`;
 }
 
-// ---------- schedule with day navigator ----------
-function dayMeta() {
-  const map = {};
-  for (const m of state.matches) (map[m.osloDate] ||= []).push(m);
-  const today = todayOslo();
-  return Object.keys(map).sort().map((date) => {
-    const ms = map[date];
-    return { date, ms, count: ms.length, anyPlayed: ms.some((x) => x.completed), allPlayed: ms.every((x) => x.completed), hasNO: ms.some(isNO), isToday: date === today, isPast: date < today };
-  });
+// ---------- schedule: continuous week view ----------
+// Matches kicking off after midnight Oslo (00:00–05:59) belong to the PREVIOUS
+// evening's programme ("natt til ..."), not the next calendar day — group by that
+// programme day so a night's matches stay together with the evening's.
+const WDFULL = ["søndag","mandag","tirsdag","onsdag","torsdag","fredag","lørdag"];
+const shiftDate = (iso, n) => { const d = new Date(iso + "T12:00:00Z"); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
+const programDate = (m) => (parseInt(m.osloTime.slice(0, 2), 10) < 6 ? shiftDate(m.osloDate, -1) : m.osloDate);
+const relLabel = (iso) => { const t = todayOslo(); return iso === t ? "I dag" : iso === shiftDate(t, -1) ? "I går" : iso === shiftDate(t, 1) ? "I morgen" : null; };
+function dayHeader(iso, count) {
+  const f = fmtDay(iso), rel = relLabel(iso);
+  const lbl = rel ? `<b>${rel}</b> · ${f.label.toLowerCase()}` : f.label;
+  return `<div class="day"><span class="dl">${lbl}</span><span class="dcount">${count} ${count === 1 ? "kamp" : "kamper"}</span></div>`;
 }
-function scopeDays(days) {
-  const today = todayOslo();
-  if (state.scope === "upcoming") return days.filter((d) => d.date >= today);
-  if (state.scope === "played") return days.filter((d) => d.date < today || (d.date === today && d.anyPlayed));
-  return days;
-}
-
 function viewSchedule() {
-  const all = dayMeta();
-  let days = scopeDays(all);
-  if (!days.length) days = all;
-  // pick a sensible selected day for the current scope
-  if (!state.day || !days.some((d) => d.date === state.day)) {
-    state.day = state.scope === "played" ? days[days.length - 1]?.date : (days.find((d) => d.isToday) || days[0])?.date;
-  }
-  const idx = days.findIndex((d) => d.date === state.day);
-  const sel = days[idx];
+  const today = todayOslo();
+  let list, desc = false;
+  if (state.scope === "played") { list = state.matches.filter((m) => m.completed); desc = true; }
+  else if (state.scope === "all") { list = state.matches.slice(); }
+  else { const from = shiftDate(today, -1), to = shiftDate(today, 7); list = state.matches.filter((m) => { const p = programDate(m); return p >= from && p <= to; }); }
+
   const seg = (k, l) => `<button class="${state.scope === k ? "on" : ""}" data-scope="${k}">${l}</button>`;
-  const rail = days.map((d) => {
-    const f = fmtDay(d.date);
-    const cls = ["dchip", d.date === state.day ? "sel" : "", d.isToday ? "today" : "", d.isPast && d.allPlayed ? "played" : ""].filter(Boolean).join(" ");
-    return `<button class="${cls}" data-day="${d.date}">${d.hasNO ? '<span class="nob"></span>' : ""}<div class="wd">${d.isToday ? "i dag" : f.wd}</div><div class="dd">${f.d}</div><div class="cnt">${d.count} k</div></button>`;
+  const nav = `<div class="scopebar"><div class="seg">${seg("week", "Uke")}${seg("played", "Spilte")}${seg("all", "Alle")}</div></div>`;
+  if (!list.length) return nav + `<div class="empty">Ingen kamper her.</div>`;
+
+  const byDay = {}, order = [];
+  for (const m of list) { const p = programDate(m); if (!byDay[p]) { byDay[p] = []; order.push(p); } byDay[p].push(m); }
+  order.sort((a, b) => (desc ? b.localeCompare(a) : a.localeCompare(b)));
+
+  const body = order.map((p) => {
+    const ms = byDay[p].sort((a, b) => new Date(a.date) - new Date(b.date));
+    let h = dayHeader(p, ms.length), night = false;
+    for (const m of ms) {
+      if (!night && parseInt(m.osloTime.slice(0, 2), 10) < 6) {
+        const wd = WDFULL[new Date(m.osloDate + "T12:00:00Z").getUTCDay()];
+        h += `<div class="night">🌙 natt til ${wd}</div>`;
+        night = true;
+      }
+      h += matchRow(m);
+    }
+    return h;
   }).join("");
-  const nav = `<div class="daynav">
-      <button class="arw" data-step="-1" ${idx <= 0 ? "disabled" : ""}>‹</button>
-      <button class="arw" data-step="1" ${idx >= days.length - 1 ? "disabled" : ""}>›</button>
-      <div class="seg">${seg("upcoming", "Kommende")}${seg("played", "Spilte")}${seg("all", "Alle")}</div>
-    </div>
-    <div class="rail">${rail}</div>`;
-  if (!sel) return nav + `<div class="empty">Ingen kamper.</div>`;
-  const played = sel.ms.filter((m) => m.completed).length, up = sel.count - played;
-  const sum = `<div class="daysum">${fmtDay(sel.date).label} — <b>${sel.count} kamper</b>${played ? ` · ${played} spilt` : ""}${up ? ` · ${up} kommende` : ""}</div>`;
-  const rows = sel.ms.slice().sort((a, b) => new Date(a.date) - new Date(b.date)).map(matchRow).join("");
-  return nav + sum + rows;
+  return nav + body;
 }
 
 function viewPlan() {
@@ -187,21 +185,15 @@ function render() {
   document.querySelectorAll("#tabs button").forEach((b) => b.classList.toggle("active", b.dataset.view === state.view));
   const body = { schedule: viewSchedule, bracket: viewBracket, stats: viewStats, plan: viewPlan }[state.view]();
   app.innerHTML = body;
-  if (state.view === "schedule") { const c = app.querySelector(".dchip.sel"); if (c) c.scrollIntoView({ inline: "center", block: "nearest" }); }
 }
 
 // ---------- events ----------
 document.getElementById("spoilerToggle").addEventListener("click", () => { state.spoiler = !state.spoiler; LS.set("spoiler", state.spoiler); render(); });
 document.getElementById("tabs").addEventListener("click", (e) => { const b = e.target.closest("button[data-view]"); if (!b) return; state.view = b.dataset.view; render(); });
 app.addEventListener("click", (e) => {
-  const t = e.target.closest("[data-reveal],[data-plan],[data-watched],[data-scope],[data-day],[data-step],#revealStats");
+  const t = e.target.closest("[data-reveal],[data-plan],[data-watched],[data-scope],#revealStats");
   if (!t) return;
-  if (t.dataset.scope) { state.scope = t.dataset.scope; state.day = null; render(); return; }
-  if (t.dataset.day) { state.day = t.dataset.day; render(); return; }
-  if (t.dataset.step) {
-    const days = scopeDays(dayMeta()); const i = days.findIndex((d) => d.date === state.day) + Number(t.dataset.step);
-    if (days[i]) { state.day = days[i].date; render(); } return;
-  }
+  if (t.dataset.scope) { state.scope = t.dataset.scope; render(); return; }
   if (t.id === "revealStats") { state.spoiler = true; LS.set("spoiler", true); render(); return; }
   if (t.dataset.reveal) { state.revealed.add(t.dataset.reveal); LS.set("revealed", [...state.revealed]); render(); return; }
   if (t.dataset.plan) { toggle(state.plan, t.dataset.plan, "plan"); render(); return; }

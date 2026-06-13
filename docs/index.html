@@ -13,7 +13,7 @@
       :root {
         --bg: #0a0a0b; --surface: #161618; --raise: #1f1f23;
         --line: rgba(255,255,255,0.1); --line2: rgba(255,255,255,0.2);
-        --fg: #f7f7f8; --muted: #9a9aa3; --faint: #5d5d66;
+        --fg: #f7f7f8; --muted: #a6a6af; --faint: #7c7c86;
         --accent: #00e58a; --accent-ink: #00160d;
         --nrk: #e4002b; --tv2: #2f6bff; --adv: rgba(0,229,138,0.14);
       }
@@ -21,7 +21,7 @@
         :root {
           --bg: #ffffff; --surface: #f4f4f5; --raise: #ececee;
           --line: rgba(0,0,0,0.1); --line2: rgba(0,0,0,0.22);
-          --fg: #0a0a0b; --muted: #62626c; --faint: #a3a3ac;
+          --fg: #0a0a0b; --muted: #585862; --faint: #87878f;
           --accent: #00b06a; --accent-ink: #ffffff; --adv: rgba(0,176,106,0.12);
         }
       }
@@ -64,38 +64,18 @@
 
       main { padding-top: 14px; }
 
-      /* ---- day navigator ---- */
-      .daynav { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
-      .daynav .arw {
-        appearance: none; cursor: pointer; background: var(--surface); border: 1px solid var(--line);
-        color: var(--fg); width: 32px; height: 32px; border-radius: 50%; font-size: 15px; flex: none;
-        display: flex; align-items: center; justify-content: center;
-      }
-      .daynav .arw:disabled { opacity: 0.3; cursor: default; }
-      .daynav .seg { display: flex; gap: 0; margin-left: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 2px; }
-      .daynav .seg button { appearance: none; cursor: pointer; font: inherit; font-size: 11.5px; font-weight: 700; color: var(--muted); background: none; border: none; padding: 5px 11px; border-radius: 999px; }
-      .daynav .seg button.on { color: var(--accent-ink); background: var(--accent); }
+      /* ---- scope toggle + day headers (continuous week view) ---- */
+      .scopebar { display: flex; margin-bottom: 6px; }
+      .seg { display: flex; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+      .seg button { appearance: none; cursor: pointer; font: inherit; font-size: 12.5px; font-weight: 700; color: var(--muted); background: none; border: none; padding: 6px 16px; border-radius: 999px; }
+      .seg button.on { color: var(--accent-ink); background: var(--accent); }
 
-      .rail { display: flex; gap: 7px; overflow-x: auto; padding: 4px 0 14px; scrollbar-width: none; scroll-snap-type: x proximity; }
-      .rail::-webkit-scrollbar { display: none; }
-      .dchip {
-        flex: none; scroll-snap-align: center; cursor: pointer; width: 52px; padding: 8px 0;
-        border: 1px solid var(--line); border-radius: 13px; background: var(--surface);
-        text-align: center; position: relative;
-      }
-      .dchip .wd { font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--faint); font-weight: 700; }
-      .dchip .dd { font-size: 18px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
-      .dchip .cnt { font-size: 9.5px; color: var(--muted); font-weight: 600; }
-      .dchip.played { opacity: 0.55; }
-      .dchip.played .dd::after { content: ""; }
-      .dchip.today { border-color: var(--line2); }
-      .dchip.today .wd { color: var(--accent); }
-      .dchip.sel { background: var(--accent); border-color: var(--accent); opacity: 1; }
-      .dchip.sel .wd, .dchip.sel .dd, .dchip.sel .cnt { color: var(--accent-ink); }
-      .dchip .nob { position: absolute; top: 6px; right: 7px; width: 5px; height: 5px; border-radius: 50%; background: var(--nrk); }
-
-      .daysum { font-size: 12px; color: var(--muted); margin: 2px 2px 12px; font-weight: 600; }
-      .daysum b { color: var(--fg); }
+      .day { display: flex; align-items: baseline; gap: 10px; margin: 24px 0 6px; padding-bottom: 7px; border-bottom: 1px solid var(--line2); }
+      .day:first-of-type { margin-top: 4px; }
+      .day .dl { font-size: 14px; font-weight: 600; color: var(--muted); }
+      .day .dl b { color: var(--fg); font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
+      .dcount { margin-left: auto; font-size: 11px; color: var(--muted); font-weight: 600; white-space: nowrap; }
+      .night { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 12px 0 0; padding-left: 2px; }
 
       /* ---- match row ---- */
       .m { padding: 13px 0; border-bottom: 1px solid var(--line); }
