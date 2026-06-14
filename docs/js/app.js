@@ -167,12 +167,35 @@ const WDFULL = ["søndag","mandag","tirsdag","onsdag","torsdag","fredag","lørda
 const shiftDate = (iso, n) => { const d = new Date(iso + "T12:00:00Z"); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
 const programDate = (m) => (parseInt(m.osloTime.slice(0, 2), 10) < 6 ? shiftDate(m.osloDate, -1) : m.osloDate);
 const relLabel = (iso) => { const t = todayOslo(); return iso === t ? "I dag" : iso === shiftDate(t, -1) ? "I går" : iso === shiftDate(t, 1) ? "I morgen" : null; };
-// group matches into day cards (with the "natt til ..." divider), newest-first optional
-function dayGroups(list, desc) {
+const resetBar = () => (Object.values(state.reveal).some((v) => v === true) ? `<div class="resetbar"><button class="reset" id="resetReveals" title="Tilbake til automatisk – skjuler alt du har vist">${ICON.reset} Skjul resultatene jeg har vist</button></div>` : "");
+const filterChips = () => { const chip = (k, l, ico) => `<button class="chip ${state.filter === k ? "on" : ""}" data-filter="${k}">${ico || ""}${l}</button>`; return `<div class="filters">${chip("all", "Alle")}${chip("no", "Norge")}${chip("plan", "Min plan", ICON.starOn)}</div>`; };
+const filterMatches = (list) => (state.filter === "no" ? list.filter(isNO) : state.filter === "plan" ? list.filter((m) => state.plan.has(m.id)) : list);
+// compact hero: live next-match countdown + today's stadium map
+function heroCard(today) {
+  const hot = new Set(state.matches.filter((m) => programDate(m) === today).map((m) => m.venue));
+  const nm = nextMatch();
+  const cd = nm ? `<div class="countdown" data-kickoff="${nm.date}"><span class="cd-l">${isNO(nm) ? "Norge spiller" : "Neste kamp"}</span><span class="cd-m">${esc(nm.home?.name || "TBD")} – ${esc(nm.away?.name || "TBD")}</span><span class="cd-time">…</span></div>` : "";
+  return `<section class="card hero">${cd}${naMapSVG(hot)}</section>`;
+}
+
+// Kamper — ONE continuous day-by-day list of every match (played + upcoming) on the
+// same page. Finished matches carry their replay link inline; recent results stay
+// hidden behind "Vis". A compact hero (countdown + today's map) sits with the day you
+// land on; auto-scrolled to today so last night's replays sit just above.
+function viewSchedule() {
+  const today = todayOslo();
+  const hint = state.hintSeen ? "" : `<div class="hint">${ICON.eye}<div><b>Spoilerfri av seg selv.</b> Nattens og gårsdagens resultater er skjult til du har sett dem; eldre vises automatisk. Trykk «Vis» for å avsløre, eller reprise-lenken for å se kampen.</div><button class="x" id="hintClose" aria-label="Lukk">×</button></div>`;
+  const matches = filterMatches(state.matches);
+  if (!matches.length) {
+    const msg = state.filter === "plan" ? "Ingen kamper i planen ennå." : state.filter === "no" ? "Ingen Norge-kamper funnet." : "Ingen kamper.";
+    return hint + filterChips() + `<div class="empty">${msg}</div>`;
+  }
   const byDay = {}, order = [];
-  for (const m of list) { const p = programDate(m); if (!byDay[p]) { byDay[p] = []; order.push(p); } byDay[p].push(m); }
-  order.sort(); if (desc) order.reverse();
-  return order.map((p) => {
+  for (const m of matches) { const p = programDate(m); if (!byDay[p]) { byDay[p] = []; order.push(p); } byDay[p].push(m); }
+  order.sort();
+  const anchor = order.find((p) => p >= today) || order[order.length - 1]; // land on today (or next)
+
+  const days = order.map((p) => {
     const ms = byDay[p].sort((a, b) => new Date(a.date) - new Date(b.date));
     const f = fmtDay(p), rel = relLabel(p);
     const lbl = rel ? `<b>${rel}</b> · ${f.label.toLowerCase()}` : f.label;
@@ -181,47 +204,12 @@ function dayGroups(list, desc) {
       if (!night && parseInt(m.osloTime.slice(0, 2), 10) < 6) { rows += `<div class="night">${ICON.moon} natt til ${WDFULL[new Date(m.osloDate + "T12:00:00Z").getUTCDay()]}</div>`; night = true; }
       rows += matchRow(m);
     }
-    return `<div class="day-head"><span class="dl">${lbl}</span><span class="dcount">${ms.length}</span></div><section class="card group">${rows}</section>`;
+    const isA = p === anchor;
+    const head = `<div class="day-head"${isA ? ' id="anchor"' : ""}><span class="dl">${lbl}</span><span class="dcount">${ms.length} ${ms.length === 1 ? "kamp" : "kamper"}</span></div>`;
+    return head + (isA ? heroCard(today) : "") + `<section class="card group">${rows}</section>`;
   }).join("");
-}
-const sectionHead = (title, n, cls) => `<div class="section-head${cls ? " " + cls : ""}"><span>${title}</span>${n ? `<span class="sc-n">${n}</span>` : ""}</div>`;
-const resetBar = () => (Object.values(state.reveal).some((v) => v === true) ? `<div class="resetbar"><button class="reset" id="resetReveals" title="Tilbake til automatisk – skjuler alt du har vist">${ICON.reset} Skjul resultatene jeg har vist</button></div>` : "");
-const filterChips = () => { const chip = (k, l, ico) => `<button class="chip ${state.filter === k ? "on" : ""}" data-filter="${k}">${ico || ""}${l}</button>`; return `<div class="filters">${chip("all", "Alle")}${chip("no", "Norge")}${chip("plan", "Min plan", ICON.starOn)}</div>`; };
-const filterMatches = (list) => (state.filter === "no" ? list.filter(isNO) : state.filter === "plan" ? list.filter((m) => state.plan.has(m.id)) : list);
 
-// Kamper = what's coming (upcoming + live + today). Finished matches live in Reprise.
-function viewSchedule() {
-  const today = todayOslo();
-  const hint = state.hintSeen ? "" : `<div class="hint">${ICON.eye}<div><b>Spoilerfri av seg selv.</b> Nattens og gårsdagens resultater er skjult til du har sett dem. Ferdigspilte kamper finner du under <b>Reprise</b>.</div><button class="x" id="hintClose" aria-label="Lukk">×</button></div>`;
-  const matches = filterMatches(state.matches);
-
-  const todayList = [], coming = [];
-  for (const m of matches) {
-    if (m.completed) continue; // finished → Reprise tab
-    if (m.state === "in" || programDate(m) <= today) todayList.push(m);
-    else coming.push(m);
-  }
-  const byDate = (a, b) => new Date(a.date) - new Date(b.date);
-  todayList.sort(byDate);
-
-  // compact hero: live next-match countdown + today's stadium map
-  const hot = new Set(state.matches.filter((m) => programDate(m) === today).map((m) => m.venue));
-  const nm = nextMatch();
-  const cd = nm ? `<div class="countdown" data-kickoff="${nm.date}"><span class="cd-l">${isNO(nm) ? "Norge spiller" : "Neste kamp"}</span><span class="cd-m">${esc(nm.home?.name || "TBD")} – ${esc(nm.away?.name || "TBD")}</span><span class="cd-time">…</span></div>` : "";
-  const hero = `<section class="card hero">${cd}${naMapSVG(hot)}</section>`;
-
-  let h = hint + filterChips() + resetBar() + hero;
-  if (todayList.length) h += sectionHead("I dag") + `<section class="card group">${todayList.map((m) => matchRow(m)).join("")}</section>`;
-  if (coming.length) h += sectionHead("Kommer", coming.length) + dayGroups(coming, false);
-  if (!todayList.length && !coming.length) h += `<div class="empty">${state.filter === "no" ? "Ingen kommende Norge-kamper." : state.filter === "plan" ? "Ingen kommende kamper i planen." : "Ingen kommende kamper."}</div>`;
-  return h;
-}
-
-// Reprise = every finished match, newest first, with a direct replay link
-function viewReplays() {
-  let done = filterMatches(state.matches.filter((m) => m.completed));
-  if (!done.length) return filterChips() + `<div class="empty">Ingen ferdigspilte kamper å se reprise av ennå.</div>`;
-  return filterChips() + resetBar() + dayGroups(done, true);
+  return hint + filterChips() + resetBar() + days;
 }
 
 function viewPlan() {
@@ -479,7 +467,7 @@ function render() {
     else if (ae.dataset.filter) refocus = `[data-filter="${ae.dataset.filter}"]`;
     else if (ae.dataset.stab) refocus = `[data-stab="${ae.dataset.stab}"]`;
   }
-  const body = { schedule: viewSchedule, replays: viewReplays, groups: viewGroups, bracket: viewBracket, stats: viewStats, plan: viewPlan }[state.view]();
+  const body = { schedule: viewSchedule, groups: viewGroups, bracket: viewBracket, stats: viewStats, plan: viewPlan }[state.view]();
   app.innerHTML = body;
   if (refocus) { const el = app.querySelector(refocus); if (el) el.focus(); }
   state.justRevealed = state.justStarred = null; // pops are one-shot
