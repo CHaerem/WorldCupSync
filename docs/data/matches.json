@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-14T05:32:21.827Z",
+  "updated": "2026-06-14T07:32:11.139Z",
   "count": 104,
   "matches": [
     {
@@ -273,16 +273,16 @@
       "roundNote": "group-stage",
       "venue": "BC Place",
       "city": "Vancouver",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "72'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "628",
         "name": "Australia",
         "abbr": "AUS",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
-        "score": 1,
-        "winner": false
+        "score": 2,
+        "winner": true
       },
       "away": {
         "id": "465",

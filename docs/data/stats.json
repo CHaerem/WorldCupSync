@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-14T05:32:22.150Z",
-  "matchesPlayed": 7,
-  "totalGoals": 17,
-  "avgGoals": 2.43,
+  "updated": "2026-06-14T07:32:11.583Z",
+  "matchesPlayed": 8,
+  "totalGoals": 19,
+  "avgGoals": 2.38,
   "topScorers": [
     {
       "name": "Folarin Balogun",
@@ -24,6 +24,13 @@
       "goals": 1,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
+    },
+    {
+      "name": "Connor Metcalfe",
+      "team": "Australia",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png"
     },
     {
       "name": "Cyle Larin",
@@ -94,6 +101,13 @@
       "goals": 1,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/qat.png"
+    },
+    {
+      "name": "Nestory Irankunda",
+      "team": "Australia",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png"
     },
     {
       "name": "Oh Hyeon-Gyu",
