@@ -24,8 +24,11 @@ const state = {
   statsShown: false, // session-only: stats are aggregate spoilers, revealed per visit
   groupsShown: false, // session-only: group tables reveal who's advancing (spoiler)
   statsTab: "players", // stats section: players | teams
+  sheet: null, // id of the match whose detail sheet is open (null = closed)
+  venue: null, // venue whose stadium sheet is open
   filter: "all", // schedule filter: all | no (Norway) | plan
   hintSeen: LS.get("hintSeen", false),
+  theme: LS.get("theme", "auto"), // auto (device) | light | dark
 };
 // migrate the legacy permanent "revealed" array (pre-toggle model) into overrides
 {
@@ -39,6 +42,21 @@ if (window.chrome || /\bEdg\//.test(navigator.userAgent)) document.documentEleme
 document.addEventListener("visibilitychange", () => document.documentElement.classList.toggle("anim-paused", document.hidden));
 const _osloFmt = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Oslo" }); // reused, not rebuilt per call
 const todayOslo = () => _osloFmt.format(new Date());
+
+// ---------- theme: Auto (device) / Lys / Mørk ----------
+const _darkMq = matchMedia("(prefers-color-scheme: dark)");
+function renderTheme() {
+  const el = document.getElementById("themeseg");
+  if (!el) return;
+  const opts = [["auto", ICON.auto, "Auto"], ["light", ICON.sun, "Lys"], ["dark", ICON.moon, "Mørk"]];
+  el.innerHTML = opts.map(([k, ic, l]) => `<button data-settheme="${k}" class="${state.theme === k ? "on" : ""}" aria-label="${l}" aria-pressed="${state.theme === k}" title="${l}">${ic}</button>`).join("");
+}
+function applyTheme() {
+  document.documentElement.dataset.theme = state.theme === "auto" ? (_darkMq.matches ? "dark" : "light") : state.theme;
+  renderTheme();
+}
+_darkMq.addEventListener("change", () => { if (state.theme === "auto") applyTheme(); });
+applyTheme();
 
 async function load() {
   try {
@@ -85,6 +103,11 @@ const ICON = {
   search: SVG('<circle cx="10.5" cy="10.5" r="6.6"/><path d="M20.5 20.5l-5.2-5.2"/>'),
   chart: SVG('<path d="M5 20.5V10.5M12 20.5V4.5M19 20.5v-7"/>', { sw: 1.9 }),
   grid: SVG('<rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M3.5 9.7h17M9.2 9.7v9.8"/>'),
+  pin: SVG('<path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/>'),
+  close: SVG('<path d="M5 5l14 14M19 5L5 19"/>', { sw: 2 }),
+  temp: SVG('<path d="M14 14.8V5a2 2 0 1 0-4 0v9.8a4 4 0 1 0 4 0z"/><path d="M12 9v6"/>'),
+  sun: SVG('<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/>'),
+  auto: SVG('<circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor" stroke="none"/>'),
 };
 const ROUND = { "group-stage": "Gruppespill","round-of-32":"16-delsfinale","round-of-16":"8-delsfinale",quarterfinals:"Kvartfinale",semifinals:"Semifinale","3rd-place-match":"Bronsefinale",final:"Finale" };
 const roundName = (n) => ROUND[n] || "Kamp";
@@ -113,9 +136,7 @@ function matchRow(m, opts = {}) {
   const status = live ? "m-live" : repro ? "m-rep" : post ? "m-done" : "m-up";
   const lt = live
     ? `<span class="live" title="spilles nå"></span><span class="when na">Nå</span>`
-    : repro
-      ? `<span class="when rep" title="Klar for reprise">${ICON.play}${m.osloTime}</span>`
-      : `<span class="when">${m.osloTime}</span>`;
+    : `<span class="when">${m.osloTime}</span>`;
   const score = `${m.home?.score ?? "-"}–${m.away?.score ?? "-"}`;
   let md;
   if (!(post || live)) md = `<span class="md vs">–</span>`;
@@ -132,7 +153,7 @@ function matchRow(m, opts = {}) {
   if (opts.plan && post) act += `<button class="wch ${watched ? "on" : ""}" data-watched="${m.id}" title="Marker sett" aria-label="${watched ? "Fjern sett-markering" : "Marker som sett"}" aria-pressed="${watched}">${ICON.check}</button>`;
   act += `<button class="star ${onPlan ? "on" : ""}" data-plan="${m.id}" title="Min plan" aria-label="${onPlan ? "Fjern fra min plan" : "Legg i min plan"}" aria-pressed="${onPlan}">${onPlan ? ICON.starOn : ICON.starOff}</button>`;
   const place = [m.venue, m.city].filter(Boolean).join(", ");
-  return `<div class="m ${status}${isNO(m) ? " no" : ""}"${place ? ` title="${esc(place)}"` : ""}>
+  return `<div class="m ${status}${isNO(m) ? " no" : ""}" data-open="${m.id}"${place ? ` title="${esc(place)}"` : ""}>
     <div class="lt">${lt}</div>
     <div class="teams">
       <span class="hh"><span class="nm">${esc(m.home?.name || "TBD")}</span>${m.home?.logo ? `<img src="${m.home.logo}" alt="" loading="lazy"/>` : ""}</span>
@@ -202,8 +223,11 @@ function viewSchedule() {
     if (rep) cparts.push(`<b class="c-rep">${rep} reprise</b>`);
     if (played) cparts.push(`<span>${played} spilt</span>`);
     if (up) cparts.push(`<span>${up} kommer</span>`);
-    // iOS inset-grouped style: a muted section header above a rounded content card
-    return `<div class="day-head"${p === anchor ? ' id="anchor"' : ""}><span class="dl">${lbl}</span><span class="dcount">${cparts.join(" · ")}</span></div><section class="card group">${rows}</section>`;
+    // clear status per day: today / earlier (played) / upcoming
+    const cls = p === today ? " today" : p < today ? " past" : " future";
+    const isA = p === anchor;
+    const map = isA ? todayMap(anchor) : "";   // the day you land on shows its stadium map
+    return `<div class="day-head${cls}"${isA ? ' id="anchor"' : ""}><span class="dl">${lbl}</span><span class="dcount">${cparts.join(" · ")}</span></div>${map}<section class="card group">${rows}</section>`;
   }).join("");
 }
 
@@ -304,6 +328,137 @@ function viewGroups() {
   return state.groups.map((g) => `<div class="block"><h3>${esc(g.name)}</h3><table><thead><tr><th class="l">Lag</th><th>K</th><th>S</th><th>U</th><th>T</th><th>MF</th><th>P</th></tr></thead><tbody>${g.entries.map((e, i) => `<tr class="${i < 2 ? "adv" : ""}"><td class="l team">${e.logo ? `<img src="${e.logo}" alt=""/>` : ""}<span class="nm">${esc(e.team)}</span></td><td>${e.played ?? 0}</td><td>${e.wins ?? 0}</td><td>${e.ties ?? 0}</td><td>${e.losses ?? 0}</td><td>${e.gd ?? 0}</td><td class="pts">${e.points ?? 0}</td></tr>`).join("")}</tbody></table></div>`).join("");
 }
 
+// the 16 host stadiums → [lat, lon], for the detail-sheet map marker
+const VENUES = {
+  "AT&T Stadium": [32.7473, -97.0945],
+  "BC Place": [49.2767, -123.1119],
+  "BMO Field": [43.6332, -79.4185],
+  "Estadio Akron": [20.6819, -103.4625],
+  "Estadio BBVA": [25.6692, -100.2447],
+  "Estadio Banorte": [19.3029, -99.1505],
+  "GEHA Field at Arrowhead Stadium": [39.0489, -94.4839],
+  "Gillette Stadium": [42.0909, -71.2643],
+  "Hard Rock Stadium": [25.958, -80.2389],
+  "Levi's Stadium": [37.403, -121.9697],
+  "Lincoln Financial Field": [39.9008, -75.1675],
+  "Lumen Field": [47.5952, -122.3316],
+  "Mercedes-Benz Stadium": [33.7554, -84.4008],
+  "MetLife Stadium": [40.8135, -74.0745],
+  "NRG Stadium": [29.6847, -95.4107],
+  "SoFi Stadium": [33.9535, -118.3392],
+};
+const venueCountry = (v) => (["BC Place", "BMO Field"].includes(v) ? "Canada" : ["Estadio Akron", "Estadio BBVA", "Estadio Banorte"].includes(v) ? "Mexico" : "USA");
+// equirectangular projection matching the embedded silhouette (viewBox 240x134)
+const naX = (lon) => ((lon + 170) / 120) * 240;
+const naY = (lat) => ((73 - lat) / 67) * 134;
+// Minimal inline silhouette of the host continent with an accent marker — integrated
+// into the sheet (no framed widget), clean, no external map/tiles.
+function mapBlock(m) {
+  const place = [m.venue, m.city].filter(Boolean).join(", ");
+  const co = VENUES[m.venue];
+  const search = co ? `https://www.google.com/maps/search/?api=1&query=${co[0]},${co[1]}` : (place ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}` : null);
+  const link = search ? `<a class="maplink" href="${search}" target="_blank" rel="noopener">Åpne i kart ↗</a>` : "";
+  if (!co || !window.NA_PATH) return link;
+  const x = naX(co[1]).toFixed(1), y = naY(co[0]).toFixed(1);
+  return `<div class="venuemap">
+    <svg viewBox="0 0 240 134" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Kart over Nord-Amerika med markør på ${esc(m.city || m.venue)}">
+      <path class="na-land" d="${window.NA_PATH}"/>
+      <circle class="na-halo" cx="${x}" cy="${y}" r="2.6"/>
+      <circle class="na-dot" cx="${x}" cy="${y}" r="2.4"/>
+    </svg>
+    <span class="mapcountry">${venueCountry(m.venue)}</span>
+  </div>${link}`;
+}
+
+// ---------- stadium map: the day's venues stand out; the rest are faint context ----------
+function naMapSVG(hot) {
+  // draw the faint context dots first, the highlighted ones on top
+  const order = Object.entries(VENUES).sort((a, b) => (hot.has(a[0]) ? 1 : 0) - (hot.has(b[0]) ? 1 : 0));
+  const markers = order.map(([v, co]) => {
+    const x = naX(co[1]).toFixed(1), y = naY(co[0]).toFixed(1), on = hot.has(v);
+    return `<g class="vmk${on ? " hot" : ""}" data-venue="${esc(v)}" role="button" aria-label="${esc(v)}">${on ? `<circle class="vhalo" cx="${x}" cy="${y}" r="3.4"/>` : ""}<circle class="vhit" cx="${x}" cy="${y}" r="8"/><circle class="vdot" cx="${x}" cy="${y}" r="${on ? 3.6 : 1.6}"/></g>`;
+  }).join("");
+  return `<svg viewBox="0 0 240 134" class="bigmap" role="img" aria-label="Kart over VM-stadioner"><path class="na-land" d="${window.NA_PATH || ""}"/>${markers}</svg>`;
+}
+// integrated map shown with the day you land on
+function todayMap(dayIso) {
+  const hot = new Set(state.matches.filter((m) => programDate(m) === dayIso).map((m) => m.venue));
+  const when = (relLabel(dayIso) || "denne dagen").toLowerCase();
+  const label = hot.size ? `<b>${hot.size}</b> ${hot.size === 1 ? "arena" : "arenaer"} ${when}` : "Alle arenaer";
+  return `<section class="card todaymap"><div class="tm-head"><span class="tm-t">${label}</span><span class="tm-sub">trykk for kampene</span></div>${naMapSVG(hot)}</section>`;
+}
+
+// ---------- stadium sheet: a venue + every match played there ----------
+function venueSheetHTML(v) {
+  const co = VENUES[v];
+  const ms = state.matches.filter((m) => m.venue === v).sort((a, b) => new Date(a.date) - new Date(b.date));
+  const city = ms[0]?.city || "";
+  const map = co ? `<div class="venuemap"><svg viewBox="0 0 240 134" role="img" aria-label="Kart med markør på ${esc(v)}"><path class="na-land" d="${window.NA_PATH || ""}"/><circle class="na-halo" cx="${naX(co[1]).toFixed(1)}" cy="${naY(co[0]).toFixed(1)}" r="2.6"/><circle class="na-dot" cx="${naX(co[1]).toFixed(1)}" cy="${naY(co[0]).toFixed(1)}" r="2.4"/></svg><span class="mapcountry">${venueCountry(v)}</span></div>` : "";
+  return `<div class="sheet-backdrop" data-close="1"></div>
+    <div class="sheet-card venue" role="dialog" aria-modal="true" aria-label="Stadion">
+      <button class="sheet-x" id="sheetClose" aria-label="Lukk">${ICON.close}</button>
+      <div class="sheet-eyebrow">${esc(venueCountry(v))}${city ? " · " + esc(city) : ""}</div>
+      <h2 class="sheet-title">${esc(v)}</h2>
+      ${map}
+      <div class="venue-matches">${ms.length ? ms.map((m) => matchRow(m)).join("") : `<div class="empty">Ingen kamper.</div>`}</div>
+    </div>`;
+}
+
+// ---------- weather at kickoff (Open-Meteo, free, no key) ----------
+const wxCache = {}; // matchId -> html string ("" = unavailable)
+const wmo = (c) => (c === 0 ? "klart" : c <= 3 ? "lettskyet" : c <= 48 ? "tåke" : c <= 67 ? "regn" : c <= 77 ? "snø" : c <= 82 ? "regnbyger" : c <= 86 ? "snøbyger" : "torden");
+function applyWeather(m) {
+  const el = document.getElementById("sheetwx");
+  if (!el) return;
+  const co = VENUES[m.venue];
+  if (!co || !m.date) { el.remove(); return; }
+  if (m.id in wxCache) { wxCache[m.id] ? (el.innerHTML = wxCache[m.id]) : el.remove(); return; }
+  el.innerHTML = `<span class="wx-load">Henter vær …</span>`;
+  const d = m.date.slice(0, 10), hh = m.date.slice(11, 13);
+  fetch(`https://api.open-meteo.com/v1/forecast?latitude=${co[0]}&longitude=${co[1]}&hourly=temperature_2m,weather_code&start_date=${d}&end_date=${d}&timezone=GMT`)
+    .then((r) => (r.ok ? r.json() : Promise.reject()))
+    .then((j) => {
+      const t = j.hourly?.time || [], tm = j.hourly?.temperature_2m || [], cd = j.hourly?.weather_code || [];
+      const i = t.indexOf(`${d}T${hh}:00`);
+      wxCache[m.id] = i >= 0 && tm[i] != null ? `${ICON.temp}<span>${Math.round(tm[i])}° · ${wmo(cd[i])}</span>` : "";
+    })
+    .catch(() => { wxCache[m.id] = ""; })
+    .finally(() => { if (state.sheet === m.id) { const e = document.getElementById("sheetwx"); if (e) (wxCache[m.id] ? (e.innerHTML = wxCache[m.id]) : e.remove()); } });
+}
+
+// ---------- match detail sheet (tap a row) ----------
+function sheetHTML(m) {
+  const live = m.state === "in", post = m.completed, reveal = isRevealed(m);
+  const onPlan = state.plan.has(m.id);
+  const where = m.roundNote === "group-stage" ? (m.group || "Gruppespill") : roundName(m.roundNote);
+  const f = fmtDay(m.osloDate);
+  const place = [m.venue, m.city].filter(Boolean).join(" · ");
+  const teamSide = (t, cls) => `<div class="sht ${cls}">${t?.logo ? `<img src="${t.logo}" alt=""/>` : ""}<span class="nm">${esc(t?.name || "TBD")}</span></div>`;
+  const mid = (post || live)
+    ? (reveal ? `<span class="shsc">${m.home?.score ?? "-"}–${m.away?.score ?? "-"}</span>` : `<button class="md reveal" data-show="${m.id}" aria-label="Vis resultat">${ICON.eye}<span class="lbl">Vis</span></button>`)
+    : `<span class="shsc vs">${m.osloTime}</span>`;
+  const links = primaryLinks(m).map((l) => `<a class="go ${l.cls} big" href="${l.href}" target="_blank" rel="noopener">${l.ico}<span>${l.label}</span></a>`).join("");
+  return `<div class="sheet-backdrop" data-close="1"></div>
+    <div class="sheet-card" role="dialog" aria-modal="true" aria-label="Kampdetaljer">
+      <button class="sheet-x" id="sheetClose" aria-label="Lukk">${ICON.close}</button>
+      <div class="sheet-eyebrow">${esc(where)}${live ? ' · <span class="liveword">spilles nå</span>' : ""}</div>
+      <div class="sheet-h">${teamSide(m.home, "a")}<span class="shmid">${mid}</span>${teamSide(m.away, "b")}</div>
+      <div class="sheet-meta">${f.label} · ${m.osloTime}</div>
+      ${place ? `<div class="sheet-line">${ICON.pin}<span>${esc(place)}</span></div>` : ""}
+      <div class="sheet-line wx" id="sheetwx"></div>
+      ${mapBlock(m)}
+      ${links ? `<div class="sheet-streams">${links}</div>` : ""}
+      <button class="sheet-plan ${onPlan ? "on" : ""}" data-plan="${m.id}">${onPlan ? ICON.starOn : ICON.starOff}<span>${onPlan ? "I min plan" : "Legg i min plan"}</span></button>
+    </div>`;
+}
+function renderSheet() {
+  const el = document.getElementById("sheet");
+  const m = state.sheet && state.matches.find((x) => x.id === state.sheet);
+  if (m) { el.innerHTML = sheetHTML(m); el.hidden = false; applyWeather(m); return; }   // match detail (wins over venue → acts as "back")
+  if (state.venue) { el.innerHTML = venueSheetHTML(state.venue); el.hidden = false; return; }
+  el.hidden = true; el.innerHTML = "";
+}
+
 let didAnchor = false; // only auto-scroll to today once per visit to Kamper
 function render() {
   document.querySelectorAll("#tabs button").forEach((b) => {
@@ -326,6 +481,7 @@ function render() {
   const body = { schedule: viewSchedule, groups: viewGroups, bracket: viewBracket, stats: viewStats, plan: viewPlan }[state.view]();
   app.innerHTML = body;
   if (refocus) { const el = app.querySelector(refocus); if (el) el.focus(); }
+  renderSheet();
   if (state.view === "schedule" && !didAnchor) {
     const a = document.getElementById("anchor");
     if (a) { a.scrollIntoView({ block: "start" }); didAnchor = true; }
@@ -334,20 +490,25 @@ function render() {
 
 // ---------- events ----------
 document.getElementById("tabs").addEventListener("click", (e) => { const b = e.target.closest("button[data-view]"); if (!b) return; state.view = b.dataset.view; didAnchor = false; render(); });
-app.addEventListener("click", (e) => {
-  const t = e.target.closest("[data-show],[data-hide],[data-plan],[data-watched],[data-filter],[data-stab],#revealStats,#revealGroups,#resetReveals,#hintClose");
+document.addEventListener("click", (e) => {
+  const t = e.target.closest("[data-show],[data-hide],[data-plan],[data-watched],[data-filter],[data-stab],[data-venue],[data-open],[data-close],[data-settheme],#revealStats,#revealGroups,#resetReveals,#hintClose,#sheetClose");
   if (!t) return;
+  if (t.dataset.settheme) { state.theme = t.dataset.settheme; LS.set("theme", state.theme); applyTheme(); return; }
   if (t.id === "revealStats") { state.statsShown = true; render(); return; }
   if (t.id === "revealGroups") { state.groupsShown = true; render(); return; }
   if (t.dataset.stab) { state.statsTab = t.dataset.stab; render(); return; }
   if (t.id === "hintClose") { state.hintSeen = true; LS.set("hintSeen", true); render(); return; }
   if (t.id === "resetReveals") { for (const k in state.reveal) if (state.reveal[k]) delete state.reveal[k]; LS.set("reveal", state.reveal); render(); return; }
+  if (t.id === "sheetClose" || t.dataset.close) { state.sheet ? (state.sheet = null) : (state.venue = null); render(); return; } // close (match → back to venue; else close)
+  if (t.dataset.venue) { state.venue = t.dataset.venue; render(); return; }                 // tap a stadium on the map
   if (t.dataset.filter) { state.filter = t.dataset.filter; didAnchor = false; render(); return; } // re-anchor to today after filtering
   if (t.dataset.show) { setReveal(t.dataset.show, true); render(); return; }                // tap "Vis" → reveal this match
   if (t.dataset.hide) { setReveal(t.dataset.hide, false); render(); return; }               // tap a shown score → hide again
   if (t.dataset.plan) { toggle(state.plan, t.dataset.plan, "plan"); render(); return; }
-  if (t.dataset.watched) { toggle(state.watched, t.dataset.watched, "watched"); setReveal(t.dataset.watched, state.watched.has(t.dataset.watched)); render(); } // marking watched reveals; un-marking re-hides
+  if (t.dataset.watched) { toggle(state.watched, t.dataset.watched, "watched"); setReveal(t.dataset.watched, state.watched.has(t.dataset.watched)); render(); return; } // marking watched reveals; un-marking re-hides
+  if (t.dataset.open) { if (e.target.closest("a, button")) return; state.sheet = t.dataset.open; render(); }  // tap a row (off its controls) → open detail
 });
+addEventListener("keydown", (e) => { if (e.key === "Escape" && (state.sheet || state.venue)) { state.sheet ? (state.sheet = null) : (state.venue = null); render(); } });
 function toggle(set, id, key) { set.has(id) ? set.delete(id) : set.add(id); LS.set(key, [...set]); }
 
 load();
