@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-13T23:48:48.464Z",
-  "matchesPlayed": 5,
-  "totalGoals": 14,
-  "avgGoals": 2.8,
+  "updated": "2026-06-14T00:34:04.442Z",
+  "matchesPlayed": 6,
+  "totalGoals": 16,
+  "avgGoals": 2.67,
   "topScorers": [
     {
       "name": "Folarin Balogun",
@@ -45,6 +45,13 @@
       "goals": 1,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png"
+    },
+    {
+      "name": "Ismael Saibari",
+      "team": "Morocco",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png"
     },
     {
       "name": "Jovo Lukic",
@@ -94,6 +101,13 @@
       "goals": 1,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png"
+    },
+    {
+      "name": "Vinícius Júnior",
+      "team": "Brazil",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png"
     }
   ]
 }
