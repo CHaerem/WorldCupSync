@@ -26,7 +26,7 @@ Runs on exactly three things — no backend, no database, no paid APIs, **no LLM
 | **Data** | ESPN public API (`fifa.world`), no key — fixtures, scores, group tables |
 | **Top scorers** | computed from each finished match's ESPN summary → `docs/data/stats.json` |
 | **NRK replay links** | NRK public catalog API → `docs/data/streams.json` (deterministic) |
-| **TV 2 replay links** | one-off local capture from a logged-in session (TV 2 is paywalled) |
+| **TV 2 replay links** | TV 2 public sitemaps → matched by slug → `docs/data/streams.json` (deterministic) |
 
 ### Data flow
 
@@ -35,8 +35,7 @@ ESPN API ──► scripts/build.js ──────► docs/data/{matches,sta
                  ▲      ▲                       │
                  │      │                       └─ joins group + broadcaster + replay links
  NRK catalog ────┘      └── scripts/fetch-stats.js ──► docs/data/stats.json (top scorers)
- scripts/fetch-streams.js ──► docs/data/streams.json (NRK links, by kickoff time)
- scripts/config/tv2-streams.json ──► committed TV 2 links (captured locally)
+ scripts/fetch-streams.js ──► docs/data/streams.json (NRK + TV 2 links, deterministic)
 ```
 
 The pipeline fetches **everything** (including results); the frontend (`docs/js/app.js`) is solely responsible for spoiler-gating. The data is always complete; the UI decides what's safe to show.
@@ -55,16 +54,15 @@ npm run dev            # serve docs/ on http://localhost:8000
 1. Push to GitHub.
 2. **Settings → Pages** → *Deploy from a branch* → `main` / `/docs`.
 
-No secrets, no tokens. The **Update World Cup data** workflow runs every 2 hours: build → resolve NRK links → rebuild → aggregate stats → commit. Edits to `docs/data` auto-deploy via Pages. `index.html` loads `app.js` with a cache-busting version tied to the latest data build, so a fresh deploy is never masked by a stale cached script.
+No secrets, no tokens. The **Update World Cup data** workflow runs every 2 hours: build → resolve NRK + TV 2 links → rebuild → aggregate stats → commit. Edits to `docs/data` auto-deploy via Pages. `index.html` loads `app.js` with a cache-busting version tied to the latest data build, so a fresh deploy is never masked by a stale cached script.
 
 ## Stream links
 
-TV 2 holds all 104 matches; NRK shows 51 free-to-air.
+TV 2 holds all 104 matches; NRK shows 51 free-to-air. **Both run fully automatically in CI** — no logins, no manual capture. `scripts/fetch-streams.js` resolves both and writes the exact URLs to `docs/data/streams.json`.
 
-- **NRK matches** — fully automatic. `scripts/fetch-streams.js` reads NRK's public catalog (`psapi.nrk.no`), matches each episode to its ESPN fixture by kickoff time, and writes the exact replay URL. The free-match list in `scripts/config/broadcasters.json` is **auto-derived** from the catalog — no manual upkeep.
-- **TV 2 matches** — TV 2 Play is authenticated/paywalled with no open catalog, so it **can't run in CI**. `scripts/local/capture-tv2.mjs` drives a logged-in browser (Playwright over CDP), harvests the match VOD links, maps them to fixtures, and writes `scripts/config/tv2-streams.json` (committed). Re-run occasionally as new matches get pages. Matches without a captured link fall back to a TV 2 Play search.
+- **NRK** (`scripts/lib/nrk.js`) — reads NRK's public catalog (`psapi.nrk.no`) and matches each episode to its ESPN fixture by kickoff time. The free-match list in `scripts/config/broadcasters.json` is **auto-derived** from the catalog. NRK publishes its catalog ~2 weeks ahead.
+- **TV 2** (`scripts/lib/tv2.js`) — TV 2's JSON API needs a login, but its public XML **sitemaps** list every fixture page. We harvest those and match by parsing the slug: group-stage pages carry team names (`irak-norge`), round-of-32 pages carry FIFA group slots (`1c-2f`, `1a-3cefhi`) that line up with our fixtures' `home.abbr`/`away.abbr`.
 
-```bash
-# launch a logged-in Chromium with a debug port, log into TV 2 Play, then:
-node scripts/local/capture-tv2.mjs   # see the file header for the full setup
-```
+Both resolvers fill in as the broadcasters publish more pages, so coverage grows on each 2-hourly run. Matches without a resolved link fall back in the app to the broadcaster's **World Cup hub page** (where the match will appear), never a broken search.
+
+**Round of 16 and later are deliberately left to the hub fallback.** TV 2's deeper-round slugs chain feeder group-slots (`1c-2f-2e-2i`) while ESPN references feeder *match numbers*, and the provisional third-place assignments differ between the two providers — so a derived knockout link would sometimes point at the wrong match. Round of 32 is safe because it keys on a concrete group slot that uniquely identifies the fixture.

@@ -1,18 +1,42 @@
 {
   "_comment": "Per-match replay links, keyed by ESPN match id. NRK urls resolved deterministically from NRK's public catalog by scripts/fetch-streams.js. Shape: { \"<matchId>\": { \"nrk\": \"https://tv.nrk.no/...\" } }",
-  "updated": "2026-06-14T20:27:16.102Z",
+  "updated": "2026-06-14T20:27:43.800Z",
   "streams": {
     "760414": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500126"
     },
+    "760415": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/mexico-soer-afrika-4v42ekry"
+    },
     "760416": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500226"
+    },
+    "760417": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/usa-paraguay-r7nqznfv"
+    },
+    "760418": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/haiti-skottland-30n0rprh"
+    },
+    "760419": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/brasil-marokko-57t5bpf2"
     },
     "760420": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500326"
     },
+    "760421": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/australia-tyrkia-w22rcncg"
+    },
     "760422": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500426"
+    },
+    "760423": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/elfenbenskysten-ecuador-4kpfg0a4"
+    },
+    "760424": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/sverige-tunisia-swztpthv"
+    },
+    "760425": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/nederland-japan-55wkahs0"
     },
     "760426": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500526"
@@ -20,20 +44,47 @@
     "760427": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500726"
     },
+    "760428": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/spania-kapp-verde-ga58jdg2"
+    },
     "760429": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500626"
+    },
+    "760430": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/irak-norge-190xshna"
     },
     "760431": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500926"
     },
+    "760432": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/frankrike-senegal-n7pkkbb4"
+    },
     "760433": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500826"
+    },
+    "760434": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/ghana-panama-bbxrsz7r"
     },
     "760435": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40501026"
     },
+    "760436": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/usbekistan-colombia-zrkkk7wy"
+    },
+    "760437": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/england-kroatia-6fer2593"
+    },
     "760438": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40501126"
+    },
+    "760439": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/sveits-bosnia-hercegovina-hbcwx4fj"
+    },
+    "760440": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/canada-qatar-3e5sfykj"
+    },
+    "760441": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/mexico-soer-korea-1w1wnesn"
     },
     "760442": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40501226"
@@ -47,11 +98,26 @@
     "760445": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40501326"
     },
+    "760446": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/ecuador-curacao-typs7f2y"
+    },
     "760447": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40501626"
     },
+    "760448": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/tyskland-elfenbenskysten-402tx3qn"
+    },
     "760449": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40501726"
+    },
+    "760450": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/uruguay-kapp-verde-vq8pmwaz"
+    },
+    "760451": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/belgia-iran-swmc2frh"
+    },
+    "760452": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/new-zealand-egypt-yvke2s0f"
     },
     "760453": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40501826"
@@ -59,14 +125,26 @@
     "760454": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40502026"
     },
+    "760455": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/jordan-algerie-90vyb8ys"
+    },
+    "760456": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/argentina-oesterrike-655xvqpb"
+    },
     "760457": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40501926"
     },
     "760458": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40502126"
     },
+    "760459": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/colombia-dr-kongo-vn243gme"
+    },
     "760460": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40502226"
+    },
+    "760461": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/portugal-usbekistan-p661zq9v"
     },
     "760463": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40502326"
@@ -77,11 +155,29 @@
     "760465": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40502526"
     },
+    "760466": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/soer-afrika-soer-korea-8ghsry6p"
+    },
+    "760467": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/tsjekkia-mexico-s4jsab26"
+    },
+    "760468": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/ecuador-tyskland-2rrfcswr"
+    },
     "760469": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40502826"
     },
     "760470": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40502726"
+    },
+    "760471": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/japan-sverige-hy9wb1hb"
+    },
+    "760472": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/tunisia-nederland-pyxs6srs"
+    },
+    "760473": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/curacao-elfenbenskysten-ha8jtayf"
     },
     "760474": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40503026"
@@ -89,8 +185,17 @@
     "760475": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40502926"
     },
+    "760476": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/egypt-iran-5kym6ybp"
+    },
+    "760477": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/new-zealand-belgia-dtr8frdp"
+    },
     "760479": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40503226"
+    },
+    "760480": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/kroatia-ghana-h3efrdc2"
     },
     "760481": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40503526"
@@ -104,14 +209,41 @@
     "760484": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40503726"
     },
+    "760485": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/panama-england-zt0n9tg9"
+    },
     "760486": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40503926"
+    },
+    "760487": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1c-2f-nez3he0v"
+    },
+    "760488": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1f-2c-sp78hspp"
     },
     "760489": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40504026"
     },
     "760490": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40504126"
+    },
+    "760491": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1a-3cefhi-jxsna16s"
+    },
+    "760492": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1i-3cdfgh-7ez80y9k"
+    },
+    "760493": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1g-3aehij-8gvn35n0"
+    },
+    "760497": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1h-2j-rfkb6na9"
+    },
+    "760499": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/2d-2g-5vqepmw0"
+    },
+    "760501": {
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1k-3deijl-96mdyp59"
     }
   }
 }

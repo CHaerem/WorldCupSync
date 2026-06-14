@@ -10,7 +10,7 @@ export const NRK_SERIES = "fifa-fotball-vm-2026";
 
 // Norwegian → English for the 48 finalists (ESPN's displayName spellings).
 // Only needed to break ties when two matches kick off at the same instant.
-const NO_TO_EN = {
+export const NO_TO_EN = {
   algerie: "Algeria", argentina: "Argentina", australia: "Australia",
   østerrike: "Austria", belgia: "Belgium", "bosnia-hercegovina": "Bosnia-Herzegovina",
   brasil: "Brazil", canada: "Canada", "kapp verde": "Cape Verde", colombia: "Colombia",
