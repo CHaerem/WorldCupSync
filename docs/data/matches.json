@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-14T00:34:04.179Z",
+  "updated": "2026-06-14T03:05:00.165Z",
   "count": 104,
   "matches": [
     {
@@ -236,9 +236,9 @@
       "roundNote": "group-stage",
       "venue": "Gillette Stadium",
       "city": "Foxborough, Massachusetts",
-      "state": "pre",
-      "completed": false,
-      "statusDetail": "Scheduled",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "2654",
         "name": "Haiti",
@@ -252,8 +252,8 @@
         "name": "Scotland",
         "abbr": "SCO",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/sco.png",
-        "score": 0,
-        "winner": false
+        "score": 1,
+        "winner": true
       },
       "nrkFree": false,
       "broadcaster": "TV2",

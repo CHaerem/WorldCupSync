@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-14T00:34:04.442Z",
-  "matchesPlayed": 6,
-  "totalGoals": 16,
-  "avgGoals": 2.67,
+  "updated": "2026-06-14T03:05:00.425Z",
+  "matchesPlayed": 7,
+  "totalGoals": 17,
+  "avgGoals": 2.43,
   "topScorers": [
     {
       "name": "Folarin Balogun",
@@ -52,6 +52,13 @@
       "goals": 1,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png"
+    },
+    {
+      "name": "John McGinn",
+      "team": "Scotland",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sco.png"
     },
     {
       "name": "Jovo Lukic",
