@@ -100,7 +100,6 @@ const ICON = {
   check: SVG('<path d="M4.5 12.5l4.7 4.7L19.5 6.4"/>', { sw: 1.9 }),
   moon: SVG('<path d="M20.6 14.4A8.6 8.6 0 0 1 9.6 3.4 8.6 8.6 0 1 0 20.6 14.4z"/>', { fill: "currentColor", stroke: "none" }),
   reset: SVG('<path d="M4 4.2v4.6h4.6"/><path d="M4.4 8.8A8 8 0 1 1 4 13.6"/>'),
-  search: SVG('<circle cx="10.5" cy="10.5" r="6.6"/><path d="M20.5 20.5l-5.2-5.2"/>'),
   chart: SVG('<path d="M5 20.5V10.5M12 20.5V4.5M19 20.5v-7"/>', { sw: 1.9 }),
   grid: SVG('<rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M3.5 9.7h17M9.2 9.7v9.8"/>'),
   pin: SVG('<path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/>'),
@@ -115,13 +114,18 @@ const isPH = (n) => /winner|loser|place|group [a-l]\b|quarterfinal|semifinal|rou
 const short = (n) => isPH(n) ? String(n).replace(/Third Place/i,"3.pl").replace(/2nd Place/i,"2.pl").replace(/Group /i,"gr.").replace(/Round of 32/i,"16-del").replace(/Quarterfinal/i,"KF").replace(/Semifinal/i,"SF").replace(/Winner/i,"vinner").replace(/Loser/i,"taper").trim() : n;
 const fmtDay = (iso) => { const [, mo, d] = iso.split("-").map(Number); const wd = new Date(iso + "T12:00:00Z").getUTCDay(); return { wd: WD[wd], d, label: `${["Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag"][wd]} ${d}. ${MONTHS[mo - 1]}` }; };
 
+// NRK publishes its catalog ~2 weeks ahead; until a match has its own episode we
+// land the user on the official World Cup hub (where it'll appear), not a broken
+// English-name search — NRK titles matches in Norwegian.
+const NRK_HUB = "https://tv.nrk.no/serie/fifa-fotball-vm-2026";
+const TV2_HUB = "https://play.tv2.no/fotball-vm";
+
 function primaryLinks(m) {
-  const q = encodeURIComponent(`${m.home?.name || ""} ${m.away?.name || ""}`.trim());
   const s = m.streams || {}; const out = [];
   if (s.nrk) out.push({ cls: "nrk", label: "NRK TV", short: "NRK", href: s.nrk, ico: ICON.play });
-  else if (m.nrkFree) out.push({ cls: "ghost", label: "Søk NRK", short: "NRK", href: `https://tv.nrk.no/sok?q=${q}`, ico: ICON.search });
+  else if (m.nrkFree) out.push({ cls: "ghost", label: "NRK – VM-oversikt", short: "NRK", href: NRK_HUB, ico: ICON.play });
   if (s.tv2) out.push({ cls: "tv2", label: "TV 2 Play", short: "TV 2", href: s.tv2, ico: ICON.play });
-  else if (!m.nrkFree || !s.nrk) out.push({ cls: "ghost", label: "Søk TV 2", short: "TV 2", href: `https://play.tv2.no/sok?q=${q}`, ico: ICON.search });
+  else if (!m.nrkFree || !s.nrk) out.push({ cls: "ghost", label: "TV 2 – VM-oversikt", short: "TV 2", href: TV2_HUB, ico: ICON.play });
   return out;
 }
 
