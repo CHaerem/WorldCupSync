@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-14T18:26:42.518Z",
+  "updated": "2026-06-14T20:27:16.405Z",
   "count": 104,
   "matches": [
     {
@@ -310,16 +310,16 @@
       "roundNote": "group-stage",
       "venue": "NRG Stadium",
       "city": "Houston, Texas",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "63'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "481",
         "name": "Germany",
         "abbr": "GER",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
-        "score": 4,
-        "winner": false
+        "score": 7,
+        "winner": true
       },
       "away": {
         "id": "11678",
@@ -347,9 +347,9 @@
       "roundNote": "group-stage",
       "venue": "AT&T Stadium",
       "city": "Arlington, Texas",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "27'",
       "home": {
         "id": "449",
         "name": "Netherlands",
