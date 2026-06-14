@@ -129,11 +129,6 @@ function primaryLinks(m) {
 function matchRow(m, opts = {}) {
   const live = m.state === "in", post = m.completed, reveal = isRevealed(m);
   const onPlan = state.plan.has(m.id), watched = state.watched.has(m.id);
-  // A finished match still inside the catch-up window (hidden score = fresh, e.g.
-  // last night's) is precisely a "natt-kamp klar for reprise" — flag it so it pops.
-  // Older finished matches (auto-revealed) fade back as history.
-  const repro = post && !live && !reveal;
-  const status = live ? "m-live" : repro ? "m-rep" : post ? "m-done" : "m-up";
   const lt = live
     ? `<span class="live" title="spilles nå"></span><span class="when na">Nå</span>`
     : `<span class="when">${m.osloTime}</span>`;
@@ -153,7 +148,7 @@ function matchRow(m, opts = {}) {
   if (opts.plan && post) act += `<button class="wch ${watched ? "on" : ""}" data-watched="${m.id}" title="Marker sett" aria-label="${watched ? "Fjern sett-markering" : "Marker som sett"}" aria-pressed="${watched}">${ICON.check}</button>`;
   act += `<button class="star ${onPlan ? "on" : ""}${onPlan && m.id === state.justStarred ? " pop" : ""}" data-plan="${m.id}" title="Min plan" aria-label="${onPlan ? "Fjern fra min plan" : "Legg i min plan"}" aria-pressed="${onPlan}">${onPlan ? ICON.starOn : ICON.starOff}</button>`;
   const place = [m.venue, m.city].filter(Boolean).join(", ");
-  return `<div class="m ${status}${isNO(m) ? " no" : ""}" data-open="${m.id}"${place ? ` title="${esc(place)}"` : ""}>
+  return `<div class="m${isNO(m) ? " no" : ""}" data-open="${m.id}"${place ? ` title="${esc(place)}"` : ""}>
     <div class="lt">${lt}</div>
     <div class="teams">
       <span class="hh"><span class="nm">${esc(m.home?.name || "TBD")}</span>${m.home?.logo ? `<img src="${m.home.logo}" alt="" loading="lazy"/>` : ""}</span>
@@ -172,63 +167,67 @@ const WDFULL = ["søndag","mandag","tirsdag","onsdag","torsdag","fredag","lørda
 const shiftDate = (iso, n) => { const d = new Date(iso + "T12:00:00Z"); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
 const programDate = (m) => (parseInt(m.osloTime.slice(0, 2), 10) < 6 ? shiftDate(m.osloDate, -1) : m.osloDate);
 const relLabel = (iso) => { const t = todayOslo(); return iso === t ? "I dag" : iso === shiftDate(t, -1) ? "I går" : iso === shiftDate(t, 1) ? "I morgen" : null; };
+// group matches into day cards (with the "natt til ..." divider), newest-first optional
+function dayGroups(list, desc) {
+  const byDay = {}, order = [];
+  for (const m of list) { const p = programDate(m); if (!byDay[p]) { byDay[p] = []; order.push(p); } byDay[p].push(m); }
+  order.sort(); if (desc) order.reverse();
+  return order.map((p) => {
+    const ms = byDay[p].sort((a, b) => new Date(a.date) - new Date(b.date));
+    const f = fmtDay(p), rel = relLabel(p);
+    const lbl = rel ? `<b>${rel}</b> · ${f.label.toLowerCase()}` : f.label;
+    let rows = "", night = false;
+    for (const m of ms) {
+      if (!night && parseInt(m.osloTime.slice(0, 2), 10) < 6) { rows += `<div class="night">${ICON.moon} natt til ${WDFULL[new Date(m.osloDate + "T12:00:00Z").getUTCDay()]}</div>`; night = true; }
+      rows += matchRow(m);
+    }
+    return `<div class="day-head"><span class="dl">${lbl}</span><span class="dcount">${ms.length}</span></div><section class="card group">${rows}</section>`;
+  }).join("");
+}
+const sectionHead = (title, n, cls) => `<div class="section-head${cls ? " " + cls : ""}"><span>${title}</span>${n ? `<span class="sc-n">${n}</span>` : ""}</div>`;
+
 function viewSchedule() {
   const today = todayOslo();
-  // one-time explainer for the automatic spoiler behaviour
   const hint = state.hintSeen ? "" : `<div class="hint">${ICON.eye}<div><b>Spoilerfri av seg selv.</b> Nattens og gårsdagens resultater er skjult til du har sett dem; eldre vises automatisk. Trykk «Vis» for å avsløre én kamp.</div><button class="x" id="hintClose" aria-label="Lukk">×</button></div>`;
-  // filter chips: quick jump to Norway or your plan
   const chip = (key, label, ico) => `<button class="chip ${state.filter === key ? "on" : ""}" data-filter="${key}">${ico || ""}${label}</button>`;
   const filters = `<div class="filters">${chip("all", "Alle")}${chip("no", "Norge")}${chip("plan", "Min plan", ICON.starOn)}</div>`;
 
   let matches = state.matches;
   if (state.filter === "no") matches = matches.filter(isNO);
   else if (state.filter === "plan") matches = matches.filter((m) => state.plan.has(m.id));
-
-  const byDay = {}, order = [];
-  for (const m of matches) { const p = programDate(m); if (!byDay[p]) { byDay[p] = []; order.push(p); } byDay[p].push(m); }
-  order.sort();
-  if (!order.length) {
+  if (!matches.length) {
     const msg = state.filter === "plan" ? "Ingen kamper i planen ennå." : state.filter === "no" ? "Ingen Norge-kamper funnet." : "Ingen kamper.";
     return hint + filters + `<div class="empty">${msg}</div>`;
   }
-  // anchor the initial scroll on today's programme (or the next upcoming day)
-  const anchor = order.find((p) => p >= today) || order[order.length - 1];
 
-  // safety net: one tap to re-hide everything you've revealed (back to automatic)
+  // partition into purpose-ordered buckets
+  const reprise = [], todayList = [], coming = [], played = [];
+  for (const m of matches) {
+    if (m.state === "in") todayList.push(m);
+    else if (m.completed) (isRevealed(m) ? played : reprise).push(m);
+    else if (programDate(m) === today) todayList.push(m);
+    else if (programDate(m) > today) coming.push(m);
+    else todayList.push(m); // stray not-yet-played in the past
+  }
+  const byDate = (a, b) => new Date(a.date) - new Date(b.date);
+  reprise.sort((a, b) => new Date(b.date) - new Date(a.date)); // most recent catch-up first
+  todayList.sort(byDate);
+
   const hasManual = Object.values(state.reveal).some((v) => v === true);
   const resetBar = hasManual ? `<div class="resetbar"><button class="reset" id="resetReveals" title="Tilbake til automatisk – skjuler alt du har vist">${ICON.reset} Skjul resultatene jeg har vist</button></div>` : "";
 
-  return hint + filters + resetBar + order.map((p) => {
-    const ms = byDay[p].sort((a, b) => new Date(a.date) - new Date(b.date));
-    const f = fmtDay(p), rel = relLabel(p);
-    const lbl = rel ? `<b>${rel}</b> · ${f.label.toLowerCase()}` : f.label;
-    let rows = "";
-    let night = false;
-    for (const m of ms) {
-      if (!night && parseInt(m.osloTime.slice(0, 2), 10) < 6) {
-        rows += `<div class="night">${ICON.moon} natt til ${WDFULL[new Date(m.osloDate + "T12:00:00Z").getUTCDay()]}</div>`;
-        night = true;
-      }
-      rows += matchRow(m);
-    }
-    // count split makes "klar for reprise" vs "kommer" obvious at a glance
-    let rep = 0, played = 0, up = 0, liveN = 0;
-    for (const x of ms) {
-      if (x.state === "in") liveN++;
-      else if (x.completed) (isRevealed(x) ? played++ : rep++);
-      else up++;
-    }
-    const cparts = [];
-    if (liveN) cparts.push(`<b class="c-live">${liveN} direkte</b>`);
-    if (rep) cparts.push(`<b class="c-rep">${rep} reprise</b>`);
-    if (played) cparts.push(`<span>${played} spilt</span>`);
-    if (up) cparts.push(`<span>${up} kommer</span>`);
-    // clear status per day: today / earlier (played) / upcoming
-    const cls = p === today ? " today" : p < today ? " past" : " future";
-    const isA = p === anchor;
-    const map = isA ? todayMap(anchor) : "";   // the day you land on shows its stadium map
-    return `<div class="day-head${cls}"${isA ? ' id="anchor"' : ""}><span class="dl">${lbl}</span><span class="dcount">${cparts.join(" · ")}</span></div>${map}<section class="card group">${rows}</section>`;
-  }).join("");
+  // compact hero: live next-match countdown + today's stadium map
+  const hot = new Set(state.matches.filter((m) => programDate(m) === today).map((m) => m.venue));
+  const nm = nextMatch();
+  const cd = nm ? `<div class="countdown" data-kickoff="${nm.date}"><span class="cd-l">${isNO(nm) ? "Norge spiller" : "Neste kamp"}</span><span class="cd-m">${esc(nm.home?.name || "TBD")} – ${esc(nm.away?.name || "TBD")}</span><span class="cd-time">…</span></div>` : "";
+  const hero = `<section class="card hero">${cd}${naMapSVG(hot)}</section>`;
+
+  let h = hint + filters + resetBar + hero;
+  if (reprise.length) h += sectionHead("Klar for reprise", reprise.length, "accent") + `<section class="card group">${reprise.map((m) => matchRow(m)).join("")}</section>`;
+  if (todayList.length) h += sectionHead("I dag") + `<section class="card group">${todayList.map((m) => matchRow(m)).join("")}</section>`;
+  if (coming.length) h += sectionHead("Kommer", coming.length) + dayGroups(coming, false);
+  if (played.length) h += `<div class="sec-spilt">` + sectionHead("Spilt", played.length, "muted") + dayGroups(played, true) + `</div>`;
+  return h;
 }
 
 function viewPlan() {
@@ -396,16 +395,6 @@ function tickCountdown() {
   const t = el && el.querySelector(".cd-time");
   if (t) t.textContent = fmtCountdown(Date.parse(el.dataset.kickoff) - Date.now());
 }
-// integrated map shown with the day you land on (with a live next-match countdown)
-function todayMap(dayIso) {
-  const hot = new Set(state.matches.filter((m) => programDate(m) === dayIso).map((m) => m.venue));
-  const when = (relLabel(dayIso) || "denne dagen").toLowerCase();
-  const label = hot.size ? `<b>${hot.size}</b> ${hot.size === 1 ? "arena" : "arenaer"} ${when}` : "Alle arenaer";
-  const nm = nextMatch();
-  const cd = nm ? `<div class="countdown" data-kickoff="${nm.date}"><span class="cd-l">${isNO(nm) ? "Norge spiller" : "Neste kamp"}</span><span class="cd-m">${esc(nm.home?.name || "TBD")} – ${esc(nm.away?.name || "TBD")}</span><span class="cd-time">…</span></div>` : "";
-  return `<section class="card todaymap">${cd}<div class="tm-head"><span class="tm-t">${label}</span><span class="tm-sub">trykk for kampene</span></div>${naMapSVG(hot)}</section>`;
-}
-
 // ---------- stadium sheet: a venue + every match played there ----------
 function venueSheetHTML(v) {
   const co = VENUES[v];

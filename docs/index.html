@@ -198,17 +198,13 @@
       .m { display: grid; grid-template-columns: 40px 1fr auto; align-items: center; gap: 9px; padding: 10px 0; border-bottom: 0.5px solid var(--row-line); }
       .m:last-child { border-bottom: none; }
       .m.no { margin: 0 -16px; padding: 10px 16px; background: linear-gradient(90deg, var(--no-tint), transparent 72%); box-shadow: inset 3px 0 0 var(--nrk); }
-      /* reprise-ready (last night's catch-up) pops with an accent band; played-and-seen
-         history is de-emphasised; upcoming stays normal weight */
-      .m-rep:not(.no) { margin: 0 -16px; padding: 10px 16px; background: linear-gradient(90deg, var(--accent-soft), transparent 76%); box-shadow: inset 3px 0 0 var(--accent); }
-      /* Norway catch-up match: keep the red identity bar AND signal reprise via accent tint */
-      .m-rep.no { background: linear-gradient(90deg, var(--no-tint), var(--accent-soft) 60%, transparent 86%); }
-      .m-done { opacity: 0.6; }
-      .when.rep { color: var(--accent); font-weight: 700; font-size: 11.5px; letter-spacing: -0.02em; display: inline-flex; align-items: center; gap: 2px; }
-      .when.rep .ic { width: 8px; height: 8px; }
       .when.na { color: var(--nrk); font-weight: 700; }
-      .dcount .c-rep { color: var(--accent); font-weight: 700; }
-      .dcount .c-live { color: var(--nrk); font-weight: 700; }
+      /* clear top-level sections — status is carried by the section, not per-row noise */
+      .section-head { display: flex; align-items: baseline; gap: 10px; margin: 24px 4px 8px; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+      .section-head.accent { color: var(--accent); }
+      .section-head.muted { color: var(--faint); }
+      .section-head .sc-n { margin-left: auto; font-size: 11px; font-weight: 700; color: var(--faint); letter-spacing: 0; }
+      .sec-spilt { opacity: 0.62; }              /* history de-emphasised as a whole */
       .m .lt { font-size: 12px; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
       .m .live { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--nrk); box-shadow: 0 0 9px var(--nrk); animation: pulse 1.4s infinite; }
       @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
@@ -450,7 +446,7 @@
       .maplink { display: inline-block; font-size: 12.5px; font-weight: 600; color: var(--accent); margin-top: 6px; }
 
       /* ---- integrated stadium map (with the day you land on) ---- */
-      .todaymap { padding: 12px 14px 10px; margin: 6px 0 18px; overflow: hidden; }
+      .hero { padding: 12px 14px 10px; margin: 6px 0 4px; overflow: hidden; }
       /* live next-match countdown */
       .countdown { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 0.5px solid var(--row-line); }
       .cd-l { font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); }
@@ -461,10 +457,6 @@
       @keyframes scorepop { 0% { transform: scale(.5); opacity: 0; } 55% { transform: scale(1.18); } 100% { transform: scale(1); opacity: 1; } }
       .star.pop { animation: starpop .42s cubic-bezier(0.22,1,0.36,1); }
       @keyframes starpop { 0% { transform: scale(1); } 40% { transform: scale(1.5) rotate(-12deg); } 100% { transform: scale(1); } }
-      .tm-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
-      .tm-t { font-size: 13px; color: var(--muted); font-weight: 500; }
-      .tm-t b { color: var(--fg); font-weight: 700; }
-      .tm-sub { font-size: 11px; color: var(--faint); }
       .bigmap { width: 100%; height: auto; display: block; overflow: visible; }
       .vmk { cursor: pointer; }
       .vhit { fill: transparent; }
@@ -473,11 +465,6 @@
       .vmk:hover .vdot, .vmk:focus-visible .vdot { fill: var(--fg); opacity: 1; }
       .vhalo { fill: var(--accent); opacity: 0.9; transform-box: fill-box; transform-origin: center; animation: dotpulse 2.4s ease-out infinite; }
       .vmk:focus { outline: none; }
-
-      /* ---- clear day status: today highlighted, earlier muted, upcoming normal ---- */
-      .day-head.today .dl b { color: var(--accent); }
-      .day-head.today .dl { color: var(--fg); }
-      .day-head.past .dl, .day-head.past .dl b { color: var(--faint); font-weight: 600; }
       /* stadium sheet */
       .sheet-card.venue { text-align: left; }
       .sheet-card.venue .sheet-eyebrow, .sheet-card.venue .venuemap { text-align: center; }
@@ -491,7 +478,7 @@
         .wrap { padding: 0 12px; }
         .card.group { padding: 2px 12px; }
         .m { grid-template-columns: 34px 1fr auto; gap: 7px; }
-        .m.no, .m-rep:not(.no), .m-rep.no { margin: 0 -12px; padding: 10px 12px; }
+        .m.no { margin: 0 -12px; padding: 10px 12px; }
         .md { width: 46px; font-size: 13px; }
         .md.reveal { font-size: 10.5px; padding: 4px 6px; }
         .act { min-width: 0; gap: 5px; }
