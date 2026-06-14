@@ -10,7 +10,8 @@
     "fetch:standings": "node scripts/fetch-standings.js",
     "fetch:streams": "node scripts/fetch-streams.js",
     "fetch:stats": "node scripts/fetch-stats.js",
-    "dev": "python3 -m http.server 8000 --directory docs"
+    "dev": "python3 -m http.server 8000 --directory docs",
+    "test": "node --test"
   },
   "engines": {
     "node": ">=18"
