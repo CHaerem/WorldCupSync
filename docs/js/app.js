@@ -56,7 +56,6 @@ function applyTheme() {
   renderTheme();
 }
 _darkMq.addEventListener("change", () => { if (state.theme === "auto") applyTheme(); });
-applyTheme();
 
 async function load() {
   try {
@@ -511,4 +510,5 @@ document.addEventListener("click", (e) => {
 addEventListener("keydown", (e) => { if (e.key === "Escape" && (state.sheet || state.venue)) { state.sheet ? (state.sheet = null) : (state.venue = null); render(); } });
 function toggle(set, id, key) { set.has(id) ? set.delete(id) : set.add(id); LS.set(key, [...set]); }
 
+applyTheme(); // render the theme switcher (ICON is defined by now)
 load();
