@@ -148,7 +148,7 @@ function matchRow(m, opts = {}) {
     md = `<button class="md reveal" data-show="${m.id}" title="Vis resultat" aria-label="Vis resultat">${ICON.eye}<span class="lbl">Vis</span></button>`;
   }
   let act = "";
-  if (post || live) { const l = primaryLinks(m)[0]; if (l) act += `<a class="go ${l.cls}" href="${l.href}" target="_blank" rel="noopener" title="Se reprise — ${l.label}" aria-label="Se reprise på ${l.label}">${l.ico}<span class="golbl">${l.short}</span></a>`; }
+  { const l = primaryLinks(m)[0]; if (l) { const verb = post ? "Se reprise" : live ? "Se direkte" : "Se på"; act += `<a class="go ${l.cls}" href="${l.href}" target="_blank" rel="noopener" title="${verb} — ${l.label}" aria-label="${verb} på ${l.label}">${l.ico}<span class="golbl">${l.short}</span></a>`; } }
   if (opts.plan && post) act += `<button class="wch ${watched ? "on" : ""}" data-watched="${m.id}" title="Marker sett" aria-label="${watched ? "Fjern sett-markering" : "Marker som sett"}" aria-pressed="${watched}">${ICON.check}</button>`;
   act += `<button class="star ${onPlan ? "on" : ""}" data-plan="${m.id}" title="Min plan" aria-label="${onPlan ? "Fjern fra min plan" : "Legg i min plan"}" aria-pressed="${onPlan}">${onPlan ? ICON.starOn : ICON.starOff}</button>`;
   const place = [m.venue, m.city].filter(Boolean).join(", ");
