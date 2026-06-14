@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-14T20:27:16.975Z",
-  "matchesPlayed": 9,
-  "totalGoals": 27,
-  "avgGoals": 3,
+  "updated": "2026-06-14T22:24:46.711Z",
+  "matchesPlayed": 10,
+  "totalGoals": 31,
+  "avgGoals": 3.1,
   "topScorers": [
     {
       "name": "Folarin Balogun",
@@ -54,11 +54,25 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png"
     },
     {
+      "name": "Crysencio Summerville",
+      "team": "Netherlands",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png"
+    },
+    {
       "name": "Cyle Larin",
       "team": "Canada",
       "goals": 1,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png"
+    },
+    {
+      "name": "Daichi Kamada",
+      "team": "Japan",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png"
     },
     {
       "name": "Damián Bobadilla",
@@ -115,6 +129,13 @@
       "goals": 1,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png"
+    },
+    {
+      "name": "Keito Nakamura",
+      "team": "Japan",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png"
     },
     {
       "name": "Ladislav Krejcí",
@@ -178,6 +199,13 @@
       "goals": 1,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png"
+    },
+    {
+      "name": "Virgil van Dijk",
+      "team": "Netherlands",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png"
     }
   ]
 }
