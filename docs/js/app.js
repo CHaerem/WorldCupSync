@@ -22,6 +22,7 @@ const state = {
   watched: new Set(LS.get("watched", [])),
   plan: new Set(LS.get("plan", [])),
   statsShown: false, // session-only: stats are aggregate spoilers, revealed per visit
+  statsTab: "players", // stats section: players | teams | tables
   filter: "all", // schedule filter: all | no (Norway) | plan
   hintSeen: LS.get("hintSeen", false),
 };
@@ -248,45 +249,52 @@ function viewBracket() {
   return h;
 }
 
+// reusable little tables/rows for the stats sections
+const scorerRows = (rows, val) => rows.map((r, i) => `<tr><td class="l team"><span class="rk">${i + 1}</span>${r.teamLogo ? `<img src="${r.teamLogo}" alt=""/>` : ""}<span class="nm">${esc(r.name)}</span></td><td class="pts">${val(r)}</td></tr>`).join("");
+const teamRows = (rows, cols) => rows.map((e, i) => `<tr><td class="l team"><span class="rk">${i + 1}</span>${e.logo ? `<img src="${e.logo}" alt=""/>` : ""}<span class="nm">${esc(e.team)}</span></td>${cols.map((c) => `<td class="${c.pts ? "pts" : ""}">${c.v(e)}</td>`).join("")}</tr>`).join("");
+
 function viewStats() {
   if (!state.statsShown) return `<div class="veil"><span class="veilic">${ICON.chart}</span><br/>Statistikk røper resultater, tabeller og hvem som leder.<br/><button class="reveal-btn" id="revealStats">${ICON.eye} Vis statistikk</button></div>`;
   const s = state.stats;
   const fin = state.matches.filter((m) => m.completed && m.home?.score != null && m.away?.score != null);
-  const entries = state.groups.flatMap((g) => g.entries || []);
-  let h = "";
+  const playedTeams = state.groups.flatMap((g) => g.entries || []).filter((e) => (e.played || 0) > 0);
 
-  // ---- headline numbers (derived where stats.json is thin) ----
+  // ---- overview numbers (always on top) ----
   let mostGoals = 0, cleanSheets = 0;
   for (const m of fin) {
     const tot = (m.home.score || 0) + (m.away.score || 0);
     if (tot > mostGoals) mostGoals = tot;
-    if (m.home.score === 0 || m.away.score === 0) cleanSheets++;
+    if (m.home.score === 0) cleanSheets++;
+    if (m.away.score === 0) cleanSheets++;
   }
   const played = s?.matchesPlayed ?? fin.length;
   const stat = (n, k) => `<div><div class="n">${n}</div><div class="k">${k}</div></div>`;
-  h += `<div class="statline">${stat(played, "kamper spilt")}${stat(s?.totalGoals ?? "–", "mål")}${stat(s?.avgGoals ?? "–", "snitt/kamp")}${stat(state.matches.length - played, "kamper igjen")}${stat(mostGoals, "flest i én kamp")}${stat(cleanSheets, "clean sheets")}</div>`;
+  const overview = `<div class="statline">${stat(played, "spilt")}${stat(s?.totalGoals ?? "–", "mål")}${stat(s?.avgGoals ?? "–", "snitt")}${stat(state.matches.length - played, "igjen")}${stat(mostGoals, "flest i kamp")}${stat(cleanSheets, "clean sheets")}</div>`;
 
-  // ---- top scorers ----
-  if (s?.topScorers?.length) h += `<div class="block"><h3>Toppscorere</h3><table><thead><tr><th class="l">Spiller</th><th>Mål</th><th>M.gi.</th></tr></thead><tbody>${s.topScorers.slice(0, 15).map((r, i) => `<tr><td class="l team"><span class="rk">${i + 1}</span>${r.teamLogo ? `<img src="${r.teamLogo}" alt=""/>` : ""}<span class="nm">${esc(r.name)}</span></td><td class="pts">${r.goals}</td><td>${r.assists || ""}</td></tr>`).join("")}</tbody></table></div>`;
+  // ---- segmented control ----
+  const tabs = [["players", "Spillere"], ["teams", "Lag"], ["tables", "Tabeller"]];
+  const seg = `<div class="seg" role="tablist">${tabs.map(([k, l]) => `<button class="${state.statsTab === k ? "on" : ""}" data-stab="${k}" aria-selected="${state.statsTab === k}">${l}</button>`).join("")}</div>`;
 
-  // ---- top assists (same data, re-sorted) ----
-  const assist = (s?.topScorers || []).filter((r) => r.assists > 0).sort((a, b) => b.assists - a.assists).slice(0, 8);
-  if (assist.length) h += `<div class="block"><h3>Målgivende</h3><table><thead><tr><th class="l">Spiller</th><th>M.gi.</th></tr></thead><tbody>${assist.map((r, i) => `<tr><td class="l team"><span class="rk">${i + 1}</span>${r.teamLogo ? `<img src="${r.teamLogo}" alt=""/>` : ""}<span class="nm">${esc(r.name)}</span></td><td class="pts">${r.assists}</td></tr>`).join("")}</tbody></table></div>`;
-
-  // ---- nations: most goals (from standings) ----
-  const playedTeams = entries.filter((e) => (e.played || 0) > 0);
-  if (playedTeams.length) {
-    const topScore = [...playedTeams].sort((a, b) => (b.gf || 0) - (a.gf || 0)).slice(0, 8);
-    h += `<div class="block"><h3>Mestscorende lag</h3><table><thead><tr><th class="l">Lag</th><th>K</th><th>Mål</th></tr></thead><tbody>${topScore.map((e, i) => `<tr><td class="l team"><span class="rk">${i + 1}</span>${e.logo ? `<img src="${e.logo}" alt=""/>` : ""}<span class="nm">${esc(e.team)}</span></td><td>${e.played || 0}</td><td class="pts">${e.gf || 0}</td></tr>`).join("")}</tbody></table></div>`;
+  let body = "";
+  if (state.statsTab === "players") {
+    if (s?.topScorers?.length) body += `<div class="block"><h3>Toppscorere</h3><table><thead><tr><th class="l">Spiller</th><th>Mål</th></tr></thead><tbody>${scorerRows(s.topScorers.slice(0, 20), (r) => r.goals)}</tbody></table></div>`;
+    const assist = (s?.topScorers || []).filter((r) => r.assists > 0).sort((a, b) => b.assists - a.assists).slice(0, 10);
+    if (assist.length) body += `<div class="block"><h3>Målgivende</h3><table><thead><tr><th class="l">Spiller</th><th>M.gi.</th></tr></thead><tbody>${scorerRows(assist, (r) => r.assists)}</tbody></table></div>`;
+    if (!body) body = `<div class="empty">Ingen spillerstatistikk ennå.</div>`;
+  } else if (state.statsTab === "teams") {
+    if (playedTeams.length) {
+      const topScore = [...playedTeams].sort((a, b) => (b.gf || 0) - (a.gf || 0)).slice(0, 8);
+      body += `<div class="block"><h3>Mestscorende lag</h3><table><thead><tr><th class="l">Lag</th><th>K</th><th>Mål</th></tr></thead><tbody>${teamRows(topScore, [{ v: (e) => e.played || 0 }, { pts: 1, v: (e) => e.gf || 0 }])}</tbody></table></div>`;
+      const bestDef = [...playedTeams].sort((a, b) => (a.ga || 0) - (b.ga || 0) || (b.played || 0) - (a.played || 0)).slice(0, 8);
+      body += `<div class="block"><h3>Beste forsvar</h3><table><thead><tr><th class="l">Lag</th><th>K</th><th>Bak.</th></tr></thead><tbody>${teamRows(bestDef, [{ v: (e) => e.played || 0 }, { pts: 1, v: (e) => e.ga || 0 }])}</tbody></table></div>`;
+    }
+    const wins = fin.map((m) => ({ m, d: Math.abs((m.home.score || 0) - (m.away.score || 0)) })).filter((x) => x.d > 0).sort((a, b) => b.d - a.d).slice(0, 6);
+    if (wins.length) body += `<div class="block"><h3>Største seire</h3>${wins.map(({ m }) => `<div class="winrow"><span class="wh"><span class="nm">${esc(m.home.name)}</span>${m.home.logo ? `<img src="${m.home.logo}" alt=""/>` : ""}</span><span class="sc">${m.home.score}–${m.away.score}</span><span class="wa">${m.away.logo ? `<img src="${m.away.logo}" alt=""/>` : ""}<span class="nm">${esc(m.away.name)}</span></span></div>`).join("")}</div>`;
+    if (!body) body = `<div class="empty">Ingen lagstatistikk ennå.</div>`;
+  } else {
+    body = state.groups.length ? state.groups.map((g) => `<div class="block"><h3>${esc(g.name)}</h3><table><thead><tr><th class="l">Lag</th><th>K</th><th>S</th><th>U</th><th>T</th><th>MF</th><th>P</th></tr></thead><tbody>${g.entries.map((e, i) => `<tr class="${i < 2 ? "adv" : ""}"><td class="l team">${e.logo ? `<img src="${e.logo}" alt=""/>` : ""}<span class="nm">${esc(e.team)}</span></td><td>${e.played ?? 0}</td><td>${e.wins ?? 0}</td><td>${e.ties ?? 0}</td><td>${e.losses ?? 0}</td><td>${e.gd ?? 0}</td><td class="pts">${e.points ?? 0}</td></tr>`).join("")}</tbody></table></div>`).join("") : `<div class="empty">Tabeller ikke tilgjengelig ennå.</div>`;
   }
-
-  // ---- biggest wins (spoiler-safe behind the stats gate) ----
-  const wins = fin.map((m) => ({ m, d: Math.abs((m.home.score || 0) - (m.away.score || 0)) })).filter((x) => x.d > 0).sort((a, b) => b.d - a.d).slice(0, 5);
-  if (wins.length) h += `<div class="block"><h3>Største seire</h3><table><tbody>${wins.map(({ m }) => `<tr><td class="l team">${m.home.logo ? `<img src="${m.home.logo}" alt=""/>` : ""}<span class="nm">${esc(m.home.name)}</span></td><td class="pts">${m.home.score}–${m.away.score}</td><td class="rt team">${m.away.logo ? `<img src="${m.away.logo}" alt=""/>` : ""}<span class="nm">${esc(m.away.name)}</span></td></tr>`).join("")}</tbody></table></div>`;
-
-  // ---- group tables ----
-  h += state.groups.length ? `<div class="block"><h3>Tabeller</h3>${state.groups.map((g) => `<h4 class="gh">${esc(g.name)}</h4><table><thead><tr><th class="l">Lag</th><th>K</th><th>S</th><th>U</th><th>T</th><th>MF</th><th>P</th></tr></thead><tbody>${g.entries.map((e, i) => `<tr class="${i < 2 ? "adv" : ""}"><td class="l team">${e.logo ? `<img src="${e.logo}" alt=""/>` : ""}<span class="nm">${esc(e.team)}</span></td><td>${e.played ?? 0}</td><td>${e.wins ?? 0}</td><td>${e.ties ?? 0}</td><td>${e.losses ?? 0}</td><td>${e.gd ?? 0}</td><td class="pts">${e.points ?? 0}</td></tr>`).join("")}</tbody></table>`).join("")}</div>` : `<div class="empty">Tabeller ikke tilgjengelig ennå.</div>`;
-  return h;
+  return overview + seg + body;
 }
 
 let didAnchor = false; // only auto-scroll to today once per visit to Kamper
@@ -306,6 +314,7 @@ function render() {
     else if (ae.dataset.plan) refocus = `[data-plan="${ae.dataset.plan}"]`;
     else if (ae.dataset.watched) refocus = `[data-watched="${ae.dataset.watched}"]`;
     else if (ae.dataset.filter) refocus = `[data-filter="${ae.dataset.filter}"]`;
+    else if (ae.dataset.stab) refocus = `[data-stab="${ae.dataset.stab}"]`;
   }
   const body = { schedule: viewSchedule, bracket: viewBracket, stats: viewStats, plan: viewPlan }[state.view]();
   app.innerHTML = body;
@@ -319,9 +328,10 @@ function render() {
 // ---------- events ----------
 document.getElementById("tabs").addEventListener("click", (e) => { const b = e.target.closest("button[data-view]"); if (!b) return; state.view = b.dataset.view; didAnchor = false; render(); });
 app.addEventListener("click", (e) => {
-  const t = e.target.closest("[data-show],[data-hide],[data-plan],[data-watched],[data-filter],#revealStats,#resetReveals,#hintClose");
+  const t = e.target.closest("[data-show],[data-hide],[data-plan],[data-watched],[data-filter],[data-stab],#revealStats,#resetReveals,#hintClose");
   if (!t) return;
   if (t.id === "revealStats") { state.statsShown = true; render(); return; }
+  if (t.dataset.stab) { state.statsTab = t.dataset.stab; render(); return; }
   if (t.id === "hintClose") { state.hintSeen = true; LS.set("hintSeen", true); render(); return; }
   if (t.id === "resetReveals") { for (const k in state.reveal) if (state.reveal[k]) delete state.reveal[k]; LS.set("reveal", state.reveal); render(); return; }
   if (t.dataset.filter) { state.filter = t.dataset.filter; didAnchor = false; render(); return; } // re-anchor to today after filtering
