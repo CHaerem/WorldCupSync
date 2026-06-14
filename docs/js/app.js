@@ -22,15 +22,21 @@ const state = {
   watched: new Set(LS.get("watched", [])),
   plan: new Set(LS.get("plan", [])),
   statsShown: false, // session-only: stats are aggregate spoilers, revealed per visit
+  filter: "all", // schedule filter: all | no (Norway) | plan
+  hintSeen: LS.get("hintSeen", false),
 };
 // migrate the legacy permanent "revealed" array (pre-toggle model) into overrides
 {
   const legacy = LS.get("revealed", null);
   if (Array.isArray(legacy)) { legacy.forEach((id) => (state.reveal[id] = true)); LS.set("reveal", state.reveal); localStorage.removeItem("wc26:revealed"); }
 }
-const peeking = new Set(); // in-memory only — hold-to-peek never persists
 const app = document.getElementById("app");
-const todayOslo = () => new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Oslo" }).format(new Date());
+// Chromium renders url() refraction in backdrop-filter; gate the lens to it so Safari/
+// Firefox keep the frost fallback. Pause the drifting aurora when the tab is hidden.
+if (window.chrome || /\bEdg\//.test(navigator.userAgent)) document.documentElement.classList.add("refract");
+document.addEventListener("visibilitychange", () => document.documentElement.classList.toggle("anim-paused", document.hidden));
+const _osloFmt = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Oslo" }); // reused, not rebuilt per call
+const todayOslo = () => _osloFmt.format(new Date());
 
 async function load() {
   try {
@@ -113,16 +119,17 @@ function matchRow(m, opts = {}) {
   else if (reveal) {
     // a revealed result — tap to hide again. Fresh ones (not old history) show a hide hint.
     const fresh = !isStale(m);
-    md = `<button class="md shown" data-hide="${m.id}" title="Skjul resultat igjen">${score}${fresh ? `<span class="eyeoff">${ICON.eyeOff}</span>` : ""}</button>`;
+    md = `<button class="md shown" data-hide="${m.id}" title="Skjul resultat" aria-label="Skjul resultat">${score}${fresh ? `<span class="eyeoff">${ICON.eyeOff}</span>` : ""}</button>`;
   } else {
-    // hidden — hold the eye to peek (transient); hold a little longer to lock it open
-    md = `<button class="md peek" data-peek="${m.id}" title="Hold for å kikke · hold litt lenger for å låse"><span class="eye">${ICON.eye}</span><span class="sc">${score}</span></button>`;
+    // hidden — an explicit, obvious tap target: tap to reveal just this match
+    md = `<button class="md reveal" data-show="${m.id}" title="Vis resultat" aria-label="Vis resultat">${ICON.eye}<span class="lbl">Vis</span></button>`;
   }
   let act = "";
-  if (post || live) { const l = primaryLinks(m)[0]; if (l) act += `<a class="go ${l.cls}" href="${l.href}" target="_blank" rel="noopener" title="Se reprise — ${l.label}">${l.ico} ${l.short}</a>`; }
-  if (opts.plan && post) act += `<button class="wch ${watched ? "on" : ""}" data-watched="${m.id}" title="Marker sett">${ICON.check}</button>`;
-  act += `<button class="star ${onPlan ? "on" : ""}" data-plan="${m.id}" title="Min plan">${onPlan ? ICON.starOn : ICON.starOff}</button>`;
-  return `<div class="m ${status}${isNO(m) ? " no" : ""}">
+  if (post || live) { const l = primaryLinks(m)[0]; if (l) act += `<a class="go ${l.cls}" href="${l.href}" target="_blank" rel="noopener" title="Se reprise — ${l.label}" aria-label="Se reprise på ${l.label}">${l.ico} ${l.short}</a>`; }
+  if (opts.plan && post) act += `<button class="wch ${watched ? "on" : ""}" data-watched="${m.id}" title="Marker sett" aria-label="${watched ? "Fjern sett-markering" : "Marker som sett"}" aria-pressed="${watched}">${ICON.check}</button>`;
+  act += `<button class="star ${onPlan ? "on" : ""}" data-plan="${m.id}" title="Min plan" aria-label="${onPlan ? "Fjern fra min plan" : "Legg i min plan"}" aria-pressed="${onPlan}">${onPlan ? ICON.starOn : ICON.starOff}</button>`;
+  const place = [m.venue, m.city].filter(Boolean).join(", ");
+  return `<div class="m ${status}${isNO(m) ? " no" : ""}"${place ? ` title="${esc(place)}"` : ""}>
     <div class="lt">${lt}</div>
     <div class="teams">
       <span class="hh"><span class="nm">${esc(m.home?.name || "TBD")}</span>${m.home?.logo ? `<img src="${m.home.logo}" alt="" loading="lazy"/>` : ""}</span>
@@ -143,10 +150,23 @@ const programDate = (m) => (parseInt(m.osloTime.slice(0, 2), 10) < 6 ? shiftDate
 const relLabel = (iso) => { const t = todayOslo(); return iso === t ? "I dag" : iso === shiftDate(t, -1) ? "I går" : iso === shiftDate(t, 1) ? "I morgen" : null; };
 function viewSchedule() {
   const today = todayOslo();
+  // one-time explainer for the automatic spoiler behaviour
+  const hint = state.hintSeen ? "" : `<div class="hint">${ICON.eye}<div><b>Spoilerfri av seg selv.</b> Nattens og gårsdagens resultater er skjult til du har sett dem; eldre vises automatisk. Trykk «Vis» for å avsløre én kamp.</div><button class="x" id="hintClose" aria-label="Lukk">×</button></div>`;
+  // filter chips: quick jump to Norway or your plan
+  const chip = (key, label, ico) => `<button class="chip ${state.filter === key ? "on" : ""}" data-filter="${key}">${ico || ""}${label}</button>`;
+  const filters = `<div class="filters">${chip("all", "Alle")}${chip("no", "Norge")}${chip("plan", "Min plan", ICON.starOn)}</div>`;
+
+  let matches = state.matches;
+  if (state.filter === "no") matches = matches.filter(isNO);
+  else if (state.filter === "plan") matches = matches.filter((m) => state.plan.has(m.id));
+
   const byDay = {}, order = [];
-  for (const m of state.matches) { const p = programDate(m); if (!byDay[p]) { byDay[p] = []; order.push(p); } byDay[p].push(m); }
+  for (const m of matches) { const p = programDate(m); if (!byDay[p]) { byDay[p] = []; order.push(p); } byDay[p].push(m); }
   order.sort();
-  if (!order.length) return `<div class="empty">Ingen kamper.</div>`;
+  if (!order.length) {
+    const msg = state.filter === "plan" ? "Ingen kamper i planen ennå." : state.filter === "no" ? "Ingen Norge-kamper funnet." : "Ingen kamper.";
+    return hint + filters + `<div class="empty">${msg}</div>`;
+  }
   // anchor the initial scroll on today's programme (or the next upcoming day)
   const anchor = order.find((p) => p >= today) || order[order.length - 1];
 
@@ -154,7 +174,7 @@ function viewSchedule() {
   const hasManual = Object.values(state.reveal).some((v) => v === true);
   const resetBar = hasManual ? `<div class="resetbar"><button class="reset" id="resetReveals" title="Tilbake til automatisk – skjuler alt du har vist">${ICON.reset} Skjul resultatene jeg har vist</button></div>` : "";
 
-  return resetBar + order.map((p) => {
+  return hint + filters + resetBar + order.map((p) => {
     const ms = byDay[p].sort((a, b) => new Date(a.date) - new Date(b.date));
     const f = fmtDay(p), rel = relLabel(p);
     const lbl = rel ? `<b>${rel}</b> · ${f.label.toLowerCase()}` : f.label;
@@ -221,7 +241,7 @@ function viewBracket() {
     }
     return `<div class="t"><span class="nm">${esc(short(x?.name) || "—")}</span></div>`;
   };
-  const tie = (m, fin) => { const [, mo, d] = m.osloDate.split("-").map(Number); const r = isRevealed(m); return `<div class="tie ${fin ? "final" : ""}">${team(m.home, r)}${team(m.away, r)}<div class="dt">${d}. ${MONTHS[mo - 1].slice(0, 3)} · ${m.osloTime}</div></div>`; };
+  const tie = (m, fin) => { const [, mo, d] = m.osloDate.split("-").map(Number); const r = isRevealed(m); const place = m.city ? ` · ${esc(m.city)}` : ""; return `<div class="tie ${fin ? "final" : ""}">${team(m.home, r)}${team(m.away, r)}<div class="dt">${d}. ${MONTHS[mo - 1].slice(0, 3)} · ${m.osloTime}${place}</div></div>`; };
   const third = state.matches.find((m) => m.roundNote === "3rd-place-match");
   let h = `<div class="bracket">${cols.map((c) => `<div class="round"><h4>${roundName(c.rn)}</h4>${c.ties.map((m) => tie(m, c.rn === "final")).join("")}</div>`).join("")}</div>`;
   if (third) h += `<div class="block"><h3>Bronsefinale</h3><div class="bracket"><div class="round" style="width:200px">${tie(third, false)}</div></div></div>`;
@@ -229,7 +249,7 @@ function viewBracket() {
 }
 
 function viewStats() {
-  if (!state.statsShown) return `<div class="veil"><span class="veilic">${ICON.chart}</span><br/>Statistikk røper resultater, tabeller og hvem som leder.<br/><button class="reveal-btn" id="revealStats">Vis statistikk</button></div>`;
+  if (!state.statsShown) return `<div class="veil"><span class="veilic">${ICON.chart}</span><br/>Statistikk røper resultater, tabeller og hvem som leder.<br/><button class="reveal-btn" id="revealStats">${ICON.eye} Vis statistikk</button></div>`;
   let h = ""; const s = state.stats;
   if (s) {
     h += `<div class="statline"><div><div class="n">${s.matchesPlayed}</div><div class="k">kamper spilt</div></div><div><div class="n">${s.totalGoals}</div><div class="k">mål</div></div><div><div class="n">${s.avgGoals}</div><div class="k">snitt/kamp</div></div></div>`;
@@ -241,9 +261,25 @@ function viewStats() {
 
 let didAnchor = false; // only auto-scroll to today once per visit to Kamper
 function render() {
-  document.querySelectorAll("#tabs button").forEach((b) => b.classList.toggle("active", b.dataset.view === state.view));
+  document.querySelectorAll("#tabs button").forEach((b) => {
+    const on = b.dataset.view === state.view;
+    b.classList.toggle("active", on);
+    on ? b.setAttribute("aria-current", "page") : b.removeAttribute("aria-current");
+  });
+  // remember focus so a full re-render doesn't strand keyboard / screen-reader users
+  const ae = document.activeElement;
+  let refocus = "";
+  if (ae && app.contains(ae)) {
+    const id = ae.dataset.show || ae.dataset.hide;
+    if (ae.id) refocus = "#" + ae.id;
+    else if (id) refocus = `[data-show="${id}"],[data-hide="${id}"]`;
+    else if (ae.dataset.plan) refocus = `[data-plan="${ae.dataset.plan}"]`;
+    else if (ae.dataset.watched) refocus = `[data-watched="${ae.dataset.watched}"]`;
+    else if (ae.dataset.filter) refocus = `[data-filter="${ae.dataset.filter}"]`;
+  }
   const body = { schedule: viewSchedule, bracket: viewBracket, stats: viewStats, plan: viewPlan }[state.view]();
   app.innerHTML = body;
+  if (refocus) { const el = app.querySelector(refocus); if (el) el.focus(); }
   if (state.view === "schedule" && !didAnchor) {
     const a = document.getElementById("anchor");
     if (a) { a.scrollIntoView({ block: "start" }); didAnchor = true; }
@@ -253,38 +289,17 @@ function render() {
 // ---------- events ----------
 document.getElementById("tabs").addEventListener("click", (e) => { const b = e.target.closest("button[data-view]"); if (!b) return; state.view = b.dataset.view; didAnchor = false; render(); });
 app.addEventListener("click", (e) => {
-  const t = e.target.closest("[data-hide],[data-plan],[data-watched],#revealStats,#resetReveals");
+  const t = e.target.closest("[data-show],[data-hide],[data-plan],[data-watched],[data-filter],#revealStats,#resetReveals,#hintClose");
   if (!t) return;
   if (t.id === "revealStats") { state.statsShown = true; render(); return; }
+  if (t.id === "hintClose") { state.hintSeen = true; LS.set("hintSeen", true); render(); return; }
   if (t.id === "resetReveals") { for (const k in state.reveal) if (state.reveal[k]) delete state.reveal[k]; LS.set("reveal", state.reveal); render(); return; }
-  if (t.dataset.hide) { setReveal(t.dataset.hide, false); render(); return; }              // tap a shown score → hide again
+  if (t.dataset.filter) { state.filter = t.dataset.filter; didAnchor = false; render(); return; } // re-anchor to today after filtering
+  if (t.dataset.show) { setReveal(t.dataset.show, true); render(); return; }                // tap "Vis" → reveal this match
+  if (t.dataset.hide) { setReveal(t.dataset.hide, false); render(); return; }               // tap a shown score → hide again
   if (t.dataset.plan) { toggle(state.plan, t.dataset.plan, "plan"); render(); return; }
   if (t.dataset.watched) { toggle(state.watched, t.dataset.watched, "watched"); setReveal(t.dataset.watched, state.watched.has(t.dataset.watched)); render(); } // marking watched reveals; un-marking re-hides
 });
 function toggle(set, id, key) { set.has(id) ? set.delete(id) : set.add(id); LS.set(key, [...set]); }
-
-// ---------- hold-to-peek: the safe reveal ----------
-// Press & hold the eye to see the score only while held; release and it hides again.
-// Keep holding past LOCK_MS to lock it open (reversible). A stray tap can't reveal.
-let peekEl = null, peekTimer = 0, peekArmed = false;
-const LOCK_MS = 600;
-function endPeek() {
-  if (!peekEl) return;
-  clearTimeout(peekTimer);
-  const btn = peekEl, id = btn.dataset.peek;
-  peekEl = null; peeking.delete(id);
-  if (peekArmed) { setReveal(id, true); render(); }                    // held long enough → lock open
-  else { btn.classList.remove("peeking", "lockready"); }               // brief peek → hide again
-}
-app.addEventListener("pointerdown", (e) => {
-  const b = e.target.closest(".md.peek[data-peek]");
-  if (!b) return;
-  e.preventDefault(); // suppress text selection / long-press callout
-  peekEl = b; peekArmed = false; peeking.add(b.dataset.peek);
-  b.classList.add("peeking"); // CSS swaps the eye for the score while held
-  peekTimer = setTimeout(() => { peekArmed = true; b.classList.add("lockready"); }, LOCK_MS);
-});
-addEventListener("pointerup", endPeek);
-addEventListener("pointercancel", endPeek); // scrolling / gesture interruption → revert (stays hidden)
 
 load();

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>VM 2026</title>
+    <title>VM 2026 — følg &amp; ta igjen fotball-VM</title>
     <meta name="description" content="Følg og ta igjen fotball-VM 2026 — kamper dag for dag, sluttspill, statistikk og spoilerfri reprisplanlegging med direktelenker til NRK TV og TV 2 Play." />
     <meta name="theme-color" content="#06070c" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#eaf0fb" media="(prefers-color-scheme: light)" />
@@ -20,7 +20,7 @@
         --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, "Segoe UI", sans-serif;
         --accent: #36e6a4; --accent-ink: #03251a; --accent-soft: rgba(54,230,164,0.18);
         --nrk: #ff4d72; --tv2: #5b8cff;
-        --fg: #f3f6fb; --muted: rgba(228,235,247,0.62); --faint: rgba(228,235,247,0.40);
+        --fg: #f3f6fb; --muted: rgba(228,235,247,0.66); --faint: rgba(228,235,247,0.56);
 
         --base: #06070c;
         --c1: #1f5fe0; --c2: #14d8c6; --c3: #6b5bff; --c4: #0fa172;
@@ -28,7 +28,7 @@
         --bar-bg: rgba(18,22,32,0.22);
         --bar-border: rgba(255,255,255,0.18);
         --bar-hi: 0.55;
-        --edge-top: 0.7; --edge-dk: 0.38; --drop: 0.55; --gleam: 0.55; --gleam-blend: screen;
+        --edge-top: 0.7; --edge-dk: 0.38; --drop: 0.55; --gleam: 0.36; --gleam-blend: screen;
         --card-bg: rgba(24,28,38,0.42);
         --card-border: rgba(255,255,255,0.14);
         --card-hi: 0.22;
@@ -43,7 +43,7 @@
           color-scheme: light;
           --accent: #00a868; --accent-ink: #ffffff; --accent-soft: rgba(0,168,104,0.16);
           --nrk: #e4002b; --tv2: #2f6bff;
-          --fg: #0b0e15; --muted: rgba(33,40,58,0.62); --faint: rgba(33,40,58,0.42);
+          --fg: #0b0e15; --muted: rgba(33,40,58,0.7); --faint: rgba(33,40,58,0.56);
 
           --base: #e7edf8;
           --c1: #a7ccff; --c2: #a3f0e6; --c3: #c6bcff; --c4: #aef0d2;
@@ -79,7 +79,7 @@
           radial-gradient(42% 42% at 82% 16%, var(--c2), transparent 60%),
           radial-gradient(46% 46% at 70% 82%, var(--c3), transparent 62%),
           radial-gradient(40% 40% at 22% 88%, var(--c4), transparent 60%);
-        filter: saturate(150%);
+        filter: saturate(125%);
         animation: drift 26s ease-in-out infinite alternate;
         will-change: transform;
       }
@@ -92,6 +92,12 @@
       .glassfx { position: fixed; width: 0; height: 0; }
       .wrap { max-width: 600px; margin: 0 auto; padding: 0 16px; }
       a { color: inherit; text-decoration: none; }
+      /* keyboard focus visibility (was missing entirely) */
+      :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 8px; }
+      .tabbar button:focus-visible { outline: none; }
+      .tabbar button:focus-visible::before { opacity: 1; transform: scale(1); }
+      @media (prefers-reduced-motion: reduce) { * { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+      :root.anim-paused body::before { animation-play-state: paused; }
 
       /* ---- the glass material (chrome layer only) ---- */
       .bar {
@@ -108,18 +114,17 @@
           inset -1.5px 0 1px -0.5px rgba(0,0,0,var(--edge-dk)),
           inset 0 -2.5px 2px -1px rgba(0,0,0,var(--edge-dk)),
           inset 0 0 0 1px rgba(255,255,255,calc(var(--edge-top) * 0.22)),
-          /* chromatic dispersion at the rim */
-          inset 2px 0 9px -6px rgba(86,170,255,0.6),
-          inset -2px 0 9px -6px rgba(255,110,205,0.55),
+          /* chromatic dispersion at the rim (subtle) */
+          inset 1.5px 0 6px -5px rgba(130,185,255,0.2),
+          inset -1.5px 0 6px -5px rgba(255,160,215,0.18),
           0 22px 50px -8px rgba(0,0,0,var(--drop));                              /* float */
       }
-      /* Real refraction: bend the actual backdrop (DOM + aurora) through the glass.
-         Applied to the element itself so it samples the page, not an isolated group. */
-      @supports (backdrop-filter: url(#liquid)) {
-        .bar {
-          -webkit-backdrop-filter: url(#liquid);
-          backdrop-filter: url(#liquid);
-        }
+      /* Real refraction: bend the actual backdrop through the glass. Only Chromium
+         renders url() in backdrop-filter reliably, so it's gated to a .refract class
+         set by JS — every other browser keeps the guaranteed frost fallback above. */
+      html.refract .bar {
+        -webkit-backdrop-filter: url(#liquid);
+        backdrop-filter: url(#liquid);
       }
       /* convex specular highlight + a gleam that follows the pointer — reads as glass
          catching the light, and works in every browser */
@@ -127,8 +132,8 @@
         content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 1;
         background:
           radial-gradient(55% 90% at var(--gx, 50%) var(--gy, 0%), rgba(255,255,255,var(--gleam)), rgba(255,255,255,0) 62%),
-          linear-gradient(180deg, rgba(255,255,255,0.30), rgba(255,255,255,0) 24%),
-          linear-gradient(0deg, rgba(255,255,255,0.10), rgba(255,255,255,0) 30%);
+          linear-gradient(180deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 26%),
+          linear-gradient(0deg, rgba(255,255,255,0.07), rgba(255,255,255,0) 30%);
         mix-blend-mode: var(--gleam-blend);
       }
       .bar > * { position: relative; z-index: 2; }
@@ -173,6 +178,8 @@
       /* reprise-ready (last night's catch-up) pops with an accent band; played-and-seen
          history is de-emphasised; upcoming stays normal weight */
       .m-rep:not(.no) { margin: 0 -16px; padding: 10px 16px; background: linear-gradient(90deg, var(--accent-soft), transparent 76%); box-shadow: inset 3px 0 0 var(--accent); }
+      /* Norway catch-up match: keep the red identity bar AND signal reprise via accent tint */
+      .m-rep.no { background: linear-gradient(90deg, var(--no-tint), var(--accent-soft) 60%, transparent 86%); }
       .m-done { opacity: 0.6; }
       .when.rep { color: var(--accent); font-weight: 700; font-size: 11.5px; letter-spacing: -0.02em; display: inline-flex; align-items: center; gap: 2px; }
       .when.rep .ic { width: 8px; height: 8px; }
@@ -189,28 +196,22 @@
       .teams img { width: 20px; height: 20px; object-fit: contain; flex: none; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.22)); }
       /* fixed score-column width so home/away align across rows regardless of
          score vs "vs" vs hidden pill */
-      .md { font-size: 14px; font-weight: 700; font-variant-numeric: tabular-nums; min-width: 46px; box-sizing: border-box; text-align: center; }
+      /* fixed-width, centred box so home/away align identically across every row
+         regardless of score / "vs" / "Vis" content */
+      .md { font-size: 14px; font-weight: 700; font-variant-numeric: tabular-nums; width: 56px; box-sizing: border-box; text-align: center; display: inline-flex; align-items: center; justify-content: center; }
       .md.vs { color: var(--faint); font-weight: 500; }
       /* line icons (no emoji): inherit colour, scale with text */
       .ic { width: 1em; height: 1em; display: inline-block; vertical-align: -0.14em; flex: none; }
-      /* hold-to-peek eye — the safe reveal. Hold to look; hold longer to lock open. */
-      .md.peek {
-        appearance: none; cursor: pointer; font: inherit; color: var(--accent); line-height: 1;
-        display: inline-flex; align-items: center; justify-content: center;
-        background: var(--chip-bg); border: 0.5px solid var(--row-line); border-radius: 999px; padding: 4px 0;
+      /* hidden result — an explicit "Vis" (show) button, clearly tappable */
+      .md.reveal {
+        appearance: none; cursor: pointer; font: inherit; font-size: 11px; font-weight: 700; letter-spacing: -0.01em; line-height: 1;
+        color: var(--accent); display: inline-flex; align-items: center; gap: 3px;
+        background: var(--chip-bg); border: 0.5px solid var(--row-line); border-radius: 999px; padding: 4px 9px;
         -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
-        box-shadow: inset 0 0.5px 0 rgba(255,255,255,0.25);
-        user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; touch-action: none;
-        transition: transform .12s, background .2s, box-shadow .2s, color .2s;
+        box-shadow: inset 0 0.5px 0 rgba(255,255,255,0.25); transition: transform .12s, background .2s;
       }
-      .md.peek .eye { display: inline-flex; }
-      .md.peek .eye .ic { width: 17px; height: 17px; vertical-align: middle; }
-      .md.peek .sc { display: none; font-weight: 800; font-variant-numeric: tabular-nums; font-size: 14px; color: var(--fg); }
-      .md.peek.peeking { transform: scale(1.05); }
-      .md.peek.peeking .eye { display: none; }
-      .md.peek.peeking .sc { display: inline; }
-      .md.peek.lockready { background: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft), inset 0 0.5px 0 rgba(255,255,255,0.3); }
-      .md.peek.lockready .sc { color: var(--accent-ink); }
+      .md.reveal .ic { width: 13px; height: 13px; }
+      .md.reveal:active { transform: scale(0.94); }
       /* a revealed result — tap to hide it again (reversible) */
       .md.shown {
         appearance: none; cursor: pointer; font: inherit; font-weight: 700; font-variant-numeric: tabular-nums;
@@ -317,7 +318,8 @@
       .veil { text-align: center; padding: 34px 20px; border-radius: 20px; color: var(--muted); }
       .veilic { color: var(--accent); display: inline-block; margin-bottom: 8px; }
       .veilic .ic { width: 28px; height: 28px; }
-      .reveal-btn { appearance: none; cursor: pointer; font: inherit; font-size: 13px; font-weight: 700; margin-top: 16px; padding: 11px 20px; border-radius: 999px; border: none; background: var(--accent); color: var(--accent-ink); box-shadow: 0 6px 22px var(--accent-soft); }
+      .reveal-btn { appearance: none; cursor: pointer; font: inherit; font-size: 13px; font-weight: 700; margin-top: 16px; padding: 11px 20px; border-radius: 999px; border: none; background: var(--accent); color: var(--accent-ink); box-shadow: 0 6px 22px var(--accent-soft); display: inline-flex; align-items: center; gap: 7px; }
+      .reveal-btn .ic { width: 15px; height: 15px; }
       .reveal-btn:active { transform: scale(0.96); }
       /* re-hide-all safety net */
       .resetbar { display: flex; justify-content: center; margin: 2px 0 -2px; }
@@ -329,6 +331,17 @@
       }
       .reset .ic { width: 13px; height: 13px; }
       .reset:active { transform: scale(0.97); }
+      /* one-time explainer for the automatic spoiler behaviour */
+      .hint { display: flex; align-items: flex-start; gap: 10px; margin: 4px 0 2px; padding: 12px 14px; border-radius: 16px; background: var(--card-bg); border: 0.5px solid var(--card-border); box-shadow: inset 0 1px 0 rgba(255,255,255,var(--card-hi)); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+      .hint .ic { width: 16px; height: 16px; color: var(--accent); margin-top: 1px; }
+      .hint b { color: var(--fg); font-weight: 700; }
+      .hint .x { margin-left: auto; appearance: none; background: none; border: none; cursor: pointer; color: var(--faint); font: inherit; font-size: 16px; line-height: 1; padding: 0 2px; flex: none; }
+      /* filter chips: jump to Norway / your plan */
+      .filters { display: flex; gap: 8px; margin: 2px 0 4px; }
+      .chip { appearance: none; cursor: pointer; font: inherit; font-size: 12.5px; font-weight: 600; color: var(--muted); background: var(--chip-bg); border: 0.5px solid var(--row-line); border-radius: 999px; padding: 6px 13px; display: inline-flex; align-items: center; gap: 5px; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: transform .12s; }
+      .chip .ic { width: 13px; height: 13px; }
+      .chip:active { transform: scale(0.96); }
+      .chip.on { color: var(--accent-ink); background: var(--accent); border-color: transparent; }
       .empty { text-align: center; color: var(--muted); padding: 44px 16px; }
       footer { color: var(--faint); font-size: 11px; text-align: center; padding: 24px 16px 8px; line-height: 1.7; }
     </style>
@@ -345,11 +358,11 @@
         <feImage href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22240%22%20height%3D%22120%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22rgb(128%2C255%2C128)%22%2F%3E%3Cstop%20offset%3D%220.30%22%20stop-color%3D%22rgb(128%2C128%2C128)%22%2F%3E%3Cstop%20offset%3D%220.70%22%20stop-color%3D%22rgb(128%2C128%2C128)%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22rgb(128%2C0%2C128)%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22240%22%20height%3D%22120%22%20fill%3D%22url(%23g)%22%2F%3E%3C%2Fsvg%3E" result="ym" preserveAspectRatio="none" x="0" y="0" width="100%" height="100%" />
         <feGaussianBlur in="xm" stdDeviation="9" result="xmb" />
         <feGaussianBlur in="ym" stdDeviation="9" result="ymb" />
-        <feDisplacementMap in="SourceGraphic" in2="xmb" scale="34" xChannelSelector="R" yChannelSelector="B" result="dx" />
-        <feDisplacementMap in="dx" in2="ymb" scale="34" xChannelSelector="B" yChannelSelector="G" result="dxy" />
+        <feDisplacementMap in="SourceGraphic" in2="xmb" scale="15" xChannelSelector="R" yChannelSelector="B" result="dx" />
+        <feDisplacementMap in="dx" in2="ymb" scale="15" xChannelSelector="B" yChannelSelector="G" result="dxy" />
         <feTurbulence type="fractalNoise" baseFrequency="0.012 0.016" numOctaves="2" seed="9" result="t" />
-        <feDisplacementMap in="dxy" in2="t" scale="9" xChannelSelector="R" yChannelSelector="G" result="rip" />
-        <feGaussianBlur in="rip" stdDeviation="2.2" result="frost" />
+        <feDisplacementMap in="dxy" in2="t" scale="4" xChannelSelector="R" yChannelSelector="G" result="rip" />
+        <feGaussianBlur in="rip" stdDeviation="2" result="frost" />
         <feColorMatrix in="frost" type="saturate" values="1.7" />
       </filter>
     </svg>
