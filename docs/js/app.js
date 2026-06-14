@@ -18,11 +18,17 @@ const LS = {
 const state = {
   matches: [], groups: [], stats: null,
   view: "schedule",
-  revealed: new Set(LS.get("revealed", [])),
+  reveal: LS.get("reveal", {}), // per-match override: id -> true(show)/false(hide); absent = automatic. Always reversible.
   watched: new Set(LS.get("watched", [])),
   plan: new Set(LS.get("plan", [])),
   statsShown: false, // session-only: stats are aggregate spoilers, revealed per visit
 };
+// migrate the legacy permanent "revealed" array (pre-toggle model) into overrides
+{
+  const legacy = LS.get("revealed", null);
+  if (Array.isArray(legacy)) { legacy.forEach((id) => (state.reveal[id] = true)); LS.set("reveal", state.reveal); localStorage.removeItem("wc26:revealed"); }
+}
+const peeking = new Set(); // in-memory only — hold-to-peek never persists
 const app = document.getElementById("app");
 const todayOslo = () => new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Oslo" }).format(new Date());
 
@@ -47,11 +53,30 @@ const GRACE_DAYS = 2;
 const dayDiff = (a, b) => Math.round((Date.parse(a + "T00:00:00Z") - Date.parse(b + "T00:00:00Z")) / 86400000);
 const planUnwatched = (m) => state.plan.has(m.id) && !state.watched.has(m.id);
 const isStale = (m) => m.completed && dayDiff(todayOslo(), programDate(m)) >= GRACE_DAYS;
-// No global spoiler mode: a result shows automatically once it's stale (and not a
-// match you've starred to watch), or when you tap to reveal that single match.
-const isRevealed = (m) => state.revealed.has(m.id) || (isStale(m) && !planUnwatched(m));
+// No global spoiler mode. Automatic default: a stale result reveals itself (unless
+// you've starred it to watch). An explicit per-match override always wins — and it's
+// reversible, so an accidental reveal is never permanent.
+const autoShown = (m) => isStale(m) && !planUnwatched(m);
+const isRevealed = (m) => (m.id in state.reveal ? state.reveal[m.id] : autoShown(m));
+const setReveal = (id, show) => { state.reveal[id] = show; LS.set("reveal", state.reveal); };
 const isNO = (m) => m.home?.name === "Norway" || m.away?.name === "Norway";
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+// ---------- icons in the SF Symbols idiom (no emoji): one stroke weight, true
+// silhouettes, rounded joins; fill only where SF uses a .fill variant ----------
+const SVG = (inner, o = {}) => `<svg class="ic" viewBox="0 0 24 24" fill="${o.fill || "none"}" stroke="${o.stroke || "currentColor"}" stroke-width="${o.sw || 1.7}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${inner}</svg>`;
+const ICON = {
+  eye: SVG('<path d="M2.6 12C4.4 8.4 7.9 6.2 12 6.2s7.6 2.2 9.4 5.8c-1.8 3.6-5.3 5.8-9.4 5.8S4.4 15.6 2.6 12z"/><circle cx="12" cy="12" r="2.7"/>'),
+  eyeOff: SVG('<path d="M2.6 12C4.1 9 6.6 6.9 9.7 6.4M21.4 12c-1.4 2.9-3.8 4.9-6.8 5.5"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/><path d="M4 4l16 16"/>'),
+  play: SVG('<path d="M7 5.2v13.6L18.8 12z"/>', { fill: "currentColor", stroke: "none" }),
+  starOn: SVG('<path d="M12 3.2l2.6 5.8 6.3.6-4.7 4.2 1.3 6.2L12 17l-5.8 3.2 1.3-6.2-4.7-4.2 6.3-.6z"/>', { fill: "currentColor", stroke: "none" }),
+  starOff: SVG('<path d="M12 3.2l2.6 5.8 6.3.6-4.7 4.2 1.3 6.2L12 17l-5.8 3.2 1.3-6.2-4.7-4.2 6.3-.6z"/>'),
+  check: SVG('<path d="M4.5 12.5l4.7 4.7L19.5 6.4"/>', { sw: 1.9 }),
+  moon: SVG('<path d="M20.6 14.4A8.6 8.6 0 0 1 9.6 3.4 8.6 8.6 0 1 0 20.6 14.4z"/>', { fill: "currentColor", stroke: "none" }),
+  reset: SVG('<path d="M4 4.2v4.6h4.6"/><path d="M4.4 8.8A8 8 0 1 1 4 13.6"/>'),
+  search: SVG('<circle cx="10.5" cy="10.5" r="6.6"/><path d="M20.5 20.5l-5.2-5.2"/>'),
+  chart: SVG('<path d="M5 20.5V10.5M12 20.5V4.5M19 20.5v-7"/>', { sw: 1.9 }),
+};
 const ROUND = { "group-stage": "Gruppespill","round-of-32":"16-delsfinale","round-of-16":"8-delsfinale",quarterfinals:"Kvartfinale",semifinals:"Semifinale","3rd-place-match":"Bronsefinale",final:"Finale" };
 const roundName = (n) => ROUND[n] || "Kamp";
 const isPH = (n) => /winner|loser|place|group [a-l]\b|quarterfinal|semifinal|round of/i.test(n || "");
@@ -61,10 +86,10 @@ const fmtDay = (iso) => { const [, mo, d] = iso.split("-").map(Number); const wd
 function primaryLinks(m) {
   const q = encodeURIComponent(`${m.home?.name || ""} ${m.away?.name || ""}`.trim());
   const s = m.streams || {}; const out = [];
-  if (s.nrk) out.push({ cls: "nrk", label: "NRK TV", short: "NRK", href: s.nrk, ico: "▶" });
-  else if (m.nrkFree) out.push({ cls: "ghost", label: "Søk NRK", short: "NRK", href: `https://tv.nrk.no/sok?q=${q}`, ico: "🔎" });
-  if (s.tv2) out.push({ cls: "tv2", label: "TV 2 Play", short: "TV 2", href: s.tv2, ico: "▶" });
-  else if (!m.nrkFree || !s.nrk) out.push({ cls: "ghost", label: "Søk TV 2", short: "TV 2", href: `https://play.tv2.no/sok?q=${q}`, ico: "🔎" });
+  if (s.nrk) out.push({ cls: "nrk", label: "NRK TV", short: "NRK", href: s.nrk, ico: ICON.play });
+  else if (m.nrkFree) out.push({ cls: "ghost", label: "Søk NRK", short: "NRK", href: `https://tv.nrk.no/sok?q=${q}`, ico: ICON.search });
+  if (s.tv2) out.push({ cls: "tv2", label: "TV 2 Play", short: "TV 2", href: s.tv2, ico: ICON.play });
+  else if (!m.nrkFree || !s.nrk) out.push({ cls: "ghost", label: "Søk TV 2", short: "TV 2", href: `https://play.tv2.no/sok?q=${q}`, ico: ICON.search });
   return out;
 }
 
@@ -80,15 +105,23 @@ function matchRow(m, opts = {}) {
   const lt = live
     ? `<span class="live" title="spilles nå"></span><span class="when na">Nå</span>`
     : repro
-      ? `<span class="when rep" title="Klar for reprise">▶ ${m.osloTime}</span>`
+      ? `<span class="when rep" title="Klar for reprise">${ICON.play}${m.osloTime}</span>`
       : `<span class="when">${m.osloTime}</span>`;
-  const md = (post || live)
-    ? (reveal ? `<span class="md">${m.home?.score ?? "-"}–${m.away?.score ?? "-"}</span>` : `<span class="md hide" data-reveal="${m.id}" title="Vis resultat">–&nbsp;–</span>`)
-    : `<span class="md vs">–</span>`;
+  const score = `${m.home?.score ?? "-"}–${m.away?.score ?? "-"}`;
+  let md;
+  if (!(post || live)) md = `<span class="md vs">–</span>`;
+  else if (reveal) {
+    // a revealed result — tap to hide again. Fresh ones (not old history) show a hide hint.
+    const fresh = !isStale(m);
+    md = `<button class="md shown" data-hide="${m.id}" title="Skjul resultat igjen">${score}${fresh ? `<span class="eyeoff">${ICON.eyeOff}</span>` : ""}</button>`;
+  } else {
+    // hidden — hold the eye to peek (transient); hold a little longer to lock it open
+    md = `<button class="md peek" data-peek="${m.id}" title="Hold for å kikke · hold litt lenger for å låse"><span class="eye">${ICON.eye}</span><span class="sc">${score}</span></button>`;
+  }
   let act = "";
   if (post || live) { const l = primaryLinks(m)[0]; if (l) act += `<a class="go ${l.cls}" href="${l.href}" target="_blank" rel="noopener" title="Se reprise — ${l.label}">${l.ico} ${l.short}</a>`; }
-  if (opts.plan && post) act += `<button class="wch ${watched ? "on" : ""}" data-watched="${m.id}" title="Marker sett">✓</button>`;
-  act += `<button class="star ${onPlan ? "on" : ""}" data-plan="${m.id}" title="Min plan">${onPlan ? "★" : "☆"}</button>`;
+  if (opts.plan && post) act += `<button class="wch ${watched ? "on" : ""}" data-watched="${m.id}" title="Marker sett">${ICON.check}</button>`;
+  act += `<button class="star ${onPlan ? "on" : ""}" data-plan="${m.id}" title="Min plan">${onPlan ? ICON.starOn : ICON.starOff}</button>`;
   return `<div class="m ${status}${isNO(m) ? " no" : ""}">
     <div class="lt">${lt}</div>
     <div class="teams">
@@ -117,7 +150,11 @@ function viewSchedule() {
   // anchor the initial scroll on today's programme (or the next upcoming day)
   const anchor = order.find((p) => p >= today) || order[order.length - 1];
 
-  return order.map((p) => {
+  // safety net: one tap to re-hide everything you've revealed (back to automatic)
+  const hasManual = Object.values(state.reveal).some((v) => v === true);
+  const resetBar = hasManual ? `<div class="resetbar"><button class="reset" id="resetReveals" title="Tilbake til automatisk – skjuler alt du har vist">${ICON.reset} Skjul resultatene jeg har vist</button></div>` : "";
+
+  return resetBar + order.map((p) => {
     const ms = byDay[p].sort((a, b) => new Date(a.date) - new Date(b.date));
     const f = fmtDay(p), rel = relLabel(p);
     const lbl = rel ? `<b>${rel}</b> · ${f.label.toLowerCase()}` : f.label;
@@ -125,7 +162,7 @@ function viewSchedule() {
     let night = false;
     for (const m of ms) {
       if (!night && parseInt(m.osloTime.slice(0, 2), 10) < 6) {
-        rows += `<div class="night">🌙 natt til ${WDFULL[new Date(m.osloDate + "T12:00:00Z").getUTCDay()]}</div>`;
+        rows += `<div class="night">${ICON.moon} natt til ${WDFULL[new Date(m.osloDate + "T12:00:00Z").getUTCDay()]}</div>`;
         night = true;
       }
       rows += matchRow(m);
@@ -149,11 +186,11 @@ function viewSchedule() {
 
 function viewPlan() {
   const planned = state.matches.filter((m) => state.plan.has(m.id)).sort((a, b) => new Date(a.date) - new Date(b.date));
-  if (!planned.length) return `<div class="empty">Ingen kamper i planen ennå.<br/>Trykk ☆ på en kamp for å legge den til.</div>`;
+  if (!planned.length) return `<div class="empty">Ingen kamper i planen ennå.<br/>Trykk ${ICON.starOff} på en kamp for å legge den til.</div>`;
   const queue = planned.filter((m) => m.completed && !state.watched.has(m.id));
   const rest = planned.filter((m) => !(m.completed && !state.watched.has(m.id)));
   let h = "";
-  if (queue.length) h += `<div class="block"><h3>▶ Klar for reprise (${queue.length})</h3>${queue.map((m) => matchRow(m, { plan: true })).join("")}</div>`;
+  if (queue.length) h += `<div class="block"><h3 class="h3ic">${ICON.play} Klar for reprise (${queue.length})</h3>${queue.map((m) => matchRow(m, { plan: true })).join("")}</div>`;
   if (rest.length) h += `<div class="block"><h3>Resten av planen</h3>${rest.map((m) => matchRow(m, { plan: true })).join("")}</div>`;
   return h;
 }
@@ -192,7 +229,7 @@ function viewBracket() {
 }
 
 function viewStats() {
-  if (!state.statsShown) return `<div class="veil">📊 Statistikk røper resultater, tabeller og hvem som leder.<br/><button class="reveal-btn" id="revealStats">Vis statistikk</button></div>`;
+  if (!state.statsShown) return `<div class="veil"><span class="veilic">${ICON.chart}</span><br/>Statistikk røper resultater, tabeller og hvem som leder.<br/><button class="reveal-btn" id="revealStats">Vis statistikk</button></div>`;
   let h = ""; const s = state.stats;
   if (s) {
     h += `<div class="statline"><div><div class="n">${s.matchesPlayed}</div><div class="k">kamper spilt</div></div><div><div class="n">${s.totalGoals}</div><div class="k">mål</div></div><div><div class="n">${s.avgGoals}</div><div class="k">snitt/kamp</div></div></div>`;
@@ -216,13 +253,38 @@ function render() {
 // ---------- events ----------
 document.getElementById("tabs").addEventListener("click", (e) => { const b = e.target.closest("button[data-view]"); if (!b) return; state.view = b.dataset.view; didAnchor = false; render(); });
 app.addEventListener("click", (e) => {
-  const t = e.target.closest("[data-reveal],[data-plan],[data-watched],#revealStats");
+  const t = e.target.closest("[data-hide],[data-plan],[data-watched],#revealStats,#resetReveals");
   if (!t) return;
   if (t.id === "revealStats") { state.statsShown = true; render(); return; }
-  if (t.dataset.reveal) { state.revealed.add(t.dataset.reveal); LS.set("revealed", [...state.revealed]); render(); return; }
+  if (t.id === "resetReveals") { for (const k in state.reveal) if (state.reveal[k]) delete state.reveal[k]; LS.set("reveal", state.reveal); render(); return; }
+  if (t.dataset.hide) { setReveal(t.dataset.hide, false); render(); return; }              // tap a shown score → hide again
   if (t.dataset.plan) { toggle(state.plan, t.dataset.plan, "plan"); render(); return; }
-  if (t.dataset.watched) { toggle(state.watched, t.dataset.watched, "watched"); state.revealed.add(t.dataset.watched); LS.set("revealed", [...state.revealed]); render(); }
+  if (t.dataset.watched) { toggle(state.watched, t.dataset.watched, "watched"); setReveal(t.dataset.watched, state.watched.has(t.dataset.watched)); render(); } // marking watched reveals; un-marking re-hides
 });
 function toggle(set, id, key) { set.has(id) ? set.delete(id) : set.add(id); LS.set(key, [...set]); }
+
+// ---------- hold-to-peek: the safe reveal ----------
+// Press & hold the eye to see the score only while held; release and it hides again.
+// Keep holding past LOCK_MS to lock it open (reversible). A stray tap can't reveal.
+let peekEl = null, peekTimer = 0, peekArmed = false;
+const LOCK_MS = 600;
+function endPeek() {
+  if (!peekEl) return;
+  clearTimeout(peekTimer);
+  const btn = peekEl, id = btn.dataset.peek;
+  peekEl = null; peeking.delete(id);
+  if (peekArmed) { setReveal(id, true); render(); }                    // held long enough → lock open
+  else { btn.classList.remove("peeking", "lockready"); }               // brief peek → hide again
+}
+app.addEventListener("pointerdown", (e) => {
+  const b = e.target.closest(".md.peek[data-peek]");
+  if (!b) return;
+  e.preventDefault(); // suppress text selection / long-press callout
+  peekEl = b; peekArmed = false; peeking.add(b.dataset.peek);
+  b.classList.add("peeking"); // CSS swaps the eye for the score while held
+  peekTimer = setTimeout(() => { peekArmed = true; b.classList.add("lockready"); }, LOCK_MS);
+});
+addEventListener("pointerup", endPeek);
+addEventListener("pointercancel", endPeek); // scrolling / gesture interruption → revert (stays hidden)
 
 load();

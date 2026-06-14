@@ -148,7 +148,8 @@
       .day-head .dl { font-size: 13px; font-weight: 500; color: var(--muted); letter-spacing: -0.01em; }
       .day-head .dl b { color: var(--fg); font-weight: 700; }
       .dcount { margin-left: auto; font-size: 12px; color: var(--faint); font-weight: 500; white-space: nowrap; }
-      .night { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--faint); margin: 12px 0 2px; padding-left: 2px; }
+      .night { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--faint); margin: 12px 0 2px; padding-left: 2px; display: flex; align-items: center; gap: 5px; }
+      .night .ic { width: 12px; height: 12px; }
 
       .card {
         background: var(--card-bg);
@@ -173,7 +174,8 @@
          history is de-emphasised; upcoming stays normal weight */
       .m-rep:not(.no) { margin: 0 -16px; padding: 10px 16px; background: linear-gradient(90deg, var(--accent-soft), transparent 76%); box-shadow: inset 3px 0 0 var(--accent); }
       .m-done { opacity: 0.6; }
-      .when.rep { color: var(--accent); font-weight: 700; font-size: 11.5px; letter-spacing: -0.02em; }
+      .when.rep { color: var(--accent); font-weight: 700; font-size: 11.5px; letter-spacing: -0.02em; display: inline-flex; align-items: center; gap: 2px; }
+      .when.rep .ic { width: 8px; height: 8px; }
       .when.na { color: var(--nrk); font-weight: 700; }
       .dcount .c-rep { color: var(--accent); font-weight: 700; }
       .dcount .c-live { color: var(--nrk); font-weight: 700; }
@@ -189,14 +191,36 @@
          score vs "vs" vs hidden pill */
       .md { font-size: 14px; font-weight: 700; font-variant-numeric: tabular-nums; min-width: 46px; box-sizing: border-box; text-align: center; }
       .md.vs { color: var(--faint); font-weight: 500; }
-      .md.hide {
-        color: var(--muted); cursor: pointer; font-weight: 700; font-size: 11px; letter-spacing: 0.4px;
-        background: var(--chip-bg); border: 0.5px solid var(--row-line); border-radius: 999px; padding: 3px 0;
+      /* line icons (no emoji): inherit colour, scale with text */
+      .ic { width: 1em; height: 1em; display: inline-block; vertical-align: -0.14em; flex: none; }
+      /* hold-to-peek eye — the safe reveal. Hold to look; hold longer to lock open. */
+      .md.peek {
+        appearance: none; cursor: pointer; font: inherit; color: var(--accent); line-height: 1;
+        display: inline-flex; align-items: center; justify-content: center;
+        background: var(--chip-bg); border: 0.5px solid var(--row-line); border-radius: 999px; padding: 4px 0;
         -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
-        box-shadow: inset 0 0.5px 0 rgba(255,255,255,0.25); transition: color .15s, transform .12s;
+        box-shadow: inset 0 0.5px 0 rgba(255,255,255,0.25);
+        user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; touch-action: none;
+        transition: transform .12s, background .2s, box-shadow .2s, color .2s;
       }
-      .md.hide:active { transform: scale(0.92); }
-      .md.hide:hover { color: var(--fg); }
+      .md.peek .eye { display: inline-flex; }
+      .md.peek .eye .ic { width: 17px; height: 17px; vertical-align: middle; }
+      .md.peek .sc { display: none; font-weight: 800; font-variant-numeric: tabular-nums; font-size: 14px; color: var(--fg); }
+      .md.peek.peeking { transform: scale(1.05); }
+      .md.peek.peeking .eye { display: none; }
+      .md.peek.peeking .sc { display: inline; }
+      .md.peek.lockready { background: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft), inset 0 0.5px 0 rgba(255,255,255,0.3); }
+      .md.peek.lockready .sc { color: var(--accent-ink); }
+      /* a revealed result — tap to hide it again (reversible) */
+      .md.shown {
+        appearance: none; cursor: pointer; font: inherit; font-weight: 700; font-variant-numeric: tabular-nums;
+        color: inherit; background: none; border: none; padding: 0;
+        display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+        transition: transform .12s;
+      }
+      .md.shown:active { transform: scale(0.93); }
+      .md.shown .eyeoff { display: inline-flex; color: var(--faint); }
+      .md.shown .eyeoff .ic { width: 13px; height: 13px; }
       /* fixed action-column width so the replay button / star always sit in the same
          right-hand column — rows with and without a result no longer shift */
       .act { display: flex; align-items: center; justify-content: flex-end; gap: 6px; min-width: 92px; }
@@ -211,10 +235,13 @@
       .go.nrk { background: var(--nrk); border-color: transparent; color: #fff; box-shadow: 0 4px 15px rgba(255,77,114,0.42), inset 0 0.5px 0 rgba(255,255,255,0.3); }
       .go.tv2 { background: var(--tv2); border-color: transparent; color: #fff; box-shadow: 0 4px 15px rgba(91,140,255,0.42), inset 0 0.5px 0 rgba(255,255,255,0.3); }
       .go.ghost { color: var(--muted); }
-      .star { appearance: none; background: none; border: none; cursor: pointer; font-size: 16px; color: var(--faint); padding: 0 1px; line-height: 1; transition: transform .12s ease; }
+      .go .ic { width: 11px; height: 11px; }
+      .star { appearance: none; background: none; border: none; cursor: pointer; color: var(--faint); padding: 0 1px; line-height: 0; display: inline-flex; align-items: center; transition: transform .12s ease; }
+      .star .ic { width: 18px; height: 18px; }
       .star:active { transform: scale(1.3); }
       .star.on { color: var(--accent); filter: drop-shadow(0 0 7px var(--accent-soft)); }
-      .wch { appearance: none; cursor: pointer; font: inherit; font-size: 12px; color: var(--faint); background: var(--chip-bg); border: 0.5px solid var(--row-line); border-radius: 999px; padding: 3px 8px; }
+      .wch { appearance: none; cursor: pointer; font: inherit; color: var(--faint); background: var(--chip-bg); border: 0.5px solid var(--row-line); border-radius: 999px; padding: 4px 7px; display: inline-flex; align-items: center; }
+      .wch .ic { width: 14px; height: 14px; }
       .wch.on { color: var(--accent-ink); background: var(--accent); border-color: transparent; }
 
       /* ---- floating bottom tab bar ---- */
@@ -238,6 +265,8 @@
         transition: opacity .25s ease, transform .25s cubic-bezier(0.22,1,0.36,1);
       }
       .tabbar button.active { color: var(--accent); }
+      /* SF-style emphasis: the selected tab's glyph gets a heavier weight */
+      .tabbar button.active svg { stroke-width: 2.4; }
       .tabbar button.active::before { opacity: 1; transform: scale(1); }
       .tabbar button:active { transform: scale(0.95); }
 
@@ -270,6 +299,8 @@
       /* ---- stats ---- */
       .block { margin-bottom: 14px; padding: 13px 16px; border-radius: 18px; }
       .block > h3 { font-size: 13px; font-weight: 700; margin: 0 0 10px; letter-spacing: -0.01em; }
+      .h3ic { display: flex; align-items: center; gap: 6px; }
+      .h3ic .ic { width: 13px; height: 13px; color: var(--accent); }
       table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
       th { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--faint); font-weight: 600; padding: 0 6px 7px; text-align: center; }
       td { padding: 8px 6px; text-align: center; border-top: 0.5px solid var(--row-line); }
@@ -284,8 +315,20 @@
       .statline .k { font-size: 11px; color: var(--muted); font-weight: 500; }
 
       .veil { text-align: center; padding: 34px 20px; border-radius: 20px; color: var(--muted); }
+      .veilic { color: var(--accent); display: inline-block; margin-bottom: 8px; }
+      .veilic .ic { width: 28px; height: 28px; }
       .reveal-btn { appearance: none; cursor: pointer; font: inherit; font-size: 13px; font-weight: 700; margin-top: 16px; padding: 11px 20px; border-radius: 999px; border: none; background: var(--accent); color: var(--accent-ink); box-shadow: 0 6px 22px var(--accent-soft); }
       .reveal-btn:active { transform: scale(0.96); }
+      /* re-hide-all safety net */
+      .resetbar { display: flex; justify-content: center; margin: 2px 0 -2px; }
+      .reset {
+        appearance: none; cursor: pointer; font: inherit; font-size: 12px; font-weight: 600; color: var(--muted);
+        background: var(--card-bg); border: 0.5px solid var(--card-border); border-radius: 999px; padding: 7px 15px;
+        -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: inset 0 1px 0 rgba(255,255,255,var(--card-hi));
+        display: inline-flex; align-items: center; gap: 6px; transition: transform .12s;
+      }
+      .reset .ic { width: 13px; height: 13px; }
+      .reset:active { transform: scale(0.97); }
       .empty { text-align: center; color: var(--muted); padding: 44px 16px; }
       footer { color: var(--faint); font-size: 11px; text-align: center; padding: 24px 16px 8px; line-height: 1.7; }
     </style>
@@ -332,19 +375,19 @@
 
     <nav class="bar tabbar" id="tabs" aria-label="Visninger">
       <button data-view="schedule" class="active">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="3.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.7" width="18" height="16.3" rx="3.6"/><path d="M3 9.3h18M8 2.6v4M16 2.6v4"/></svg>
         <span>Kamper</span>
       </button>
       <button data-view="bracket">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h4v5h5M3 19h4v-5M17 12h4M14 9.5h3.5v5H14"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6v2.6A2 2 0 0 0 6 10.6h4M4 18v-2.6a2 2 0 0 1 2-2h4M10 12h3.2"/><rect x="13.4" y="8.8" width="6.6" height="6.4" rx="1.6"/></svg>
         <span>Sluttspill</span>
       </button>
       <button data-view="stats">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20.5V12M12 20.5V4M19 20.5v-6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20.5V10.5M12 20.5V4.5M19 20.5v-7"/></svg>
         <span>Statistikk</span>
       </button>
       <button data-view="plan">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.75 1-5.75-4.2-4.1 5.8-.85z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2l2.6 5.8 6.3.6-4.7 4.2 1.3 6.2L12 17l-5.8 3.2 1.3-6.2-4.7-4.2 6.3-.6z"/></svg>
         <span>Min&nbsp;plan</span>
       </button>
     </nav>
