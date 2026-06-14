@@ -5,170 +5,370 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>VM 2026</title>
     <meta name="description" content="Følg og ta igjen fotball-VM 2026 — kamper dag for dag, sluttspill, statistikk og spoilerfri reprisplanlegging med direktelenker til NRK TV og TV 2 Play." />
-    <meta name="theme-color" content="#0a0a0b" />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%23000'/%3E%3Ccircle cx='34' cy='50' r='18' fill='none' stroke='%23fff' stroke-width='9'/%3E%3Cpath d='M58 32h18a0 0 0 0 1 0 0v0a18 18 0 0 1-18 18h0a0 0 0 0 1 0 0V32z' fill='%2300e58a'/%3E%3C/svg%3E" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <meta name="theme-color" content="#06070c" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#eaf0fb" media="(prefers-color-scheme: light)" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23000'/%3E%3Ccircle cx='34' cy='50' r='18' fill='none' stroke='%23fff' stroke-width='9'/%3E%3Cpath d='M58 32h18a0 0 0 0 1 0 0v0a18 18 0 0 1-18 18h0a0 0 0 0 1 0 0V32z' fill='%2336e6a4'/%3E%3C/svg%3E" />
     <style>
+      /* ====================================================================
+         Liquid Glass — iOS 26 material. Real light refraction (SVG
+         displacement) on a floating chrome layer, drifting aurora behind it
+         so the refracted light is alive. Content sits on clean, legible
+         surfaces. Built on SF, inset-grouped lists, a floating tab bar.
+         ==================================================================== */
       :root {
-        --bg: #0a0a0b; --surface: #161618; --raise: #1f1f23;
-        --line: rgba(255,255,255,0.1); --line2: rgba(255,255,255,0.2);
-        --fg: #f7f7f8; --muted: #a6a6af; --faint: #7c7c86;
-        --accent: #00e58a; --accent-ink: #00160d;
-        --nrk: #e4002b; --tv2: #2f6bff; --adv: rgba(0,229,138,0.14);
+        color-scheme: dark;
+        --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, "Segoe UI", sans-serif;
+        --accent: #36e6a4; --accent-ink: #03251a; --accent-soft: rgba(54,230,164,0.18);
+        --nrk: #ff4d72; --tv2: #5b8cff;
+        --fg: #f3f6fb; --muted: rgba(228,235,247,0.62); --faint: rgba(228,235,247,0.40);
+
+        --base: #06070c;
+        --c1: #1f5fe0; --c2: #14d8c6; --c3: #6b5bff; --c4: #0fa172;
+
+        --bar-bg: rgba(18,22,32,0.22);
+        --bar-border: rgba(255,255,255,0.18);
+        --bar-hi: 0.55;
+        --edge-top: 0.7; --edge-dk: 0.38; --drop: 0.55; --gleam: 0.55; --gleam-blend: screen;
+        --card-bg: rgba(24,28,38,0.42);
+        --card-border: rgba(255,255,255,0.14);
+        --card-hi: 0.22;
+        --row-line: rgba(255,255,255,0.075);
+        --chip-bg: rgba(255,255,255,0.10);
+        --no-tint: rgba(255,77,114,0.15);
+        --adv: rgba(54,230,164,0.16);
+        --shadow: 0 18px 50px rgba(0,0,0,0.5);
       }
       @media (prefers-color-scheme: light) {
         :root {
-          --bg: #ffffff; --surface: #f4f4f5; --raise: #ececee;
-          --line: rgba(0,0,0,0.1); --line2: rgba(0,0,0,0.22);
-          --fg: #0a0a0b; --muted: #585862; --faint: #87878f;
-          --accent: #00b06a; --accent-ink: #ffffff; --adv: rgba(0,176,106,0.12);
+          color-scheme: light;
+          --accent: #00a868; --accent-ink: #ffffff; --accent-soft: rgba(0,168,104,0.16);
+          --nrk: #e4002b; --tv2: #2f6bff;
+          --fg: #0b0e15; --muted: rgba(33,40,58,0.62); --faint: rgba(33,40,58,0.42);
+
+          --base: #e7edf8;
+          --c1: #a7ccff; --c2: #a3f0e6; --c3: #c6bcff; --c4: #aef0d2;
+
+          --bar-bg: rgba(255,255,255,0.32);
+          --bar-border: rgba(255,255,255,0.85);
+          --bar-hi: 0.9;
+          --edge-top: 0.95; --edge-dk: 0.12; --drop: 0.18; --gleam: 0.7; --gleam-blend: overlay;
+          --card-bg: rgba(255,255,255,0.5);
+          --card-border: rgba(255,255,255,0.8);
+          --card-hi: 0.85;
+          --row-line: rgba(15,23,42,0.08);
+          --chip-bg: rgba(255,255,255,0.6);
+          --no-tint: rgba(228,0,43,0.10);
+          --adv: rgba(0,168,104,0.13);
+          --shadow: 0 18px 44px rgba(28,40,75,0.16);
         }
       }
       * { box-sizing: border-box; }
       html { -webkit-text-size-adjust: 100%; }
       body {
-        margin: 0; background: var(--bg); color: var(--fg);
-        font-family: "Noto Sans", system-ui, sans-serif;
-        font-size: 15px; line-height: 1.45; -webkit-font-smoothing: antialiased;
-        padding-bottom: calc(env(safe-area-inset-bottom, 0) + 28px);
+        margin: 0; color: var(--fg); background: var(--base);
+        font-family: var(--sans);
+        font-size: 15px; line-height: 1.45; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+        padding-bottom: calc(env(safe-area-inset-bottom, 0) + 104px);
+        overflow-x: hidden;
       }
-      .wrap { max-width: 580px; margin: 0 auto; padding: 0 16px; }
+      /* ---- living aurora: drifting modern hues, the light that gets refracted ---- */
+      body::before {
+        content: ""; position: fixed; inset: -25%; z-index: -2;
+        background:
+          radial-gradient(38% 38% at 18% 22%, var(--c1), transparent 60%),
+          radial-gradient(42% 42% at 82% 16%, var(--c2), transparent 60%),
+          radial-gradient(46% 46% at 70% 82%, var(--c3), transparent 62%),
+          radial-gradient(40% 40% at 22% 88%, var(--c4), transparent 60%);
+        filter: saturate(150%);
+        animation: drift 26s ease-in-out infinite alternate;
+        will-change: transform;
+      }
+      @keyframes drift {
+        0%   { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+        50%  { transform: translate3d(-3%, 2.5%, 0) rotate(2deg) scale(1.08); }
+        100% { transform: translate3d(3.5%, -2%, 0) rotate(-2deg) scale(1.05); }
+      }
+      @media (prefers-reduced-motion: reduce) { body::before { animation: none; } }
+      .glassfx { position: fixed; width: 0; height: 0; }
+      .wrap { max-width: 600px; margin: 0 auto; padding: 0 16px; }
       a { color: inherit; text-decoration: none; }
 
-      /* ---- header ---- */
-      header {
-        position: sticky; top: 0; z-index: 30; background: var(--bg);
-        border-bottom: 1px solid var(--line); padding-top: max(10px, env(safe-area-inset-top, 0));
+      /* ---- the glass material (chrome layer only) ---- */
+      .bar {
+        position: relative; overflow: hidden;
+        background: var(--bar-bg);
+        /* Fallback (Safari, which can't do url() refraction): clear frost */
+        -webkit-backdrop-filter: blur(10px) saturate(195%) brightness(1.08);
+        backdrop-filter: blur(10px) saturate(195%) brightness(1.08);
+        border: 1px solid transparent;
+        box-shadow:
+          /* thick beveled glass edge: light catches the top/left, dark depth bottom/right */
+          inset 0 2px 1px -0.5px rgba(255,255,255,var(--edge-top)),
+          inset 1.5px 0 1px -0.5px rgba(255,255,255,calc(var(--edge-top) * 0.55)),
+          inset -1.5px 0 1px -0.5px rgba(0,0,0,var(--edge-dk)),
+          inset 0 -2.5px 2px -1px rgba(0,0,0,var(--edge-dk)),
+          inset 0 0 0 1px rgba(255,255,255,calc(var(--edge-top) * 0.22)),
+          /* chromatic dispersion at the rim */
+          inset 2px 0 9px -6px rgba(86,170,255,0.6),
+          inset -2px 0 9px -6px rgba(255,110,205,0.55),
+          0 22px 50px -8px rgba(0,0,0,var(--drop));                              /* float */
       }
-      .brand { display: flex; align-items: center; gap: 10px; padding: 2px 0 10px; }
-      .mark { width: 26px; height: 26px; flex: none; }
-      .brand h1 { font-size: 20px; font-weight: 900; letter-spacing: -0.03em; margin: 0; }
-      .brand .sub { font-size: 11.5px; color: var(--muted); font-weight: 500; margin-left: 2px; }
-      .eye {
-        margin-left: auto; appearance: none; cursor: pointer; font: inherit; font-size: 11px;
-        font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted);
-        background: none; border: 1px solid var(--line2); border-radius: 999px; padding: 6px 13px;
-        display: inline-flex; align-items: center; gap: 6px;
+      /* Real refraction: bend the actual backdrop (DOM + aurora) through the glass.
+         Applied to the element itself so it samples the page, not an isolated group. */
+      @supports (backdrop-filter: url(#liquid)) {
+        .bar {
+          -webkit-backdrop-filter: url(#liquid);
+          backdrop-filter: url(#liquid);
+        }
       }
-      .eye.on { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
-
-      nav.tabs { display: flex; gap: 22px; }
-      nav.tabs button {
-        appearance: none; background: none; border: none; cursor: pointer; font: inherit;
-        font-size: 14px; font-weight: 700; color: var(--muted); padding: 7px 0 12px;
-        position: relative; letter-spacing: -0.01em;
+      /* convex specular highlight + a gleam that follows the pointer — reads as glass
+         catching the light, and works in every browser */
+      .bar::after {
+        content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 1;
+        background:
+          radial-gradient(55% 90% at var(--gx, 50%) var(--gy, 0%), rgba(255,255,255,var(--gleam)), rgba(255,255,255,0) 62%),
+          linear-gradient(180deg, rgba(255,255,255,0.30), rgba(255,255,255,0) 24%),
+          linear-gradient(0deg, rgba(255,255,255,0.10), rgba(255,255,255,0) 30%);
+        mix-blend-mode: var(--gleam-blend);
       }
-      nav.tabs button.active { color: var(--fg); }
-      nav.tabs button.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: var(--accent); }
+      .bar > * { position: relative; z-index: 2; }
 
-      main { padding-top: 14px; }
+      /* ---- large title: part of the scroll content, no top chrome bar
+         (only the bottom tab bar floats — keeps the design consistent) ---- */
+      .titlehead { display: flex; align-items: center; gap: 12px; padding: calc(env(safe-area-inset-top, 0) + 22px) 0 6px; }
+      .mark { width: 34px; height: 34px; flex: none; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3)); }
+      .titlehead h1 { font-size: 30px; font-weight: 800; letter-spacing: -0.03em; margin: 0; line-height: 1; }
+      .titlehead .sub { font-size: 13px; color: var(--muted); font-weight: 500; }
 
-      /* ---- day headers (continuous, anchored week view) ---- */
-      .day { display: flex; align-items: baseline; gap: 10px; margin: 24px 0 6px; padding-bottom: 7px; border-bottom: 1px solid var(--line2); scroll-margin-top: 116px; }
-      .day:first-of-type { margin-top: 4px; }
-      .day .dl { font-size: 14px; font-weight: 600; color: var(--muted); }
-      .day .dl b { color: var(--fg); font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
-      .dcount { margin-left: auto; font-size: 11px; color: var(--muted); font-weight: 600; white-space: nowrap; }
-      .night { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 12px 0 0; padding-left: 2px; }
+      main { padding-top: 6px; }
+
+      /* ---- inset-grouped day list ---- */
+      .day-head { display: flex; align-items: baseline; gap: 10px; margin: 22px 6px 8px; scroll-margin-top: 14px; }
+      .day-head:first-of-type { margin-top: 8px; }
+      .day-head .dl { font-size: 13px; font-weight: 500; color: var(--muted); letter-spacing: -0.01em; }
+      .day-head .dl b { color: var(--fg); font-weight: 700; }
+      .dcount { margin-left: auto; font-size: 12px; color: var(--faint); font-weight: 500; white-space: nowrap; }
+      .night { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--faint); margin: 12px 0 2px; padding-left: 2px; }
+
+      .card {
+        background: var(--card-bg);
+        -webkit-backdrop-filter: blur(7px) saturate(170%) brightness(1.04);
+        backdrop-filter: blur(7px) saturate(170%) brightness(1.04);
+        border: 1px solid var(--card-border);
+        border-radius: 22px;
+        box-shadow:
+          inset 0 1.5px 0 rgba(255,255,255,var(--card-hi)),                /* thin glass top edge */
+          inset 0 -1.5px 1px rgba(0,0,0,calc(var(--edge-dk) * 0.6)),        /* depth */
+          var(--shadow);
+        animation: rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      .card.group { padding: 2px 16px; margin: 0 0 22px; overflow: hidden; }
+      @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
       /* ---- match row (compact, one line) ---- */
-      .m { display: grid; grid-template-columns: 38px 1fr auto; align-items: center; gap: 9px; padding: 8px 0; border-bottom: 1px solid var(--line); }
-      .m.no { margin: 0 -10px; padding: 8px 10px; background: linear-gradient(90deg, rgba(228,0,43,0.11), transparent 70%); border-left: 3px solid var(--nrk); }
-      .m .lt { font-size: 12px; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; }
-      .m .live { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--nrk); animation: pulse 1.4s infinite; }
+      .m { display: grid; grid-template-columns: 40px 1fr auto; align-items: center; gap: 9px; padding: 10px 0; border-bottom: 0.5px solid var(--row-line); }
+      .m:last-child { border-bottom: none; }
+      .m.no { margin: 0 -16px; padding: 10px 16px; background: linear-gradient(90deg, var(--no-tint), transparent 72%); box-shadow: inset 3px 0 0 var(--nrk); }
+      /* reprise-ready (last night's catch-up) pops with an accent band; played-and-seen
+         history is de-emphasised; upcoming stays normal weight */
+      .m-rep:not(.no) { margin: 0 -16px; padding: 10px 16px; background: linear-gradient(90deg, var(--accent-soft), transparent 76%); box-shadow: inset 3px 0 0 var(--accent); }
+      .m-done { opacity: 0.6; }
+      .when.rep { color: var(--accent); font-weight: 700; font-size: 11.5px; letter-spacing: -0.02em; }
+      .when.na { color: var(--nrk); font-weight: 700; }
+      .dcount .c-rep { color: var(--accent); font-weight: 700; }
+      .dcount .c-live { color: var(--nrk); font-weight: 700; }
+      .m .lt { font-size: 12px; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
+      .m .live { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--nrk); box-shadow: 0 0 9px var(--nrk); animation: pulse 1.4s infinite; }
       @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
       .teams { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px; min-width: 0; }
       .hh { display: flex; align-items: center; justify-content: flex-end; gap: 7px; min-width: 0; }
       .aa { display: flex; align-items: center; gap: 7px; min-width: 0; }
-      .teams .nm { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-      .teams img { width: 19px; height: 19px; object-fit: contain; flex: none; }
-      .md { font-size: 14px; font-weight: 800; font-variant-numeric: tabular-nums; min-width: 30px; text-align: center; }
-      .md.hide { color: var(--faint); cursor: pointer; font-weight: 700; letter-spacing: 1px; }
-      .md.hide:hover { color: var(--muted); }
-      .md.vs { color: var(--faint); font-weight: 600; }
-      .act { display: flex; align-items: center; gap: 6px; }
-      .go {
-        appearance: none; cursor: pointer; font: inherit; font-size: 11px; font-weight: 800;
-        padding: 4px 8px; border-radius: 7px; border: 1px solid var(--line); background: var(--surface);
-        color: var(--fg); display: inline-flex; align-items: center; gap: 3px; white-space: nowrap;
+      .teams .nm { font-size: 14px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: -0.01em; }
+      .teams img { width: 20px; height: 20px; object-fit: contain; flex: none; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.22)); }
+      /* fixed score-column width so home/away align across rows regardless of
+         score vs "vs" vs hidden pill */
+      .md { font-size: 14px; font-weight: 700; font-variant-numeric: tabular-nums; min-width: 46px; box-sizing: border-box; text-align: center; }
+      .md.vs { color: var(--faint); font-weight: 500; }
+      .md.hide {
+        color: var(--muted); cursor: pointer; font-weight: 700; font-size: 11px; letter-spacing: 0.4px;
+        background: var(--chip-bg); border: 0.5px solid var(--row-line); border-radius: 999px; padding: 3px 0;
+        -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+        box-shadow: inset 0 0.5px 0 rgba(255,255,255,0.25); transition: color .15s, transform .12s;
       }
-      .go.nrk { background: var(--nrk); border-color: var(--nrk); color: #fff; }
-      .go.tv2 { background: var(--tv2); border-color: var(--tv2); color: #fff; }
-      .go.ghost { background: transparent; color: var(--muted); }
-      .star { appearance: none; background: none; border: none; cursor: pointer; font-size: 15px; color: var(--faint); padding: 0 1px; line-height: 1; }
-      .star.on { color: var(--accent); }
-      .wch { appearance: none; cursor: pointer; font: inherit; font-size: 12px; color: var(--faint); background: none; border: 1px solid var(--line); border-radius: 6px; padding: 2px 7px; }
-      .wch.on { color: var(--accent); border-color: var(--accent); }
+      .md.hide:active { transform: scale(0.92); }
+      .md.hide:hover { color: var(--fg); }
+      /* fixed action-column width so the replay button / star always sit in the same
+         right-hand column — rows with and without a result no longer shift */
+      .act { display: flex; align-items: center; justify-content: flex-end; gap: 6px; min-width: 92px; }
+      .go {
+        appearance: none; cursor: pointer; font: inherit; font-size: 11px; font-weight: 700;
+        padding: 5px 11px; border-radius: 999px; border: 0.5px solid var(--row-line); color: var(--fg);
+        background: var(--chip-bg); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+        box-shadow: inset 0 0.5px 0 rgba(255,255,255,0.25); display: inline-flex; align-items: center; gap: 3px; white-space: nowrap;
+        transition: transform .12s ease;
+      }
+      .go:active { transform: scale(0.94); }
+      .go.nrk { background: var(--nrk); border-color: transparent; color: #fff; box-shadow: 0 4px 15px rgba(255,77,114,0.42), inset 0 0.5px 0 rgba(255,255,255,0.3); }
+      .go.tv2 { background: var(--tv2); border-color: transparent; color: #fff; box-shadow: 0 4px 15px rgba(91,140,255,0.42), inset 0 0.5px 0 rgba(255,255,255,0.3); }
+      .go.ghost { color: var(--muted); }
+      .star { appearance: none; background: none; border: none; cursor: pointer; font-size: 16px; color: var(--faint); padding: 0 1px; line-height: 1; transition: transform .12s ease; }
+      .star:active { transform: scale(1.3); }
+      .star.on { color: var(--accent); filter: drop-shadow(0 0 7px var(--accent-soft)); }
+      .wch { appearance: none; cursor: pointer; font: inherit; font-size: 12px; color: var(--faint); background: var(--chip-bg); border: 0.5px solid var(--row-line); border-radius: 999px; padding: 3px 8px; }
+      .wch.on { color: var(--accent-ink); background: var(--accent); border-color: transparent; }
+
+      /* ---- floating bottom tab bar ---- */
+      .tabbar {
+        position: fixed; left: 50%; transform: translateX(-50%); z-index: 50;
+        bottom: calc(env(safe-area-inset-bottom, 0) + 14px);
+        width: min(calc(100% - 24px), 460px);
+        display: flex; gap: 2px; padding: 7px; border-radius: 26px;
+      }
+      .tabbar button {
+        appearance: none; background: none; border: none; cursor: pointer; font: inherit;
+        flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
+        padding: 7px 4px 5px; border-radius: 18px; color: var(--muted);
+        position: relative; transition: color .2s ease;
+      }
+      .tabbar button svg { width: 23px; height: 23px; }
+      .tabbar button span { font-size: 10px; font-weight: 600; letter-spacing: -0.02em; white-space: nowrap; }
+      .tabbar button::before {
+        content: ""; position: absolute; inset: 0; border-radius: 18px; z-index: -1;
+        background: var(--accent-soft); opacity: 0; transform: scale(0.85);
+        transition: opacity .25s ease, transform .25s cubic-bezier(0.22,1,0.36,1);
+      }
+      .tabbar button.active { color: var(--accent); }
+      .tabbar button.active::before { opacity: 1; transform: scale(1); }
+      .tabbar button:active { transform: scale(0.95); }
 
       /* ---- bracket ---- */
       .bracket { display: flex; gap: 12px; overflow-x: auto; padding: 4px 2px 16px; }
-      .round { flex: none; width: 178px; }
-      .round > h4 { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--faint); font-weight: 800; margin: 0 0 9px; }
-      .tie { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; margin-bottom: 9px; }
-      .tie.final { border-color: var(--accent); }
+      .round { flex: none; width: 184px; }
+      .round > h4 { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--faint); font-weight: 700; margin: 0 0 9px; }
+      .tie, .veil, .block {
+        background: var(--card-bg);
+        -webkit-backdrop-filter: blur(7px) saturate(170%) brightness(1.04);
+        backdrop-filter: blur(7px) saturate(170%) brightness(1.04);
+        border: 1px solid var(--card-border);
+        box-shadow: inset 0 1.5px 0 rgba(255,255,255,var(--card-hi)), inset 0 -1.5px 1px rgba(0,0,0,calc(var(--edge-dk) * 0.6)), var(--shadow);
+      }
+      .tie { border-radius: 16px; padding: 9px 12px; margin-bottom: 10px; }
+      .tie.final { border-color: var(--accent); box-shadow: inset 0 1px 0 rgba(255,255,255,var(--card-hi)), 0 8px 26px var(--accent-soft); }
       .t { display: flex; align-items: center; gap: 7px; padding: 2px 0; font-size: 13px; }
-      .t img { width: 16px; height: 16px; object-fit: contain; flex: none; }
+      .t img { width: 17px; height: 17px; object-fit: contain; flex: none; }
       .t .nm { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--muted); }
-      .t.known .nm { color: var(--fg); font-weight: 700; }
+      .t.known .nm { color: var(--fg); font-weight: 600; }
       .t.win .nm { color: var(--accent); }
-      .t .g { margin-left: auto; font-weight: 800; font-variant-numeric: tabular-nums; }
+      .t .g { margin-left: auto; font-weight: 700; font-variant-numeric: tabular-nums; }
       .t.cand { flex-wrap: wrap; }
-      .t .lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.03em; color: var(--faint); font-weight: 700; width: 100%; }
+      .t .lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.03em; color: var(--faint); font-weight: 600; width: 100%; }
       .cfs { display: flex; gap: 3px; flex-wrap: wrap; }
       .cf { width: 17px; height: 17px; object-fit: contain; opacity: 0.5; }
       .cf.lead { opacity: 1; outline: 2px solid var(--accent); border-radius: 3px; }
-      .dt { font-size: 10.5px; color: var(--faint); margin-top: 5px; font-weight: 600; }
+      .dt { font-size: 10.5px; color: var(--faint); margin-top: 6px; font-weight: 500; }
 
       /* ---- stats ---- */
-      .block { margin-bottom: 22px; }
-      .block > h3 { font-size: 13px; font-weight: 800; margin: 0 0 9px; }
+      .block { margin-bottom: 14px; padding: 13px 16px; border-radius: 18px; }
+      .block > h3 { font-size: 13px; font-weight: 700; margin: 0 0 10px; letter-spacing: -0.01em; }
       table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
-      th { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--faint); font-weight: 700; padding: 0 6px 7px; text-align: center; }
-      td { padding: 8px 6px; text-align: center; border-top: 1px solid var(--line); }
+      th { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--faint); font-weight: 600; padding: 0 6px 7px; text-align: center; }
+      td { padding: 8px 6px; text-align: center; border-top: 0.5px solid var(--row-line); }
       th.l, td.l { text-align: left; }
-      td.team { display: flex; align-items: center; gap: 9px; font-weight: 600; }
+      td.team { display: flex; align-items: center; gap: 9px; font-weight: 500; }
       td.team img { width: 18px; height: 18px; object-fit: contain; }
       tr.adv td { background: var(--adv); }
       td .rk { color: var(--faint); min-width: 20px; margin-right: 8px; display: inline-block; text-align: right; }
-      .pts { font-weight: 800; }
-      .statline { display: flex; gap: 22px; padding: 2px 0 18px; }
-      .statline .n { font-size: 26px; font-weight: 900; letter-spacing: -0.03em; }
-      .statline .k { font-size: 11px; color: var(--muted); font-weight: 600; }
+      .pts { font-weight: 700; }
+      .statline { display: flex; gap: 26px; padding: 4px 4px 16px; }
+      .statline .n { font-size: 30px; font-weight: 800; letter-spacing: -0.03em; }
+      .statline .k { font-size: 11px; color: var(--muted); font-weight: 500; }
 
-      .veil { text-align: center; padding: 32px 18px; border: 1px dashed var(--line2); border-radius: 14px; color: var(--muted); }
-      .reveal-btn { appearance: none; cursor: pointer; font: inherit; font-size: 13px; font-weight: 700; margin-top: 14px; padding: 9px 16px; border-radius: 9px; border: none; background: var(--accent); color: var(--accent-ink); }
+      .veil { text-align: center; padding: 34px 20px; border-radius: 20px; color: var(--muted); }
+      .reveal-btn { appearance: none; cursor: pointer; font: inherit; font-size: 13px; font-weight: 700; margin-top: 16px; padding: 11px 20px; border-radius: 999px; border: none; background: var(--accent); color: var(--accent-ink); box-shadow: 0 6px 22px var(--accent-soft); }
+      .reveal-btn:active { transform: scale(0.96); }
       .empty { text-align: center; color: var(--muted); padding: 44px 16px; }
-      footer { color: var(--faint); font-size: 11px; text-align: center; padding: 28px 16px 8px; line-height: 1.7; }
+      footer { color: var(--faint); font-size: 11px; text-align: center; padding: 24px 16px 8px; line-height: 1.7; }
     </style>
   </head>
   <body>
-    <header>
-      <div class="wrap">
-        <div class="brand">
-          <svg class="mark" viewBox="0 0 100 100" aria-hidden="true">
-            <circle cx="33" cy="52" r="20" fill="none" stroke="currentColor" stroke-width="10" />
-            <path d="M60 28h22a0 0 0 0 1 0 0a22 22 0 0 1-22 22h0V28z" fill="var(--accent)" />
-            <rect x="60" y="56" width="22" height="16" rx="2" fill="currentColor" />
-          </svg>
-          <h1>VM 2026</h1>
-          <span class="sub">følg &amp; ta igjen</span>
-          <button class="eye" id="spoilerToggle">🙈 <span id="modeLabel">Spoilerfri</span></button>
-        </div>
-        <nav class="tabs" id="tabs">
-          <button data-view="schedule" class="active">Kamper</button>
-          <button data-view="bracket">Sluttspill</button>
-          <button data-view="stats">Statistikk</button>
-          <button data-view="plan">Min plan</button>
-        </nav>
+    <!-- SVG glass distortion: turbulence drives a displacement map that bends the
+         refracted backdrop, the defining optical trait of Liquid Glass. -->
+    <svg class="glassfx" aria-hidden="true">
+      <!-- Apple-style edge lens: two gradient displacement maps bend the backdrop only
+           near the rounded edges (neutral 128 in the centre band), so light refracts
+           through the rim like a real glass lozenge; a faint turbulence adds life. -->
+      <filter id="liquid" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+        <feImage href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22240%22%20height%3D%22120%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%220%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22rgb(255%2C128%2C128)%22%2F%3E%3Cstop%20offset%3D%220.30%22%20stop-color%3D%22rgb(128%2C128%2C128)%22%2F%3E%3Cstop%20offset%3D%220.70%22%20stop-color%3D%22rgb(128%2C128%2C128)%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22rgb(0%2C128%2C128)%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22240%22%20height%3D%22120%22%20fill%3D%22url(%23g)%22%2F%3E%3C%2Fsvg%3E" result="xm" preserveAspectRatio="none" x="0" y="0" width="100%" height="100%" />
+        <feImage href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22240%22%20height%3D%22120%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22rgb(128%2C255%2C128)%22%2F%3E%3Cstop%20offset%3D%220.30%22%20stop-color%3D%22rgb(128%2C128%2C128)%22%2F%3E%3Cstop%20offset%3D%220.70%22%20stop-color%3D%22rgb(128%2C128%2C128)%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22rgb(128%2C0%2C128)%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22240%22%20height%3D%22120%22%20fill%3D%22url(%23g)%22%2F%3E%3C%2Fsvg%3E" result="ym" preserveAspectRatio="none" x="0" y="0" width="100%" height="100%" />
+        <feGaussianBlur in="xm" stdDeviation="9" result="xmb" />
+        <feGaussianBlur in="ym" stdDeviation="9" result="ymb" />
+        <feDisplacementMap in="SourceGraphic" in2="xmb" scale="34" xChannelSelector="R" yChannelSelector="B" result="dx" />
+        <feDisplacementMap in="dx" in2="ymb" scale="34" xChannelSelector="B" yChannelSelector="G" result="dxy" />
+        <feTurbulence type="fractalNoise" baseFrequency="0.012 0.016" numOctaves="2" seed="9" result="t" />
+        <feDisplacementMap in="dxy" in2="t" scale="9" xChannelSelector="R" yChannelSelector="G" result="rip" />
+        <feGaussianBlur in="rip" stdDeviation="2.2" result="frost" />
+        <feColorMatrix in="frost" type="saturate" values="1.7" />
+      </filter>
+    </svg>
+
+    <div class="wrap titlehead">
+      <svg class="mark" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="33" cy="52" r="20" fill="none" stroke="currentColor" stroke-width="10" />
+        <path d="M60 28h22a0 0 0 0 1 0 0a22 22 0 0 1-22 22h0V28z" fill="var(--accent)" />
+        <rect x="60" y="56" width="22" height="16" rx="2" fill="currentColor" />
+      </svg>
+      <div>
+        <h1>VM 2026</h1>
+        <span class="sub">følg &amp; ta igjen</span>
       </div>
-    </header>
+    </div>
+
     <main class="wrap" id="app"><div class="empty">Laster …</div></main>
+
     <footer>
       Data: ESPN · Reprise: NRK TV &amp; TV 2 Play · Alle tider i Oslo-tid<br />
-      Spoilerfri som standard — skru på spoiler for å ta igjen resultater, tabeller og toppscorere.
+      Spoilerfri av seg selv: nattens og gårsdagens resultater er skjult til du har sett dem — eldre kamper vises automatisk. Trykk på et resultat for å avsløre én kamp.
     </footer>
+
+    <nav class="bar tabbar" id="tabs" aria-label="Visninger">
+      <button data-view="schedule" class="active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="3.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg>
+        <span>Kamper</span>
+      </button>
+      <button data-view="bracket">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h4v5h5M3 19h4v-5M17 12h4M14 9.5h3.5v5H14"/></svg>
+        <span>Sluttspill</span>
+      </button>
+      <button data-view="stats">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20.5V12M12 20.5V4M19 20.5v-6"/></svg>
+        <span>Statistikk</span>
+      </button>
+      <button data-view="plan">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.75L12 16.9l-5.2 2.75 1-5.75-4.2-4.1 5.8-.85z"/></svg>
+        <span>Min&nbsp;plan</span>
+      </button>
+    </nav>
+
     <script>
+      // Pointer-reactive specular gleam: the highlight on each glass bar tracks the
+      // cursor/touch, so the glass visibly "catches the light" as you move — a reliable
+      // liquid-glass cue in every browser. Idle, a slow drift keeps it alive.
+      (function () {
+        const bars = () => document.querySelectorAll(".bar");
+        let raf = 0;
+        const place = (x, y) => {
+          cancelAnimationFrame(raf);
+          raf = requestAnimationFrame(() => {
+            bars().forEach((el) => {
+              const r = el.getBoundingClientRect();
+              el.style.setProperty("--gx", Math.max(-20, Math.min(120, ((x - r.left) / r.width) * 100)) + "%");
+              el.style.setProperty("--gy", Math.max(-40, Math.min(140, ((y - r.top) / r.height) * 100)) + "%");
+            });
+          });
+        };
+        addEventListener("pointermove", (e) => place(e.clientX, e.clientY), { passive: true });
+      })();
+
       // Load app.js with a cache-busting version tied to the latest data build,
       // so a fresh deploy is never masked by a stale cached script.
       fetch("data/meta.json", { cache: "no-store" })

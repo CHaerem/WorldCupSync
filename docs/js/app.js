@@ -1,7 +1,13 @@
 // VM 2026 — follow & catch up on the World Cup.
-// Spoiler rule: results (scores, standings, scorers, bracket winners) are HIDDEN by
-// default; revealed per-match or via global spoiler mode. Fixtures, times, replay
-// links and the bracket *structure* are always safe to show.
+// Spoilers are gated AUTOMATICALLY — there is no global on/off mode. The real pain
+// is opening the app the morning after and being spoiled by *last night's* matches,
+// so a finished match's result (score, bracket winner) stays hidden only while it's
+// still fresh — today's + overnight + yesterday's programme. Anything from 2+
+// programme-days ago auto-reveals (you've moved on). A match you starred but haven't
+// marked watched stays hidden regardless of age — you still plan to see it. You can
+// always tap a single hidden result to reveal just that match. Fixtures, times,
+// replay links and the bracket *structure* are always safe to show. Statistikk is an
+// aggregate spoiler, so it's revealed with one tap per visit (not persisted).
 
 const MONTHS = ["januar","februar","mars","april","mai","juni","juli","august","september","oktober","november","desember"];
 const WD = ["søn","man","tir","ons","tor","fre","lør"];
@@ -12,10 +18,10 @@ const LS = {
 const state = {
   matches: [], groups: [], stats: null,
   view: "schedule",
-  spoiler: LS.get("spoiler", false),
   revealed: new Set(LS.get("revealed", [])),
   watched: new Set(LS.get("watched", [])),
   plan: new Set(LS.get("plan", [])),
+  statsShown: false, // session-only: stats are aggregate spoilers, revealed per visit
 };
 const app = document.getElementById("app");
 const todayOslo = () => new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Oslo" }).format(new Date());
@@ -35,7 +41,15 @@ async function load() {
 }
 
 // ---------- helpers ----------
-const isRevealed = (m) => state.spoiler || state.revealed.has(m.id);
+// A finished match is "stale" once its programme day is GRACE_DAYS or more before
+// today (Oslo): today=0, yesterday=1 stay hidden; 2+ days ago auto-reveals.
+const GRACE_DAYS = 2;
+const dayDiff = (a, b) => Math.round((Date.parse(a + "T00:00:00Z") - Date.parse(b + "T00:00:00Z")) / 86400000);
+const planUnwatched = (m) => state.plan.has(m.id) && !state.watched.has(m.id);
+const isStale = (m) => m.completed && dayDiff(todayOslo(), programDate(m)) >= GRACE_DAYS;
+// No global spoiler mode: a result shows automatically once it's stale (and not a
+// match you've starred to watch), or when you tap to reveal that single match.
+const isRevealed = (m) => state.revealed.has(m.id) || (isStale(m) && !planUnwatched(m));
 const isNO = (m) => m.home?.name === "Norway" || m.away?.name === "Norway";
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const ROUND = { "group-stage": "Gruppespill","round-of-32":"16-delsfinale","round-of-16":"8-delsfinale",quarterfinals:"Kvartfinale",semifinals:"Semifinale","3rd-place-match":"Bronsefinale",final:"Finale" };
@@ -58,7 +72,16 @@ function primaryLinks(m) {
 function matchRow(m, opts = {}) {
   const live = m.state === "in", post = m.completed, reveal = isRevealed(m);
   const onPlan = state.plan.has(m.id), watched = state.watched.has(m.id);
-  const lt = live ? `<span class="live" title="spilles nå"></span>` : `<span class="when">${m.osloTime}</span>`;
+  // A finished match still inside the catch-up window (hidden score = fresh, e.g.
+  // last night's) is precisely a "natt-kamp klar for reprise" — flag it so it pops.
+  // Older finished matches (auto-revealed) fade back as history.
+  const repro = post && !live && !reveal;
+  const status = live ? "m-live" : repro ? "m-rep" : post ? "m-done" : "m-up";
+  const lt = live
+    ? `<span class="live" title="spilles nå"></span><span class="when na">Nå</span>`
+    : repro
+      ? `<span class="when rep" title="Klar for reprise">▶ ${m.osloTime}</span>`
+      : `<span class="when">${m.osloTime}</span>`;
   const md = (post || live)
     ? (reveal ? `<span class="md">${m.home?.score ?? "-"}–${m.away?.score ?? "-"}</span>` : `<span class="md hide" data-reveal="${m.id}" title="Vis resultat">–&nbsp;–</span>`)
     : `<span class="md vs">–</span>`;
@@ -66,7 +89,7 @@ function matchRow(m, opts = {}) {
   if (post || live) { const l = primaryLinks(m)[0]; if (l) act += `<a class="go ${l.cls}" href="${l.href}" target="_blank" rel="noopener" title="Se reprise — ${l.label}">${l.ico} ${l.short}</a>`; }
   if (opts.plan && post) act += `<button class="wch ${watched ? "on" : ""}" data-watched="${m.id}" title="Marker sett">✓</button>`;
   act += `<button class="star ${onPlan ? "on" : ""}" data-plan="${m.id}" title="Min plan">${onPlan ? "★" : "☆"}</button>`;
-  return `<div class="m${isNO(m) ? " no" : ""}">
+  return `<div class="m ${status}${isNO(m) ? " no" : ""}">
     <div class="lt">${lt}</div>
     <div class="teams">
       <span class="hh"><span class="nm">${esc(m.home?.name || "TBD")}</span>${m.home?.logo ? `<img src="${m.home.logo}" alt="" loading="lazy"/>` : ""}</span>
@@ -98,16 +121,29 @@ function viewSchedule() {
     const ms = byDay[p].sort((a, b) => new Date(a.date) - new Date(b.date));
     const f = fmtDay(p), rel = relLabel(p);
     const lbl = rel ? `<b>${rel}</b> · ${f.label.toLowerCase()}` : f.label;
-    let h = `<div class="day${p === anchor ? " anchor" : ""}"${p === anchor ? ' id="anchor"' : ""}><span class="dl">${lbl}</span><span class="dcount">${ms.length} ${ms.length === 1 ? "kamp" : "kamper"}</span></div>`;
+    let rows = "";
     let night = false;
     for (const m of ms) {
       if (!night && parseInt(m.osloTime.slice(0, 2), 10) < 6) {
-        h += `<div class="night">🌙 natt til ${WDFULL[new Date(m.osloDate + "T12:00:00Z").getUTCDay()]}</div>`;
+        rows += `<div class="night">🌙 natt til ${WDFULL[new Date(m.osloDate + "T12:00:00Z").getUTCDay()]}</div>`;
         night = true;
       }
-      h += matchRow(m);
+      rows += matchRow(m);
     }
-    return h;
+    // count split makes "klar for reprise" vs "kommer" obvious at a glance
+    let rep = 0, played = 0, up = 0, liveN = 0;
+    for (const x of ms) {
+      if (x.state === "in") liveN++;
+      else if (x.completed) (isRevealed(x) ? played++ : rep++);
+      else up++;
+    }
+    const cparts = [];
+    if (liveN) cparts.push(`<b class="c-live">${liveN} direkte</b>`);
+    if (rep) cparts.push(`<b class="c-rep">${rep} reprise</b>`);
+    if (played) cparts.push(`<span>${played} spilt</span>`);
+    if (up) cparts.push(`<span>${up} kommer</span>`);
+    // iOS inset-grouped style: a muted section header above a rounded content card
+    return `<div class="day-head"${p === anchor ? ' id="anchor"' : ""}><span class="dl">${lbl}</span><span class="dcount">${cparts.join(" · ")}</span></div><section class="card group">${rows}</section>`;
   }).join("");
 }
 
@@ -135,20 +171,20 @@ function viewBracket() {
   const cols = order.map((rn) => ({ rn, ties: state.matches.filter((m) => m.roundNote === rn).sort((a, b) => new Date(a.date) - new Date(b.date)) })).filter((c) => c.ties.length);
   if (!cols.length) return `<div class="empty">Sluttspillet er ikke satt opp ennå.</div>`;
   const gmap = {}; for (const g of state.groups) gmap[g.name] = g.entries;
-  const team = (x, post) => {
+  const team = (x, reveal) => {
     const known = x?.name && !isPH(x.name);
     if (known) {
-      const w = state.spoiler && post && x.winner ? " win" : "";
-      return `<div class="t known${w}">${x.logo ? `<img src="${x.logo}" alt=""/>` : ""}<span class="nm">${esc(x.name)}</span>${state.spoiler && post && x.score != null ? `<span class="g">${x.score}</span>` : ""}</div>`;
+      const w = reveal && x.winner ? " win" : "";
+      return `<div class="t known${w}">${x.logo ? `<img src="${x.logo}" alt=""/>` : ""}<span class="nm">${esc(x.name)}</span>${reveal && x.score != null ? `<span class="g">${x.score}</span>` : ""}</div>`;
     }
     const c = slotCandidates(x?.name, gmap);
     if (c) {
-      const flags = c.teams.map((e, i) => `<img class="cf${state.spoiler && c.pos && i === c.pos - 1 ? " lead" : ""}" src="${e.logo}" title="${esc(e.team)}" alt=""/>`).join("");
+      const flags = c.teams.map((e) => `<img class="cf" src="${e.logo}" title="${esc(e.team)}" alt=""/>`).join("");
       return `<div class="t cand"><span class="lbl">${esc(short(x?.name))}</span><span class="cfs">${flags}</span></div>`;
     }
     return `<div class="t"><span class="nm">${esc(short(x?.name) || "—")}</span></div>`;
   };
-  const tie = (m, fin) => { const [, mo, d] = m.osloDate.split("-").map(Number); return `<div class="tie ${fin ? "final" : ""}">${team(m.home, m.completed)}${team(m.away, m.completed)}<div class="dt">${d}. ${MONTHS[mo - 1].slice(0, 3)} · ${m.osloTime}</div></div>`; };
+  const tie = (m, fin) => { const [, mo, d] = m.osloDate.split("-").map(Number); const r = isRevealed(m); return `<div class="tie ${fin ? "final" : ""}">${team(m.home, r)}${team(m.away, r)}<div class="dt">${d}. ${MONTHS[mo - 1].slice(0, 3)} · ${m.osloTime}</div></div>`; };
   const third = state.matches.find((m) => m.roundNote === "3rd-place-match");
   let h = `<div class="bracket">${cols.map((c) => `<div class="round"><h4>${roundName(c.rn)}</h4>${c.ties.map((m) => tie(m, c.rn === "final")).join("")}</div>`).join("")}</div>`;
   if (third) h += `<div class="block"><h3>Bronsefinale</h3><div class="bracket"><div class="round" style="width:200px">${tie(third, false)}</div></div></div>`;
@@ -156,7 +192,7 @@ function viewBracket() {
 }
 
 function viewStats() {
-  if (!state.spoiler) return `<div class="veil">📊 Statistikk røper resultater, tabeller og hvem som leder.<br/><button class="reveal-btn" id="revealStats">Vis statistikk likevel</button></div>`;
+  if (!state.statsShown) return `<div class="veil">📊 Statistikk røper resultater, tabeller og hvem som leder.<br/><button class="reveal-btn" id="revealStats">Vis statistikk</button></div>`;
   let h = ""; const s = state.stats;
   if (s) {
     h += `<div class="statline"><div><div class="n">${s.matchesPlayed}</div><div class="k">kamper spilt</div></div><div><div class="n">${s.totalGoals}</div><div class="k">mål</div></div><div><div class="n">${s.avgGoals}</div><div class="k">snitt/kamp</div></div></div>`;
@@ -168,9 +204,6 @@ function viewStats() {
 
 let didAnchor = false; // only auto-scroll to today once per visit to Kamper
 function render() {
-  const btn = document.getElementById("spoilerToggle");
-  btn.classList.toggle("on", state.spoiler);
-  btn.innerHTML = state.spoiler ? '👀 <span id="modeLabel">Spoiler på</span>' : '🙈 <span id="modeLabel">Spoilerfri</span>';
   document.querySelectorAll("#tabs button").forEach((b) => b.classList.toggle("active", b.dataset.view === state.view));
   const body = { schedule: viewSchedule, bracket: viewBracket, stats: viewStats, plan: viewPlan }[state.view]();
   app.innerHTML = body;
@@ -181,12 +214,11 @@ function render() {
 }
 
 // ---------- events ----------
-document.getElementById("spoilerToggle").addEventListener("click", () => { state.spoiler = !state.spoiler; LS.set("spoiler", state.spoiler); render(); });
 document.getElementById("tabs").addEventListener("click", (e) => { const b = e.target.closest("button[data-view]"); if (!b) return; state.view = b.dataset.view; didAnchor = false; render(); });
 app.addEventListener("click", (e) => {
   const t = e.target.closest("[data-reveal],[data-plan],[data-watched],#revealStats");
   if (!t) return;
-  if (t.id === "revealStats") { state.spoiler = true; LS.set("spoiler", true); render(); return; }
+  if (t.id === "revealStats") { state.statsShown = true; render(); return; }
   if (t.dataset.reveal) { state.revealed.add(t.dataset.reveal); LS.set("revealed", [...state.revealed]); render(); return; }
   if (t.dataset.plan) { toggle(state.plan, t.dataset.plan, "plan"); render(); return; }
   if (t.dataset.watched) { toggle(state.watched, t.dataset.watched, "watched"); state.revealed.add(t.dataset.watched); LS.set("revealed", [...state.revealed]); render(); }
