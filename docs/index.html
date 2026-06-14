@@ -64,13 +64,8 @@
 
       main { padding-top: 14px; }
 
-      /* ---- scope toggle + day headers (continuous week view) ---- */
-      .scopebar { display: flex; margin-bottom: 6px; }
-      .seg { display: flex; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
-      .seg button { appearance: none; cursor: pointer; font: inherit; font-size: 12.5px; font-weight: 700; color: var(--muted); background: none; border: none; padding: 6px 16px; border-radius: 999px; }
-      .seg button.on { color: var(--accent-ink); background: var(--accent); }
-
-      .day { display: flex; align-items: baseline; gap: 10px; margin: 24px 0 6px; padding-bottom: 7px; border-bottom: 1px solid var(--line2); }
+      /* ---- day headers (continuous, anchored week view) ---- */
+      .day { display: flex; align-items: baseline; gap: 10px; margin: 24px 0 6px; padding-bottom: 7px; border-bottom: 1px solid var(--line2); scroll-margin-top: 116px; }
       .day:first-of-type { margin-top: 4px; }
       .day .dl { font-size: 14px; font-weight: 600; color: var(--muted); }
       .day .dl b { color: var(--fg); font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
@@ -142,7 +137,7 @@
       .statline .k { font-size: 11px; color: var(--muted); font-weight: 600; }
 
       .veil { text-align: center; padding: 32px 18px; border: 1px dashed var(--line2); border-radius: 14px; color: var(--muted); }
-      .veil .pill { margin-top: 14px; }
+      .reveal-btn { appearance: none; cursor: pointer; font: inherit; font-size: 13px; font-weight: 700; margin-top: 14px; padding: 9px 16px; border-radius: 9px; border: none; background: var(--accent); color: var(--accent-ink); }
       .empty { text-align: center; color: var(--muted); padding: 44px 16px; }
       footer { color: var(--faint); font-size: 11px; text-align: center; padding: 28px 16px 8px; line-height: 1.7; }
     </style>

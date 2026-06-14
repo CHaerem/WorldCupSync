@@ -11,7 +11,7 @@ const LS = {
 };
 const state = {
   matches: [], groups: [], stats: null,
-  view: "schedule", scope: "week",
+  view: "schedule",
   spoiler: LS.get("spoiler", false),
   revealed: new Set(LS.get("revealed", [])),
   watched: new Set(LS.get("watched", [])),
@@ -85,40 +85,30 @@ const WDFULL = ["søndag","mandag","tirsdag","onsdag","torsdag","fredag","lørda
 const shiftDate = (iso, n) => { const d = new Date(iso + "T12:00:00Z"); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
 const programDate = (m) => (parseInt(m.osloTime.slice(0, 2), 10) < 6 ? shiftDate(m.osloDate, -1) : m.osloDate);
 const relLabel = (iso) => { const t = todayOslo(); return iso === t ? "I dag" : iso === shiftDate(t, -1) ? "I går" : iso === shiftDate(t, 1) ? "I morgen" : null; };
-function dayHeader(iso, count) {
-  const f = fmtDay(iso), rel = relLabel(iso);
-  const lbl = rel ? `<b>${rel}</b> · ${f.label.toLowerCase()}` : f.label;
-  return `<div class="day"><span class="dl">${lbl}</span><span class="dcount">${count} ${count === 1 ? "kamp" : "kamper"}</span></div>`;
-}
 function viewSchedule() {
   const today = todayOslo();
-  let list, desc = false;
-  if (state.scope === "played") { list = state.matches.filter((m) => m.completed); desc = true; }
-  else if (state.scope === "all") { list = state.matches.slice(); }
-  else { const from = shiftDate(today, -1), to = shiftDate(today, 7); list = state.matches.filter((m) => { const p = programDate(m); return p >= from && p <= to; }); }
-
-  const seg = (k, l) => `<button class="${state.scope === k ? "on" : ""}" data-scope="${k}">${l}</button>`;
-  const nav = `<div class="scopebar"><div class="seg">${seg("week", "Uke")}${seg("played", "Spilte")}${seg("all", "Alle")}</div></div>`;
-  if (!list.length) return nav + `<div class="empty">Ingen kamper her.</div>`;
-
   const byDay = {}, order = [];
-  for (const m of list) { const p = programDate(m); if (!byDay[p]) { byDay[p] = []; order.push(p); } byDay[p].push(m); }
-  order.sort((a, b) => (desc ? b.localeCompare(a) : a.localeCompare(b)));
+  for (const m of state.matches) { const p = programDate(m); if (!byDay[p]) { byDay[p] = []; order.push(p); } byDay[p].push(m); }
+  order.sort();
+  if (!order.length) return `<div class="empty">Ingen kamper.</div>`;
+  // anchor the initial scroll on today's programme (or the next upcoming day)
+  const anchor = order.find((p) => p >= today) || order[order.length - 1];
 
-  const body = order.map((p) => {
+  return order.map((p) => {
     const ms = byDay[p].sort((a, b) => new Date(a.date) - new Date(b.date));
-    let h = dayHeader(p, ms.length), night = false;
+    const f = fmtDay(p), rel = relLabel(p);
+    const lbl = rel ? `<b>${rel}</b> · ${f.label.toLowerCase()}` : f.label;
+    let h = `<div class="day${p === anchor ? " anchor" : ""}"${p === anchor ? ' id="anchor"' : ""}><span class="dl">${lbl}</span><span class="dcount">${ms.length} ${ms.length === 1 ? "kamp" : "kamper"}</span></div>`;
+    let night = false;
     for (const m of ms) {
       if (!night && parseInt(m.osloTime.slice(0, 2), 10) < 6) {
-        const wd = WDFULL[new Date(m.osloDate + "T12:00:00Z").getUTCDay()];
-        h += `<div class="night">🌙 natt til ${wd}</div>`;
+        h += `<div class="night">🌙 natt til ${WDFULL[new Date(m.osloDate + "T12:00:00Z").getUTCDay()]}</div>`;
         night = true;
       }
       h += matchRow(m);
     }
     return h;
   }).join("");
-  return nav + body;
 }
 
 function viewPlan() {
@@ -166,7 +156,7 @@ function viewBracket() {
 }
 
 function viewStats() {
-  if (!state.spoiler) return `<div class="veil">📊 Statistikk røper resultater, tabeller og hvem som leder.<br/><button class="pill" id="revealStats">Vis statistikk likevel</button></div>`;
+  if (!state.spoiler) return `<div class="veil">📊 Statistikk røper resultater, tabeller og hvem som leder.<br/><button class="reveal-btn" id="revealStats">Vis statistikk likevel</button></div>`;
   let h = ""; const s = state.stats;
   if (s) {
     h += `<div class="statline"><div><div class="n">${s.matchesPlayed}</div><div class="k">kamper spilt</div></div><div><div class="n">${s.totalGoals}</div><div class="k">mål</div></div><div><div class="n">${s.avgGoals}</div><div class="k">snitt/kamp</div></div></div>`;
@@ -176,6 +166,7 @@ function viewStats() {
   return h;
 }
 
+let didAnchor = false; // only auto-scroll to today once per visit to Kamper
 function render() {
   const btn = document.getElementById("spoilerToggle");
   btn.classList.toggle("on", state.spoiler);
@@ -183,15 +174,18 @@ function render() {
   document.querySelectorAll("#tabs button").forEach((b) => b.classList.toggle("active", b.dataset.view === state.view));
   const body = { schedule: viewSchedule, bracket: viewBracket, stats: viewStats, plan: viewPlan }[state.view]();
   app.innerHTML = body;
+  if (state.view === "schedule" && !didAnchor) {
+    const a = document.getElementById("anchor");
+    if (a) { a.scrollIntoView({ block: "start" }); didAnchor = true; }
+  }
 }
 
 // ---------- events ----------
 document.getElementById("spoilerToggle").addEventListener("click", () => { state.spoiler = !state.spoiler; LS.set("spoiler", state.spoiler); render(); });
-document.getElementById("tabs").addEventListener("click", (e) => { const b = e.target.closest("button[data-view]"); if (!b) return; state.view = b.dataset.view; render(); });
+document.getElementById("tabs").addEventListener("click", (e) => { const b = e.target.closest("button[data-view]"); if (!b) return; state.view = b.dataset.view; didAnchor = false; render(); });
 app.addEventListener("click", (e) => {
-  const t = e.target.closest("[data-reveal],[data-plan],[data-watched],[data-scope],#revealStats");
+  const t = e.target.closest("[data-reveal],[data-plan],[data-watched],#revealStats");
   if (!t) return;
-  if (t.dataset.scope) { state.scope = t.dataset.scope; render(); return; }
   if (t.id === "revealStats") { state.spoiler = true; LS.set("spoiler", true); render(); return; }
   if (t.dataset.reveal) { state.revealed.add(t.dataset.reveal); LS.set("revealed", [...state.revealed]); render(); return; }
   if (t.dataset.plan) { toggle(state.plan, t.dataset.plan, "plan"); render(); return; }
