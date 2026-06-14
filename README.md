@@ -1,16 +1,20 @@
-# VM 2026 — følg & ta igjen fotball-VM 🇳🇴⚽
+# WorldCupSync — follow & catch up on the 2026 FIFA World Cup 🇳🇴⚽
+
+**▶ Live: [chaerem.github.io/WorldCupSync](https://chaerem.github.io/WorldCupSync/)**
 
 A tiny static site for following the 2026 FIFA World Cup from Norway — and **catching up without getting spoiled**. Most matches kick off in the middle of the night Oslo time, so the point is to scan the week, plan what to watch on replay the next day, and jump straight to the right stream on **NRK TV** or **TV 2 Play**.
 
+> The UI is in Norwegian (its audience). The four tabs are **Kamper** (Matches), **Sluttspill** (Knockout), **Statistikk** (Stats) and **Min plan** (My plan). All times are Oslo time.
+
 ## What it does
 
-- **Spoiler-free by default.** Scores, group tables, scorers and bracket winners are hidden until you reveal them (per match) or flip global *Spoilermodus* ("catch up" mode).
-- **Kamper** — a scannable, continuous week view: one compact line per match (time · teams · gated score · one replay link). Grouped by day with **I går / I dag / I morgen** headers, auto-scrolled to today. Matches that kick off after midnight Oslo are grouped with the previous evening under a **🌙 natt til …** divider, so a night's programme stays together. Star a match into *Min plan*.
-- **Sluttspill** — a knockout bracket that shows **which countries could land in each slot** (the group's teams as candidate flags); in spoiler mode the current projection is highlighted. Spoiler-safe structure, fills in as groups resolve.
-- **Statistikk** — top scorers, tournament totals and group tables (spoiler-gated).
-- **Min plan** — your starred matches, with a "Klar for reprise" queue and a *marker sett* toggle.
+- **Automatic spoiler protection — no toggle to manage.** The real pain is opening the app the morning after and being spoiled by last night's matches. So a finished result (score, bracket winner) stays hidden only while it's *fresh* — today, overnight and yesterday's programme. Anything 2+ programme-days old auto-reveals (you've moved on). A match you starred but haven't marked watched stays hidden at any age. You can always tap a single hidden result to reveal just that match. Fixtures, kickoff times, replay links and the bracket *structure* are always shown.
+- **Matches** — a scannable, continuous week view: one compact line per match (time · teams · gated score · one replay link). Grouped by day with **Yesterday / Today / Tomorrow** headers, auto-scrolled to today. Matches that kick off after midnight Oslo are grouped with the previous evening under a **🌙 "natt til …"** (overnight) divider, so a night's programme stays together. Last night's still-hidden matches — the ones ready to watch on replay — are highlighted with an accent band and a "▶" time; live matches show "Nå" (now); older, already-revealed matches fade back as history. Each day header splits the count (e.g. *2 reprise · 3 kommer* — 2 ready to replay, 3 upcoming). Star a match into *My plan*.
+- **Knockout** — a bracket that shows **which countries could land in each slot** (the group's teams as candidate flags). Each tie reveals its result on the same automatic basis as the match list. Spoiler-safe structure, fills in as groups resolve.
+- **Stats** — top scorers, tournament totals and group tables. As an aggregate spoiler it's revealed with one tap per visit (not persisted).
+- **My plan** — your starred matches, with a "ready to watch" queue and a *mark watched* toggle.
 - **Norway focus** — Norway's matches are highlighted in the list.
-- **Design** — follows the official 2026 visual identity: black/white high-contrast, a geometric "26" mark, Noto Sans (FIFA's secondary typeface), one bold accent. All times Oslo, all text Norwegian, light & dark.
+- **Design** — Apple **Liquid Glass**: a translucent, refractive chrome layer (the floating bottom tab bar bends the backdrop through an SVG edge-lens in Chrome/Edge, with a clear-glass frost fallback in Safari), beveled specular edges, a pointer-reactive gleam and a drifting modern-hue aurora. Built on the system font (SF), iOS-style inset-grouped day cards and a large in-content title. Light & dark.
 
 ## Zero infrastructure
 
@@ -59,6 +63,7 @@ TV 2 holds all 104 matches; NRK shows 51 free-to-air.
 
 - **NRK matches** — fully automatic. `scripts/fetch-streams.js` reads NRK's public catalog (`psapi.nrk.no`), matches each episode to its ESPN fixture by kickoff time, and writes the exact replay URL. The free-match list in `scripts/config/broadcasters.json` is **auto-derived** from the catalog — no manual upkeep.
 - **TV 2 matches** — TV 2 Play is authenticated/paywalled with no open catalog, so it **can't run in CI**. `scripts/local/capture-tv2.mjs` drives a logged-in browser (Playwright over CDP), harvests the match VOD links, maps them to fixtures, and writes `scripts/config/tv2-streams.json` (committed). Re-run occasionally as new matches get pages. Matches without a captured link fall back to a TV 2 Play search.
+
 ```bash
 # launch a logged-in Chromium with a debug port, log into TV 2 Play, then:
 node scripts/local/capture-tv2.mjs   # see the file header for the full setup
