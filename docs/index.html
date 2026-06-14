@@ -275,12 +275,12 @@
       }
       .tabbar button {
         appearance: none; background: none; border: none; cursor: pointer; font: inherit;
-        flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
-        padding: 7px 4px 5px; border-radius: 18px; color: var(--muted);
+        flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 3px;
+        padding: 7px 2px 5px; border-radius: 16px; color: var(--muted);
         position: relative; transition: color .2s ease;
       }
-      .tabbar button svg { width: 23px; height: 23px; }
-      .tabbar button span { font-size: 10px; font-weight: 600; letter-spacing: -0.02em; white-space: nowrap; }
+      .tabbar button svg { width: 21px; height: 21px; flex: none; }
+      .tabbar button span { font-size: 9.5px; font-weight: 600; letter-spacing: -0.03em; white-space: nowrap; }
       .tabbar button::before {
         content: ""; position: absolute; inset: 0; border-radius: 18px; z-index: -1;
         background: var(--accent-soft); opacity: 0; transform: scale(0.85);
@@ -549,6 +549,10 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.7" width="18" height="16.3" rx="3.6"/><path d="M3 9.3h18M8 2.6v4M16 2.6v4"/></svg>
         <span>Kamper</span>
       </button>
+      <button data-view="replays">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10.4 8.6l5 3.4-5 3.4z" fill="currentColor" stroke="none"/></svg>
+        <span>Reprise</span>
+      </button>
       <button data-view="groups">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M3.5 9.7h17M9.2 9.7v9.8"/></svg>
         <span>Grupper</span>
@@ -563,7 +567,7 @@
       </button>
       <button data-view="plan">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2l2.6 5.8 6.3.6-4.7 4.2 1.3 6.2L12 17l-5.8 3.2 1.3-6.2-4.7-4.2 6.3-.6z"/></svg>
-        <span>Min&nbsp;plan</span>
+        <span>Plan</span>
       </button>
     </nav>
 
