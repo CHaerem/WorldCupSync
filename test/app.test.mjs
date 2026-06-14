@@ -35,7 +35,7 @@ const FAKE = {
   stats: { matchesPlayed: 1, totalGoals: 2, avgGoals: 2, topScorers: [{ name: "X", team: "Mexico", goals: 2, assists: 1, teamLogo: "" }] },
 };
 
-const EXPOSE = "\n;globalThis.__t = { programDate, dayDiff, naX, naY, venueCountry, wmo, isStale, isRevealed, todayOslo, VENUES, fmtCountdown, nextMatch };";
+const EXPOSE = "\n;globalThis.__t = { programDate, dayDiff, naX, naY, venueCountry, wmo, isStale, isRevealed, isLive, todayOslo, VENUES, fmtCountdown, nextMatch };";
 
 function boot() {
   const appEl = makeEl();
@@ -105,6 +105,23 @@ test("staleness: yesterday hidden, 2+ days ago auto-revealed", () => {
   assert.equal(__t.isStale(old), true);
   assert.equal(__t.isRevealed(fresh), false, "fresh result stays hidden");
   assert.equal(__t.isRevealed(old), true, "old result shows automatically");
+});
+
+test("isLive: inferred from the clock when the build hasn't flipped state yet", () => {
+  const { __t } = boot().sandbox;
+  const ago = (mins) => new Date(Date.now() - mins * 60000).toISOString();
+  const ahead = (mins) => new Date(Date.now() + mins * 60000).toISOString();
+  // data says "in" → live; completed → never live regardless of clock
+  assert.equal(__t.isLive({ state: "in", completed: false, roundNote: "group-stage", date: ago(30) }), true);
+  assert.equal(__t.isLive({ state: "in", completed: true, roundNote: "group-stage", date: ago(30) }), false);
+  // data still "pre" but kickoff passed and within the window → inferred live
+  assert.equal(__t.isLive({ state: "pre", completed: false, roundNote: "group-stage", date: ago(30) }), true);
+  // not started yet → not live
+  assert.equal(__t.isLive({ state: "pre", completed: false, roundNote: "group-stage", date: ahead(30) }), false);
+  // group match well past its window (3h) → no longer inferred live
+  assert.equal(__t.isLive({ state: "pre", completed: false, roundNote: "group-stage", date: ago(180) }), false);
+  // a knockout at 3h is still within the longer ET+penalties window
+  assert.equal(__t.isLive({ state: "pre", completed: false, roundNote: "round-of-16", date: ago(180) }), true);
 });
 
 test("map projection matches the silhouette viewBox", () => {

@@ -79,6 +79,19 @@ const GRACE_DAYS = 2;
 const dayDiff = (a, b) => Math.round((Date.parse(a + "T00:00:00Z") - Date.parse(b + "T00:00:00Z")) / 86400000);
 const planUnwatched = (m) => state.plan.has(m.id) && !state.watched.has(m.id);
 const isStale = (m) => m.completed && dayDiff(todayOslo(), programDate(m)) >= GRACE_DAYS;
+// Live status from the data only refreshes on the 2-hourly build, so infer it from
+// the clock too: a match whose kickoff has passed but isn't completed yet is treated
+// as live until a plausible end (group ~2.5h; knockouts run to ET + penalties ~3.5h).
+// This keeps "spilles nå" correct the moment anyone opens the site. No score to spoil
+// during play (results aren't in the data yet), so this never affects spoiler-gating.
+const liveWindowMs = (m) => (/group/i.test(m.roundNote || "") ? 2.5 : 3.5) * 3600 * 1000;
+const isLive = (m) => {
+  if (m.completed) return false;
+  if (m.state === "in") return true;
+  if (m.state !== "pre" || !m.date) return false;
+  const start = Date.parse(m.date);
+  return Date.now() >= start && Date.now() < start + liveWindowMs(m);
+};
 // No global spoiler mode. Automatic default: a stale result reveals itself (unless
 // you've starred it to watch). An explicit per-match override always wins — and it's
 // reversible, so an accidental reveal is never permanent.
@@ -131,7 +144,7 @@ function primaryLinks(m) {
 
 // ---------- match row (compact, one line — scannable week overview) ----------
 function matchRow(m, opts = {}) {
-  const live = m.state === "in", post = m.completed, reveal = isRevealed(m);
+  const live = isLive(m), post = m.completed, reveal = isRevealed(m);
   const onPlan = state.plan.has(m.id), watched = state.watched.has(m.id);
   const lt = live
     ? `<span class="live" title="spilles nå"></span><span class="when na">Nå</span>`
@@ -421,7 +434,7 @@ function applyWeather(m) {
 
 // ---------- match detail sheet (tap a row) ----------
 function sheetHTML(m) {
-  const live = m.state === "in", post = m.completed, reveal = isRevealed(m);
+  const live = isLive(m), post = m.completed, reveal = isRevealed(m);
   const onPlan = state.plan.has(m.id);
   const where = m.roundNote === "group-stage" ? (m.group || "Gruppespill") : roundName(m.roundNote);
   const f = fmtDay(m.osloDate);
