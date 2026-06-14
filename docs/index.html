@@ -451,6 +451,16 @@
 
       /* ---- integrated stadium map (with the day you land on) ---- */
       .todaymap { padding: 12px 14px 10px; margin: 6px 0 18px; overflow: hidden; }
+      /* live next-match countdown */
+      .countdown { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 0.5px solid var(--row-line); }
+      .cd-l { font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); }
+      .cd-m { font-size: 13px; font-weight: 600; color: var(--fg); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .cd-time { margin-left: auto; font-size: 13px; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--accent); white-space: nowrap; }
+      /* one-shot delight pops */
+      .md.shown.pop { animation: scorepop .42s cubic-bezier(0.22,1,0.36,1); }
+      @keyframes scorepop { 0% { transform: scale(.5); opacity: 0; } 55% { transform: scale(1.18); } 100% { transform: scale(1); opacity: 1; } }
+      .star.pop { animation: starpop .42s cubic-bezier(0.22,1,0.36,1); }
+      @keyframes starpop { 0% { transform: scale(1); } 40% { transform: scale(1.5) rotate(-12deg); } 100% { transform: scale(1); } }
       .tm-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
       .tm-t { font-size: 13px; color: var(--muted); font-weight: 500; }
       .tm-t b { color: var(--fg); font-weight: 700; }

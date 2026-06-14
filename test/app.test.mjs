@@ -27,15 +27,15 @@ const FAKE = {
   matches: {
     matches: [
       { id: "1", date: "2026-06-13T19:00Z", osloDate: "2026-06-13", osloTime: "21:00", state: "post", completed: true, group: "Group A", roundNote: "group-stage", venue: "Estadio Banorte", city: "Mexico City", nrkFree: true, streams: { nrk: "https://nrk" }, home: { name: "Mexico", score: 2, logo: "" }, away: { name: "USA", score: 0, logo: "" } },
-      { id: "2", date: "2026-06-14T02:00Z", osloDate: "2026-06-14", osloTime: "02:00", state: "pre", completed: false, group: "Group B", roundNote: "group-stage", venue: "BC Place", city: "Vancouver", nrkFree: false, streams: { tv2: "https://tv2" }, home: { name: "Canada", logo: "" }, away: { name: "Norway", logo: "" } },
-      { id: "3", date: "2026-06-20T19:00Z", osloDate: "2026-06-20", osloTime: "21:00", state: "pre", completed: false, group: "Group C", roundNote: "group-stage", venue: "MetLife Stadium", city: "East Rutherford", nrkFree: true, streams: {}, home: { name: "Brazil", logo: "" }, away: { name: "England", logo: "" } },
+      { id: "3", date: "2030-06-13T19:00Z", osloDate: "2030-06-13", osloTime: "21:00", state: "pre", completed: false, group: "Group C", roundNote: "group-stage", venue: "MetLife Stadium", city: "East Rutherford", nrkFree: true, streams: {}, home: { name: "Brazil", logo: "" }, away: { name: "England", logo: "" } },
+      { id: "2", date: "2030-06-15T20:00Z", osloDate: "2030-06-15", osloTime: "22:00", state: "pre", completed: false, group: "Group B", roundNote: "group-stage", venue: "BC Place", city: "Vancouver", nrkFree: false, streams: { tv2: "https://tv2" }, home: { name: "Canada", logo: "" }, away: { name: "Norway", logo: "" } },
     ],
   },
   standings: { groups: [{ name: "Group A", entries: [{ team: "Mexico", logo: "", played: 1, wins: 1, ties: 0, losses: 0, gf: 2, ga: 0, gd: 2, points: 3 }] }] },
   stats: { matchesPlayed: 1, totalGoals: 2, avgGoals: 2, topScorers: [{ name: "X", team: "Mexico", goals: 2, assists: 1, teamLogo: "" }] },
 };
 
-const EXPOSE = "\n;globalThis.__t = { programDate, dayDiff, naX, naY, venueCountry, wmo, isStale, isRevealed, todayOslo, VENUES };";
+const EXPOSE = "\n;globalThis.__t = { programDate, dayDiff, naX, naY, venueCountry, wmo, isStale, isRevealed, todayOslo, VENUES, fmtCountdown, nextMatch };";
 
 function boot() {
   const appEl = makeEl();
@@ -46,7 +46,7 @@ function boot() {
     navigator: { userAgent: "node-test" },
     location: { origin: "http://localhost" },
     addEventListener() {},
-    setTimeout, clearTimeout,
+    setTimeout, clearTimeout, setInterval: () => 0, clearInterval: () => {},
     matchMedia: () => ({ matches: false, addEventListener() {}, removeEventListener() {} }),
     localStorage: {
       getItem: (k) => (k in store ? store[k] : null),
@@ -56,6 +56,7 @@ function boot() {
     fetch: (url) => Promise.resolve({ ok: true, json: () => Promise.resolve(url.includes("matches") ? FAKE.matches : url.includes("standings") ? FAKE.standings : FAKE.stats) }),
     document: {
       getElementById: (id) => (id === "app" ? appEl : (els[id] ||= makeEl())),
+      querySelector: () => null,
       querySelectorAll: () => [],
       addEventListener() {},
       createElement: () => makeEl(),
@@ -130,6 +131,16 @@ test("weather codes map to Norwegian conditions", () => {
   assert.equal(__t.wmo(2), "lettskyet");
   assert.equal(__t.wmo(61), "regn");
   assert.equal(__t.wmo(95), "torden");
+});
+
+test("countdown formats and prefers Norway's next match", async () => {
+  const { __t } = boot().sandbox;
+  assert.equal(__t.fmtCountdown(0), "spilles nå");
+  assert.equal(__t.fmtCountdown(90 * 60 * 1000), "om 1t 30m");
+  assert.equal(__t.fmtCountdown(2 * 86400 * 1000 + 3 * 3600 * 1000), "om 2d 3t");
+  await new Promise((r) => setTimeout(r, 30)); // let load() populate state.matches
+  const nm = __t.nextMatch(); // FAKE has a future Norway match that should win over the earlier non-NO one
+  assert.ok(nm && (nm.home.name === "Norway" || nm.away.name === "Norway"));
 });
 
 test("scripts parse (syntax) and PWA shell assets exist", () => {

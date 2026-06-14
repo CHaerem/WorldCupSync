@@ -29,6 +29,7 @@ const state = {
   filter: "all", // schedule filter: all | no (Norway) | plan
   hintSeen: LS.get("hintSeen", false),
   theme: LS.get("theme", "auto"), // auto (device) | light | dark
+  justRevealed: null, justStarred: null, // last-touched match id → one-shot pop animation
 };
 // migrate the legacy permanent "revealed" array (pre-toggle model) into overrides
 {
@@ -142,7 +143,7 @@ function matchRow(m, opts = {}) {
   else if (reveal) {
     // a revealed result — tap to hide again. Fresh ones (not old history) show a hide hint.
     const fresh = !isStale(m);
-    md = `<button class="md shown" data-hide="${m.id}" title="Skjul resultat" aria-label="Skjul resultat">${score}${fresh ? `<span class="eyeoff">${ICON.eyeOff}</span>` : ""}</button>`;
+    md = `<button class="md shown${m.id === state.justRevealed ? " pop" : ""}" data-hide="${m.id}" title="Skjul resultat" aria-label="Skjul resultat">${score}${fresh ? `<span class="eyeoff">${ICON.eyeOff}</span>` : ""}</button>`;
   } else {
     // hidden — an explicit, obvious tap target: tap to reveal just this match
     md = `<button class="md reveal" data-show="${m.id}" title="Vis resultat" aria-label="Vis resultat">${ICON.eye}<span class="lbl">Vis</span></button>`;
@@ -150,7 +151,7 @@ function matchRow(m, opts = {}) {
   let act = "";
   { const l = primaryLinks(m)[0]; if (l) { const verb = post ? "Se reprise" : live ? "Se direkte" : "Se på"; act += `<a class="go ${l.cls}" href="${l.href}" target="_blank" rel="noopener" title="${verb} — ${l.label}" aria-label="${verb} på ${l.label}">${l.ico}<span class="golbl">${l.short}</span></a>`; } }
   if (opts.plan && post) act += `<button class="wch ${watched ? "on" : ""}" data-watched="${m.id}" title="Marker sett" aria-label="${watched ? "Fjern sett-markering" : "Marker som sett"}" aria-pressed="${watched}">${ICON.check}</button>`;
-  act += `<button class="star ${onPlan ? "on" : ""}" data-plan="${m.id}" title="Min plan" aria-label="${onPlan ? "Fjern fra min plan" : "Legg i min plan"}" aria-pressed="${onPlan}">${onPlan ? ICON.starOn : ICON.starOff}</button>`;
+  act += `<button class="star ${onPlan ? "on" : ""}${onPlan && m.id === state.justStarred ? " pop" : ""}" data-plan="${m.id}" title="Min plan" aria-label="${onPlan ? "Fjern fra min plan" : "Legg i min plan"}" aria-pressed="${onPlan}">${onPlan ? ICON.starOn : ICON.starOff}</button>`;
   const place = [m.venue, m.city].filter(Boolean).join(", ");
   return `<div class="m ${status}${isNO(m) ? " no" : ""}" data-open="${m.id}"${place ? ` title="${esc(place)}"` : ""}>
     <div class="lt">${lt}</div>
@@ -379,12 +380,30 @@ function naMapSVG(hot) {
   }).join("");
   return `<svg viewBox="0 0 240 134" class="bigmap" role="img" aria-label="Kart over VM-stadioner"><path class="na-land" d="${window.NA_PATH || ""}"/>${markers}</svg>`;
 }
-// integrated map shown with the day you land on
+// live countdown to the next match (Norway's if one is coming up)
+function nextMatch() {
+  const now = Date.now();
+  const up = state.matches.filter((m) => m.date && Date.parse(m.date) > now).sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
+  return up.find(isNO) || up[0] || null;
+}
+const fmtCountdown = (ms) => {
+  if (ms <= 0) return "spilles nå";
+  const s = Math.floor(ms / 1000), d = Math.floor(s / 86400), h = Math.floor((s % 86400) / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
+  return d > 0 ? `om ${d}d ${h}t` : h > 0 ? `om ${h}t ${m}m` : `om ${m}m ${String(sec).padStart(2, "0")}s`;
+};
+function tickCountdown() {
+  const el = document.querySelector(".countdown");
+  const t = el && el.querySelector(".cd-time");
+  if (t) t.textContent = fmtCountdown(Date.parse(el.dataset.kickoff) - Date.now());
+}
+// integrated map shown with the day you land on (with a live next-match countdown)
 function todayMap(dayIso) {
   const hot = new Set(state.matches.filter((m) => programDate(m) === dayIso).map((m) => m.venue));
   const when = (relLabel(dayIso) || "denne dagen").toLowerCase();
   const label = hot.size ? `<b>${hot.size}</b> ${hot.size === 1 ? "arena" : "arenaer"} ${when}` : "Alle arenaer";
-  return `<section class="card todaymap"><div class="tm-head"><span class="tm-t">${label}</span><span class="tm-sub">trykk for kampene</span></div>${naMapSVG(hot)}</section>`;
+  const nm = nextMatch();
+  const cd = nm ? `<div class="countdown" data-kickoff="${nm.date}"><span class="cd-l">${isNO(nm) ? "Norge spiller" : "Neste kamp"}</span><span class="cd-m">${esc(nm.home?.name || "TBD")} – ${esc(nm.away?.name || "TBD")}</span><span class="cd-time">…</span></div>` : "";
+  return `<section class="card todaymap">${cd}<div class="tm-head"><span class="tm-t">${label}</span><span class="tm-sub">trykk for kampene</span></div>${naMapSVG(hot)}</section>`;
 }
 
 // ---------- stadium sheet: a venue + every match played there ----------
@@ -480,6 +499,8 @@ function render() {
   const body = { schedule: viewSchedule, groups: viewGroups, bracket: viewBracket, stats: viewStats, plan: viewPlan }[state.view]();
   app.innerHTML = body;
   if (refocus) { const el = app.querySelector(refocus); if (el) el.focus(); }
+  state.justRevealed = state.justStarred = null; // pops are one-shot
+  tickCountdown();
   renderSheet();
   if (state.view === "schedule" && !didAnchor) {
     const a = document.getElementById("anchor");
@@ -501,9 +522,9 @@ document.addEventListener("click", (e) => {
   if (t.id === "sheetClose" || t.dataset.close) { state.sheet ? (state.sheet = null) : (state.venue = null); render(); return; } // close (match → back to venue; else close)
   if (t.dataset.venue) { state.venue = t.dataset.venue; render(); return; }                 // tap a stadium on the map
   if (t.dataset.filter) { state.filter = t.dataset.filter; didAnchor = false; render(); return; } // re-anchor to today after filtering
-  if (t.dataset.show) { setReveal(t.dataset.show, true); render(); return; }                // tap "Vis" → reveal this match
+  if (t.dataset.show) { state.justRevealed = t.dataset.show; setReveal(t.dataset.show, true); render(); return; } // tap "Vis" → reveal (with a pop)
   if (t.dataset.hide) { setReveal(t.dataset.hide, false); render(); return; }               // tap a shown score → hide again
-  if (t.dataset.plan) { toggle(state.plan, t.dataset.plan, "plan"); render(); return; }
+  if (t.dataset.plan) { toggle(state.plan, t.dataset.plan, "plan"); if (state.plan.has(t.dataset.plan)) state.justStarred = t.dataset.plan; render(); return; }
   if (t.dataset.watched) { toggle(state.watched, t.dataset.watched, "watched"); setReveal(t.dataset.watched, state.watched.has(t.dataset.watched)); render(); return; } // marking watched reveals; un-marking re-hides
   if (t.dataset.open) { if (e.target.closest("a, button")) return; state.sheet = t.dataset.open; render(); }  // tap a row (off its controls) → open detail
 });
@@ -511,4 +532,5 @@ addEventListener("keydown", (e) => { if (e.key === "Escape" && (state.sheet || s
 function toggle(set, id, key) { set.has(id) ? set.delete(id) : set.add(id); LS.set(key, [...set]); }
 
 applyTheme(); // render the theme switcher (ICON is defined by now)
+setInterval(tickCountdown, 1000); // live next-match countdown
 load();
