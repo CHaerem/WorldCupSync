@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-14T22:24:46.306Z",
+  "updated": "2026-06-15T00:35:56.516Z",
   "count": 104,
   "matches": [
     {
@@ -384,9 +384,9 @@
       "roundNote": "group-stage",
       "venue": "Lincoln Financial Field",
       "city": "Philadelphia, Pennsylvania",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "70'",
       "home": {
         "id": "4789",
         "name": "Ivory Coast",
