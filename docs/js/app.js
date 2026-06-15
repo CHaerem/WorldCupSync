@@ -133,12 +133,18 @@ const fmtDay = (iso) => { const [, mo, d] = iso.split("-").map(Number); const wd
 const NRK_HUB = "https://tv.nrk.no/serie/fifa-fotball-vm-2026";
 const TV2_HUB = "https://play.tv2.no/fotball-vm";
 
+// Open in the native app on mobile via Universal Links (iOS) / App Links (Android).
+// NRK's links already qualify (its app claims /se, /serie/*, /sok …). TV 2's app only
+// claims URLs carrying a `partner` query param (per its apple-app-site-association),
+// so we append one — any value triggers the app, and the website ignores it.
+const tv2App = (href) => href + (href.includes("?") ? "&" : "?") + "partner=worldcupsync";
+
 function primaryLinks(m) {
   const s = m.streams || {}; const out = [];
   if (s.nrk) out.push({ cls: "nrk", label: "NRK TV", short: "NRK", href: s.nrk, ico: ICON.play });
   else if (m.nrkFree) out.push({ cls: "ghost", label: "NRK – VM-oversikt", short: "NRK", href: NRK_HUB, ico: ICON.play });
-  if (s.tv2) out.push({ cls: "tv2", label: "TV 2 Play", short: "TV 2", href: s.tv2, ico: ICON.play });
-  else if (!m.nrkFree || !s.nrk) out.push({ cls: "ghost", label: "TV 2 – VM-oversikt", short: "TV 2", href: TV2_HUB, ico: ICON.play });
+  if (s.tv2) out.push({ cls: "tv2", label: "TV 2 Play", short: "TV 2", href: tv2App(s.tv2), ico: ICON.play });
+  else if (!m.nrkFree || !s.nrk) out.push({ cls: "ghost", label: "TV 2 – VM-oversikt", short: "TV 2", href: tv2App(TV2_HUB), ico: ICON.play });
   return out;
 }
 
