@@ -138,10 +138,14 @@ const TV2_HUB = "https://play.tv2.no/fotball-vm";
 // claims URLs carrying a `partner` query param (per its apple-app-site-association),
 // so we append one — any value triggers the app, and the website ignores it.
 const tv2App = (href) => href + (href.includes("?") ? "&" : "?") + "partner=worldcupsync";
+// On an episode link the NRK app otherwise lands on the season list with the match
+// highlighted; the share-link template advertises an `autoplay` param ({&autoplay,t})
+// that takes it straight into the player. Only the /se?v= match links carry it.
+const nrkApp = (href) => /\/se\?/.test(href) ? href + "&autoplay=true" : href;
 
 function primaryLinks(m) {
   const s = m.streams || {}; const out = [];
-  if (s.nrk) out.push({ cls: "nrk", label: "NRK TV", short: "NRK", href: s.nrk, ico: ICON.play });
+  if (s.nrk) out.push({ cls: "nrk", label: "NRK TV", short: "NRK", href: nrkApp(s.nrk), ico: ICON.play });
   else if (m.nrkFree) out.push({ cls: "ghost", label: "NRK – VM-oversikt", short: "NRK", href: NRK_HUB, ico: ICON.play });
   if (s.tv2) out.push({ cls: "tv2", label: "TV 2 Play", short: "TV 2", href: tv2App(s.tv2), ico: ICON.play });
   else if (!m.nrkFree || !s.nrk) out.push({ cls: "ghost", label: "TV 2 – VM-oversikt", short: "TV 2", href: tv2App(TV2_HUB), ico: ICON.play });
