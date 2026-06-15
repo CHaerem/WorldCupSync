@@ -29,7 +29,6 @@ const state = {
   filter: "all", // schedule filter: all | no (Norway) | plan
   hintSeen: LS.get("hintSeen", false),
   theme: LS.get("theme", "auto"), // auto (device) | light | dark
-  justRevealed: null, justStarred: null, // last-touched match id → one-shot pop animation
 };
 // migrate the legacy permanent "revealed" array (pre-toggle model) into overrides
 {
@@ -168,7 +167,7 @@ function matchRow(m, opts = {}) {
   else if (reveal) {
     // a revealed result — tap to hide again. Fresh ones (not old history) show a hide hint.
     const fresh = !isStale(m);
-    md = `<button class="md shown${m.id === state.justRevealed ? " pop" : ""}" data-hide="${m.id}" title="Skjul resultat" aria-label="Skjul resultat">${score}${fresh ? `<span class="eyeoff">${ICON.eyeOff}</span>` : ""}</button>`;
+    md = `<button class="md shown" data-hide="${m.id}" title="Skjul resultat" aria-label="Skjul resultat">${score}${fresh ? `<span class="eyeoff">${ICON.eyeOff}</span>` : ""}</button>`;
   } else {
     // hidden — an explicit, obvious tap target: tap to reveal just this match
     md = `<button class="md reveal" data-show="${m.id}" title="Vis resultat" aria-label="Vis resultat">${ICON.eye}<span class="lbl">Vis</span></button>`;
@@ -176,7 +175,7 @@ function matchRow(m, opts = {}) {
   let act = "";
   { const l = primaryLinks(m)[0]; if (l) { const verb = post ? "Se reprise" : live ? "Se direkte" : "Se på"; act += `<a class="go ${l.cls}" href="${l.href}" target="_blank" rel="noopener" title="${verb} — ${l.label}" aria-label="${verb} på ${l.label}">${l.ico}<span class="golbl">${l.short}</span></a>`; } }
   if (opts.plan && post) act += `<button class="wch ${watched ? "on" : ""}" data-watched="${m.id}" title="Marker sett" aria-label="${watched ? "Fjern sett-markering" : "Marker som sett"}" aria-pressed="${watched}">${ICON.check}</button>`;
-  act += `<button class="star ${onPlan ? "on" : ""}${onPlan && m.id === state.justStarred ? " pop" : ""}" data-plan="${m.id}" title="Min plan" aria-label="${onPlan ? "Fjern fra min plan" : "Legg i min plan"}" aria-pressed="${onPlan}">${onPlan ? ICON.starOn : ICON.starOff}</button>`;
+  act += `<button class="star ${onPlan ? "on" : ""}" data-plan="${m.id}" title="Min plan" aria-label="${onPlan ? "Fjern fra min plan" : "Legg i min plan"}" aria-pressed="${onPlan}">${onPlan ? ICON.starOn : ICON.starOff}</button>`;
   const place = [m.venue, m.city].filter(Boolean).join(", ");
   return `<div class="m${isNO(m) ? " no" : ""}" data-open="${m.id}"${place ? ` title="${esc(place)}"` : ""}>
     <div class="lt">${lt}</div>
@@ -549,7 +548,6 @@ function render() {
   const body = { schedule: viewSchedule, groups: viewGroups, bracket: viewBracket, stats: viewStats, plan: viewPlan }[state.view]();
   app.innerHTML = body;
   if (refocus) { const el = app.querySelector(refocus); if (el) el.focus(); }
-  state.justRevealed = state.justStarred = null; // pops are one-shot
   tickCountdown();
   renderSheet();
   if (state.view === "schedule" && !didAnchor) {
@@ -572,9 +570,9 @@ document.addEventListener("click", (e) => {
   if (t.id === "sheetClose" || t.dataset.close) { closeSheet(); return; } // slide-down close (match over venue → back to venue)
   if (t.dataset.venue) { state.venue = t.dataset.venue; render(); return; }                 // tap a stadium on the map
   if (t.dataset.filter) { state.filter = t.dataset.filter; didAnchor = false; render(); return; } // re-anchor to today after filtering
-  if (t.dataset.show) { state.justRevealed = t.dataset.show; setReveal(t.dataset.show, true); render(); return; } // tap "Vis" → reveal (with a pop)
+  if (t.dataset.show) { setReveal(t.dataset.show, true); render(); return; } // tap "Vis" → reveal
   if (t.dataset.hide) { setReveal(t.dataset.hide, false); render(); return; }               // tap a shown score → hide again
-  if (t.dataset.plan) { toggle(state.plan, t.dataset.plan, "plan"); if (state.plan.has(t.dataset.plan)) state.justStarred = t.dataset.plan; render(); return; }
+  if (t.dataset.plan) { toggle(state.plan, t.dataset.plan, "plan"); render(); return; }
   if (t.dataset.watched) { toggle(state.watched, t.dataset.watched, "watched"); setReveal(t.dataset.watched, state.watched.has(t.dataset.watched)); render(); return; } // marking watched reveals; un-marking re-hides
   if (t.dataset.open) { if (e.target.closest("a, button")) return; state.sheet = t.dataset.open; render(); }  // tap a row (off its controls) → open detail
 });
