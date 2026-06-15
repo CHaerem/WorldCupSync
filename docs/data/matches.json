@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-15T21:01:26.922Z",
+  "updated": "2026-06-15T22:39:28.779Z",
   "count": 104,
   "matches": [
     {
@@ -538,9 +538,9 @@
       "roundNote": "group-stage",
       "venue": "Hard Rock Stadium",
       "city": "Miami Gardens, Florida",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "36'",
       "home": {
         "id": "655",
         "name": "Saudi Arabia",
@@ -557,8 +557,8 @@
         "score": 0,
         "winner": false
       },
-      "nrkFree": true,
-      "broadcaster": "NRK",
+      "nrkFree": false,
+      "broadcaster": "TV2",
       "streams": {
         "nrk": "https://tv.nrk.no/se?v=ISPO40500626"
       }
