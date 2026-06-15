@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-15T00:35:58.198Z",
-  "matchesPlayed": 10,
-  "totalGoals": 31,
-  "avgGoals": 3.1,
+  "updated": "2026-06-15T03:05:41.489Z",
+  "matchesPlayed": 11,
+  "totalGoals": 32,
+  "avgGoals": 2.91,
   "topScorers": [
     {
       "name": "Folarin Balogun",
@@ -38,6 +38,13 @@
       "goals": 1,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
+    },
+    {
+      "name": "Amad Diallo",
+      "team": "Ivory Coast",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png"
     },
     {
       "name": "Breel Embolo",
