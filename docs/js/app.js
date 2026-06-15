@@ -415,6 +415,7 @@ function venueSheetHTML(v) {
   const map = co ? `<div class="venuemap"><svg viewBox="0 0 240 134" role="img" aria-label="Kart med markør på ${esc(v)}"><path class="na-land" d="${window.NA_PATH || ""}"/><circle class="na-halo" cx="${naX(co[1]).toFixed(1)}" cy="${naY(co[0]).toFixed(1)}" r="2.6"/><circle class="na-dot" cx="${naX(co[1]).toFixed(1)}" cy="${naY(co[0]).toFixed(1)}" r="2.4"/></svg><span class="mapcountry">${venueCountry(v)}</span></div>` : "";
   return `<div class="sheet-backdrop" data-close="1"></div>
     <div class="sheet-card venue" role="dialog" aria-modal="true" aria-label="Stadion">
+      <span class="sheet-grabber" aria-hidden="true"></span>
       <button class="sheet-x" id="sheetClose" aria-label="Lukk">${ICON.close}</button>
       <div class="sheet-eyebrow">${esc(venueCountry(v))}${city ? " · " + esc(city) : ""}</div>
       <h2 class="sheet-title">${esc(v)}</h2>
@@ -459,6 +460,7 @@ function sheetHTML(m) {
   const links = primaryLinks(m).map((l) => `<a class="go ${l.cls} big" href="${l.href}" target="_blank" rel="noopener">${l.ico}<span>${l.label}</span></a>`).join("");
   return `<div class="sheet-backdrop" data-close="1"></div>
     <div class="sheet-card" role="dialog" aria-modal="true" aria-label="Kampdetaljer">
+      <span class="sheet-grabber" aria-hidden="true"></span>
       <button class="sheet-x" id="sheetClose" aria-label="Lukk">${ICON.close}</button>
       <div class="sheet-eyebrow">${esc(where)}${live ? ' · <span class="liveword">spilles nå</span>' : ""}</div>
       <div class="sheet-h">${teamSide(m.home, "a")}<span class="shmid">${mid}</span>${teamSide(m.away, "b")}</div>
@@ -473,9 +475,56 @@ function sheetHTML(m) {
 function renderSheet() {
   const el = document.getElementById("sheet");
   const m = state.sheet && state.matches.find((x) => x.id === state.sheet);
-  if (m) { el.innerHTML = sheetHTML(m); el.hidden = false; applyWeather(m); return; }   // match detail (wins over venue → acts as "back")
-  if (state.venue) { el.innerHTML = venueSheetHTML(state.venue); el.hidden = false; return; }
+  if (m) { el.innerHTML = sheetHTML(m); el.hidden = false; applyWeather(m); wireSheetDrag(); return; }   // match detail (wins over venue → acts as "back")
+  if (state.venue) { el.innerHTML = venueSheetHTML(state.venue); el.hidden = false; wireSheetDrag(); return; }
   el.hidden = true; el.innerHTML = "";
+}
+
+// Close the sheet with a native slide-down — unless a match sheet sits over a venue
+// sheet, where closing is a "back" step that should just reveal the venue instantly.
+function closeSheet() {
+  const el = document.getElementById("sheet");
+  const card = el && el.querySelector(".sheet-card");
+  const backToVenue = state.sheet && state.venue;
+  if (backToVenue || !card) { state.sheet ? (state.sheet = null) : (state.venue = null); render(); return; }
+  const bd = el.querySelector(".sheet-backdrop");
+  const done = () => { state.sheet = null; state.venue = null; render(); };
+  card.style.transition = "transform .3s var(--spring, ease)";
+  card.style.transform = "translateY(110%)";
+  if (bd) { bd.style.transition = "opacity .25s ease"; bd.style.opacity = "0"; }
+  card.addEventListener("transitionend", done, { once: true });
+  setTimeout(done, 380); // fallback if transitionend doesn't fire
+}
+
+// Drag the grabber down to dismiss; release short → springs back. Only the grabber
+// strip is draggable, so it never fights the sheet's own content scrolling.
+function wireSheetDrag() {
+  const el = document.getElementById("sheet");
+  const card = el && el.querySelector(".sheet-card");
+  const grip = card && card.querySelector(".sheet-grabber");
+  if (!grip) return;
+  const bd = el.querySelector(".sheet-backdrop");
+  let startY = 0, dy = 0, h = 1, dragging = false;
+  grip.addEventListener("pointerdown", (e) => {
+    dragging = true; startY = e.clientY; dy = 0; h = card.offsetHeight || 1;
+    card.style.transition = "none";
+    try { grip.setPointerCapture(e.pointerId); } catch {}
+  });
+  grip.addEventListener("pointermove", (e) => {
+    if (!dragging) return;
+    dy = Math.max(0, e.clientY - startY);
+    card.style.transform = `translateY(${dy}px)`;
+    if (bd) bd.style.opacity = String(Math.max(0, 1 - dy / h));
+  });
+  const end = () => {
+    if (!dragging) return; dragging = false;
+    if (dy > 100) { closeSheet(); return; }
+    card.style.transition = "transform .32s var(--spring, ease)";
+    card.style.transform = "translateY(0)";
+    if (bd) { bd.style.transition = "opacity .2s ease"; bd.style.opacity = ""; }
+  };
+  grip.addEventListener("pointerup", end);
+  grip.addEventListener("pointercancel", end);
 }
 
 let didAnchor = false; // only auto-scroll to today once per visit to Kamper
@@ -520,7 +569,7 @@ document.addEventListener("click", (e) => {
   if (t.dataset.stab) { state.statsTab = t.dataset.stab; render(); return; }
   if (t.id === "hintClose") { state.hintSeen = true; LS.set("hintSeen", true); render(); return; }
   if (t.id === "resetReveals") { for (const k in state.reveal) if (state.reveal[k]) delete state.reveal[k]; LS.set("reveal", state.reveal); render(); return; }
-  if (t.id === "sheetClose" || t.dataset.close) { state.sheet ? (state.sheet = null) : (state.venue = null); render(); return; } // close (match → back to venue; else close)
+  if (t.id === "sheetClose" || t.dataset.close) { closeSheet(); return; } // slide-down close (match over venue → back to venue)
   if (t.dataset.venue) { state.venue = t.dataset.venue; render(); return; }                 // tap a stadium on the map
   if (t.dataset.filter) { state.filter = t.dataset.filter; didAnchor = false; render(); return; } // re-anchor to today after filtering
   if (t.dataset.show) { state.justRevealed = t.dataset.show; setReveal(t.dataset.show, true); render(); return; } // tap "Vis" → reveal (with a pop)
@@ -529,7 +578,7 @@ document.addEventListener("click", (e) => {
   if (t.dataset.watched) { toggle(state.watched, t.dataset.watched, "watched"); setReveal(t.dataset.watched, state.watched.has(t.dataset.watched)); render(); return; } // marking watched reveals; un-marking re-hides
   if (t.dataset.open) { if (e.target.closest("a, button")) return; state.sheet = t.dataset.open; render(); }  // tap a row (off its controls) → open detail
 });
-addEventListener("keydown", (e) => { if (e.key === "Escape" && (state.sheet || state.venue)) { state.sheet ? (state.sheet = null) : (state.venue = null); render(); } });
+addEventListener("keydown", (e) => { if (e.key === "Escape" && (state.sheet || state.venue)) closeSheet(); });
 function toggle(set, id, key) { set.has(id) ? set.delete(id) : set.add(id); LS.set(key, [...set]); }
 
 applyTheme(); // render the theme switcher (ICON is defined by now)
