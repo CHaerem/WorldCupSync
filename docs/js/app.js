@@ -138,9 +138,12 @@ const TV2_HUB = "https://play.tv2.no/fotball-vm";
 // claims URLs carrying a `partner` query param (per its apple-app-site-association),
 // so we append one — any value triggers the app, and the website ignores it.
 const tv2App = (href) => href + (href.includes("?") ? "&" : "?") + "partner=worldcupsync";
-// On an episode link the NRK app otherwise lands on the season list with the match
-// highlighted; the share-link template advertises an `autoplay` param ({&autoplay,t})
-// that takes it straight into the player. Only the /se?v= match links carry it.
+// NRK's `autoplay` param (from its share-link template {&autoplay,t}) auto-starts
+// playback on web. Note: the NRK app still lands on the season list with the match
+// highlighted (one tap from playback) — every NRK URL form (/se?v=, /program/<id>,
+// the share link) redirects to the same /serie/.../episode/<id> page, and the app
+// renders series episodes in that list context. That's app behaviour we can't
+// override from a link; autoplay only affects the player once it's reached.
 const nrkApp = (href) => /\/se\?/.test(href) ? href + "&autoplay=true" : href;
 
 function primaryLinks(m) {
