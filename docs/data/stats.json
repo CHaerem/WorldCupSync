@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-15T03:05:41.489Z",
-  "matchesPlayed": 11,
-  "totalGoals": 32,
-  "avgGoals": 2.91,
+  "updated": "2026-06-15T05:45:11.114Z",
+  "matchesPlayed": 12,
+  "totalGoals": 38,
+  "avgGoals": 3.17,
   "topScorers": [
     {
       "name": "Folarin Balogun",
@@ -17,6 +17,20 @@
       "goals": 2,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
+    },
+    {
+      "name": "Yasin Ayari",
+      "team": "Sweden",
+      "goals": 2,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
+    },
+    {
+      "name": "Alexander Isak",
+      "team": "Sweden",
+      "goals": 1,
+      "assists": 2,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
     },
     {
       "name": "Deniz Undav",
@@ -38,6 +52,13 @@
       "goals": 1,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
+    },
+    {
+      "name": "Viktor Gyökeres",
+      "team": "Sweden",
+      "goals": 1,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
     },
     {
       "name": "Amad Diallo",
@@ -159,6 +180,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/11678.png"
     },
     {
+      "name": "Mattias Svanberg",
+      "team": "Sweden",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
+    },
+    {
       "name": "Maurício",
       "team": "Paraguay",
       "goals": 1,
@@ -185,34 +213,6 @@
       "goals": 1,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
-    },
-    {
-      "name": "Oh Hyeon-Gyu",
-      "team": "South Korea",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/kors.png"
-    },
-    {
-      "name": "Raúl Jiménez",
-      "team": "Mexico",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png"
-    },
-    {
-      "name": "Vinícius Júnior",
-      "team": "Brazil",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png"
-    },
-    {
-      "name": "Virgil van Dijk",
-      "team": "Netherlands",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png"
     }
   ]
 }
