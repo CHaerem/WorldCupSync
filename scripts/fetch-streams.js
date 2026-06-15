@@ -13,7 +13,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { resolveNrkLinks } from "./lib/nrk.js";
-import { resolveTv2Links } from "./lib/tv2.js";
+import { resolveTv2Links, resolveTv2Summaries } from "./lib/tv2.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const DATA = join(ROOT, "docs", "data");
@@ -45,18 +45,23 @@ async function main() {
   }
 
   let tv2 = { byMatchId: {}, tv2MatchIds: [], counts: {} };
+  let tv2sum = { byMatchId: {}, count: 0 };
   try {
     tv2 = await resolveTv2Links(matches);
+    tv2sum = await resolveTv2Summaries(matches);
   } catch (e) {
     console.error("fetch-streams: TV 2 resolution failed —", e.message);
   }
 
-  // merge resolved urls (each source only sets its own key; the other is preserved)
+  // merge resolved urls (each source only sets its own key; the others are preserved)
   for (const [id, url] of Object.entries(nrk.byMatchId)) {
     streams[id] = { ...(streams[id] || {}), nrk: url };
   }
   for (const [id, url] of Object.entries(tv2.byMatchId)) {
     streams[id] = { ...(streams[id] || {}), tv2: url };
+  }
+  for (const [id, url] of Object.entries(tv2sum.byMatchId)) {
+    streams[id] = { ...(streams[id] || {}), summary: url };
   }
 
   // auto-derive NRK free-match list from the catalog
@@ -73,7 +78,8 @@ async function main() {
     `fetch-streams: NRK ${nrk.nrkMatchIds.length} (of ${nrk.episodeCount} episodes), ` +
       `TV 2 ${tv2.tv2MatchIds.length} (${tv2.counts.group || 0} group + ${tv2.counts.r32 || 0} R32, ` +
       `${tv2.counts.knockoutSkipped || 0} R16+ skipped); ` +
-      `${linked.size}/${matches.length} matches now have a direct link`,
+      `${linked.size}/${matches.length} matches now have a direct link; ` +
+      `${tv2sum.count} TV 2 summaries`,
   );
 }
 

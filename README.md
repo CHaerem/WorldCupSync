@@ -62,6 +62,7 @@ TV 2 holds all 104 matches; NRK shows 51 free-to-air. **Both run fully automatic
 
 - **NRK** (`scripts/lib/nrk.js`) — reads NRK's public catalog (`psapi.nrk.no`) and matches each episode to its ESPN fixture by kickoff time. The free-match list in `scripts/config/broadcasters.json` is **auto-derived** from the catalog. NRK publishes its catalog ~2 weeks ahead.
 - **TV 2** (`scripts/lib/tv2.js`) — TV 2's JSON API needs a login, but its public XML **sitemaps** list every fixture page. We harvest those and match by parsing the slug: group-stage pages carry team names (`irak-norge`), round-of-32 pages carry FIFA group slots (`1c-2f`, `1a-3cefhi`) that line up with our fixtures' `home.abbr`/`away.abbr`.
+- **TV 2 summaries** (`resolveTv2Summaries`) — a short highlights clip per played match, from TV 2's "kampoppsummering" series. The episode URLs are only numbered, but each series-sitemap entry carries a `<video:title>` (`Oppsummering: Ghana - Panama`) we parse for the teams. Surfaced as a **Sammendrag** button in a match's detail sheet once it's played. (NRK publishes no per-match summaries.)
 
 Both resolvers fill in as the broadcasters publish more pages, so coverage grows on each 2-hourly run. Matches without a resolved link fall back in the app to the broadcaster's **World Cup hub page** (where the match will appear), never a broken search.
 

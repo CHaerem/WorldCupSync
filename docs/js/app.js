@@ -107,6 +107,7 @@ const ICON = {
   eye: SVG('<path d="M2.6 12C4.4 8.4 7.9 6.2 12 6.2s7.6 2.2 9.4 5.8c-1.8 3.6-5.3 5.8-9.4 5.8S4.4 15.6 2.6 12z"/><circle cx="12" cy="12" r="2.7"/>'),
   eyeOff: SVG('<path d="M2.6 12C4.1 9 6.6 6.9 9.7 6.4M21.4 12c-1.4 2.9-3.8 4.9-6.8 5.5"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/><path d="M4 4l16 16"/>'),
   play: SVG('<path d="M7 5.2v13.6L18.8 12z"/>', { fill: "currentColor", stroke: "none" }),
+  clip: SVG('<rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M10 9.5v5l4-2.5z" fill="currentColor" stroke="none"/>'),
   starOn: SVG('<path d="M12 3.2l2.6 5.8 6.3.6-4.7 4.2 1.3 6.2L12 17l-5.8 3.2 1.3-6.2-4.7-4.2 6.3-.6z"/>', { fill: "currentColor", stroke: "none" }),
   starOff: SVG('<path d="M12 3.2l2.6 5.8 6.3.6-4.7 4.2 1.3 6.2L12 17l-5.8 3.2 1.3-6.2-4.7-4.2 6.3-.6z"/>'),
   check: SVG('<path d="M4.5 12.5l4.7 4.7L19.5 6.4"/>', { sw: 1.9 }),
@@ -457,6 +458,10 @@ function sheetHTML(m) {
     ? (reveal ? `<span class="shsc">${m.home?.score ?? "-"}–${m.away?.score ?? "-"}</span>` : `<button class="md reveal" data-show="${m.id}" aria-label="Vis resultat">${ICON.eye}<span class="lbl">Vis</span></button>`)
     : `<span class="shsc vs">${m.osloTime}</span>`;
   const links = primaryLinks(m).map((l) => `<a class="go ${l.cls} big" href="${l.href}" target="_blank" rel="noopener">${l.ico}<span>${l.label}</span></a>`).join("");
+  // short highlights clip (TV 2 "kampoppsummering"), only once the match is played
+  const summary = post && m.streams?.summary
+    ? `<a class="go sum big" href="${tv2App(m.streams.summary)}" target="_blank" rel="noopener">${ICON.clip}<span>Sammendrag</span></a>`
+    : "";
   return `<div class="sheet-backdrop" data-close="1"></div>
     <div class="sheet-card" role="dialog" aria-modal="true" aria-label="Kampdetaljer">
       <span class="sheet-grabber" aria-hidden="true"></span>
@@ -467,7 +472,7 @@ function sheetHTML(m) {
       ${place ? `<div class="sheet-line">${ICON.pin}<span>${esc(place)}</span></div>` : ""}
       <div class="sheet-line wx" id="sheetwx"></div>
       ${mapBlock(m)}
-      ${links ? `<div class="sheet-streams">${links}</div>` : ""}
+      ${links || summary ? `<div class="sheet-streams">${links}${summary}</div>` : ""}
       <button class="sheet-plan ${onPlan ? "on" : ""}" data-plan="${m.id}">${onPlan ? ICON.starOn : ICON.starOff}<span>${onPlan ? "I min plan" : "Legg i min plan"}</span></button>
     </div>`;
 }

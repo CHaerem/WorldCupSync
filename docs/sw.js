@@ -2,7 +2,7 @@
 // Strategy: app shell is cache-first (with background refresh); the JSON data is
 // network-first (always try fresh, fall back to cache offline); cross-origin team
 // logos / fonts are cached on first use. Bump CACHE to ship a new shell.
-const CACHE = "wc26-v13";
+const CACHE = "wc26-v14";
 const SHELL = [
   ".",
   "index.html",

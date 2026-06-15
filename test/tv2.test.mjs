@@ -3,7 +3,7 @@
 // group slot, and the deliberate skip of round-of-16+ chained-feeder slugs.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { resolveTv2Links } from "../scripts/lib/tv2.js";
+import { resolveTv2Links, resolveTv2Summaries } from "../scripts/lib/tv2.js";
 
 const base = "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv";
 
@@ -41,4 +41,24 @@ test("TV 2 resolver links group stage by team name and R32 by group slot, skips 
 test("TV 2 resolver ignores unknown fixtures without throwing", async () => {
   const { tv2MatchIds } = await resolveTv2Links(MATCHES, [`${base}/atlantis-eldorado-00000000`]);
   assert.deepEqual(tv2MatchIds, [], "an unmatchable slug links nothing");
+});
+
+test("TV 2 summaries map highlight-clip titles to fixtures, skip placeholders", async () => {
+  const sum = "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026";
+  const entries = [
+    { loc: `${sum}/episode-70`, title: "Oppsummering: New Zealand - Belgia" },   // "Oppsummering:" prefix
+    { loc: `${sum}/episode-16`, title: "Brasil - Marokko 14.06" },               // trailing date, no prefix
+    { loc: `${sum}/episode-90`, title: "Oppsummering: Tyskland - Elfenbenkysten" }, // TV 2's missing-'s' spelling
+    { loc: `${sum}/episode-73`, title: "Episode 73" },                            // unnamed placeholder → skip
+  ];
+  const matches = [
+    { id: "g2", home: { name: "New Zealand" }, away: { name: "Belgium" } },
+    { id: "x1", home: { name: "Brazil" }, away: { name: "Morocco" } },
+    { id: "x2", home: { name: "Germany" }, away: { name: "Ivory Coast" } },
+  ];
+  const { byMatchId, count } = await resolveTv2Summaries(matches, entries);
+  assert.equal(byMatchId.g2, `${sum}/episode-70`);
+  assert.equal(byMatchId.x1, `${sum}/episode-16`);
+  assert.equal(byMatchId.x2, `${sum}/episode-90`, "Elfenbenkysten alias maps to Ivory Coast");
+  assert.equal(count, 3, "the 'Episode 73' placeholder is not linked");
 });

@@ -1,24 +1,27 @@
 {
   "_comment": "Per-match replay links, keyed by ESPN match id. NRK urls resolved deterministically from NRK's public catalog by scripts/fetch-streams.js. Shape: { \"<matchId>\": { \"nrk\": \"https://tv.nrk.no/...\" } }",
-  "updated": "2026-06-15T10:05:00.543Z",
+  "updated": "2026-06-15T11:00:46.693Z",
   "streams": {
     "760414": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500126"
     },
     "760415": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/mexico-soer-afrika-4v42ekry"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/mexico-soer-afrika-4v42ekry",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-64"
     },
     "760416": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500226"
     },
     "760417": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/usa-paraguay-r7nqznfv"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/usa-paraguay-r7nqznfv",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-66"
     },
     "760418": {
       "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/haiti-skottland-30n0rprh"
     },
     "760419": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/brasil-marokko-57t5bpf2"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/brasil-marokko-57t5bpf2",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-16"
     },
     "760420": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500326"
@@ -33,10 +36,12 @@
       "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/elfenbenskysten-ecuador-4kpfg0a4"
     },
     "760424": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/sverige-tunisia-swztpthv"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/sverige-tunisia-swztpthv",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-5"
     },
     "760425": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/nederland-japan-55wkahs0"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/nederland-japan-55wkahs0",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-75"
     },
     "760426": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500526"
@@ -45,46 +50,55 @@
       "nrk": "https://tv.nrk.no/se?v=ISPO40500726"
     },
     "760428": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/spania-kapp-verde-ga58jdg2"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/spania-kapp-verde-ga58jdg2",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-79"
     },
     "760429": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500626"
     },
     "760430": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/irak-norge-190xshna"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/irak-norge-190xshna",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-1"
     },
     "760431": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500926"
     },
     "760432": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/frankrike-senegal-n7pkkbb4"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/frankrike-senegal-n7pkkbb4",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-42"
     },
     "760433": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500826"
     },
     "760434": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/ghana-panama-bbxrsz7r"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/ghana-panama-bbxrsz7r",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-70"
     },
     "760435": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40501026"
     },
     "760436": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/usbekistan-colombia-zrkkk7wy"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/usbekistan-colombia-zrkkk7wy",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-22"
     },
     "760437": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/england-kroatia-6fer2593"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/england-kroatia-6fer2593",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-38"
     },
     "760438": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40501126"
     },
     "760439": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/sveits-bosnia-hercegovina-hbcwx4fj"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/sveits-bosnia-hercegovina-hbcwx4fj",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-49"
     },
     "760440": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/canada-qatar-3e5sfykj"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/canada-qatar-3e5sfykj",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-52"
     },
     "760441": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/mexico-soer-korea-1w1wnesn"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/mexico-soer-korea-1w1wnesn",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-56"
     },
     "760442": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40501226"
@@ -99,13 +113,15 @@
       "nrk": "https://tv.nrk.no/se?v=ISPO40501326"
     },
     "760446": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/ecuador-curacao-typs7f2y"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/ecuador-curacao-typs7f2y",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-2"
     },
     "760447": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40501626"
     },
     "760448": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/tyskland-elfenbenskysten-402tx3qn"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/tyskland-elfenbenskysten-402tx3qn",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-3"
     },
     "760449": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40501726"
@@ -114,10 +130,12 @@
       "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/uruguay-kapp-verde-vq8pmwaz"
     },
     "760451": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/belgia-iran-swmc2frh"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/belgia-iran-swmc2frh",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-45"
     },
     "760452": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/new-zealand-egypt-yvke2s0f"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/new-zealand-egypt-yvke2s0f",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-11"
     },
     "760453": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40501826"
@@ -126,10 +144,12 @@
       "nrk": "https://tv.nrk.no/se?v=ISPO40502026"
     },
     "760455": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/jordan-algerie-90vyb8ys"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/jordan-algerie-90vyb8ys",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-14"
     },
     "760456": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/argentina-oesterrike-655xvqpb"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/argentina-oesterrike-655xvqpb",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-48"
     },
     "760457": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40501926"
@@ -138,13 +158,15 @@
       "nrk": "https://tv.nrk.no/se?v=ISPO40502126"
     },
     "760459": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/colombia-dr-kongo-vn243gme"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/colombia-dr-kongo-vn243gme",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-58"
     },
     "760460": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40502226"
     },
     "760461": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/portugal-usbekistan-p661zq9v"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/portugal-usbekistan-p661zq9v",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-20"
     },
     "760463": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40502326"
@@ -159,10 +181,12 @@
       "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/soer-afrika-soer-korea-8ghsry6p"
     },
     "760467": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/tsjekkia-mexico-s4jsab26"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/tsjekkia-mexico-s4jsab26",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-65"
     },
     "760468": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/ecuador-tyskland-2rrfcswr"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/ecuador-tyskland-2rrfcswr",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-71"
     },
     "760469": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40502826"
@@ -171,7 +195,8 @@
       "nrk": "https://tv.nrk.no/se?v=ISPO40502726"
     },
     "760471": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/japan-sverige-hy9wb1hb"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/japan-sverige-hy9wb1hb",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-7"
     },
     "760472": {
       "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/tunisia-nederland-pyxs6srs"
@@ -189,7 +214,8 @@
       "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/egypt-iran-5kym6ybp"
     },
     "760477": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/new-zealand-belgia-dtr8frdp"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/new-zealand-belgia-dtr8frdp",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-12"
     },
     "760479": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40503226"
@@ -210,7 +236,8 @@
       "nrk": "https://tv.nrk.no/se?v=ISPO40503726"
     },
     "760485": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/panama-england-zt0n9tg9"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/panama-england-zt0n9tg9",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-35"
     },
     "760486": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40503926"

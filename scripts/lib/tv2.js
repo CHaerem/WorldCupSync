@@ -34,6 +34,17 @@ const SLUG_TO_EN = (() => {
   return out;
 })();
 
+// Norwegian display name → English (for the summary titles, which use spelled-out
+// names like "DR Kongo", not slugs). Built from NO_TO_EN, plus a couple of TV 2
+// spellings that differ from ours.
+const norm = (s) => (s || "").toLowerCase().replace(/\s+/g, " ").trim();
+const NAME_TO_EN = (() => {
+  const out = {};
+  for (const [no, en] of Object.entries(NO_TO_EN)) out[norm(no)] = en;
+  out["elfenbenkysten"] = "Ivory Coast"; // TV 2 drops the 's' from "Elfenbenskysten"
+  return out;
+})();
+
 async function getText(url) {
   const res = await fetch(url, { headers: { accept: "application/xml", "User-Agent": "worldcupsync/0.1" } });
   if (!res.ok) throw new Error(`TV2 ${res.status} ${url}`);
@@ -121,4 +132,61 @@ export async function resolveTv2Links(matches, urls) {
   }
 
   return { byMatchId, tv2MatchIds: Object.keys(byMatchId), counts };
+}
+
+// ---- TV 2 match-summary ("kampoppsummering") highlights -------------------
+// A separate TV 2 series carries a short highlights clip per played match. The
+// episode URLs are just numbered, but each <url> in the series sitemaps carries a
+// <video:title> like "Oppsummering: Ghana - Panama" or "Brasil - Marokko 14.06"
+// — we parse the teams from that and match by team set. Titles that are still the
+// generic "Episode N" placeholder are skipped (they get real titles once published).
+const SUMMARY_SERIES = "fifa-fotball-vm-kampoppsummering-8y65sn64";
+
+// "Oppsummering: Brasil - Marokko 14.06" → ["Brazil","Morocco"], or null.
+function parseSummaryTitle(title) {
+  const s = (title || "")
+    .replace(/^oppsummering:\s*/i, "")
+    .replace(/\s+\d{1,2}\.\d{1,2}\.?$/, "") // trailing "14.06"
+    .trim();
+  if (/^episode\s*\d+$/i.test(s) || !s) return null; // unnamed placeholder
+  const p = s.split(/\s[–-]\s/).map((x) => x.trim());
+  if (p.length !== 2) return null;
+  const en = p.map((x) => NAME_TO_EN[norm(x)] || null);
+  return en.every(Boolean) ? en : null;
+}
+
+// Pull the series sitemaps' <url> blocks for the summary series (loc + video:title).
+async function fetchSummaryEntries() {
+  const index = await getText(SITEMAP_INDEX);
+  const seriesMaps = locs(index).filter((u) => /sitemap-series-\d+\.xml/.test(u));
+  const out = [];
+  for (const sm of seriesMaps) {
+    let xml;
+    try { xml = await getText(sm); } catch { continue; }
+    if (!xml.includes(SUMMARY_SERIES)) continue;
+    for (const block of xml.split("<url>")) {
+      if (!block.includes(`${SUMMARY_SERIES}/sesong`)) continue;
+      const loc = (block.match(/<loc>([^<]+)<\/loc>/) || [])[1];
+      const title = (block.match(/<video:title>([^<]+)<\/video:title>/) || [])[1];
+      if (loc) out.push({ loc: loc.trim(), title: (title || "").trim() });
+    }
+  }
+  return out;
+}
+
+// Returns { byMatchId: { id: summaryUrl }, count }. `entries` can be injected (tests).
+export async function resolveTv2Summaries(matches, entries) {
+  if (!entries) entries = await fetchSummaryEntries();
+  const pairKey = (a, b) => [a, b].map((x) => (x || "").toLowerCase()).sort().join("|");
+  const byPair = new Map();
+  for (const m of matches) byPair.set(pairKey(m.home?.name, m.away?.name), m);
+
+  const byMatchId = {};
+  for (const { loc, title } of entries) {
+    const teams = parseSummaryTitle(title);
+    if (!teams) continue;
+    const m = byPair.get(pairKey(teams[0], teams[1]));
+    if (m) byMatchId[m.id] = loc;
+  }
+  return { byMatchId, count: Object.keys(byMatchId).length };
 }
