@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-15T19:17:19.998Z",
-  "matchesPlayed": 13,
-  "totalGoals": 38,
-  "avgGoals": 2.92,
+  "updated": "2026-06-15T21:01:27.484Z",
+  "matchesPlayed": 14,
+  "totalGoals": 40,
+  "avgGoals": 2.86,
   "topScorers": [
     {
       "name": "Folarin Balogun",
@@ -110,6 +110,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png"
     },
     {
+      "name": "Emam Ashour",
+      "team": "Egypt",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/egy.png"
+    },
+    {
       "name": "Felix Nmecha",
       "team": "Germany",
       "goals": 1,
@@ -201,18 +208,11 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/qat.png"
     },
     {
-      "name": "Nestory Irankunda",
-      "team": "Australia",
+      "name": "Mohamed Hany",
+      "team": "Belgium",
       "goals": 1,
       "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png"
-    },
-    {
-      "name": "Nico Schlotterbeck",
-      "team": "Germany",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png"
     }
   ]
 }
