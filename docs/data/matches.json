@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-15T17:38:28.206Z",
+  "updated": "2026-06-15T19:17:19.682Z",
   "count": 104,
   "matches": [
     {
@@ -463,9 +463,9 @@
       "roundNote": "group-stage",
       "venue": "Mercedes-Benz Stadium",
       "city": "Atlanta, Georgia",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "77'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "164",
         "name": "Spain",
@@ -501,9 +501,9 @@
       "roundNote": "group-stage",
       "venue": "Lumen Field",
       "city": "Seattle, Washington",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "17'",
       "home": {
         "id": "459",
         "name": "Belgium",
