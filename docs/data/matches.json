@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-15T14:03:47.459Z",
+  "updated": "2026-06-15T17:38:28.206Z",
   "count": 104,
   "matches": [
     {
@@ -463,9 +463,9 @@
       "roundNote": "group-stage",
       "venue": "Mercedes-Benz Stadium",
       "city": "Atlanta, Georgia",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "77'",
       "home": {
         "id": "164",
         "name": "Spain",
