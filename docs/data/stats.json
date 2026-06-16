@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-15T22:39:29.262Z",
-  "matchesPlayed": 14,
-  "totalGoals": 40,
-  "avgGoals": 2.86,
+  "updated": "2026-06-16T00:41:39.520Z",
+  "matchesPlayed": 15,
+  "totalGoals": 42,
+  "avgGoals": 2.8,
   "topScorers": [
     {
       "name": "Folarin Balogun",
@@ -59,6 +59,13 @@
       "goals": 1,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
+    },
+    {
+      "name": "Abdulelah Al-Amri",
+      "team": "Saudi Arabia",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ksa.png"
     },
     {
       "name": "Amad Diallo",
@@ -201,18 +208,11 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/par.png"
     },
     {
-      "name": "Miro Muheim",
-      "team": "Qatar",
+      "name": "Maxi Araújo",
+      "team": "Uruguay",
       "goals": 1,
       "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/qat.png"
-    },
-    {
-      "name": "Mohamed Hany",
-      "team": "Belgium",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png"
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/uru.png"
     }
   ]
 }
