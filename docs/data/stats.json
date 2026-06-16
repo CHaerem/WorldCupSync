@@ -1,9 +1,16 @@
 {
-  "updated": "2026-06-16T00:41:39.520Z",
-  "matchesPlayed": 15,
-  "totalGoals": 42,
-  "avgGoals": 2.8,
+  "updated": "2026-06-16T03:05:21.543Z",
+  "matchesPlayed": 16,
+  "totalGoals": 46,
+  "avgGoals": 2.88,
   "topScorers": [
+    {
+      "name": "Elijah Just",
+      "team": "New Zealand",
+      "goals": 2,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png"
+    },
     {
       "name": "Folarin Balogun",
       "team": "United States",
@@ -52,6 +59,13 @@
       "goals": 1,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
+    },
+    {
+      "name": "Ramin Rezaeian",
+      "team": "Iran",
+      "goals": 1,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/irn.png"
     },
     {
       "name": "Viktor Gyökeres",
@@ -199,20 +213,6 @@
       "goals": 1,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
-    },
-    {
-      "name": "Maurício",
-      "team": "Paraguay",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/par.png"
-    },
-    {
-      "name": "Maxi Araújo",
-      "team": "Uruguay",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/uru.png"
     }
   ]
 }
