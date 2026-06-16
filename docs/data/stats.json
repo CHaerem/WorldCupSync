@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-16T21:01:45.559Z",
-  "matchesPlayed": 16,
-  "totalGoals": 46,
-  "avgGoals": 2.88,
+  "updated": "2026-06-16T22:37:09.759Z",
+  "matchesPlayed": 17,
+  "totalGoals": 50,
+  "avgGoals": 2.94,
   "topScorers": [
     {
       "name": "Elijah Just",
@@ -24,6 +24,13 @@
       "goals": 2,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
+    },
+    {
+      "name": "Kylian Mbappé",
+      "team": "France",
+      "goals": 2,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
     },
     {
       "name": "Yasin Ayari",
@@ -89,6 +96,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png"
     },
     {
+      "name": "Bradley Barcola",
+      "team": "France",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
+    },
+    {
       "name": "Breel Embolo",
       "team": "Switzerland",
       "goals": 1,
@@ -152,6 +166,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png"
     },
     {
+      "name": "Ibrahim Mbaye",
+      "team": "Senegal",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png"
+    },
+    {
       "name": "Ismael Saibari",
       "team": "Morocco",
       "goals": 1,
@@ -192,27 +213,6 @@
       "goals": 1,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png"
-    },
-    {
-      "name": "Ladislav Krejcí",
-      "team": "Czechia",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/cze.png"
-    },
-    {
-      "name": "Livano Comenencia",
-      "team": "Curaçao",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/11678.png"
-    },
-    {
-      "name": "Mattias Svanberg",
-      "team": "Sweden",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
     }
   ]
 }

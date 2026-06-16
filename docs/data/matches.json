@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-16T21:01:45.186Z",
+  "updated": "2026-06-16T22:37:09.356Z",
   "count": 104,
   "matches": [
     {
@@ -612,16 +612,16 @@
       "roundNote": "group-stage",
       "venue": "MetLife Stadium",
       "city": "East Rutherford, New Jersey",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "90'+7'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "478",
         "name": "France",
         "abbr": "FRA",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
         "score": 3,
-        "winner": false
+        "winner": true
       },
       "away": {
         "id": "654",
@@ -650,9 +650,9 @@
       "roundNote": "group-stage",
       "venue": "Gillette Stadium",
       "city": "Foxborough, Massachusetts",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "36'",
       "home": {
         "id": "4375",
         "name": "Iraq",
@@ -666,7 +666,7 @@
         "name": "Norway",
         "abbr": "NOR",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "nrkFree": false,
