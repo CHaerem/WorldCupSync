@@ -1,9 +1,16 @@
 {
-  "updated": "2026-06-17T00:36:49.310Z",
-  "matchesPlayed": 18,
-  "totalGoals": 55,
-  "avgGoals": 3.06,
+  "updated": "2026-06-17T03:05:02.405Z",
+  "matchesPlayed": 19,
+  "totalGoals": 58,
+  "avgGoals": 3.05,
   "topScorers": [
+    {
+      "name": "Lionel Messi",
+      "team": "Argentina",
+      "goals": 3,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
+    },
     {
       "name": "Elijah Just",
       "team": "New Zealand",
@@ -206,13 +213,6 @@
       "goals": 1,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
-    },
-    {
-      "name": "John McGinn",
-      "team": "Scotland",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sco.png"
     }
   ]
 }

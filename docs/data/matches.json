@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-17T00:36:48.919Z",
+  "updated": "2026-06-17T03:05:02.062Z",
   "count": 104,
   "matches": [
     {
@@ -688,16 +688,16 @@
       "roundNote": "group-stage",
       "venue": "GEHA Field at Arrowhead Stadium",
       "city": "Kansas City, Missouri",
-      "state": "pre",
-      "completed": false,
-      "statusDetail": "Scheduled",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "202",
         "name": "Argentina",
         "abbr": "ARG",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
-        "score": 0,
-        "winner": false
+        "score": 3,
+        "winner": true
       },
       "away": {
         "id": "624",
