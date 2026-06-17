@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-17T03:05:02.062Z",
+  "updated": "2026-06-17T05:36:49.138Z",
   "groups": [
     {
       "name": "Group A",
@@ -641,30 +641,14 @@
           "abbr": "ARG",
           "logo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
           "rank": 1,
-          "played": 0,
-          "wins": 0,
+          "played": 1,
+          "wins": 1,
           "ties": 0,
           "losses": 0,
-          "gf": 0,
+          "gf": 3,
           "ga": 0,
-          "gd": 0,
-          "points": 0,
-          "advanced": 0
-        },
-        {
-          "teamId": "624",
-          "team": "Algeria",
-          "abbr": "ALG",
-          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/alg.png",
-          "rank": 2,
-          "played": 0,
-          "wins": 0,
-          "ties": 0,
-          "losses": 0,
-          "gf": 0,
-          "ga": 0,
-          "gd": 0,
-          "points": 0,
+          "gd": 3,
+          "points": 3,
           "advanced": 0
         },
         {
@@ -672,7 +656,7 @@
           "team": "Austria",
           "abbr": "AUT",
           "logo": "https://a.espncdn.com/i/teamlogos/countries/500/aut.png",
-          "rank": 3,
+          "rank": 2,
           "played": 0,
           "wins": 0,
           "ties": 0,
@@ -688,7 +672,7 @@
           "team": "Jordan",
           "abbr": "JOR",
           "logo": "https://a.espncdn.com/i/teamlogos/countries/500/jor.png",
-          "rank": 4,
+          "rank": 3,
           "played": 0,
           "wins": 0,
           "ties": 0,
@@ -696,6 +680,22 @@
           "gf": 0,
           "ga": 0,
           "gd": 0,
+          "points": 0,
+          "advanced": 0
+        },
+        {
+          "teamId": "624",
+          "team": "Algeria",
+          "abbr": "ALG",
+          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/alg.png",
+          "rank": 4,
+          "played": 1,
+          "wins": 0,
+          "ties": 0,
+          "losses": 1,
+          "gf": 0,
+          "ga": 3,
+          "gd": -3,
           "points": 0,
           "advanced": 0
         }
