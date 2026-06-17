@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-17T20:42:14.168Z",
+  "updated": "2026-06-17T22:33:25.148Z",
   "count": 104,
   "matches": [
     {
@@ -799,23 +799,23 @@
       "roundNote": "group-stage",
       "venue": "AT&T Stadium",
       "city": "Arlington, Texas",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "41'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "448",
         "name": "England",
         "abbr": "ENG",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
-        "score": 1,
-        "winner": false
+        "score": 4,
+        "winner": true
       },
       "away": {
         "id": "477",
         "name": "Croatia",
         "abbr": "CRO",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/cro.png",
-        "score": 1,
+        "score": 2,
         "winner": false
       },
       "nrkFree": false,

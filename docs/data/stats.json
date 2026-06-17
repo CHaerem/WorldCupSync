@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-17T20:42:14.629Z",
-  "matchesPlayed": 21,
-  "totalGoals": 64,
-  "avgGoals": 3.05,
+  "updated": "2026-06-17T22:33:25.541Z",
+  "matchesPlayed": 22,
+  "totalGoals": 70,
+  "avgGoals": 3.18,
   "topScorers": [
     {
       "name": "Lionel Messi",
@@ -31,6 +31,13 @@
       "goals": 2,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png"
+    },
+    {
+      "name": "Harry Kane",
+      "team": "England",
+      "goals": 2,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png"
     },
     {
       "name": "Kai Havertz",
@@ -206,13 +213,6 @@
       "goals": 1,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png"
-    },
-    {
-      "name": "Ismael Saibari",
-      "team": "Morocco",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png"
     }
   ]
 }
