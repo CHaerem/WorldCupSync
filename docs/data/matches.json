@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-17T05:36:49.138Z",
+  "updated": "2026-06-17T07:44:50.310Z",
   "count": 104,
   "matches": [
     {
@@ -725,16 +725,16 @@
       "roundNote": "group-stage",
       "venue": "Levi's Stadium",
       "city": "Santa Clara, California",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "72'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "474",
         "name": "Austria",
         "abbr": "AUT",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/aut.png",
-        "score": 1,
-        "winner": false
+        "score": 3,
+        "winner": true
       },
       "away": {
         "id": "2917",
