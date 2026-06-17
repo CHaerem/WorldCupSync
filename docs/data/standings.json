@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-16T22:37:09.356Z",
+  "updated": "2026-06-17T00:36:48.919Z",
   "groups": [
     {
       "name": "Group A",
@@ -566,11 +566,27 @@
       "abbreviation": "Group I",
       "entries": [
         {
+          "teamId": "464",
+          "team": "Norway",
+          "abbr": "NOR",
+          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
+          "rank": 1,
+          "played": 1,
+          "wins": 1,
+          "ties": 0,
+          "losses": 0,
+          "gf": 4,
+          "ga": 1,
+          "gd": 3,
+          "points": 3,
+          "advanced": 0
+        },
+        {
           "teamId": "478",
           "team": "France",
           "abbr": "FRA",
           "logo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
-          "rank": 1,
+          "rank": 2,
           "played": 1,
           "wins": 1,
           "ties": 0,
@@ -582,43 +598,11 @@
           "advanced": 0
         },
         {
-          "teamId": "4375",
-          "team": "Iraq",
-          "abbr": "IRQ",
-          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/irq.png",
-          "rank": 2,
-          "played": 0,
-          "wins": 0,
-          "ties": 0,
-          "losses": 0,
-          "gf": 0,
-          "ga": 0,
-          "gd": 0,
-          "points": 0,
-          "advanced": 0
-        },
-        {
-          "teamId": "464",
-          "team": "Norway",
-          "abbr": "NOR",
-          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
-          "rank": 3,
-          "played": 0,
-          "wins": 0,
-          "ties": 0,
-          "losses": 0,
-          "gf": 0,
-          "ga": 0,
-          "gd": 0,
-          "points": 0,
-          "advanced": 0
-        },
-        {
           "teamId": "654",
           "team": "Senegal",
           "abbr": "SEN",
           "logo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png",
-          "rank": 4,
+          "rank": 3,
           "played": 1,
           "wins": 0,
           "ties": 0,
@@ -626,6 +610,22 @@
           "gf": 1,
           "ga": 3,
           "gd": -2,
+          "points": 0,
+          "advanced": 0
+        },
+        {
+          "teamId": "4375",
+          "team": "Iraq",
+          "abbr": "IRQ",
+          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/irq.png",
+          "rank": 4,
+          "played": 1,
+          "wins": 0,
+          "ties": 0,
+          "losses": 1,
+          "gf": 1,
+          "ga": 4,
+          "gd": -3,
           "points": 0,
           "advanced": 0
         }

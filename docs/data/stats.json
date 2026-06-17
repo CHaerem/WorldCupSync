@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-16T22:37:09.759Z",
-  "matchesPlayed": 17,
-  "totalGoals": 50,
-  "avgGoals": 2.94,
+  "updated": "2026-06-17T00:36:49.310Z",
+  "matchesPlayed": 18,
+  "totalGoals": 55,
+  "avgGoals": 3.06,
   "topScorers": [
     {
       "name": "Elijah Just",
@@ -10,6 +10,13 @@
       "goals": 2,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png"
+    },
+    {
+      "name": "Erling Haaland",
+      "team": "Norway",
+      "goals": 2,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png"
     },
     {
       "name": "Folarin Balogun",
@@ -94,6 +101,20 @@
       "goals": 1,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png"
+    },
+    {
+      "name": "Aymen Hussein",
+      "team": "Iraq",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/irq.png"
+    },
+    {
+      "name": "Aymen Hussein",
+      "team": "Norway",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png"
     },
     {
       "name": "Bradley Barcola",
@@ -192,27 +213,6 @@
       "goals": 1,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sco.png"
-    },
-    {
-      "name": "Jovo Lukic",
-      "team": "Bosnia-Herzegovina",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bih.png"
-    },
-    {
-      "name": "Julián Quiñones",
-      "team": "Mexico",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png"
-    },
-    {
-      "name": "Keito Nakamura",
-      "team": "Japan",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png"
     }
   ]
 }
