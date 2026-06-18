@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-17T22:33:25.148Z",
+  "updated": "2026-06-18T00:38:03.335Z",
   "count": 104,
   "matches": [
     {
@@ -837,9 +837,9 @@
       "roundNote": "group-stage",
       "venue": "BMO Field",
       "city": "Toronto",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "76'",
       "home": {
         "id": "4469",
         "name": "Ghana",
