@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-18T18:45:33.657Z",
+  "updated": "2026-06-18T20:47:58.480Z",
   "count": 104,
   "matches": [
     {
@@ -950,15 +950,15 @@
       "roundNote": "group-stage",
       "venue": "SoFi Stadium",
       "city": "Inglewood, California",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "89'",
       "home": {
         "id": "475",
         "name": "Switzerland",
         "abbr": "SUI",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
-        "score": 0,
+        "score": 2,
         "winner": false
       },
       "away": {
