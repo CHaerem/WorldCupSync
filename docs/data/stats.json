@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-18T03:04:35.504Z",
-  "matchesPlayed": 23,
-  "totalGoals": 71,
-  "avgGoals": 3.09,
+  "updated": "2026-06-18T05:33:43.605Z",
+  "matchesPlayed": 24,
+  "totalGoals": 75,
+  "avgGoals": 3.13,
   "topScorers": [
     {
       "name": "Lionel Messi",
@@ -82,6 +82,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/kors.png"
     },
     {
+      "name": "Luis Díaz",
+      "team": "Colombia",
+      "goals": 1,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/col.png"
+    },
+    {
       "name": "Nathaniel Brown",
       "team": "Germany",
       "goals": 1,
@@ -101,6 +108,13 @@
       "goals": 1,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
+    },
+    {
+      "name": "Abbosbek Fayzullaev",
+      "team": "Uzbekistan",
+      "goals": 1,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/uzb.png"
     },
     {
       "name": "Abdulelah Al-Amri",
@@ -194,25 +208,11 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png"
     },
     {
-      "name": "Emam Ashour",
-      "team": "Egypt",
+      "name": "Daniel Muñoz",
+      "team": "Colombia",
       "goals": 1,
       "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/egy.png"
-    },
-    {
-      "name": "Felix Nmecha",
-      "team": "Germany",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
-    },
-    {
-      "name": "Giovanni Reyna",
-      "team": "United States",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png"
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/col.png"
     }
   ]
 }
