@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-18T17:01:24.620Z",
+  "updated": "2026-06-18T18:45:33.657Z",
   "count": 104,
   "matches": [
     {
@@ -913,9 +913,9 @@
       "roundNote": "group-stage",
       "venue": "Mercedes-Benz Stadium",
       "city": "Atlanta, Georgia",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "HT",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "450",
         "name": "Czechia",
@@ -929,7 +929,7 @@
         "name": "South Africa",
         "abbr": "RSA",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/rsa.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "nrkFree": true,
