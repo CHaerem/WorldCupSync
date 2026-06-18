@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-18T20:47:58.912Z",
-  "matchesPlayed": 25,
-  "totalGoals": 77,
-  "avgGoals": 3.08,
+  "updated": "2026-06-18T22:37:23.112Z",
+  "matchesPlayed": 26,
+  "totalGoals": 82,
+  "avgGoals": 3.15,
   "topScorers": [
     {
       "name": "Lionel Messi",
@@ -40,6 +40,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png"
     },
     {
+      "name": "Johan Manzambi",
+      "team": "Switzerland",
+      "goals": 2,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
+    },
+    {
       "name": "Kai Havertz",
       "team": "Germany",
       "goals": 2,
@@ -75,6 +82,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
     },
     {
+      "name": "Breel Embolo",
+      "team": "Switzerland",
+      "goals": 1,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
+    },
+    {
       "name": "Hwang In-Beom",
       "team": "South Korea",
       "goals": 1,
@@ -101,6 +115,13 @@
       "goals": 1,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/irn.png"
+    },
+    {
+      "name": "Rubén Vargas",
+      "team": "Switzerland",
+      "goals": 1,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
     },
     {
       "name": "Viktor Gyökeres",
@@ -159,13 +180,6 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
     },
     {
-      "name": "Breel Embolo",
-      "team": "Switzerland",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
-    },
-    {
       "name": "Caleb Yirenkyi",
       "team": "Ghana",
       "goals": 1,
@@ -199,20 +213,6 @@
       "goals": 1,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png"
-    },
-    {
-      "name": "Damián Bobadilla",
-      "team": "United States",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png"
-    },
-    {
-      "name": "Daniel Muñoz",
-      "team": "Colombia",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/col.png"
     }
   ]
 }
