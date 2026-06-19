@@ -1,15 +1,29 @@
 {
-  "updated": "2026-06-18T22:37:23.112Z",
-  "matchesPlayed": 26,
-  "totalGoals": 82,
-  "avgGoals": 3.15,
+  "updated": "2026-06-19T00:41:06.895Z",
+  "matchesPlayed": 27,
+  "totalGoals": 88,
+  "avgGoals": 3.26,
   "topScorers": [
+    {
+      "name": "Jonathan David",
+      "team": "Canada",
+      "goals": 3,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png"
+    },
     {
       "name": "Lionel Messi",
       "team": "Argentina",
       "goals": 3,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
+    },
+    {
+      "name": "Cyle Larin",
+      "team": "Canada",
+      "goals": 2,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png"
     },
     {
       "name": "Elijah Just",
@@ -103,6 +117,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/col.png"
     },
     {
+      "name": "Nathan Saliba",
+      "team": "Canada",
+      "goals": 1,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png"
+    },
+    {
       "name": "Nathaniel Brown",
       "team": "Germany",
       "goals": 1,
@@ -192,27 +213,6 @@
       "goals": 1,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png"
-    },
-    {
-      "name": "Crysencio Summerville",
-      "team": "Netherlands",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png"
-    },
-    {
-      "name": "Cyle Larin",
-      "team": "Canada",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png"
-    },
-    {
-      "name": "Daichi Kamada",
-      "team": "Japan",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png"
     }
   ]
 }
