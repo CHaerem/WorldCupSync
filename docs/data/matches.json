@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-19T03:06:02.852Z",
+  "updated": "2026-06-19T05:41:28.203Z",
   "count": 104,
   "matches": [
     {
@@ -2917,9 +2917,9 @@
       "osloDate": "2026-07-01",
       "osloTime": "03:00",
       "osloWeekday": "onsdag",
-      "name": "Third Place Group C/E/F/H/I at Group A Winner",
-      "shortName": "3RD @ 1A",
-      "group": null,
+      "name": "Third Place Group C/E/F/H/I at Mexico",
+      "shortName": "3RD @ MEX",
+      "group": "Group A",
       "roundNote": "round-of-32",
       "venue": "Estadio Banorte",
       "city": "Mexico City",
@@ -2927,10 +2927,10 @@
       "completed": false,
       "statusDetail": "Scheduled",
       "home": {
-        "id": "5923",
-        "name": "Group A Winner",
-        "abbr": "1A",
-        "logo": null,
+        "id": "203",
+        "name": "Mexico",
+        "abbr": "MEX",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png",
         "score": 0,
         "winner": false
       },
