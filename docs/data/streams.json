@@ -1,6 +1,6 @@
 {
   "_comment": "Per-match replay links, keyed by ESPN match id. NRK urls resolved deterministically from NRK's public catalog by scripts/fetch-streams.js. Shape: { \"<matchId>\": { \"nrk\": \"https://tv.nrk.no/...\" } }",
-  "updated": "2026-06-19T20:30:14.277Z",
+  "updated": "2026-06-19T22:19:19.918Z",
   "streams": {
     "760414": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500126"
@@ -94,7 +94,8 @@
     },
     "760440": {
       "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/canada-qatar-3e5sfykj",
-      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-52"
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-52",
+      "nrk": "https://tv.nrk.no/se?v=ISPO40501326"
     },
     "760441": {
       "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/mexico-soer-korea-1w1wnesn",

@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-19T20:30:14.960Z",
-  "matchesPlayed": 28,
-  "totalGoals": 89,
-  "avgGoals": 3.18,
+  "updated": "2026-06-19T22:19:20.618Z",
+  "matchesPlayed": 29,
+  "totalGoals": 91,
+  "avgGoals": 3.14,
   "topScorers": [
     {
       "name": "Jonathan David",
@@ -94,6 +94,13 @@
       "goals": 1,
       "assists": 2,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
+    },
+    {
+      "name": "Alex Freeman",
+      "team": "United States",
+      "goals": 1,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png"
     },
     {
       "name": "Breel Embolo",
@@ -206,13 +213,6 @@
       "goals": 1,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/gha.png"
-    },
-    {
-      "name": "Connor Metcalfe",
-      "team": "Australia",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png"
     }
   ]
 }

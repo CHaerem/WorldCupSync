@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-19T20:30:14.524Z",
+  "updated": "2026-06-19T22:19:20.204Z",
   "count": 104,
   "matches": [
     {
@@ -1007,11 +1007,12 @@
         "score": 0,
         "winner": false
       },
-      "nrkFree": false,
-      "broadcaster": "TV2",
+      "nrkFree": true,
+      "broadcaster": "NRK",
       "streams": {
         "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/canada-qatar-3e5sfykj",
-        "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-52"
+        "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-52",
+        "nrk": "https://tv.nrk.no/se?v=ISPO40501326"
       }
     },
     {
@@ -1064,16 +1065,16 @@
       "roundNote": "group-stage",
       "venue": "Lumen Field",
       "city": "Seattle, Washington",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "64'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "660",
         "name": "United States",
         "abbr": "USA",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
         "score": 2,
-        "winner": false
+        "winner": true
       },
       "away": {
         "id": "628",
@@ -1101,9 +1102,9 @@
       "roundNote": "group-stage",
       "venue": "Gillette Stadium",
       "city": "Foxborough, Massachusetts",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "19'",
       "home": {
         "id": "580",
         "name": "Scotland",
@@ -1117,11 +1118,11 @@
         "name": "Morocco",
         "abbr": "MAR",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
-      "nrkFree": true,
-      "broadcaster": "NRK",
+      "nrkFree": false,
+      "broadcaster": "TV2",
       "streams": {
         "nrk": "https://tv.nrk.no/se?v=ISPO40501326"
       }
