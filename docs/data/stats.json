@@ -1,9 +1,16 @@
 {
-  "updated": "2026-06-20T20:27:15.325Z",
-  "matchesPlayed": 33,
-  "totalGoals": 102,
+  "updated": "2026-06-20T22:24:51.559Z",
+  "matchesPlayed": 34,
+  "totalGoals": 105,
   "avgGoals": 3.09,
   "topScorers": [
+    {
+      "name": "Deniz Undav",
+      "team": "Germany",
+      "goals": 3,
+      "assists": 2,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
+    },
     {
       "name": "Jonathan David",
       "team": "Canada",
@@ -131,13 +138,6 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
     },
     {
-      "name": "Deniz Undav",
-      "team": "Germany",
-      "goals": 1,
-      "assists": 2,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
-    },
-    {
       "name": "Alex Freeman",
       "team": "United States",
       "goals": 1,
@@ -150,6 +150,13 @@
       "goals": 1,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
+    },
+    {
+      "name": "Felix Nmecha",
+      "team": "Germany",
+      "goals": 1,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
     },
     {
       "name": "Hwang In-Beom",
@@ -206,13 +213,6 @@
       "goals": 1,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/uzb.png"
-    },
-    {
-      "name": "Abdulelah Al-Amri",
-      "team": "Saudi Arabia",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ksa.png"
     }
   ]
 }

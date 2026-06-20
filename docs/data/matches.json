@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-20T20:27:14.882Z",
+  "updated": "2026-06-20T22:24:51.120Z",
   "count": 104,
   "matches": [
     {
@@ -1250,23 +1250,23 @@
       "roundNote": "group-stage",
       "venue": "BMO Field",
       "city": "Toronto",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "27'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "481",
         "name": "Germany",
         "abbr": "GER",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
-        "score": 0,
-        "winner": false
+        "score": 2,
+        "winner": true
       },
       "away": {
         "id": "4789",
         "name": "Ivory Coast",
         "abbr": "CIV",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "nrkFree": false,
