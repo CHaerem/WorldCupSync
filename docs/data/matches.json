@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-20T18:27:29.723Z",
+  "updated": "2026-06-20T20:27:14.882Z",
   "count": 104,
   "matches": [
     {
@@ -1213,16 +1213,16 @@
       "roundNote": "group-stage",
       "venue": "NRG Stadium",
       "city": "Houston, Texas",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "66'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "449",
         "name": "Netherlands",
         "abbr": "NED",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
-        "score": 4,
-        "winner": false
+        "score": 5,
+        "winner": true
       },
       "away": {
         "id": "466",
@@ -1250,9 +1250,9 @@
       "roundNote": "group-stage",
       "venue": "BMO Field",
       "city": "Toronto",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "27'",
       "home": {
         "id": "481",
         "name": "Germany",

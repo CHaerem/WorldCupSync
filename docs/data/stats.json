@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-20T18:27:30.148Z",
-  "matchesPlayed": 32,
-  "totalGoals": 96,
-  "avgGoals": 3,
+  "updated": "2026-06-20T20:27:15.325Z",
+  "matchesPlayed": 33,
+  "totalGoals": 102,
+  "avgGoals": 3.09,
   "topScorers": [
     {
       "name": "Jonathan David",
@@ -19,11 +19,32 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
     },
     {
+      "name": "Cody Gakpo",
+      "team": "Netherlands",
+      "goals": 2,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png"
+    },
+    {
+      "name": "Crysencio Summerville",
+      "team": "Netherlands",
+      "goals": 2,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png"
+    },
+    {
       "name": "Vinícius Júnior",
       "team": "Brazil",
       "goals": 2,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png"
+    },
+    {
+      "name": "Brian Brobbey",
+      "team": "Netherlands",
+      "goals": 2,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png"
     },
     {
       "name": "Cyle Larin",
@@ -106,7 +127,7 @@
       "name": "Alexander Isak",
       "team": "Sweden",
       "goals": 1,
-      "assists": 2,
+      "assists": 3,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
     },
     {
@@ -192,27 +213,6 @@
       "goals": 1,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ksa.png"
-    },
-    {
-      "name": "Ali Olwan",
-      "team": "Jordan",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/jor.png"
-    },
-    {
-      "name": "Amad Diallo",
-      "team": "Ivory Coast",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png"
-    },
-    {
-      "name": "Aymen Hussein",
-      "team": "Iraq",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/irq.png"
     }
   ]
 }
