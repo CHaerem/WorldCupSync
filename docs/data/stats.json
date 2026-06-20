@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-19T22:19:20.618Z",
-  "matchesPlayed": 29,
-  "totalGoals": 91,
-  "avgGoals": 3.14,
+  "updated": "2026-06-20T00:32:21.797Z",
+  "matchesPlayed": 30,
+  "totalGoals": 92,
+  "avgGoals": 3.07,
   "topScorers": [
     {
       "name": "Jonathan David",
@@ -52,6 +52,13 @@
       "goals": 2,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png"
+    },
+    {
+      "name": "Ismael Saibari",
+      "team": "Morocco",
+      "goals": 2,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png"
     },
     {
       "name": "Johan Manzambi",
@@ -206,13 +213,6 @@
       "goals": 1,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
-    },
-    {
-      "name": "Caleb Yirenkyi",
-      "team": "Ghana",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/gha.png"
     }
   ]
 }

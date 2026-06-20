@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-19T22:19:20.204Z",
+  "updated": "2026-06-20T00:32:21.326Z",
   "count": 104,
   "matches": [
     {
@@ -1102,9 +1102,9 @@
       "roundNote": "group-stage",
       "venue": "Gillette Stadium",
       "city": "Foxborough, Massachusetts",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "19'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "580",
         "name": "Scotland",
@@ -1119,7 +1119,7 @@
         "abbr": "MAR",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
         "score": 1,
-        "winner": false
+        "winner": true
       },
       "nrkFree": false,
       "broadcaster": "TV2",
