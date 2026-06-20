@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-20T00:32:21.797Z",
-  "matchesPlayed": 30,
-  "totalGoals": 92,
-  "avgGoals": 3.07,
+  "updated": "2026-06-20T03:03:27.249Z",
+  "matchesPlayed": 31,
+  "totalGoals": 95,
+  "avgGoals": 3.06,
   "topScorers": [
     {
       "name": "Jonathan David",
@@ -17,6 +17,13 @@
       "goals": 3,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
+    },
+    {
+      "name": "Vinícius Júnior",
+      "team": "Brazil",
+      "goals": 2,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png"
     },
     {
       "name": "Cyle Larin",
@@ -80,6 +87,13 @@
       "goals": 2,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
+    },
+    {
+      "name": "Matheus Cunha",
+      "team": "Brazil",
+      "goals": 2,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png"
     },
     {
       "name": "Yasin Ayari",
@@ -199,20 +213,6 @@
       "goals": 1,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/irq.png"
-    },
-    {
-      "name": "Aymen Hussein",
-      "team": "Norway",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png"
-    },
-    {
-      "name": "Bradley Barcola",
-      "team": "France",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
     }
   ]
 }

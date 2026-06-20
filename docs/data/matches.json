@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-20T00:32:21.326Z",
+  "updated": "2026-06-20T03:03:26.778Z",
   "count": 104,
   "matches": [
     {
@@ -1139,16 +1139,16 @@
       "roundNote": "group-stage",
       "venue": "Lincoln Financial Field",
       "city": "Philadelphia, Pennsylvania",
-      "state": "pre",
-      "completed": false,
-      "statusDetail": "Scheduled",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "205",
         "name": "Brazil",
         "abbr": "BRA",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
-        "score": 0,
-        "winner": false
+        "score": 3,
+        "winner": true
       },
       "away": {
         "id": "2654",
@@ -1176,9 +1176,9 @@
       "roundNote": "group-stage",
       "venue": "Levi's Stadium",
       "city": "Santa Clara, California",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "3'",
       "home": {
         "id": "465",
         "name": "Türkiye",
@@ -1192,7 +1192,7 @@
         "name": "Paraguay",
         "abbr": "PAR",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/par.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "nrkFree": true,
