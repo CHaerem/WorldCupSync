@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-21T16:31:58.699Z",
-  "matchesPlayed": 36,
-  "totalGoals": 109,
-  "avgGoals": 3.03,
+  "updated": "2026-06-21T18:29:36.171Z",
+  "matchesPlayed": 37,
+  "totalGoals": 113,
+  "avgGoals": 3.05,
   "topScorers": [
     {
       "name": "Deniz Undav",
@@ -45,6 +45,13 @@
       "goals": 2,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png"
+    },
+    {
+      "name": "Mikel Oyarzabal",
+      "team": "Spain",
+      "goals": 2,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png"
     },
     {
       "name": "Vinícius Júnior",
@@ -206,13 +213,6 @@
       "goals": 1,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
-    },
-    {
-      "name": "Ramin Rezaeian",
-      "team": "Iran",
-      "goals": 1,
-      "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/irn.png"
     }
   ]
 }
