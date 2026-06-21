@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-20T22:24:51.120Z",
+  "updated": "2026-06-21T00:35:15.689Z",
   "count": 104,
   "matches": [
     {
@@ -1288,9 +1288,9 @@
       "roundNote": "group-stage",
       "venue": "GEHA Field at Arrowhead Stadium",
       "city": "Kansas City, Missouri",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "34'",
       "home": {
         "id": "209",
         "name": "Ecuador",
