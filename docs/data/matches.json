@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-21T05:34:54.318Z",
+  "updated": "2026-06-21T07:34:41.371Z",
   "count": 104,
   "matches": [
     {
@@ -1326,9 +1326,9 @@
       "roundNote": "group-stage",
       "venue": "Estadio BBVA",
       "city": "Guadalupe",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "75'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "659",
         "name": "Tunisia",
@@ -1342,8 +1342,8 @@
         "name": "Japan",
         "abbr": "JPN",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png",
-        "score": 3,
-        "winner": false
+        "score": 4,
+        "winner": true
       },
       "nrkFree": true,
       "broadcaster": "NRK",

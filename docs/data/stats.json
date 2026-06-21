@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-21T05:34:54.816Z",
-  "matchesPlayed": 35,
-  "totalGoals": 105,
-  "avgGoals": 3,
+  "updated": "2026-06-21T07:34:41.821Z",
+  "matchesPlayed": 36,
+  "totalGoals": 109,
+  "avgGoals": 3.03,
   "topScorers": [
     {
       "name": "Deniz Undav",
@@ -24,6 +24,13 @@
       "goals": 3,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
+    },
+    {
+      "name": "Ayase Ueda",
+      "team": "Japan",
+      "goals": 2,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png"
     },
     {
       "name": "Cody Gakpo",
@@ -59,6 +66,13 @@
       "goals": 2,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png"
+    },
+    {
+      "name": "Daichi Kamada",
+      "team": "Japan",
+      "goals": 2,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png"
     },
     {
       "name": "Elijah Just",
@@ -166,6 +180,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/kors.png"
     },
     {
+      "name": "Keito Nakamura",
+      "team": "Japan",
+      "goals": 1,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png"
+    },
+    {
       "name": "Luis Díaz",
       "team": "Colombia",
       "goals": 1,
@@ -192,27 +213,6 @@
       "goals": 1,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/irn.png"
-    },
-    {
-      "name": "Rubén Vargas",
-      "team": "Switzerland",
-      "goals": 1,
-      "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
-    },
-    {
-      "name": "Viktor Gyökeres",
-      "team": "Sweden",
-      "goals": 1,
-      "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
-    },
-    {
-      "name": "Abbosbek Fayzullaev",
-      "team": "Uzbekistan",
-      "goals": 1,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/uzb.png"
     }
   ]
 }
