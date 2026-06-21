@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-21T00:35:15.689Z",
+  "updated": "2026-06-21T03:05:41.588Z",
   "groups": [
     {
       "name": "Group A",
@@ -323,14 +323,14 @@
           "abbr": "ECU",
           "logo": "https://a.espncdn.com/i/teamlogos/countries/500/ecu.png",
           "rank": 3,
-          "played": 1,
+          "played": 2,
           "wins": 0,
-          "ties": 0,
+          "ties": 1,
           "losses": 1,
           "gf": 0,
           "ga": 1,
           "gd": -1,
-          "points": 0,
+          "points": 1,
           "advanced": 0
         },
         {
@@ -339,14 +339,14 @@
           "abbr": "CUW",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11678.png",
           "rank": 4,
-          "played": 1,
+          "played": 2,
           "wins": 0,
-          "ties": 0,
+          "ties": 1,
           "losses": 1,
           "gf": 1,
           "ga": 7,
           "gd": -6,
-          "points": 0,
+          "points": 1,
           "advanced": 0
         }
       ]
