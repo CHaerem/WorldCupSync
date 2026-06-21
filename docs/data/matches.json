@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-21T18:29:35.658Z",
+  "updated": "2026-06-21T20:30:23.819Z",
   "count": 104,
   "matches": [
     {
@@ -1400,9 +1400,9 @@
       "roundNote": "group-stage",
       "venue": "SoFi Stadium",
       "city": "Inglewood, California",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "65'",
       "home": {
         "id": "459",
         "name": "Belgium",
