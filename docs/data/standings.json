@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-22T19:05:05.067Z",
+  "updated": "2026-06-22T21:00:16.989Z",
   "groups": [
     {
       "name": "Group A",
@@ -649,7 +649,7 @@
           "ga": 0,
           "gd": 5,
           "points": 6,
-          "advanced": 0
+          "advanced": 1
         },
         {
           "teamId": "474",
