@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-22T15:39:14.424Z",
+  "updated": "2026-06-22T17:31:44.922Z",
   "count": 104,
   "matches": [
     {
@@ -1514,9 +1514,9 @@
       "roundNote": "group-stage",
       "venue": "AT&T Stadium",
       "city": "Arlington, Texas",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "30'",
       "home": {
         "id": "202",
         "name": "Argentina",
