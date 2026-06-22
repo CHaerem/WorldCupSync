@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-22T00:35:22.269Z",
-  "matchesPlayed": 39,
-  "totalGoals": 117,
-  "avgGoals": 3,
+  "updated": "2026-06-22T03:05:54.236Z",
+  "matchesPlayed": 40,
+  "totalGoals": 121,
+  "avgGoals": 3.03,
   "topScorers": [
     {
       "name": "Deniz Undav",
@@ -166,6 +166,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
     },
     {
+      "name": "Mohamed Salah",
+      "team": "Egypt",
+      "goals": 1,
+      "assists": 2,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/egy.png"
+    },
+    {
       "name": "Alex Freeman",
       "team": "United States",
       "goals": 1,
@@ -206,13 +213,6 @@
       "goals": 1,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/col.png"
-    },
-    {
-      "name": "Nathan Saliba",
-      "team": "Canada",
-      "goals": 1,
-      "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png"
     }
   ]
 }
