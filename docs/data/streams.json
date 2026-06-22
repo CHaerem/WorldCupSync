@@ -1,6 +1,6 @@
 {
   "_comment": "Per-match replay links, keyed by ESPN match id. NRK urls resolved deterministically from NRK's public catalog by scripts/fetch-streams.js. Shape: { \"<matchId>\": { \"nrk\": \"https://tv.nrk.no/...\" } }",
-  "updated": "2026-06-22T07:54:09.425Z",
+  "updated": "2026-06-22T09:59:04.728Z",
   "streams": {
     "760414": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500126"
@@ -128,7 +128,8 @@
       "nrk": "https://tv.nrk.no/se?v=ISPO40501726"
     },
     "760450": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/uruguay-kapp-verde-vq8pmwaz"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/uruguay-kapp-verde-vq8pmwaz",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-9"
     },
     "760451": {
       "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/belgia-iran-swmc2frh",

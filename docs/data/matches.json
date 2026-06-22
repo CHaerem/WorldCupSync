@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-22T07:54:09.726Z",
+  "updated": "2026-06-22T09:59:05.172Z",
   "count": 104,
   "matches": [
     {
@@ -1460,7 +1460,8 @@
       "nrkFree": false,
       "broadcaster": "TV2",
       "streams": {
-        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/uruguay-kapp-verde-vq8pmwaz"
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/uruguay-kapp-verde-vq8pmwaz",
+        "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-9"
       }
     },
     {
