@@ -1,9 +1,16 @@
 {
-  "updated": "2026-06-22T17:31:45.564Z",
-  "matchesPlayed": 40,
-  "totalGoals": 121,
-  "avgGoals": 3.03,
+  "updated": "2026-06-22T19:05:05.523Z",
+  "matchesPlayed": 41,
+  "totalGoals": 123,
+  "avgGoals": 3,
   "topScorers": [
+    {
+      "name": "Lionel Messi",
+      "team": "Argentina",
+      "goals": 5,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
+    },
     {
       "name": "Deniz Undav",
       "team": "Germany",
@@ -17,13 +24,6 @@
       "goals": 3,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png"
-    },
-    {
-      "name": "Lionel Messi",
-      "team": "Argentina",
-      "goals": 3,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
     },
     {
       "name": "Ayase Ueda",

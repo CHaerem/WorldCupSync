@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-22T17:31:44.922Z",
+  "updated": "2026-06-22T19:05:05.067Z",
   "count": 104,
   "matches": [
     {
@@ -1514,16 +1514,16 @@
       "roundNote": "group-stage",
       "venue": "AT&T Stadium",
       "city": "Arlington, Texas",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "30'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "202",
         "name": "Argentina",
         "abbr": "ARG",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
-        "score": 0,
-        "winner": false
+        "score": 2,
+        "winner": true
       },
       "away": {
         "id": "474",
