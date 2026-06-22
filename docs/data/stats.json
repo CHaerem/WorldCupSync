@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-21T22:25:22.589Z",
-  "matchesPlayed": 38,
-  "totalGoals": 113,
-  "avgGoals": 2.97,
+  "updated": "2026-06-22T00:35:22.269Z",
+  "matchesPlayed": 39,
+  "totalGoals": 117,
+  "avgGoals": 3,
   "topScorers": [
     {
       "name": "Deniz Undav",
@@ -45,6 +45,13 @@
       "goals": 2,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png"
+    },
+    {
+      "name": "Maxi Araújo",
+      "team": "Uruguay",
+      "goals": 2,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/uru.png"
     },
     {
       "name": "Mikel Oyarzabal",
@@ -206,13 +213,6 @@
       "goals": 1,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png"
-    },
-    {
-      "name": "Nathaniel Brown",
-      "team": "Germany",
-      "goals": 1,
-      "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
     }
   ]
 }
