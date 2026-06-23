@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-23T18:38:50.341Z",
-  "matchesPlayed": 44,
-  "totalGoals": 134,
-  "avgGoals": 3.05,
+  "updated": "2026-06-23T20:42:06.420Z",
+  "matchesPlayed": 45,
+  "totalGoals": 139,
+  "avgGoals": 3.09,
   "topScorers": [
     {
       "name": "Lionel Messi",
@@ -87,6 +87,13 @@
       "goals": 2,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png"
+    },
+    {
+      "name": "Cristiano Ronaldo",
+      "team": "Portugal",
+      "goals": 2,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/por.png"
     },
     {
       "name": "Cyle Larin",
@@ -206,13 +213,6 @@
       "goals": 1,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/kors.png"
-    },
-    {
-      "name": "Keito Nakamura",
-      "team": "Japan",
-      "goals": 1,
-      "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png"
     }
   ]
 }
