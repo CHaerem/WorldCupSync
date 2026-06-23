@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-23T20:42:05.764Z",
+  "updated": "2026-06-23T22:25:10.390Z",
   "count": 104,
   "matches": [
     {
@@ -1702,9 +1702,9 @@
       "roundNote": "group-stage",
       "venue": "Gillette Stadium",
       "city": "Foxborough, Massachusetts",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "42'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "448",
         "name": "England",
