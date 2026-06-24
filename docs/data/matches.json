@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-24T20:34:01.181Z",
+  "updated": "2026-06-24T22:27:27.787Z",
   "count": 104,
   "matches": [
     {
@@ -1814,16 +1814,16 @@
       "roundNote": "group-stage",
       "venue": "Lumen Field",
       "city": "Seattle, Washington",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "71'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "452",
         "name": "Bosnia-Herzegovina",
         "abbr": "BIH",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/bih.png",
-        "score": 2,
-        "winner": false
+        "score": 3,
+        "winner": true
       },
       "away": {
         "id": "4398",
@@ -1849,23 +1849,23 @@
       "roundNote": "group-stage",
       "venue": "BC Place",
       "city": "Vancouver",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "75'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "475",
         "name": "Switzerland",
         "abbr": "SUI",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
         "score": 2,
-        "winner": false
+        "winner": true
       },
       "away": {
         "id": "206",
         "name": "Canada",
         "abbr": "CAN",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "nrkFree": true,
@@ -1886,9 +1886,9 @@
       "roundNote": "group-stage",
       "venue": "Mercedes-Benz Stadium",
       "city": "Atlanta, Georgia",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "26'",
       "home": {
         "id": "2869",
         "name": "Morocco",
@@ -1902,7 +1902,7 @@
         "name": "Haiti",
         "abbr": "HAI",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/hai.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "nrkFree": true,
@@ -1923,9 +1923,9 @@
       "roundNote": "group-stage",
       "venue": "Hard Rock Stadium",
       "city": "Miami Gardens, Florida",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "26'",
       "home": {
         "id": "580",
         "name": "Scotland",
@@ -1939,7 +1939,7 @@
         "name": "Brazil",
         "abbr": "BRA",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "nrkFree": false,
@@ -2697,9 +2697,9 @@
       "osloDate": "2026-06-28",
       "osloTime": "21:00",
       "osloWeekday": "søndag",
-      "name": "Group B 2nd Place at Group A 2nd Place",
-      "shortName": "2B @ 2A",
-      "group": null,
+      "name": "Canada at Group A 2nd Place",
+      "shortName": "CAN @ 2A",
+      "group": "Group B",
       "roundNote": "round-of-32",
       "venue": "SoFi Stadium",
       "city": "Inglewood, California",
@@ -2715,10 +2715,10 @@
         "winner": false
       },
       "away": {
-        "id": "5924",
-        "name": "Group B 2nd Place",
-        "abbr": "2B",
-        "logo": null,
+        "id": "206",
+        "name": "Canada",
+        "abbr": "CAN",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png",
         "score": 0,
         "winner": false
       },
@@ -3135,9 +3135,9 @@
       "osloDate": "2026-07-03",
       "osloTime": "05:00",
       "osloWeekday": "fredag",
-      "name": "Third Place Group E/F/G/I/J at Group B Winner",
-      "shortName": "3RD @ 1B",
-      "group": null,
+      "name": "Third Place Group E/F/G/I/J at Switzerland",
+      "shortName": "3RD @ SUI",
+      "group": "Group B",
       "roundNote": "round-of-32",
       "venue": "BC Place",
       "city": "Vancouver",
@@ -3145,10 +3145,10 @@
       "completed": false,
       "statusDetail": "Scheduled",
       "home": {
-        "id": "5925",
-        "name": "Group B Winner",
-        "abbr": "1B",
-        "logo": null,
+        "id": "475",
+        "name": "Switzerland",
+        "abbr": "SUI",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
         "score": 0,
         "winner": false
       },

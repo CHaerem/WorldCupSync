@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-24T20:34:01.768Z",
-  "matchesPlayed": 48,
-  "totalGoals": 141,
-  "avgGoals": 2.94,
+  "updated": "2026-06-24T22:27:28.300Z",
+  "matchesPlayed": 50,
+  "totalGoals": 148,
+  "avgGoals": 2.96,
   "topScorers": [
     {
       "name": "Lionel Messi",
@@ -31,6 +31,13 @@
       "goals": 3,
       "assists": 2,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
+    },
+    {
+      "name": "Johan Manzambi",
+      "team": "Switzerland",
+      "goals": 3,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
     },
     {
       "name": "Jonathan David",
@@ -73,6 +80,13 @@
       "goals": 2,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png"
+    },
+    {
+      "name": "Rubén Vargas",
+      "team": "Switzerland",
+      "goals": 2,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
     },
     {
       "name": "Vinícius Júnior",
@@ -124,6 +138,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png"
     },
     {
+      "name": "Ermin Mahmic",
+      "team": "Bosnia-Herzegovina",
+      "goals": 2,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bih.png"
+    },
+    {
       "name": "Folarin Balogun",
       "team": "United States",
       "goals": 2,
@@ -150,13 +171,6 @@
       "goals": 2,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png"
-    },
-    {
-      "name": "Johan Manzambi",
-      "team": "Switzerland",
-      "goals": 2,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
     },
     {
       "name": "Kai Havertz",
@@ -187,32 +201,18 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
     },
     {
+      "name": "Breel Embolo",
+      "team": "Switzerland",
+      "goals": 1,
+      "assists": 2,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
+    },
+    {
       "name": "Mohamed Salah",
       "team": "Egypt",
       "goals": 1,
       "assists": 2,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/egy.png"
-    },
-    {
-      "name": "Alex Freeman",
-      "team": "United States",
-      "goals": 1,
-      "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png"
-    },
-    {
-      "name": "Breel Embolo",
-      "team": "Switzerland",
-      "goals": 1,
-      "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
-    },
-    {
-      "name": "Felix Nmecha",
-      "team": "Germany",
-      "goals": 1,
-      "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
     }
   ]
 }
