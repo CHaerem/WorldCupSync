@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-24T03:03:34.609Z",
+  "updated": "2026-06-24T05:18:10.942Z",
   "count": 104,
   "matches": [
     {
@@ -1776,16 +1776,16 @@
       "roundNote": "group-stage",
       "venue": "Estadio Akron",
       "city": "Guadalajara",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "HT",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "208",
         "name": "Colombia",
         "abbr": "COL",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/col.png",
-        "score": 0,
-        "winner": false
+        "score": 1,
+        "winner": true
       },
       "away": {
         "id": "2850",
