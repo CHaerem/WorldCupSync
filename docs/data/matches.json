@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-23T22:25:10.390Z",
+  "updated": "2026-06-24T00:27:44.571Z",
   "count": 104,
   "matches": [
     {
@@ -1739,9 +1739,9 @@
       "roundNote": "group-stage",
       "venue": "BMO Field",
       "city": "Toronto",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "68'",
       "home": {
         "id": "2659",
         "name": "Panama",
@@ -1755,7 +1755,7 @@
         "name": "Croatia",
         "abbr": "CRO",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/cro.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "nrkFree": true,
