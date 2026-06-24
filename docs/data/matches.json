@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-24T16:42:38.768Z",
+  "updated": "2026-06-24T18:33:59.461Z",
   "count": 104,
   "matches": [
     {
@@ -1942,8 +1942,8 @@
         "score": 0,
         "winner": false
       },
-      "nrkFree": true,
-      "broadcaster": "NRK",
+      "nrkFree": false,
+      "broadcaster": "TV2",
       "streams": {
         "nrk": "https://tv.nrk.no/se?v=ISPO40502526"
       }
