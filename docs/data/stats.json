@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-25T00:32:54.802Z",
-  "matchesPlayed": 52,
-  "totalGoals": 157,
-  "avgGoals": 3.02,
+  "updated": "2026-06-25T03:03:23.207Z",
+  "matchesPlayed": 54,
+  "totalGoals": 161,
+  "avgGoals": 2.98,
   "topScorers": [
     {
       "name": "Lionel Messi",
@@ -180,6 +180,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png"
     },
     {
+      "name": "Julián Quiñones",
+      "team": "Mexico",
+      "goals": 2,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png"
+    },
+    {
       "name": "Kai Havertz",
       "team": "Germany",
       "goals": 2,
@@ -206,13 +213,6 @@
       "goals": 1,
       "assists": 2,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
-    },
-    {
-      "name": "Mohamed Salah",
-      "team": "Egypt",
-      "goals": 1,
-      "assists": 2,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/egy.png"
     }
   ]
 }
