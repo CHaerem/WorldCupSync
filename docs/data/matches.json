@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-24T22:27:27.787Z",
+  "updated": "2026-06-25T00:32:54.161Z",
   "count": 104,
   "matches": [
     {
@@ -1886,27 +1886,27 @@
       "roundNote": "group-stage",
       "venue": "Mercedes-Benz Stadium",
       "city": "Atlanta, Georgia",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "26'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "2869",
         "name": "Morocco",
         "abbr": "MAR",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
-        "score": 0,
-        "winner": false
+        "score": 4,
+        "winner": true
       },
       "away": {
         "id": "2654",
         "name": "Haiti",
         "abbr": "HAI",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/hai.png",
-        "score": 1,
+        "score": 2,
         "winner": false
       },
-      "nrkFree": true,
-      "broadcaster": "NRK",
+      "nrkFree": false,
+      "broadcaster": "TV2",
       "streams": {
         "nrk": "https://tv.nrk.no/se?v=ISPO40502626"
       }
@@ -1923,9 +1923,9 @@
       "roundNote": "group-stage",
       "venue": "Hard Rock Stadium",
       "city": "Miami Gardens, Florida",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "26'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "580",
         "name": "Scotland",
@@ -1939,8 +1939,8 @@
         "name": "Brazil",
         "abbr": "BRA",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
-        "score": 1,
-        "winner": false
+        "score": 3,
+        "winner": true
       },
       "nrkFree": false,
       "broadcaster": "TV2",
@@ -2734,9 +2734,9 @@
       "osloDate": "2026-06-29",
       "osloTime": "19:00",
       "osloWeekday": "mandag",
-      "name": "Group F 2nd Place at Group C Winner",
-      "shortName": "2F @ 1C",
-      "group": null,
+      "name": "Group F 2nd Place at Brazil",
+      "shortName": "2F @ BRA",
+      "group": "Group C",
       "roundNote": "round-of-32",
       "venue": "NRG Stadium",
       "city": "Houston, Texas",
@@ -2744,10 +2744,10 @@
       "completed": false,
       "statusDetail": "Scheduled",
       "home": {
-        "id": "5927",
-        "name": "Group C Winner",
-        "abbr": "1C",
-        "logo": null,
+        "id": "205",
+        "name": "Brazil",
+        "abbr": "BRA",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
         "score": 0,
         "winner": false
       },
@@ -2808,9 +2808,9 @@
       "osloDate": "2026-06-30",
       "osloTime": "03:00",
       "osloWeekday": "tirsdag",
-      "name": "Group C 2nd Place at Group F Winner",
-      "shortName": "2C @ 1F",
-      "group": null,
+      "name": "Morocco at Group F Winner",
+      "shortName": "MAR @ 1F",
+      "group": "Group C",
       "roundNote": "round-of-32",
       "venue": "Estadio BBVA",
       "city": "Guadalupe",
@@ -2826,10 +2826,10 @@
         "winner": false
       },
       "away": {
-        "id": "5930",
-        "name": "Group C 2nd Place",
-        "abbr": "2C",
-        "logo": null,
+        "id": "2869",
+        "name": "Morocco",
+        "abbr": "MAR",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
         "score": 0,
         "winner": false
       },
