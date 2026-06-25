@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-25T20:38:32.217Z",
+  "updated": "2026-06-25T22:29:43.228Z",
   "count": 104,
   "matches": [
     {
@@ -2036,9 +2036,9 @@
       "roundNote": "group-stage",
       "venue": "Lincoln Financial Field",
       "city": "Philadelphia, Pennsylvania",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "38'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "11678",
         "name": "Curaçao",
@@ -2052,8 +2052,8 @@
         "name": "Ivory Coast",
         "abbr": "CIV",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png",
-        "score": 1,
-        "winner": false
+        "score": 2,
+        "winner": true
       },
       "nrkFree": false,
       "broadcaster": "TV2",
@@ -2073,16 +2073,16 @@
       "roundNote": "group-stage",
       "venue": "MetLife Stadium",
       "city": "East Rutherford, New Jersey",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "38'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "209",
         "name": "Ecuador",
         "abbr": "ECU",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/ecu.png",
-        "score": 1,
-        "winner": false
+        "score": 2,
+        "winner": true
       },
       "away": {
         "id": "481",
@@ -2846,9 +2846,9 @@
       "osloDate": "2026-06-30",
       "osloTime": "19:00",
       "osloWeekday": "tirsdag",
-      "name": "Group I 2nd Place at Group E 2nd Place",
-      "shortName": "2I @ 2E",
-      "group": null,
+      "name": "Group I 2nd Place at Ivory Coast",
+      "shortName": "2I @ CIV",
+      "group": "Group E",
       "roundNote": "round-of-32",
       "venue": "AT&T Stadium",
       "city": "Arlington, Texas",
@@ -2856,10 +2856,10 @@
       "completed": false,
       "statusDetail": "Scheduled",
       "home": {
-        "id": "5932",
-        "name": "Group E 2nd Place",
-        "abbr": "2E",
-        "logo": null,
+        "id": "4789",
+        "name": "Ivory Coast",
+        "abbr": "CIV",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png",
         "score": 0,
         "winner": false
       },

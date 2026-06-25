@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-25T20:38:32.866Z",
-  "matchesPlayed": 54,
-  "totalGoals": 161,
-  "avgGoals": 2.98,
+  "updated": "2026-06-25T22:29:44.361Z",
+  "matchesPlayed": 56,
+  "totalGoals": 166,
+  "avgGoals": 2.96,
   "topScorers": [
     {
       "name": "Lionel Messi",
@@ -194,6 +194,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
     },
     {
+      "name": "Nicolas Pépé",
+      "team": "Ivory Coast",
+      "goals": 2,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png"
+    },
+    {
       "name": "Yasin Ayari",
       "team": "Sweden",
       "goals": 2,
@@ -206,13 +213,6 @@
       "goals": 1,
       "assists": 3,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
-    },
-    {
-      "name": "Breel Embolo",
-      "team": "Switzerland",
-      "goals": 1,
-      "assists": 2,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
     }
   ]
 }
