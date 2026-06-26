@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-26T00:34:01.155Z",
-  "matchesPlayed": 56,
-  "totalGoals": 166,
-  "avgGoals": 2.96,
+  "updated": "2026-06-26T03:04:00.170Z",
+  "matchesPlayed": 58,
+  "totalGoals": 172,
+  "avgGoals": 2.97,
   "topScorers": [
     {
       "name": "Lionel Messi",
@@ -45,6 +45,13 @@
       "goals": 3,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
+    },
+    {
+      "name": "Brian Brobbey",
+      "team": "Netherlands",
+      "goals": 3,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png"
     },
     {
       "name": "Ismael Saibari",
@@ -110,11 +117,11 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
     },
     {
-      "name": "Brian Brobbey",
-      "team": "Netherlands",
+      "name": "Anthony Elanga",
+      "team": "Sweden",
       "goals": 2,
       "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png"
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
     },
     {
       "name": "Cristiano Ronaldo",
@@ -205,13 +212,6 @@
       "team": "Sweden",
       "goals": 2,
       "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
-    },
-    {
-      "name": "Alexander Isak",
-      "team": "Sweden",
-      "goals": 1,
-      "assists": 3,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-26T00:34:00.316Z",
+  "updated": "2026-06-26T03:03:59.176Z",
   "count": 104,
   "matches": [
     {
@@ -2112,9 +2112,9 @@
       "roundNote": "group-stage",
       "venue": "AT&T Stadium",
       "city": "Arlington, Texas",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "73'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "627",
         "name": "Japan",
@@ -2150,9 +2150,9 @@
       "roundNote": "group-stage",
       "venue": "GEHA Field at Arrowhead Stadium",
       "city": "Kansas City, Missouri",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "74'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "659",
         "name": "Tunisia",
@@ -2167,7 +2167,7 @@
         "abbr": "NED",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
         "score": 3,
-        "winner": false
+        "winner": true
       },
       "nrkFree": false,
       "broadcaster": "TV2",
@@ -2187,9 +2187,9 @@
       "roundNote": "group-stage",
       "venue": "Levi's Stadium",
       "city": "Santa Clara, California",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "HT",
       "home": {
         "id": "210",
         "name": "Paraguay",
@@ -2224,15 +2224,15 @@
       "roundNote": "group-stage",
       "venue": "SoFi Stadium",
       "city": "Inglewood, California",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "HT",
       "home": {
         "id": "465",
         "name": "Türkiye",
         "abbr": "TUR",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/tur.png",
-        "score": 0,
+        "score": 2,
         "winner": false
       },
       "away": {
@@ -2240,7 +2240,7 @@
         "name": "United States",
         "abbr": "USA",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "nrkFree": true,
@@ -2736,8 +2736,8 @@
       "osloDate": "2026-06-29",
       "osloTime": "19:00",
       "osloWeekday": "mandag",
-      "name": "Group F 2nd Place at Brazil",
-      "shortName": "2F @ BRA",
+      "name": "Japan at Brazil",
+      "shortName": "JPN @ BRA",
       "group": "Group C",
       "roundNote": "round-of-32",
       "venue": "NRG Stadium",
@@ -2754,10 +2754,10 @@
         "winner": false
       },
       "away": {
-        "id": "5934",
-        "name": "Group F 2nd Place",
-        "abbr": "2F",
-        "logo": null,
+        "id": "627",
+        "name": "Japan",
+        "abbr": "JPN",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png",
         "score": 0,
         "winner": false
       },
@@ -2810,9 +2810,9 @@
       "osloDate": "2026-06-30",
       "osloTime": "03:00",
       "osloWeekday": "tirsdag",
-      "name": "Morocco at Group F Winner",
-      "shortName": "MAR @ 1F",
-      "group": "Group C",
+      "name": "Morocco at Netherlands",
+      "shortName": "MAR @ NED",
+      "group": "Group F",
       "roundNote": "round-of-32",
       "venue": "Estadio BBVA",
       "city": "Guadalupe",
@@ -2820,10 +2820,10 @@
       "completed": false,
       "statusDetail": "Scheduled",
       "home": {
-        "id": "5933",
-        "name": "Group F Winner",
-        "abbr": "1F",
-        "logo": null,
+        "id": "449",
+        "name": "Netherlands",
+        "abbr": "NED",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
         "score": 0,
         "winner": false
       },
@@ -3030,8 +3030,8 @@
       "osloDate": "2026-07-02",
       "osloTime": "02:00",
       "osloWeekday": "torsdag",
-      "name": "Third Place Group B/E/F/I/J at United States",
-      "shortName": "3RD @ USA",
+      "name": "Bosnia-Herzegovina at United States",
+      "shortName": "BIH @ USA",
       "group": "Group D",
       "roundNote": "round-of-32",
       "venue": "Levi's Stadium",
@@ -3048,10 +3048,10 @@
         "winner": false
       },
       "away": {
-        "id": "131543",
-        "name": "Third Place Group B/E/F/I/J",
-        "abbr": "3RD",
-        "logo": null,
+        "id": "452",
+        "name": "Bosnia-Herzegovina",
+        "abbr": "BIH",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/bih.png",
         "score": 0,
         "winner": false
       },
