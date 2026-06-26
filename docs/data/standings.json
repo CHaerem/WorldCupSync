@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-26T03:03:59.176Z",
+  "updated": "2026-06-26T05:24:23.747Z",
   "groups": [
     {
       "name": "Group A",
@@ -221,13 +221,13 @@
           "abbr": "USA",
           "logo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
           "rank": 1,
-          "played": 2,
+          "played": 3,
           "wins": 2,
           "ties": 0,
-          "losses": 0,
-          "gf": 6,
-          "ga": 1,
-          "gd": 5,
+          "losses": 1,
+          "gf": 8,
+          "ga": 4,
+          "gd": 4,
           "points": 6,
           "advanced": 1
         },
@@ -237,15 +237,15 @@
           "abbr": "AUS",
           "logo": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
           "rank": 2,
-          "played": 2,
+          "played": 3,
           "wins": 1,
-          "ties": 0,
+          "ties": 1,
           "losses": 1,
           "gf": 2,
           "ga": 2,
           "gd": 0,
-          "points": 3,
-          "advanced": 0
+          "points": 4,
+          "advanced": 1
         },
         {
           "teamId": "210",
@@ -253,14 +253,14 @@
           "abbr": "PAR",
           "logo": "https://a.espncdn.com/i/teamlogos/countries/500/par.png",
           "rank": 3,
-          "played": 2,
+          "played": 3,
           "wins": 1,
-          "ties": 0,
+          "ties": 1,
           "losses": 1,
           "gf": 2,
           "ga": 4,
           "gd": -2,
-          "points": 3,
+          "points": 4,
           "advanced": 0
         },
         {
@@ -269,14 +269,14 @@
           "abbr": "TUR",
           "logo": "https://a.espncdn.com/i/teamlogos/countries/500/tur.png",
           "rank": 4,
-          "played": 2,
-          "wins": 0,
+          "played": 3,
+          "wins": 1,
           "ties": 0,
           "losses": 2,
-          "gf": 0,
-          "ga": 3,
-          "gd": -3,
-          "points": 0,
+          "gf": 3,
+          "ga": 5,
+          "gd": -2,
+          "points": 3,
           "advanced": 0
         }
       ]
