@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-26T20:32:43.896Z",
-  "matchesPlayed": 60,
-  "totalGoals": 177,
-  "avgGoals": 2.95,
+  "updated": "2026-06-26T22:25:22.600Z",
+  "matchesPlayed": 62,
+  "totalGoals": 187,
+  "avgGoals": 3.02,
   "topScorers": [
     {
       "name": "Lionel Messi",
@@ -10,6 +10,20 @@
       "goals": 5,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
+    },
+    {
+      "name": "Kylian Mbappé",
+      "team": "France",
+      "goals": 4,
+      "assists": 2,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
+    },
+    {
+      "name": "Ousmane Dembélé",
+      "team": "France",
+      "goals": 4,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
     },
     {
       "name": "Vinícius Júnior",
@@ -26,18 +40,18 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png"
     },
     {
-      "name": "Kylian Mbappé",
-      "team": "France",
-      "goals": 4,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
-    },
-    {
       "name": "Deniz Undav",
       "team": "Germany",
       "goals": 3,
       "assists": 2,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
+    },
+    {
+      "name": "Ismaïla Sarr",
+      "team": "Senegal",
+      "goals": 3,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png"
     },
     {
       "name": "Johan Manzambi",
@@ -110,6 +124,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png"
     },
     {
+      "name": "Pape Gueye",
+      "team": "Senegal",
+      "goals": 2,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png"
+    },
+    {
       "name": "Rubén Vargas",
       "team": "Switzerland",
       "goals": 2,
@@ -180,13 +201,6 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png"
     },
     {
-      "name": "Ismaïla Sarr",
-      "team": "Senegal",
-      "goals": 2,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png"
-    },
-    {
       "name": "Julián Quiñones",
       "team": "Mexico",
       "goals": 2,
@@ -199,20 +213,6 @@
       "goals": 2,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
-    },
-    {
-      "name": "Nicolas Pépé",
-      "team": "Ivory Coast",
-      "goals": 2,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png"
-    },
-    {
-      "name": "Yasin Ayari",
-      "team": "Sweden",
-      "goals": 2,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
     }
   ]
 }
