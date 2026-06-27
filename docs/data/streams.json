@@ -1,6 +1,6 @@
 {
   "_comment": "Per-match replay links, keyed by ESPN match id. NRK urls resolved deterministically from NRK's public catalog by scripts/fetch-streams.js. Shape: { \"<matchId>\": { \"nrk\": \"https://tv.nrk.no/...\" } }",
-  "updated": "2026-06-27T05:16:33.213Z",
+  "updated": "2026-06-27T07:01:50.605Z",
   "streams": {
     "760414": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500126"
@@ -215,7 +215,8 @@
       "nrk": "https://tv.nrk.no/se?v=ISPO40502926"
     },
     "760476": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/egypt-iran-5kym6ybp"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/egypt-iran-5kym6ybp",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-81"
     },
     "760477": {
       "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/new-zealand-belgia-dtr8frdp",
