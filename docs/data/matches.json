@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-27T00:31:39.341Z",
+  "updated": "2026-06-27T03:03:07.684Z",
   "count": 104,
   "matches": [
     {
@@ -2335,9 +2335,9 @@
       "roundNote": "group-stage",
       "venue": "NRG Stadium",
       "city": "Houston, Texas",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "29'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "2597",
         "name": "Cape Verde",
@@ -2370,9 +2370,9 @@
       "roundNote": "group-stage",
       "venue": "Estadio Akron",
       "city": "Guadalajara",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "30'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "212",
         "name": "Uruguay",
@@ -2386,8 +2386,8 @@
         "name": "Spain",
         "abbr": "ESP",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
-        "score": 0,
-        "winner": false
+        "score": 1,
+        "winner": true
       },
       "nrkFree": true,
       "broadcaster": "NRK",
@@ -2407,9 +2407,9 @@
       "roundNote": "group-stage",
       "venue": "Lumen Field",
       "city": "Seattle, Washington",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "2'",
       "home": {
         "id": "2620",
         "name": "Egypt",
@@ -2444,9 +2444,9 @@
       "roundNote": "group-stage",
       "venue": "BC Place",
       "city": "Vancouver",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "2'",
       "home": {
         "id": "2666",
         "name": "New Zealand",
@@ -2774,8 +2774,8 @@
       "osloDate": "2026-06-29",
       "osloTime": "22:30",
       "osloWeekday": "mandag",
-      "name": "Third Place Group A/B/C/D/F at Germany",
-      "shortName": "3RD @ GER",
+      "name": "Paraguay at Germany",
+      "shortName": "PAR @ GER",
       "group": "Group E",
       "roundNote": "round-of-32",
       "venue": "Gillette Stadium",
@@ -2792,10 +2792,10 @@
         "winner": false
       },
       "away": {
-        "id": "131541",
-        "name": "Third Place Group A/B/C/D/F",
-        "abbr": "3RD",
-        "logo": null,
+        "id": "210",
+        "name": "Paraguay",
+        "abbr": "PAR",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/par.png",
         "score": 0,
         "winner": false
       },
@@ -2886,8 +2886,8 @@
       "osloDate": "2026-06-30",
       "osloTime": "23:00",
       "osloWeekday": "tirsdag",
-      "name": "Third Place Group C/D/F/G/H at France",
-      "shortName": "3RD @ FRA",
+      "name": "Sweden at France",
+      "shortName": "SWE @ FRA",
       "group": "Group I",
       "roundNote": "round-of-32",
       "venue": "MetLife Stadium",
@@ -2904,10 +2904,10 @@
         "winner": false
       },
       "away": {
-        "id": "131544",
-        "name": "Third Place Group C/D/F/G/H",
-        "abbr": "3RD",
-        "logo": null,
+        "id": "466",
+        "name": "Sweden",
+        "abbr": "SWE",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
         "score": 0,
         "winner": false
       },
@@ -3067,9 +3067,9 @@
       "osloDate": "2026-07-02",
       "osloTime": "21:00",
       "osloWeekday": "torsdag",
-      "name": "Group J 2nd Place at Group H Winner",
-      "shortName": "2J @ 1H",
-      "group": null,
+      "name": "Group J 2nd Place at Spain",
+      "shortName": "2J @ ESP",
+      "group": "Group H",
       "roundNote": "round-of-32",
       "venue": "SoFi Stadium",
       "city": "Inglewood, California",
@@ -3077,10 +3077,10 @@
       "completed": false,
       "statusDetail": "Scheduled",
       "home": {
-        "id": "5937",
-        "name": "Group H Winner",
-        "abbr": "1H",
-        "logo": null,
+        "id": "164",
+        "name": "Spain",
+        "abbr": "ESP",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
         "score": 0,
         "winner": false
       },
@@ -3211,8 +3211,8 @@
       "osloDate": "2026-07-04",
       "osloTime": "00:00",
       "osloWeekday": "lørdag",
-      "name": "Group H 2nd Place at Argentina",
-      "shortName": "2H @ ARG",
+      "name": "Cape Verde at Argentina",
+      "shortName": "CPV @ ARG",
       "group": "Group J",
       "roundNote": "round-of-32",
       "venue": "Hard Rock Stadium",
@@ -3229,10 +3229,10 @@
         "winner": false
       },
       "away": {
-        "id": "5938",
-        "name": "Group H 2nd Place",
-        "abbr": "2H",
-        "logo": null,
+        "id": "2597",
+        "name": "Cape Verde",
+        "abbr": "CPV",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/cpv.png",
         "score": 0,
         "winner": false
       },
