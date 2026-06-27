@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-26T22:25:21.958Z",
+  "updated": "2026-06-27T00:31:39.341Z",
   "count": 104,
   "matches": [
     {
@@ -2335,9 +2335,9 @@
       "roundNote": "group-stage",
       "venue": "NRG Stadium",
       "city": "Houston, Texas",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "29'",
       "home": {
         "id": "2597",
         "name": "Cape Verde",
@@ -2370,9 +2370,9 @@
       "roundNote": "group-stage",
       "venue": "Estadio Akron",
       "city": "Guadalajara",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "30'",
       "home": {
         "id": "212",
         "name": "Uruguay",
