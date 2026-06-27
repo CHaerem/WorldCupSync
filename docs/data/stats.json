@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-27T03:03:09.140Z",
-  "matchesPlayed": 64,
-  "totalGoals": 188,
-  "avgGoals": 2.94,
+  "updated": "2026-06-27T05:16:34.583Z",
+  "matchesPlayed": 66,
+  "totalGoals": 196,
+  "avgGoals": 2.97,
   "topScorers": [
     {
       "name": "Lionel Messi",
@@ -68,6 +68,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png"
     },
     {
+      "name": "Elijah Just",
+      "team": "New Zealand",
+      "goals": 3,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png"
+    },
+    {
       "name": "Ismael Saibari",
       "team": "Morocco",
       "goals": 3,
@@ -131,6 +138,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png"
     },
     {
+      "name": "Ramin Rezaeian",
+      "team": "Iran",
+      "goals": 2,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/irn.png"
+    },
+    {
       "name": "Rubén Vargas",
       "team": "Switzerland",
       "goals": 2,
@@ -173,13 +187,6 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/col.png"
     },
     {
-      "name": "Elijah Just",
-      "team": "New Zealand",
-      "goals": 2,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png"
-    },
-    {
       "name": "Ermin Mahmic",
       "team": "Bosnia-Herzegovina",
       "goals": 2,
@@ -206,13 +213,6 @@
       "goals": 2,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png"
-    },
-    {
-      "name": "Kai Havertz",
-      "team": "Germany",
-      "goals": 2,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
     }
   ]
 }
