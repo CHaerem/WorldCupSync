@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-27T22:21:27.834Z",
-  "matchesPlayed": 66,
-  "totalGoals": 196,
-  "avgGoals": 2.97,
+  "updated": "2026-06-28T00:31:01.850Z",
+  "matchesPlayed": 68,
+  "totalGoals": 201,
+  "avgGoals": 2.96,
   "topScorers": [
     {
       "name": "Lionel Messi",
@@ -75,6 +75,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png"
     },
     {
+      "name": "Harry Kane",
+      "team": "England",
+      "goals": 3,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png"
+    },
+    {
       "name": "Ismael Saibari",
       "team": "Morocco",
       "goals": 3,
@@ -115,6 +122,13 @@
       "goals": 2,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png"
+    },
+    {
+      "name": "Jude Bellingham",
+      "team": "England",
+      "goals": 2,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png"
     },
     {
       "name": "Maxi Araújo",
@@ -199,20 +213,6 @@
       "goals": 2,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png"
-    },
-    {
-      "name": "Harry Kane",
-      "team": "England",
-      "goals": 2,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png"
-    },
-    {
-      "name": "Julián Quiñones",
-      "team": "Mexico",
-      "goals": 2,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-27T22:21:26.447Z",
+  "updated": "2026-06-28T00:31:01.220Z",
   "count": 104,
   "matches": [
     {
@@ -2483,23 +2483,23 @@
       "roundNote": "group-stage",
       "venue": "Lincoln Financial Field",
       "city": "Philadelphia, Pennsylvania",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "60'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "477",
         "name": "Croatia",
         "abbr": "CRO",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/cro.png",
-        "score": 1,
-        "winner": false
+        "score": 2,
+        "winner": true
       },
       "away": {
         "id": "4469",
         "name": "Ghana",
         "abbr": "GHA",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/gha.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "nrkFree": false,
@@ -2520,9 +2520,9 @@
       "roundNote": "group-stage",
       "venue": "MetLife Stadium",
       "city": "East Rutherford, New Jersey",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "62'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "2659",
         "name": "Panama",
@@ -2536,8 +2536,8 @@
         "name": "England",
         "abbr": "ENG",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
-        "score": 1,
-        "winner": false
+        "score": 2,
+        "winner": true
       },
       "nrkFree": false,
       "broadcaster": "TV2",
@@ -2558,9 +2558,9 @@
       "roundNote": "group-stage",
       "venue": "Hard Rock Stadium",
       "city": "Miami Gardens, Florida",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "HT",
       "home": {
         "id": "208",
         "name": "Colombia",
@@ -2595,9 +2595,9 @@
       "roundNote": "group-stage",
       "venue": "Mercedes-Benz Stadium",
       "city": "Atlanta, Georgia",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "HT",
       "home": {
         "id": "2850",
         "name": "Congo DR",
@@ -2611,7 +2611,7 @@
         "name": "Uzbekistan",
         "abbr": "UZB",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/uzb.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "nrkFree": true,
@@ -2925,8 +2925,8 @@
       "osloDate": "2026-07-01",
       "osloTime": "03:00",
       "osloWeekday": "onsdag",
-      "name": "Third Place Group C/E/F/H/I at Mexico",
-      "shortName": "3RD @ MEX",
+      "name": "Ecuador at Mexico",
+      "shortName": "ECU @ MEX",
       "group": "Group A",
       "roundNote": "round-of-32",
       "venue": "Estadio Banorte",
@@ -2943,10 +2943,10 @@
         "winner": false
       },
       "away": {
-        "id": "131545",
-        "name": "Third Place Group C/E/F/H/I",
-        "abbr": "3RD",
-        "logo": null,
+        "id": "209",
+        "name": "Ecuador",
+        "abbr": "ECU",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/ecu.png",
         "score": 0,
         "winner": false
       },
@@ -2962,9 +2962,9 @@
       "osloDate": "2026-07-01",
       "osloTime": "18:00",
       "osloWeekday": "onsdag",
-      "name": "Third Place Group E/H/I/J/K at Group L Winner",
-      "shortName": "3RD @ 1L",
-      "group": null,
+      "name": "Third Place Group E/H/I/J/K at England",
+      "shortName": "3RD @ ENG",
+      "group": "Group L",
       "roundNote": "round-of-32",
       "venue": "Mercedes-Benz Stadium",
       "city": "Atlanta, Georgia",
@@ -2972,10 +2972,10 @@
       "completed": false,
       "statusDetail": "Scheduled",
       "home": {
-        "id": "131508",
-        "name": "Group L Winner",
-        "abbr": "1L",
-        "logo": null,
+        "id": "448",
+        "name": "England",
+        "abbr": "ENG",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "score": 0,
         "winner": false
       },
@@ -3106,9 +3106,9 @@
       "osloDate": "2026-07-03",
       "osloTime": "01:00",
       "osloWeekday": "fredag",
-      "name": "Group L 2nd Place at Group K 2nd Place",
-      "shortName": "2L @ 2K",
-      "group": null,
+      "name": "Croatia at Group K 2nd Place",
+      "shortName": "CRO @ 2K",
+      "group": "Group L",
       "roundNote": "round-of-32",
       "venue": "BMO Field",
       "city": "Toronto",
@@ -3124,10 +3124,10 @@
         "winner": false
       },
       "away": {
-        "id": "131504",
-        "name": "Group L 2nd Place",
-        "abbr": "2L",
-        "logo": null,
+        "id": "477",
+        "name": "Croatia",
+        "abbr": "CRO",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/cro.png",
         "score": 0,
         "winner": false
       },
@@ -3251,9 +3251,9 @@
       "osloDate": "2026-07-04",
       "osloTime": "03:30",
       "osloWeekday": "lørdag",
-      "name": "Third Place Group D/E/I/J/L at Group K Winner",
-      "shortName": "3RD @ 1K",
-      "group": null,
+      "name": "Ghana at Group K Winner",
+      "shortName": "GHA @ 1K",
+      "group": "Group L",
       "roundNote": "round-of-32",
       "venue": "GEHA Field at Arrowhead Stadium",
       "city": "Kansas City, Missouri",
@@ -3269,10 +3269,10 @@
         "winner": false
       },
       "away": {
-        "id": "131546",
-        "name": "Third Place Group D/E/I/J/L",
-        "abbr": "3RD",
-        "logo": null,
+        "id": "4469",
+        "name": "Ghana",
+        "abbr": "GHA",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/gha.png",
         "score": 0,
         "winner": false
       },
