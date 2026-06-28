@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-28T20:25:03.025Z",
+  "updated": "2026-06-28T22:20:54.558Z",
   "count": 104,
   "matches": [
     {
@@ -2706,9 +2706,9 @@
       "roundNote": "round-of-32",
       "venue": "SoFi Stadium",
       "city": "Inglewood, California",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "64'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "467",
         "name": "South Africa",
@@ -2722,8 +2722,8 @@
         "name": "Canada",
         "abbr": "CAN",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png",
-        "score": 0,
-        "winner": false
+        "score": 1,
+        "winner": true
       },
       "nrkFree": true,
       "broadcaster": "NRK",
@@ -3292,9 +3292,9 @@
       "osloDate": "2026-07-04",
       "osloTime": "19:00",
       "osloWeekday": "lørdag",
-      "name": "Round of 32 3 Winner at Round of 32 1 Winner",
-      "shortName": "RD32 @ RD32",
-      "group": null,
+      "name": "Round of 32 3 Winner at Canada",
+      "shortName": "RD32 @ CAN",
+      "group": "Group B",
       "roundNote": "round-of-16",
       "venue": "NRG Stadium",
       "city": "Houston, Texas",
@@ -3302,10 +3302,10 @@
       "completed": false,
       "statusDetail": "Scheduled",
       "home": {
-        "id": "131525",
-        "name": "Round of 32 1 Winner",
-        "abbr": "RD32",
-        "logo": null,
+        "id": "206",
+        "name": "Canada",
+        "abbr": "CAN",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png",
         "score": 0,
         "winner": false
       },
