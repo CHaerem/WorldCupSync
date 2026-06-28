@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-28T00:31:01.850Z",
-  "matchesPlayed": 68,
-  "totalGoals": 201,
-  "avgGoals": 2.96,
+  "updated": "2026-06-28T03:04:11.400Z",
+  "matchesPlayed": 70,
+  "totalGoals": 205,
+  "avgGoals": 2.93,
   "topScorers": [
     {
       "name": "Lionel Messi",
@@ -101,6 +101,13 @@
       "goals": 3,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png"
+    },
+    {
+      "name": "Yoane Wissa",
+      "team": "Congo DR",
+      "goals": 3,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/rdc.png"
     },
     {
       "name": "Ayase Ueda",
@@ -206,13 +213,6 @@
       "goals": 2,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bih.png"
-    },
-    {
-      "name": "Folarin Balogun",
-      "team": "United States",
-      "goals": 2,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png"
     }
   ]
 }
