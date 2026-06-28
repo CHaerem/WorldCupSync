@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-28T05:28:49.936Z",
+  "updated": "2026-06-28T07:18:13.722Z",
   "count": 104,
   "matches": [
     {
@@ -2953,7 +2953,8 @@
       "nrkFree": false,
       "broadcaster": "TV2",
       "streams": {
-        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1a-3cefhi-jxsna16s"
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1a-3cefhi-jxsna16s",
+        "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-103"
       }
     },
     {
@@ -3025,7 +3026,8 @@
       "nrkFree": false,
       "broadcaster": "TV2",
       "streams": {
-        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1g-3aehij-8gvn35n0"
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1g-3aehij-8gvn35n0",
+        "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-94"
       }
     },
     {
@@ -3097,7 +3099,8 @@
       "nrkFree": false,
       "broadcaster": "TV2",
       "streams": {
-        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1h-2j-rfkb6na9"
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1h-2j-rfkb6na9",
+        "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-32"
       }
     },
     {
@@ -3279,7 +3282,8 @@
       "nrkFree": false,
       "broadcaster": "TV2",
       "streams": {
-        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1k-3deijl-96mdyp59"
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1k-3deijl-96mdyp59",
+        "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-33"
       }
     },
     {

@@ -1,6 +1,6 @@
 {
   "_comment": "Per-match replay links, keyed by ESPN match id. NRK urls resolved deterministically from NRK's public catalog by scripts/fetch-streams.js. Shape: { \"<matchId>\": { \"nrk\": \"https://tv.nrk.no/...\" } }",
-  "updated": "2026-06-28T05:28:49.624Z",
+  "updated": "2026-06-28T07:18:13.469Z",
   "streams": {
     "760414": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500126"
@@ -262,17 +262,20 @@
       "nrk": "https://tv.nrk.no/se?v=ISPO40504126"
     },
     "760491": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1a-3cefhi-jxsna16s"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1a-3cefhi-jxsna16s",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-103"
     },
     "760492": {
       "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1i-3cdfgh-7ez80y9k",
       "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-23"
     },
     "760493": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1g-3aehij-8gvn35n0"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1g-3aehij-8gvn35n0",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-94"
     },
     "760497": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1h-2j-rfkb6na9"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1h-2j-rfkb6na9",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-32"
     },
     "760499": {
       "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/2d-2g-5vqepmw0",
@@ -282,7 +285,8 @@
       "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-98"
     },
     "760501": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1k-3deijl-96mdyp59"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/1k-3deijl-96mdyp59",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-33"
     }
   }
 }
