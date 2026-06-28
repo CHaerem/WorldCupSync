@@ -1,13 +1,13 @@
 {
-  "updated": "2026-06-28T03:04:11.400Z",
-  "matchesPlayed": 70,
-  "totalGoals": 205,
-  "avgGoals": 2.93,
+  "updated": "2026-06-28T05:28:51.037Z",
+  "matchesPlayed": 72,
+  "totalGoals": 215,
+  "avgGoals": 2.99,
   "topScorers": [
     {
       "name": "Lionel Messi",
       "team": "Argentina",
-      "goals": 5,
+      "goals": 6,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
     },
@@ -166,6 +166,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/irn.png"
     },
     {
+      "name": "Riyad Mahrez",
+      "team": "Algeria",
+      "goals": 2,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/alg.png"
+    },
+    {
       "name": "Rubén Vargas",
       "team": "Switzerland",
       "goals": 2,
@@ -206,13 +213,6 @@
       "goals": 2,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/col.png"
-    },
-    {
-      "name": "Ermin Mahmic",
-      "team": "Bosnia-Herzegovina",
-      "goals": 2,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bih.png"
     }
   ]
 }

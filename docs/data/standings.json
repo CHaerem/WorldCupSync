@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-28T03:04:10.220Z",
+  "updated": "2026-06-28T05:28:49.936Z",
   "groups": [
     {
       "name": "Group A",
@@ -641,14 +641,14 @@
           "abbr": "ARG",
           "logo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
           "rank": 1,
-          "played": 2,
-          "wins": 2,
+          "played": 3,
+          "wins": 3,
           "ties": 0,
           "losses": 0,
-          "gf": 5,
-          "ga": 0,
-          "gd": 5,
-          "points": 6,
+          "gf": 8,
+          "ga": 1,
+          "gd": 7,
+          "points": 9,
           "advanced": 1
         },
         {
@@ -657,15 +657,15 @@
           "abbr": "AUT",
           "logo": "https://a.espncdn.com/i/teamlogos/countries/500/aut.png",
           "rank": 2,
-          "played": 2,
+          "played": 3,
           "wins": 1,
-          "ties": 0,
+          "ties": 1,
           "losses": 1,
-          "gf": 3,
-          "ga": 3,
+          "gf": 6,
+          "ga": 6,
           "gd": 0,
-          "points": 3,
-          "advanced": 0
+          "points": 4,
+          "advanced": 1
         },
         {
           "teamId": "624",
@@ -673,15 +673,15 @@
           "abbr": "ALG",
           "logo": "https://a.espncdn.com/i/teamlogos/countries/500/alg.png",
           "rank": 3,
-          "played": 2,
+          "played": 3,
           "wins": 1,
-          "ties": 0,
+          "ties": 1,
           "losses": 1,
-          "gf": 2,
-          "ga": 4,
+          "gf": 5,
+          "ga": 7,
           "gd": -2,
-          "points": 3,
-          "advanced": 0
+          "points": 4,
+          "advanced": 1
         },
         {
           "teamId": "2917",
@@ -689,13 +689,13 @@
           "abbr": "JOR",
           "logo": "https://a.espncdn.com/i/teamlogos/countries/500/jor.png",
           "rank": 4,
-          "played": 2,
+          "played": 3,
           "wins": 0,
           "ties": 0,
-          "losses": 2,
-          "gf": 2,
-          "ga": 5,
-          "gd": -3,
+          "losses": 3,
+          "gf": 3,
+          "ga": 8,
+          "gd": -5,
           "points": 0,
           "advanced": 0
         }

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-28T03:04:10.220Z",
+  "updated": "2026-06-28T05:28:49.936Z",
   "count": 104,
   "matches": [
     {
@@ -2632,15 +2632,15 @@
       "roundNote": "group-stage",
       "venue": "GEHA Field at Arrowhead Stadium",
       "city": "Kansas City, Missouri",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "HT",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "624",
         "name": "Algeria",
         "abbr": "ALG",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/alg.png",
-        "score": 1,
+        "score": 3,
         "winner": false
       },
       "away": {
@@ -2648,7 +2648,7 @@
         "name": "Austria",
         "abbr": "AUT",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/aut.png",
-        "score": 1,
+        "score": 3,
         "winner": false
       },
       "nrkFree": true,
@@ -2669,15 +2669,15 @@
       "roundNote": "group-stage",
       "venue": "AT&T Stadium",
       "city": "Arlington, Texas",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "HT",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "2917",
         "name": "Jordan",
         "abbr": "JOR",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/jor.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "away": {
@@ -2685,8 +2685,8 @@
         "name": "Argentina",
         "abbr": "ARG",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
-        "score": 2,
-        "winner": false
+        "score": 3,
+        "winner": true
       },
       "nrkFree": true,
       "broadcaster": "NRK",
@@ -3069,8 +3069,8 @@
       "osloDate": "2026-07-02",
       "osloTime": "21:00",
       "osloWeekday": "torsdag",
-      "name": "Group J 2nd Place at Spain",
-      "shortName": "2J @ ESP",
+      "name": "Austria at Spain",
+      "shortName": "AUT @ ESP",
       "group": "Group H",
       "roundNote": "round-of-32",
       "venue": "SoFi Stadium",
@@ -3087,10 +3087,10 @@
         "winner": false
       },
       "away": {
-        "id": "131502",
-        "name": "Group J 2nd Place",
-        "abbr": "2J",
-        "logo": null,
+        "id": "474",
+        "name": "Austria",
+        "abbr": "AUT",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/aut.png",
         "score": 0,
         "winner": false
       },
@@ -3141,8 +3141,8 @@
       "osloDate": "2026-07-03",
       "osloTime": "05:00",
       "osloWeekday": "fredag",
-      "name": "Third Place Group E/F/G/I/J at Switzerland",
-      "shortName": "3RD @ SUI",
+      "name": "Algeria at Switzerland",
+      "shortName": "ALG @ SUI",
       "group": "Group B",
       "roundNote": "round-of-32",
       "venue": "BC Place",
@@ -3159,10 +3159,10 @@
         "winner": false
       },
       "away": {
-        "id": "131547",
-        "name": "Third Place Group E/F/G/I/J",
-        "abbr": "3RD",
-        "logo": null,
+        "id": "624",
+        "name": "Algeria",
+        "abbr": "ALG",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/alg.png",
         "score": 0,
         "winner": false
       },
