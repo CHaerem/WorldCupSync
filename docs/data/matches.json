@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-29T20:35:52.708Z",
+  "updated": "2026-06-29T22:22:46.494Z",
   "count": 104,
   "matches": [
     {
@@ -2784,13 +2784,13 @@
       "city": "Foxborough, Massachusetts",
       "state": "in",
       "completed": false,
-      "statusDetail": "6'",
+      "statusDetail": "89'",
       "home": {
         "id": "481",
         "name": "Germany",
         "abbr": "GER",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "away": {
@@ -2798,7 +2798,7 @@
         "name": "Paraguay",
         "abbr": "PAR",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/par.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "nrkFree": true,
@@ -2989,9 +2989,11 @@
         "score": 0,
         "winner": false
       },
-      "nrkFree": false,
-      "broadcaster": "TV2",
-      "streams": null
+      "nrkFree": true,
+      "broadcaster": "NRK",
+      "streams": {
+        "nrk": "https://tv.nrk.no/se?v=ISPO40504226"
+      }
     },
     {
       "id": "760493",
@@ -3062,9 +3064,11 @@
         "score": 0,
         "winner": false
       },
-      "nrkFree": false,
-      "broadcaster": "TV2",
-      "streams": null
+      "nrkFree": true,
+      "broadcaster": "NRK",
+      "streams": {
+        "nrk": "https://tv.nrk.no/se?v=ISPO40504326"
+      }
     },
     {
       "id": "760497",
@@ -3135,9 +3139,11 @@
         "score": 0,
         "winner": false
       },
-      "nrkFree": false,
-      "broadcaster": "TV2",
-      "streams": null
+      "nrkFree": true,
+      "broadcaster": "NRK",
+      "streams": {
+        "nrk": "https://tv.nrk.no/se?v=ISPO40504426"
+      }
     },
     {
       "id": "760498",
@@ -3170,9 +3176,11 @@
         "score": 0,
         "winner": false
       },
-      "nrkFree": false,
-      "broadcaster": "TV2",
-      "streams": null
+      "nrkFree": true,
+      "broadcaster": "NRK",
+      "streams": {
+        "nrk": "https://tv.nrk.no/se?v=ISPO40504526"
+      }
     },
     {
       "id": "760499",
@@ -3205,11 +3213,12 @@
         "score": 0,
         "winner": false
       },
-      "nrkFree": false,
-      "broadcaster": "TV2",
+      "nrkFree": true,
+      "broadcaster": "NRK",
       "streams": {
         "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/2d-2g-5vqepmw0",
-        "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-96"
+        "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-96",
+        "nrk": "https://tv.nrk.no/se?v=ISPO40504126"
       }
     },
     {
@@ -3243,10 +3252,11 @@
         "score": 0,
         "winner": false
       },
-      "nrkFree": false,
-      "broadcaster": "TV2",
+      "nrkFree": true,
+      "broadcaster": "NRK",
       "streams": {
-        "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-98"
+        "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-98",
+        "nrk": "https://tv.nrk.no/se?v=ISPO40504626"
       }
     },
     {
@@ -3318,9 +3328,11 @@
         "score": 0,
         "winner": false
       },
-      "nrkFree": false,
-      "broadcaster": "TV2",
-      "streams": null
+      "nrkFree": true,
+      "broadcaster": "NRK",
+      "streams": {
+        "nrk": "https://tv.nrk.no/se?v=ISPO40504726"
+      }
     },
     {
       "id": "760503",
@@ -3458,9 +3470,11 @@
         "score": 0,
         "winner": false
       },
-      "nrkFree": false,
-      "broadcaster": "TV2",
-      "streams": null
+      "nrkFree": true,
+      "broadcaster": "NRK",
+      "streams": {
+        "nrk": "https://tv.nrk.no/se?v=ISPO40504826"
+      }
     },
     {
       "id": "760507",
@@ -3493,9 +3507,11 @@
         "score": 0,
         "winner": false
       },
-      "nrkFree": false,
-      "broadcaster": "TV2",
-      "streams": null
+      "nrkFree": true,
+      "broadcaster": "NRK",
+      "streams": {
+        "nrk": "https://tv.nrk.no/se?v=ISPO40504926"
+      }
     },
     {
       "id": "760509",
@@ -3563,9 +3579,11 @@
         "score": 0,
         "winner": false
       },
-      "nrkFree": false,
-      "broadcaster": "TV2",
-      "streams": null
+      "nrkFree": true,
+      "broadcaster": "NRK",
+      "streams": {
+        "nrk": "https://tv.nrk.no/se?v=ISPO40505026"
+      }
     },
     {
       "id": "760510",
@@ -3668,9 +3686,11 @@
         "score": 0,
         "winner": false
       },
-      "nrkFree": false,
-      "broadcaster": "TV2",
-      "streams": null
+      "nrkFree": true,
+      "broadcaster": "NRK",
+      "streams": {
+        "nrk": "https://tv.nrk.no/se?v=ISPO40505126"
+      }
     },
     {
       "id": "760513",
@@ -3808,9 +3828,11 @@
         "score": 0,
         "winner": false
       },
-      "nrkFree": false,
-      "broadcaster": "TV2",
-      "streams": null
+      "nrkFree": true,
+      "broadcaster": "NRK",
+      "streams": {
+        "nrk": "https://tv.nrk.no/se?v=ISPO40505326"
+      }
     },
     {
       "id": "760517",
@@ -3843,9 +3865,11 @@
         "score": 0,
         "winner": false
       },
-      "nrkFree": false,
-      "broadcaster": "TV2",
-      "streams": null
+      "nrkFree": true,
+      "broadcaster": "NRK",
+      "streams": {
+        "nrk": "https://tv.nrk.no/se?v=ISPO40505426"
+      }
     }
   ]
 }
