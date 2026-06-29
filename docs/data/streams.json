@@ -1,6 +1,6 @@
 {
   "_comment": "Per-match replay links, keyed by ESPN match id. NRK urls resolved deterministically from NRK's public catalog by scripts/fetch-streams.js. Shape: { \"<matchId>\": { \"nrk\": \"https://tv.nrk.no/...\" } }",
-  "updated": "2026-06-29T11:38:25.833Z",
+  "updated": "2026-06-29T13:24:09.343Z",
   "streams": {
     "760414": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500126"
@@ -226,7 +226,8 @@
       "nrk": "https://tv.nrk.no/se?v=ISPO40503226"
     },
     "760480": {
-      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/kroatia-ghana-h3efrdc2"
+      "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/kroatia-ghana-h3efrdc2",
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-69"
     },
     "760481": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40503526"

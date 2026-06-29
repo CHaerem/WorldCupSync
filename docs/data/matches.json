@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-29T11:38:26.172Z",
+  "updated": "2026-06-29T13:24:09.580Z",
   "count": 104,
   "matches": [
     {
@@ -2505,7 +2505,8 @@
       "nrkFree": false,
       "broadcaster": "TV2",
       "streams": {
-        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/kroatia-ghana-h3efrdc2"
+        "tv2": "https://play.tv2.no/sport/fotball/fifa-fotball-vm-xx2qwthv/kroatia-ghana-h3efrdc2",
+        "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-69"
       }
     },
     {
