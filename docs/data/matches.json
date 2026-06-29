@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-29T16:59:30.368Z",
+  "updated": "2026-06-29T18:38:41.764Z",
   "count": 104,
   "matches": [
     {
@@ -2744,15 +2744,15 @@
       "roundNote": "round-of-32",
       "venue": "NRG Stadium",
       "city": "Houston, Texas",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "76'",
       "home": {
         "id": "205",
         "name": "Brazil",
         "abbr": "BRA",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "away": {
@@ -2760,7 +2760,7 @@
         "name": "Japan",
         "abbr": "JPN",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "nrkFree": false,
