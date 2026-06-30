@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-29T22:22:46.494Z",
+  "updated": "2026-06-30T00:31:31.538Z",
   "count": 104,
   "matches": [
     {
@@ -2779,12 +2779,12 @@
       "name": "Paraguay at Germany",
       "shortName": "PAR @ GER",
       "group": "Group E",
-      "roundNote": "round-of-32",
+      "roundNote": "Paraguay advance 4-3 on penalties",
       "venue": "Gillette Stadium",
       "city": "Foxborough, Massachusetts",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "89'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT-Pens",
       "home": {
         "id": "481",
         "name": "Germany",
@@ -2799,7 +2799,7 @@
         "abbr": "PAR",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/par.png",
         "score": 1,
-        "winner": false
+        "winner": true
       },
       "nrkFree": true,
       "broadcaster": "NRK",
@@ -3340,9 +3340,9 @@
       "osloDate": "2026-07-04",
       "osloTime": "23:00",
       "osloWeekday": "lørdag",
-      "name": "Round of 32 5 Winner at Round of 32 2 Winner",
-      "shortName": "RD32 @ RD32",
-      "group": null,
+      "name": "Round of 32 5 Winner at Paraguay",
+      "shortName": "RD32 @ PAR",
+      "group": "Group D",
       "roundNote": "round-of-16",
       "venue": "Lincoln Financial Field",
       "city": "Philadelphia, Pennsylvania",
@@ -3350,10 +3350,10 @@
       "completed": false,
       "statusDetail": "Scheduled",
       "home": {
-        "id": "131526",
-        "name": "Round of 32 2 Winner",
-        "abbr": "RD32",
-        "logo": null,
+        "id": "210",
+        "name": "Paraguay",
+        "abbr": "PAR",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/par.png",
         "score": 0,
         "winner": false
       },

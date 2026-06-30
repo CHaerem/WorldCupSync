@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-29T22:22:47.490Z",
-  "matchesPlayed": 74,
-  "totalGoals": 219,
-  "avgGoals": 2.96,
+  "updated": "2026-06-30T00:31:32.454Z",
+  "matchesPlayed": 75,
+  "totalGoals": 221,
+  "avgGoals": 2.95,
   "topScorers": [
     {
       "name": "Lionel Messi",
@@ -94,6 +94,13 @@
       "goals": 3,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png"
+    },
+    {
+      "name": "Kai Havertz",
+      "team": "Germany",
+      "goals": 3,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
     },
     {
       "name": "Matheus Cunha",
@@ -206,13 +213,6 @@
       "goals": 2,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png"
-    },
-    {
-      "name": "Daniel Muñoz",
-      "team": "Colombia",
-      "goals": 2,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/col.png"
     }
   ]
 }
