@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-30T18:37:34.098Z",
-  "matchesPlayed": 76,
-  "totalGoals": 223,
-  "avgGoals": 2.93,
+  "updated": "2026-06-30T20:36:31.981Z",
+  "matchesPlayed": 77,
+  "totalGoals": 226,
+  "avgGoals": 2.94,
   "topScorers": [
     {
       "name": "Lionel Messi",
@@ -10,6 +10,13 @@
       "goals": 6,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
+    },
+    {
+      "name": "Erling Haaland",
+      "team": "Norway",
+      "goals": 5,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png"
     },
     {
       "name": "Kylian Mbappé",
@@ -31,13 +38,6 @@
       "goals": 4,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png"
-    },
-    {
-      "name": "Erling Haaland",
-      "team": "Norway",
-      "goals": 4,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png"
     },
     {
       "name": "Deniz Undav",
@@ -159,6 +159,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png"
     },
     {
+      "name": "Nicolas Pépé",
+      "team": "Ivory Coast",
+      "goals": 2,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png"
+    },
+    {
       "name": "Pape Gueye",
       "team": "Senegal",
       "goals": 2,
@@ -187,6 +194,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
     },
     {
+      "name": "Amad Diallo",
+      "team": "Ivory Coast",
+      "goals": 2,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png"
+    },
+    {
       "name": "Anthony Elanga",
       "team": "Sweden",
       "goals": 2,
@@ -199,20 +213,6 @@
       "goals": 2,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/por.png"
-    },
-    {
-      "name": "Cyle Larin",
-      "team": "Canada",
-      "goals": 2,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png"
-    },
-    {
-      "name": "Daichi Kamada",
-      "team": "Japan",
-      "goals": 2,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png"
     }
   ]
 }
