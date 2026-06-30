@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-30T16:42:24.333Z",
+  "updated": "2026-06-30T18:37:32.849Z",
   "count": 104,
   "matches": [
     {
@@ -2857,15 +2857,15 @@
       "roundNote": "round-of-32",
       "venue": "AT&T Stadium",
       "city": "Arlington, Texas",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "77'",
       "home": {
         "id": "4789",
         "name": "Ivory Coast",
         "abbr": "CIV",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "away": {
@@ -2873,7 +2873,7 @@
         "name": "Norway",
         "abbr": "NOR",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "nrkFree": false,
