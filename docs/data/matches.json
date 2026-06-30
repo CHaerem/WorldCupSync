@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-30T03:03:34.684Z",
+  "updated": "2026-06-30T05:21:36.839Z",
   "count": 104,
   "matches": [
     {
@@ -2816,12 +2816,12 @@
       "name": "Morocco at Netherlands",
       "shortName": "MAR @ NED",
       "group": "Group F",
-      "roundNote": "round-of-32",
+      "roundNote": "Morocco advance 3-2 on penalties",
       "venue": "Estadio BBVA",
       "city": "Guadalupe",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "ET",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT-Pens",
       "home": {
         "id": "449",
         "name": "Netherlands",
@@ -2836,7 +2836,7 @@
         "abbr": "MAR",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
         "score": 1,
-        "winner": false
+        "winner": true
       },
       "nrkFree": false,
       "broadcaster": "TV2",
@@ -3303,8 +3303,8 @@
       "osloDate": "2026-07-04",
       "osloTime": "19:00",
       "osloWeekday": "lørdag",
-      "name": "Round of 32 3 Winner at Canada",
-      "shortName": "RD32 @ CAN",
+      "name": "Morocco at Canada",
+      "shortName": "MAR @ CAN",
       "group": "Group B",
       "roundNote": "round-of-16",
       "venue": "NRG Stadium",
@@ -3321,10 +3321,10 @@
         "winner": false
       },
       "away": {
-        "id": "131527",
-        "name": "Round of 32 3 Winner",
-        "abbr": "RD32",
-        "logo": null,
+        "id": "2869",
+        "name": "Morocco",
+        "abbr": "MAR",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
         "score": 0,
         "winner": false
       },
