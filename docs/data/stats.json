@@ -1,8 +1,8 @@
 {
-  "updated": "2026-07-01T03:04:53.332Z",
-  "matchesPlayed": 78,
-  "totalGoals": 229,
-  "avgGoals": 2.94,
+  "updated": "2026-07-01T05:30:49.492Z",
+  "matchesPlayed": 79,
+  "totalGoals": 231,
+  "avgGoals": 2.92,
   "topScorers": [
     {
       "name": "Kylian Mbappé",
@@ -66,6 +66,13 @@
       "goals": 3,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
+    },
+    {
+      "name": "Julián Quiñones",
+      "team": "Mexico",
+      "goals": 3,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png"
     },
     {
       "name": "Brian Brobbey",
@@ -206,13 +213,6 @@
       "goals": 2,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png"
-    },
-    {
-      "name": "Anthony Elanga",
-      "team": "Sweden",
-      "goals": 2,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
     }
   ]
 }
