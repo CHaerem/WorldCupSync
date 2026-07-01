@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-01T00:32:52.852Z",
+  "updated": "2026-07-01T03:04:51.491Z",
   "count": 104,
   "matches": [
     {
@@ -2923,9 +2923,9 @@
     },
     {
       "id": "760491",
-      "date": "2026-07-01T01:00Z",
+      "date": "2026-07-01T02:00Z",
       "osloDate": "2026-07-01",
-      "osloTime": "03:00",
+      "osloTime": "04:00",
       "osloWeekday": "onsdag",
       "name": "Ecuador at Mexico",
       "shortName": "ECU @ MEX",
@@ -2933,15 +2933,15 @@
       "roundNote": "round-of-32",
       "venue": "Estadio Banorte",
       "city": "Mexico City",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "HT",
       "home": {
         "id": "203",
         "name": "Mexico",
         "abbr": "MEX",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png",
-        "score": 0,
+        "score": 2,
         "winner": false
       },
       "away": {
