@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-01T05:30:48.770Z",
+  "updated": "2026-07-01T07:26:05.371Z",
   "count": 104,
   "matches": [
     {
@@ -3368,7 +3368,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-26"
+      }
     },
     {
       "id": "760504",
@@ -3401,9 +3403,11 @@
         "score": 0,
         "winner": false
       },
-      "nrkFree": false,
-      "broadcaster": "TV2",
-      "streams": null
+      "nrkFree": true,
+      "broadcaster": "NRK",
+      "streams": {
+        "nrk": "https://tv.nrk.no/se?v=ISPO40504826"
+      }
     },
     {
       "id": "760505",
@@ -3471,8 +3475,8 @@
         "score": 0,
         "winner": false
       },
-      "nrkFree": true,
-      "broadcaster": "NRK",
+      "nrkFree": false,
+      "broadcaster": "TV2",
       "streams": {
         "nrk": "https://tv.nrk.no/se?v=ISPO40504826"
       }
