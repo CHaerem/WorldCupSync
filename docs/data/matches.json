@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-01T20:34:04.968Z",
+  "updated": "2026-07-01T22:27:22.898Z",
   "count": 104,
   "matches": [
     {
@@ -3010,13 +3010,13 @@
       "city": "Seattle, Washington",
       "state": "in",
       "completed": false,
-      "statusDetail": "33'",
+      "statusDetail": "110'",
       "home": {
         "id": "459",
         "name": "Belgium",
         "abbr": "BEL",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png",
-        "score": 0,
+        "score": 2,
         "winner": false
       },
       "away": {
@@ -3024,7 +3024,7 @@
         "name": "Senegal",
         "abbr": "SEN",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png",
-        "score": 1,
+        "score": 2,
         "winner": false
       },
       "nrkFree": false,
