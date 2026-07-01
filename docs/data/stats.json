@@ -1,9 +1,16 @@
 {
-  "updated": "2026-06-30T22:26:18.509Z",
-  "matchesPlayed": 77,
-  "totalGoals": 226,
+  "updated": "2026-07-01T00:32:53.735Z",
+  "matchesPlayed": 78,
+  "totalGoals": 229,
   "avgGoals": 2.94,
   "topScorers": [
+    {
+      "name": "Kylian Mbappé",
+      "team": "France",
+      "goals": 6,
+      "assists": 2,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
+    },
     {
       "name": "Lionel Messi",
       "team": "Argentina",
@@ -19,17 +26,10 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png"
     },
     {
-      "name": "Kylian Mbappé",
-      "team": "France",
-      "goals": 4,
-      "assists": 2,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
-    },
-    {
       "name": "Ousmane Dembélé",
       "team": "France",
       "goals": 4,
-      "assists": 1,
+      "assists": 2,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
     },
     {
@@ -138,6 +138,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png"
     },
     {
+      "name": "Bradley Barcola",
+      "team": "France",
+      "goals": 2,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
+    },
+    {
       "name": "Jude Bellingham",
       "team": "England",
       "goals": 2,
@@ -206,13 +213,6 @@
       "goals": 2,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
-    },
-    {
-      "name": "Cristiano Ronaldo",
-      "team": "Portugal",
-      "goals": 2,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/por.png"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-30T22:26:17.310Z",
+  "updated": "2026-07-01T00:32:52.852Z",
   "count": 104,
   "matches": [
     {
@@ -2895,16 +2895,16 @@
       "roundNote": "round-of-32",
       "venue": "MetLife Stadium",
       "city": "East Rutherford, New Jersey",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "67'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "478",
         "name": "France",
         "abbr": "FRA",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
-        "score": 2,
-        "winner": false
+        "score": 3,
+        "winner": true
       },
       "away": {
         "id": "466",
@@ -3341,8 +3341,8 @@
       "osloDate": "2026-07-04",
       "osloTime": "23:00",
       "osloWeekday": "lørdag",
-      "name": "Round of 32 5 Winner at Paraguay",
-      "shortName": "RD32 @ PAR",
+      "name": "France at Paraguay",
+      "shortName": "FRA @ PAR",
       "group": "Group D",
       "roundNote": "round-of-16",
       "venue": "Lincoln Financial Field",
@@ -3359,10 +3359,10 @@
         "winner": false
       },
       "away": {
-        "id": "131529",
-        "name": "Round of 32 5 Winner",
-        "abbr": "RD32",
-        "logo": null,
+        "id": "478",
+        "name": "France",
+        "abbr": "FRA",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
         "score": 0,
         "winner": false
       },
