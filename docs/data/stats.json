@@ -1,7 +1,7 @@
 {
-  "updated": "2026-07-02T20:54:44.839Z",
-  "matchesPlayed": 82,
-  "totalGoals": 241,
+  "updated": "2026-07-02T22:57:27.617Z",
+  "matchesPlayed": 83,
+  "totalGoals": 244,
   "avgGoals": 2.94,
   "topScorers": [
     {
@@ -45,6 +45,13 @@
       "goals": 4,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png"
+    },
+    {
+      "name": "Mikel Oyarzabal",
+      "team": "Spain",
+      "goals": 4,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png"
     },
     {
       "name": "Vinícius Júnior",
@@ -178,13 +185,6 @@
       "goals": 2,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/uru.png"
-    },
-    {
-      "name": "Mikel Oyarzabal",
-      "team": "Spain",
-      "goals": 2,
-      "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png"
     },
     {
       "name": "Nicolas Pépé",
