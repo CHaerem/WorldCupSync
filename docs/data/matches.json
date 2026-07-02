@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-02T00:31:49.680Z",
+  "updated": "2026-07-02T03:03:08.653Z",
   "count": 104,
   "matches": [
     {
@@ -3046,16 +3046,16 @@
       "roundNote": "round-of-32",
       "venue": "Levi's Stadium",
       "city": "Santa Clara, California",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "32'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "660",
         "name": "United States",
         "abbr": "USA",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
-        "score": 0,
-        "winner": false
+        "score": 2,
+        "winner": true
       },
       "away": {
         "id": "452",
@@ -3489,9 +3489,9 @@
       "osloDate": "2026-07-07",
       "osloTime": "02:00",
       "osloWeekday": "tirsdag",
-      "name": "Belgium at Round of 32 9 Winner",
-      "shortName": "BEL @ RD32",
-      "group": "Group G",
+      "name": "Belgium at United States",
+      "shortName": "BEL @ USA",
+      "group": "Group D",
       "roundNote": "round-of-16",
       "venue": "Lumen Field",
       "city": "Seattle, Washington",
@@ -3499,10 +3499,10 @@
       "completed": false,
       "statusDetail": "Scheduled",
       "home": {
-        "id": "131533",
-        "name": "Round of 32 9 Winner",
-        "abbr": "RD32",
-        "logo": null,
+        "id": "660",
+        "name": "United States",
+        "abbr": "USA",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
         "score": 0,
         "winner": false
       },

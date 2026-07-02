@@ -1,8 +1,8 @@
 {
-  "updated": "2026-07-02T00:31:50.501Z",
-  "matchesPlayed": 81,
-  "totalGoals": 239,
-  "avgGoals": 2.95,
+  "updated": "2026-07-02T03:03:10.795Z",
+  "matchesPlayed": 82,
+  "totalGoals": 241,
+  "avgGoals": 2.94,
   "topScorers": [
     {
       "name": "Kylian Mbappé",
@@ -94,6 +94,13 @@
       "goals": 3,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png"
+    },
+    {
+      "name": "Folarin Balogun",
+      "team": "United States",
+      "goals": 3,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png"
     },
     {
       "name": "Ismael Saibari",
@@ -206,13 +213,6 @@
       "goals": 2,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/alg.png"
-    },
-    {
-      "name": "Romelu Lukaku",
-      "team": "Belgium",
-      "goals": 2,
-      "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png"
     }
   ]
 }
