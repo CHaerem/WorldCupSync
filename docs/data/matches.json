@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-02T07:22:59.614Z",
+  "updated": "2026-07-02T10:29:20.883Z",
   "count": 104,
   "matches": [
     {
@@ -3623,9 +3623,11 @@
         "score": 0,
         "winner": false
       },
-      "nrkFree": false,
-      "broadcaster": "TV2",
-      "streams": null
+      "nrkFree": true,
+      "broadcaster": "NRK",
+      "streams": {
+        "nrk": "https://tv.nrk.no/se?v=ISPO40505126"
+      }
     },
     {
       "id": "760511",
@@ -3693,8 +3695,8 @@
         "score": 0,
         "winner": false
       },
-      "nrkFree": true,
-      "broadcaster": "NRK",
+      "nrkFree": false,
+      "broadcaster": "TV2",
       "streams": {
         "nrk": "https://tv.nrk.no/se?v=ISPO40505126"
       }
