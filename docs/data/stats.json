@@ -1,8 +1,8 @@
 {
-  "updated": "2026-07-01T22:27:23.625Z",
-  "matchesPlayed": 80,
-  "totalGoals": 234,
-  "avgGoals": 2.93,
+  "updated": "2026-07-02T00:31:50.501Z",
+  "matchesPlayed": 81,
+  "totalGoals": 239,
+  "avgGoals": 2.95,
   "topScorers": [
     {
       "name": "Kylian Mbappé",
@@ -40,6 +40,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
     },
     {
+      "name": "Ismaïla Sarr",
+      "team": "Senegal",
+      "goals": 4,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png"
+    },
+    {
       "name": "Vinícius Júnior",
       "team": "Brazil",
       "goals": 4,
@@ -59,13 +66,6 @@
       "goals": 3,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png"
-    },
-    {
-      "name": "Ismaïla Sarr",
-      "team": "Senegal",
-      "goals": 3,
-      "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png"
     },
     {
       "name": "Johan Manzambi",
@@ -159,6 +159,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png"
     },
     {
+      "name": "Leandro Trossard",
+      "team": "Belgium",
+      "goals": 2,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png"
+    },
+    {
       "name": "Maxi Araújo",
       "team": "Uruguay",
       "goals": 2,
@@ -201,18 +208,11 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/alg.png"
     },
     {
-      "name": "Rubén Vargas",
-      "team": "Switzerland",
+      "name": "Romelu Lukaku",
+      "team": "Belgium",
       "goals": 2,
       "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
-    },
-    {
-      "name": "Amad Diallo",
-      "team": "Ivory Coast",
-      "goals": 2,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png"
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png"
     }
   ]
 }
