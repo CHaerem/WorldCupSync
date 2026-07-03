@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-03T17:14:15.285Z",
+  "updated": "2026-07-03T19:03:13.118Z",
   "count": 104,
   "matches": [
     {
@@ -3177,8 +3177,8 @@
         "score": 0,
         "winner": false
       },
-      "nrkFree": false,
-      "broadcaster": "TV2",
+      "nrkFree": true,
+      "broadcaster": "NRK",
       "streams": {
         "nrk": "https://tv.nrk.no/se?v=ISPO40504526"
       }
@@ -3195,9 +3195,9 @@
       "roundNote": "round-of-32",
       "venue": "AT&T Stadium",
       "city": "Arlington, Texas",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "HT",
       "home": {
         "id": "628",
         "name": "Australia",
@@ -3211,7 +3211,7 @@
         "name": "Egypt",
         "abbr": "EGY",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/egy.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "nrkFree": true,
@@ -3253,8 +3253,8 @@
         "score": 0,
         "winner": false
       },
-      "nrkFree": true,
-      "broadcaster": "NRK",
+      "nrkFree": false,
+      "broadcaster": "TV2",
       "streams": {
         "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-98",
         "nrk": "https://tv.nrk.no/se?v=ISPO40504626"
