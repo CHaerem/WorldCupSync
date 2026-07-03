@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-03T02:01:07.277Z",
+  "updated": "2026-07-03T06:54:24.161Z",
   "count": 104,
   "matches": [
     {
@@ -3158,16 +3158,16 @@
       "roundNote": "round-of-32",
       "venue": "BC Place",
       "city": "Vancouver",
-      "state": "pre",
-      "completed": false,
-      "statusDetail": "Scheduled",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "475",
         "name": "Switzerland",
         "abbr": "SUI",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
-        "score": 0,
-        "winner": false
+        "score": 2,
+        "winner": true
       },
       "away": {
         "id": "624",
@@ -3561,9 +3561,9 @@
       "osloDate": "2026-07-07",
       "osloTime": "22:00",
       "osloWeekday": "tirsdag",
-      "name": "Round of 32 15 Winner at Round of 32 13 Winner",
-      "shortName": "RD32 @ RD32",
-      "group": null,
+      "name": "Round of 32 15 Winner at Switzerland",
+      "shortName": "RD32 @ SUI",
+      "group": "Group B",
       "roundNote": "round-of-16",
       "venue": "BC Place",
       "city": "Vancouver",
@@ -3571,10 +3571,10 @@
       "completed": false,
       "statusDetail": "Scheduled",
       "home": {
-        "id": "131537",
-        "name": "Round of 32 13 Winner",
-        "abbr": "RD32",
-        "logo": null,
+        "id": "475",
+        "name": "Switzerland",
+        "abbr": "SUI",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
         "score": 0,
         "winner": false
       },

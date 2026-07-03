@@ -1,8 +1,8 @@
 {
-  "updated": "2026-07-03T02:01:08.853Z",
-  "matchesPlayed": 84,
-  "totalGoals": 247,
-  "avgGoals": 2.94,
+  "updated": "2026-07-03T06:54:25.679Z",
+  "matchesPlayed": 85,
+  "totalGoals": 249,
+  "avgGoals": 2.93,
   "topScorers": [
     {
       "name": "Kylian Mbappé",
@@ -68,18 +68,18 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png"
     },
     {
+      "name": "Johan Manzambi",
+      "team": "Switzerland",
+      "goals": 3,
+      "assists": 2,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
+    },
+    {
       "name": "Cody Gakpo",
       "team": "Netherlands",
       "goals": 3,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png"
-    },
-    {
-      "name": "Johan Manzambi",
-      "team": "Switzerland",
-      "goals": 3,
-      "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
     },
     {
       "name": "Julián Quiñones",
@@ -152,6 +152,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/rdc.png"
     },
     {
+      "name": "Breel Embolo",
+      "team": "Switzerland",
+      "goals": 2,
+      "assists": 2,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
+    },
+    {
       "name": "Crysencio Summerville",
       "team": "Netherlands",
       "goals": 2,
@@ -206,13 +213,6 @@
       "goals": 2,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png"
-    },
-    {
-      "name": "Ramin Rezaeian",
-      "team": "Iran",
-      "goals": 2,
-      "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/irn.png"
     }
   ]
 }
