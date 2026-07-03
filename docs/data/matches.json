@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-02T22:57:26.779Z",
+  "updated": "2026-07-03T02:01:07.277Z",
   "count": 104,
   "matches": [
     {
@@ -3121,23 +3121,23 @@
       "roundNote": "round-of-32",
       "venue": "BMO Field",
       "city": "Toronto",
-      "state": "pre",
-      "completed": false,
-      "statusDetail": "Scheduled",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "482",
         "name": "Portugal",
         "abbr": "POR",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/por.png",
-        "score": 0,
-        "winner": false
+        "score": 2,
+        "winner": true
       },
       "away": {
         "id": "477",
         "name": "Croatia",
         "abbr": "CRO",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/cro.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "nrkFree": true,
@@ -3452,9 +3452,9 @@
       "osloDate": "2026-07-06",
       "osloTime": "21:00",
       "osloWeekday": "mandag",
-      "name": "Spain at Round of 32 11 Winner",
-      "shortName": "ESP @ RD32",
-      "group": "Group H",
+      "name": "Spain at Portugal",
+      "shortName": "ESP @ POR",
+      "group": "Group K",
       "roundNote": "round-of-16",
       "venue": "AT&T Stadium",
       "city": "Arlington, Texas",
@@ -3462,10 +3462,10 @@
       "completed": false,
       "statusDetail": "Scheduled",
       "home": {
-        "id": "131535",
-        "name": "Round of 32 11 Winner",
-        "abbr": "RD32",
-        "logo": null,
+        "id": "482",
+        "name": "Portugal",
+        "abbr": "POR",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/por.png",
         "score": 0,
         "winner": false
       },
