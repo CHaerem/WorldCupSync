@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-03T19:03:13.118Z",
+  "updated": "2026-07-03T20:53:32.656Z",
   "count": 104,
   "matches": [
     {
@@ -3197,13 +3197,13 @@
       "city": "Arlington, Texas",
       "state": "in",
       "completed": false,
-      "statusDetail": "HT",
+      "statusDetail": "AET-pens",
       "home": {
         "id": "628",
         "name": "Australia",
         "abbr": "AUS",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "away": {
