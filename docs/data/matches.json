@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-04T16:54:11.099Z",
+  "updated": "2026-07-04T18:57:48.249Z",
   "count": 104,
   "matches": [
     {
@@ -3310,9 +3310,9 @@
       "roundNote": "round-of-16",
       "venue": "NRG Stadium",
       "city": "Houston, Texas",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "90'+3'",
       "home": {
         "id": "206",
         "name": "Canada",
@@ -3326,7 +3326,7 @@
         "name": "Morocco",
         "abbr": "MAR",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
-        "score": 0,
+        "score": 2,
         "winner": false
       },
       "nrkFree": true,
