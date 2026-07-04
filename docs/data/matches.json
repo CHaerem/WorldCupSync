@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-04T18:57:48.249Z",
+  "updated": "2026-07-04T20:43:47.206Z",
   "count": 104,
   "matches": [
     {
@@ -3310,9 +3310,9 @@
       "roundNote": "round-of-16",
       "venue": "NRG Stadium",
       "city": "Houston, Texas",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "90'+3'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "206",
         "name": "Canada",
@@ -3326,8 +3326,8 @@
         "name": "Morocco",
         "abbr": "MAR",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
-        "score": 2,
-        "winner": false
+        "score": 3,
+        "winner": true
       },
       "nrkFree": true,
       "broadcaster": "NRK",
@@ -3601,9 +3601,9 @@
       "osloDate": "2026-07-09",
       "osloTime": "22:00",
       "osloWeekday": "torsdag",
-      "name": "Round of 16 2 Winner at Round of 16 1 Winner",
-      "shortName": "RD16 W2 @ RD16 W1",
-      "group": null,
+      "name": "Morocco at Round of 16 1 Winner",
+      "shortName": "MAR @ RD16 W1",
+      "group": "Group C",
       "roundNote": "quarterfinals",
       "venue": "Gillette Stadium",
       "city": "Foxborough, Massachusetts",
@@ -3619,10 +3619,10 @@
         "winner": false
       },
       "away": {
-        "id": "19283",
-        "name": "Round of 16 2 Winner",
-        "abbr": "RD16 W2",
-        "logo": null,
+        "id": "2869",
+        "name": "Morocco",
+        "abbr": "MAR",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
         "score": 0,
         "winner": false
       },
