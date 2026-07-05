@@ -1,7 +1,7 @@
 {
-  "updated": "2026-07-05T20:48:03.257Z",
-  "matchesPlayed": 90,
-  "totalGoals": 261,
+  "updated": "2026-07-05T22:53:50.080Z",
+  "matchesPlayed": 91,
+  "totalGoals": 264,
   "avgGoals": 2.9,
   "topScorers": [
     {
@@ -12,18 +12,18 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
     },
     {
+      "name": "Erling Haaland",
+      "team": "Norway",
+      "goals": 7,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png"
+    },
+    {
       "name": "Lionel Messi",
       "team": "Argentina",
       "goals": 7,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
-    },
-    {
-      "name": "Erling Haaland",
-      "team": "Norway",
-      "goals": 5,
-      "assists": 0,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png"
     },
     {
       "name": "Harry Kane",

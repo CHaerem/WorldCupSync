@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-05T20:48:02.412Z",
+  "updated": "2026-07-05T22:53:49.002Z",
   "count": 104,
   "matches": [
     {
@@ -3384,15 +3384,15 @@
       "roundNote": "round-of-16",
       "venue": "MetLife Stadium",
       "city": "East Rutherford, New Jersey",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "45'+2'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "205",
         "name": "Brazil",
         "abbr": "BRA",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "away": {
@@ -3400,8 +3400,8 @@
         "name": "Norway",
         "abbr": "NOR",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
-        "score": 0,
-        "winner": false
+        "score": 2,
+        "winner": true
       },
       "nrkFree": true,
       "broadcaster": "NRK",
@@ -3674,9 +3674,9 @@
       "osloDate": "2026-07-11",
       "osloTime": "23:00",
       "osloWeekday": "lørdag",
-      "name": "Round of 16 4 Winner at Round of 16 3 Winner",
-      "shortName": "RD16 W4 @ RD16 W3",
-      "group": null,
+      "name": "Round of 16 4 Winner at Norway",
+      "shortName": "RD16 W4 @ NOR",
+      "group": "Group I",
       "roundNote": "quarterfinals",
       "venue": "Hard Rock Stadium",
       "city": "Miami Gardens, Florida",
@@ -3684,10 +3684,10 @@
       "completed": false,
       "statusDetail": "Scheduled",
       "home": {
-        "id": "19284",
-        "name": "Round of 16 3 Winner",
-        "abbr": "RD16 W3",
-        "logo": null,
+        "id": "464",
+        "name": "Norway",
+        "abbr": "NOR",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
         "score": 0,
         "winner": false
       },
