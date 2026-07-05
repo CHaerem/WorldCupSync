@@ -1,22 +1,22 @@
 {
-  "updated": "2026-07-04T22:48:42.012Z",
-  "matchesPlayed": 89,
-  "totalGoals": 260,
-  "avgGoals": 2.92,
+  "updated": "2026-07-05T02:07:28.746Z",
+  "matchesPlayed": 90,
+  "totalGoals": 261,
+  "avgGoals": 2.9,
   "topScorers": [
+    {
+      "name": "Kylian Mbappé",
+      "team": "France",
+      "goals": 7,
+      "assists": 2,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
+    },
     {
       "name": "Lionel Messi",
       "team": "Argentina",
       "goals": 7,
       "assists": 0,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
-    },
-    {
-      "name": "Kylian Mbappé",
-      "team": "France",
-      "goals": 6,
-      "assists": 2,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
     },
     {
       "name": "Erling Haaland",

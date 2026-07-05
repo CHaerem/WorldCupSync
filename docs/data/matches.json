@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-04T22:48:41.110Z",
+  "updated": "2026-07-05T02:07:26.578Z",
   "count": 104,
   "matches": [
     {
@@ -3347,9 +3347,9 @@
       "roundNote": "round-of-16",
       "venue": "Lincoln Financial Field",
       "city": "Philadelphia, Pennsylvania",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "84'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "210",
         "name": "Paraguay",
@@ -3364,7 +3364,7 @@
         "abbr": "FRA",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
         "score": 1,
-        "winner": false
+        "winner": true
       },
       "nrkFree": false,
       "broadcaster": "TV2",
@@ -3601,9 +3601,9 @@
       "osloDate": "2026-07-09",
       "osloTime": "22:00",
       "osloWeekday": "torsdag",
-      "name": "Morocco at Round of 16 1 Winner",
-      "shortName": "MAR @ RD16 W1",
-      "group": "Group C",
+      "name": "Morocco at France",
+      "shortName": "MAR @ FRA",
+      "group": "Group I",
       "roundNote": "quarterfinals",
       "venue": "Gillette Stadium",
       "city": "Foxborough, Massachusetts",
@@ -3611,10 +3611,10 @@
       "completed": false,
       "statusDetail": "Scheduled",
       "home": {
-        "id": "19282",
-        "name": "Round of 16 1 Winner",
-        "abbr": "RD16 W1",
-        "logo": null,
+        "id": "478",
+        "name": "France",
+        "abbr": "FRA",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
         "score": 0,
         "winner": false
       },
