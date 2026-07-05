@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-05T19:02:48.725Z",
+  "updated": "2026-07-05T20:48:02.412Z",
   "count": 104,
   "matches": [
     {
@@ -3384,9 +3384,9 @@
       "roundNote": "round-of-16",
       "venue": "MetLife Stadium",
       "city": "East Rutherford, New Jersey",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "45'+2'",
       "home": {
         "id": "205",
         "name": "Brazil",
