@@ -1,8 +1,8 @@
 {
-  "updated": "2026-07-06T02:12:46.818Z",
-  "matchesPlayed": 91,
-  "totalGoals": 264,
-  "avgGoals": 2.9,
+  "updated": "2026-07-06T08:10:52.756Z",
+  "matchesPlayed": 92,
+  "totalGoals": 269,
+  "avgGoals": 2.92,
   "topScorers": [
     {
       "name": "Kylian Mbappé",
@@ -28,8 +28,8 @@
     {
       "name": "Harry Kane",
       "team": "England",
-      "goals": 5,
-      "assists": 0,
+      "goals": 6,
+      "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png"
     },
     {
@@ -45,6 +45,20 @@
       "goals": 4,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png"
+    },
+    {
+      "name": "Jude Bellingham",
+      "team": "England",
+      "goals": 4,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png"
+    },
+    {
+      "name": "Julián Quiñones",
+      "team": "Mexico",
+      "goals": 4,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png"
     },
     {
       "name": "Mikel Oyarzabal",
@@ -80,13 +94,6 @@
       "goals": 3,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png"
-    },
-    {
-      "name": "Julián Quiñones",
-      "team": "Mexico",
-      "goals": 3,
-      "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png"
     },
     {
       "name": "Brian Brobbey",
@@ -145,6 +152,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png"
     },
     {
+      "name": "Raúl Jiménez",
+      "team": "Mexico",
+      "goals": 3,
+      "assists": 0,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png"
+    },
+    {
       "name": "Yoane Wissa",
       "team": "Congo DR",
       "goals": 3,
@@ -180,13 +194,6 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
     },
     {
-      "name": "Jude Bellingham",
-      "team": "England",
-      "goals": 2,
-      "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png"
-    },
-    {
       "name": "Leandro Trossard",
       "team": "Belgium",
       "goals": 2,
@@ -206,13 +213,6 @@
       "goals": 2,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png"
-    },
-    {
-      "name": "Pape Gueye",
-      "team": "Senegal",
-      "goals": 2,
-      "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png"
     }
   ]
 }

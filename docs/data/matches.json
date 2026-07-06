@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-06T02:12:44.296Z",
+  "updated": "2026-07-06T08:10:51.938Z",
   "count": 104,
   "matches": [
     {
@@ -3421,15 +3421,15 @@
       "roundNote": "round-of-16",
       "venue": "Estadio Banorte",
       "city": "Mexico City",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "50'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "203",
         "name": "Mexico",
         "abbr": "MEX",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png",
-        "score": 1,
+        "score": 2,
         "winner": false
       },
       "away": {
@@ -3437,8 +3437,8 @@
         "name": "England",
         "abbr": "ENG",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
-        "score": 2,
-        "winner": false
+        "score": 3,
+        "winner": true
       },
       "nrkFree": false,
       "broadcaster": "TV2",
@@ -3674,8 +3674,8 @@
       "osloDate": "2026-07-11",
       "osloTime": "23:00",
       "osloWeekday": "lørdag",
-      "name": "Round of 16 4 Winner at Norway",
-      "shortName": "RD16 W4 @ NOR",
+      "name": "England at Norway",
+      "shortName": "ENG @ NOR",
       "group": "Group I",
       "roundNote": "quarterfinals",
       "venue": "Hard Rock Stadium",
@@ -3692,17 +3692,18 @@
         "winner": false
       },
       "away": {
-        "id": "19285",
-        "name": "Round of 16 4 Winner",
-        "abbr": "RD16 W4",
-        "logo": null,
+        "id": "448",
+        "name": "England",
+        "abbr": "ENG",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
         "score": 0,
         "winner": false
       },
       "nrkFree": false,
       "broadcaster": "TV2",
       "streams": {
-        "nrk": "https://tv.nrk.no/se?v=ISPO40505126"
+        "nrk": "https://tv.nrk.no/se?v=ISPO40505126",
+        "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-88"
       }
     },
     {
