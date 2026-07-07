@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-07T19:42:39.291Z",
+  "updated": "2026-07-07T21:16:06.336Z",
   "count": 104,
   "matches": [
     {
@@ -3570,9 +3570,9 @@
       "roundNote": "round-of-16",
       "venue": "BC Place",
       "city": "Vancouver",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "57'",
       "home": {
         "id": "475",
         "name": "Switzerland",
