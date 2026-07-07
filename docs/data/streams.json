@@ -1,6 +1,6 @@
 {
   "_comment": "Per-match replay links, keyed by ESPN match id. NRK urls resolved deterministically from NRK's public catalog by scripts/fetch-streams.js. Shape: { \"<matchId>\": { \"nrk\": \"https://tv.nrk.no/...\" } }",
-  "updated": "2026-07-07T02:08:01.835Z",
+  "updated": "2026-07-07T07:29:45.485Z",
   "streams": {
     "760414": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500126"
@@ -332,6 +332,9 @@
     "760510": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40505126",
       "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-89"
+    },
+    "760511": {
+      "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-95"
     },
     "760512": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40505126",
