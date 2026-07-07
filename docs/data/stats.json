@@ -1,8 +1,8 @@
 {
-  "updated": "2026-07-06T22:58:38.068Z",
-  "matchesPlayed": 93,
-  "totalGoals": 270,
-  "avgGoals": 2.9,
+  "updated": "2026-07-07T02:08:03.521Z",
+  "matchesPlayed": 94,
+  "totalGoals": 275,
+  "avgGoals": 2.93,
   "topScorers": [
     {
       "name": "Kylian Mbappé",
@@ -96,6 +96,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png"
     },
     {
+      "name": "Romelu Lukaku",
+      "team": "Belgium",
+      "goals": 3,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png"
+    },
+    {
       "name": "Brian Brobbey",
       "team": "Netherlands",
       "goals": 3,
@@ -180,6 +187,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png"
     },
     {
+      "name": "Leandro Trossard",
+      "team": "Belgium",
+      "goals": 2,
+      "assists": 2,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png"
+    },
+    {
       "name": "Ayase Ueda",
       "team": "Japan",
       "goals": 2,
@@ -194,25 +208,11 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
     },
     {
-      "name": "Leandro Trossard",
+      "name": "Charles De Ketelaere",
       "team": "Belgium",
       "goals": 2,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png"
-    },
-    {
-      "name": "Maxi Araújo",
-      "team": "Uruguay",
-      "goals": 2,
-      "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/uru.png"
-    },
-    {
-      "name": "Nicolas Pépé",
-      "team": "Ivory Coast",
-      "goals": 2,
-      "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/civ.png"
     }
   ]
 }
