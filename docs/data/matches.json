@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-07T14:08:34.795Z",
+  "updated": "2026-07-07T17:52:30.678Z",
   "count": 104,
   "matches": [
     {
@@ -3533,15 +3533,15 @@
       "roundNote": "round-of-16",
       "venue": "Mercedes-Benz Stadium",
       "city": "Atlanta, Georgia",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "88'",
       "home": {
         "id": "202",
         "name": "Argentina",
         "abbr": "ARG",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
-        "score": 0,
+        "score": 2,
         "winner": false
       },
       "away": {
@@ -3549,7 +3549,7 @@
         "name": "Egypt",
         "abbr": "EGY",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/egy.png",
-        "score": 0,
+        "score": 2,
         "winner": false
       },
       "nrkFree": false,
