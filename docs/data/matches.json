@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-07T22:52:30.191Z",
+  "updated": "2026-07-08T01:48:54.795Z",
   "count": 104,
   "matches": [
     {
@@ -3567,19 +3567,19 @@
       "name": "Colombia at Switzerland",
       "shortName": "COL @ SUI",
       "group": "Group B",
-      "roundNote": "round-of-16",
+      "roundNote": "Switzerland advance 4-3 on penalties",
       "venue": "BC Place",
       "city": "Vancouver",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "Pens",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT-Pens",
       "home": {
         "id": "475",
         "name": "Switzerland",
         "abbr": "SUI",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
         "score": 0,
-        "winner": false
+        "winner": true
       },
       "away": {
         "id": "208",
@@ -3742,7 +3742,8 @@
       "nrkFree": true,
       "broadcaster": "NRK",
       "streams": {
-        "nrk": "https://tv.nrk.no/se?v=ISPO40505226"
+        "nrk": "https://tv.nrk.no/se?v=ISPO40505226",
+        "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-30"
       }
     },
     {
