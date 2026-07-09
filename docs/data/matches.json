@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-09T19:23:22.148Z",
+  "updated": "2026-07-09T21:13:22.022Z",
   "count": 104,
   "matches": [
     {
@@ -3607,9 +3607,9 @@
       "roundNote": "quarterfinals",
       "venue": "Gillette Stadium",
       "city": "Foxborough, Massachusetts",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "49'",
       "home": {
         "id": "478",
         "name": "France",
