@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-09T21:13:22.022Z",
+  "updated": "2026-07-09T23:03:08.553Z",
   "count": 104,
   "matches": [
     {
@@ -3607,16 +3607,16 @@
       "roundNote": "quarterfinals",
       "venue": "Gillette Stadium",
       "city": "Foxborough, Massachusetts",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "49'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "FT",
       "home": {
         "id": "478",
         "name": "France",
         "abbr": "FRA",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
-        "score": 0,
-        "winner": false
+        "score": 2,
+        "winner": true
       },
       "away": {
         "id": "2869",
@@ -3752,9 +3752,9 @@
       "osloDate": "2026-07-14",
       "osloTime": "21:00",
       "osloWeekday": "tirsdag",
-      "name": "Quarterfinal 2 Winner at Quarterfinal 1 Winner",
-      "shortName": "QFW2 @ QFW1",
-      "group": null,
+      "name": "Quarterfinal 2 Winner at France",
+      "shortName": "QFW2 @ FRA",
+      "group": "Group I",
       "roundNote": "semifinals",
       "venue": "AT&T Stadium",
       "city": "Arlington, Texas",
@@ -3762,10 +3762,10 @@
       "completed": false,
       "statusDetail": "Scheduled",
       "home": {
-        "id": "17631",
-        "name": "Quarterfinal 1 Winner",
-        "abbr": "QFW1",
-        "logo": null,
+        "id": "478",
+        "name": "France",
+        "abbr": "FRA",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
         "score": 0,
         "winner": false
       },
