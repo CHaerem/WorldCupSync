@@ -1,7 +1,7 @@
 {
-  "updated": "2026-07-10T19:16:20.414Z",
-  "matchesPlayed": 97,
-  "totalGoals": 282,
+  "updated": "2026-07-10T21:00:20.988Z",
+  "matchesPlayed": 98,
+  "totalGoals": 285,
   "avgGoals": 2.91,
   "topScorers": [
     {
@@ -87,6 +87,13 @@
       "goals": 3,
       "assists": 2,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png"
+    },
+    {
+      "name": "Charles De Ketelaere",
+      "team": "Belgium",
+      "goals": 3,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png"
     },
     {
       "name": "Cody Gakpo",
@@ -206,13 +213,6 @@
       "goals": 2,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
-    },
-    {
-      "name": "Charles De Ketelaere",
-      "team": "Belgium",
-      "goals": 2,
-      "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png"
     }
   ]
 }
