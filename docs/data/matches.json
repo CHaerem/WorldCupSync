@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-10T16:27:23.602Z",
+  "updated": "2026-07-10T19:16:19.472Z",
   "count": 104,
   "matches": [
     {
@@ -3645,9 +3645,9 @@
       "roundNote": "quarterfinals",
       "venue": "SoFi Stadium",
       "city": "Inglewood, California",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "15'",
       "home": {
         "id": "164",
         "name": "Spain",
