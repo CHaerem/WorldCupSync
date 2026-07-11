@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-10T22:52:08.254Z",
+  "updated": "2026-07-11T01:47:47.459Z",
   "count": 104,
   "matches": [
     {
@@ -3779,7 +3779,9 @@
       },
       "nrkFree": false,
       "broadcaster": "TV2",
-      "streams": null
+      "streams": {
+        "summary": "https://play.tv2.no/serier/fifa-fotball-vm-kampoppsummering-8y65sn64/sesong-2026/episode-31"
+      }
     },
     {
       "id": "760515",
