@@ -1,8 +1,8 @@
 {
-  "updated": "2026-07-12T01:49:55.770Z",
-  "matchesPlayed": 99,
-  "totalGoals": 288,
-  "avgGoals": 2.91,
+  "updated": "2026-07-12T05:18:44.661Z",
+  "matchesPlayed": 100,
+  "totalGoals": 292,
+  "avgGoals": 2.92,
   "topScorers": [
     {
       "name": "Kylian Mbappé",
@@ -15,7 +15,7 @@
       "name": "Lionel Messi",
       "team": "Argentina",
       "goals": 8,
-      "assists": 1,
+      "assists": 2,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
     },
     {

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-12T01:49:54.551Z",
+  "updated": "2026-07-12T05:18:42.654Z",
   "count": 104,
   "matches": [
     {
@@ -3720,23 +3720,23 @@
       "roundNote": "quarterfinals",
       "venue": "GEHA Field at Arrowhead Stadium",
       "city": "Kansas City, Missouri",
-      "state": "in",
-      "completed": false,
-      "statusDetail": "45'+4'",
+      "state": "post",
+      "completed": true,
+      "statusDetail": "AET",
       "home": {
         "id": "202",
         "name": "Argentina",
         "abbr": "ARG",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
-        "score": 1,
-        "winner": false
+        "score": 3,
+        "winner": true
       },
       "away": {
         "id": "475",
         "name": "Switzerland",
         "abbr": "SUI",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "nrkFree": true,
@@ -3789,8 +3789,8 @@
       "osloDate": "2026-07-15",
       "osloTime": "21:00",
       "osloWeekday": "onsdag",
-      "name": "Quarterfinal 4 Winner at England",
-      "shortName": "QW4 @ ENG",
+      "name": "Argentina at England",
+      "shortName": "ARG @ ENG",
       "group": "Group L",
       "roundNote": "semifinals",
       "venue": "Mercedes-Benz Stadium",
@@ -3807,10 +3807,10 @@
         "winner": false
       },
       "away": {
-        "id": "17632",
-        "name": "Quarterfinal 4 Winner",
-        "abbr": "QW4",
-        "logo": null,
+        "id": "202",
+        "name": "Argentina",
+        "abbr": "ARG",
+        "logo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
         "score": 0,
         "winner": false
       },
