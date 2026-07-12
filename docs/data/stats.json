@@ -1,7 +1,7 @@
 {
-  "updated": "2026-07-11T22:38:16.355Z",
-  "matchesPlayed": 98,
-  "totalGoals": 285,
+  "updated": "2026-07-12T01:49:55.770Z",
+  "matchesPlayed": 99,
+  "totalGoals": 288,
   "avgGoals": 2.91,
   "topScorers": [
     {
@@ -33,6 +33,13 @@
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png"
     },
     {
+      "name": "Jude Bellingham",
+      "team": "England",
+      "goals": 6,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png"
+    },
+    {
       "name": "Ousmane Dembélé",
       "team": "France",
       "goals": 5,
@@ -45,13 +52,6 @@
       "goals": 4,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png"
-    },
-    {
-      "name": "Jude Bellingham",
-      "team": "England",
-      "goals": 4,
-      "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png"
     },
     {
       "name": "Julián Quiñones",
