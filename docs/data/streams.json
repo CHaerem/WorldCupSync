@@ -1,6 +1,6 @@
 {
   "_comment": "Per-match replay links, keyed by ESPN match id. NRK urls resolved deterministically from NRK's public catalog by scripts/fetch-streams.js. Shape: { \"<matchId>\": { \"nrk\": \"https://tv.nrk.no/...\" } }",
-  "updated": "2026-07-14T13:09:55.371Z",
+  "updated": "2026-07-14T15:17:09.517Z",
   "streams": {
     "760414": {
       "nrk": "https://tv.nrk.no/se?v=ISPO40500126"
