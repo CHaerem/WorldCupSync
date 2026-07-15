@@ -1,22 +1,22 @@
 {
-  "updated": "2026-07-15T20:50:47.810Z",
-  "matchesPlayed": 101,
-  "totalGoals": 294,
+  "updated": "2026-07-15T22:50:16.899Z",
+  "matchesPlayed": 102,
+  "totalGoals": 297,
   "avgGoals": 2.91,
   "topScorers": [
+    {
+      "name": "Lionel Messi",
+      "team": "Argentina",
+      "goals": 8,
+      "assists": 4,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
+    },
     {
       "name": "Kylian Mbappé",
       "team": "France",
       "goals": 8,
       "assists": 3,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
-    },
-    {
-      "name": "Lionel Messi",
-      "team": "Argentina",
-      "goals": 8,
-      "assists": 2,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
     },
     {
       "name": "Erling Haaland",
@@ -101,6 +101,13 @@
       "goals": 3,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png"
+    },
+    {
+      "name": "Lautaro Martínez",
+      "team": "Argentina",
+      "goals": 3,
+      "assists": 1,
+      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
     },
     {
       "name": "Romelu Lukaku",
@@ -206,13 +213,6 @@
       "goals": 2,
       "assists": 1,
       "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png"
-    },
-    {
-      "name": "Bradley Barcola",
-      "team": "France",
-      "goals": 2,
-      "assists": 1,
-      "teamLogo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png"
     }
   ]
 }
