@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-15T18:56:12.342Z",
+  "updated": "2026-07-15T20:50:46.739Z",
   "count": 104,
   "matches": [
     {
@@ -3795,15 +3795,15 @@
       "roundNote": "semifinals",
       "venue": "Mercedes-Benz Stadium",
       "city": "Atlanta, Georgia",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "89'",
       "home": {
         "id": "448",
         "name": "England",
         "abbr": "ENG",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "away": {
@@ -3811,7 +3811,7 @@
         "name": "Argentina",
         "abbr": "ARG",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
-        "score": 0,
+        "score": 1,
         "winner": false
       },
       "nrkFree": false,
