@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-18T20:37:57.916Z",
+  "updated": "2026-07-18T22:39:06.005Z",
   "count": 104,
   "matches": [
     {
@@ -3832,15 +3832,15 @@
       "roundNote": "3rd-place-match",
       "venue": "Hard Rock Stadium",
       "city": "Miami Gardens, Florida",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "76'",
       "home": {
         "id": "478",
         "name": "France",
         "abbr": "FRA",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
-        "score": 0,
+        "score": 3,
         "winner": false
       },
       "away": {
@@ -3848,7 +3848,7 @@
         "name": "England",
         "abbr": "ENG",
         "logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
-        "score": 0,
+        "score": 4,
         "winner": false
       },
       "nrkFree": true,
