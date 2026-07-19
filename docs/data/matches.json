@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-19T18:52:30.419Z",
+  "updated": "2026-07-19T20:38:37.826Z",
   "count": 104,
   "matches": [
     {
@@ -3869,9 +3869,9 @@
       "roundNote": "final",
       "venue": "MetLife Stadium",
       "city": "East Rutherford, New Jersey",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "statusDetail": "Scheduled",
+      "statusDetail": "61'",
       "home": {
         "id": "164",
         "name": "Spain",
