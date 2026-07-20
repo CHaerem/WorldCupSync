@@ -1,9 +1,10 @@
 name: Update World Cup data
 
 on:
-  schedule:
-    # Every 2 hours during the tournament (UTC). Oslo = UTC+2 in summer.
-    - cron: "0 */2 * * *"
+  # Tournament over — scheduled auto-updates disabled. Re-enable the cron below to resume.
+  # schedule:
+  #   # Every 2 hours during the tournament (UTC). Oslo = UTC+2 in summer.
+  #   - cron: "0 */2 * * *"
   workflow_dispatch:
 
 permissions:
